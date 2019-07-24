@@ -4464,6 +4464,8 @@ namespace peppa.Domain
 		public IEnumerable<char> col01__in { get; set; }
 		public IEnumerable<char> col01__ni { get; set; }
 		public (char? low, char? high)? col01__between { get; set; }
+		public bool col01__isnull { get; set; } = false;
+		public bool col01__isnotnull { get; set; } = false;
 		#endregion
 		#region col02
 		public string col02_eq { get; set; }
@@ -4487,6 +4489,8 @@ namespace peppa.Domain
 		public IEnumerable<string> col02__in { get; set; }
 		public IEnumerable<string> col02__ni { get; set; }
 		public (string low, string high)? col02__between { get; set; }
+		public bool col02__isnull { get; set; } = false;
+		public bool col02__isnotnull { get; set; } = false;
 		public string col02__like { get; set; }
 		#endregion
 		#region col03
@@ -4511,6 +4515,8 @@ namespace peppa.Domain
 		public IEnumerable<string> col03__in { get; set; }
 		public IEnumerable<string> col03__ni { get; set; }
 		public (string low, string high)? col03__between { get; set; }
+		public bool col03__isnull { get; set; } = false;
+		public bool col03__isnotnull { get; set; } = false;
 		public string col03__like { get; set; }
 		#endregion
 		#region col04
@@ -4535,6 +4541,8 @@ namespace peppa.Domain
 		public IEnumerable<string> col04__in { get; set; }
 		public IEnumerable<string> col04__ni { get; set; }
 		public (string low, string high)? col04__between { get; set; }
+		public bool col04__isnull { get; set; } = false;
+		public bool col04__isnotnull { get; set; } = false;
 		public string col04__like { get; set; }
 		#endregion
 		#region col05
@@ -4558,6 +4566,8 @@ namespace peppa.Domain
 		public IEnumerable<char> col05__in { get; set; }
 		public IEnumerable<char> col05__ni { get; set; }
 		public (char? low, char? high)? col05__between { get; set; }
+		public bool col05__isnull { get; set; } = false;
+		public bool col05__isnotnull { get; set; } = false;
 		#endregion
 		#region col06
 		public string col06_eq { get; set; }
@@ -4581,6 +4591,8 @@ namespace peppa.Domain
 		public IEnumerable<string> col06__in { get; set; }
 		public IEnumerable<string> col06__ni { get; set; }
 		public (string low, string high)? col06__between { get; set; }
+		public bool col06__isnull { get; set; } = false;
+		public bool col06__isnotnull { get; set; } = false;
 		public string col06__like { get; set; }
 		#endregion
 		#region col07
@@ -4605,6 +4617,8 @@ namespace peppa.Domain
 		public IEnumerable<string> col07__in { get; set; }
 		public IEnumerable<string> col07__ni { get; set; }
 		public (string low, string high)? col07__between { get; set; }
+		public bool col07__isnull { get; set; } = false;
+		public bool col07__isnotnull { get; set; } = false;
 		public string col07__like { get; set; }
 		#endregion
 		#region col08
@@ -4629,6 +4643,8 @@ namespace peppa.Domain
 		public IEnumerable<string> col08__in { get; set; }
 		public IEnumerable<string> col08__ni { get; set; }
 		public (string low, string high)? col08__between { get; set; }
+		public bool col08__isnull { get; set; } = false;
+		public bool col08__isnotnull { get; set; } = false;
 		public string col08__like { get; set; }
 		#endregion
 		#region col09
@@ -4638,6 +4654,8 @@ namespace peppa.Domain
 		#region col09_
 		public byte[] col09__eq { get; set; }
 		public byte[] col09__ne { get; set; }
+		public bool col09__isnull { get; set; } = false;
+		public bool col09__isnotnull { get; set; } = false;
 		#endregion
 		#region col10
 		public byte[] col10_eq { get; set; }
@@ -4646,6 +4664,8 @@ namespace peppa.Domain
 		#region col10_
 		public byte[] col10__eq { get; set; }
 		public byte[] col10__ne { get; set; }
+		public bool col10__isnull { get; set; } = false;
+		public bool col10__isnotnull { get; set; } = false;
 		#endregion
 		#region col11
 		public byte[] col11_eq { get; set; }
@@ -4654,6 +4674,8 @@ namespace peppa.Domain
 		#region col11_
 		public byte[] col11__eq { get; set; }
 		public byte[] col11__ne { get; set; }
+		public bool col11__isnull { get; set; } = false;
+		public bool col11__isnotnull { get; set; } = false;
 		#endregion
 		#region col12
 		public bool? col12_eq { get; set; }
@@ -4662,6 +4684,8 @@ namespace peppa.Domain
 		#region col12_
 		public bool? col12__eq { get; set; }
 		public bool? col12__ne { get; set; }
+		public bool col12__isnull { get; set; } = false;
+		public bool col12__isnotnull { get; set; } = false;
 		#endregion
 		#region col13
 		public Guid? col13_eq { get; set; }
@@ -4670,6 +4694,8 @@ namespace peppa.Domain
 		#region col13_
 		public Guid? col13__eq { get; set; }
 		public Guid? col13__ne { get; set; }
+		public bool col13__isnull { get; set; } = false;
+		public bool col13__isnotnull { get; set; } = false;
 		#endregion
 		#region col14
 		public Int16? col14_eq { get; set; }
@@ -4692,6 +4718,8 @@ namespace peppa.Domain
 		public IEnumerable<Int16> col14__in { get; set; }
 		public IEnumerable<Int16> col14__ni { get; set; }
 		public (Int16? low, Int16? high)? col14__between { get; set; }
+		public bool col14__isnull { get; set; } = false;
+		public bool col14__isnotnull { get; set; } = false;
 		#endregion
 		#region col15
 		public int? col15_eq { get; set; }
@@ -4714,6 +4742,8 @@ namespace peppa.Domain
 		public IEnumerable<int> col15__in { get; set; }
 		public IEnumerable<int> col15__ni { get; set; }
 		public (int? low, int? high)? col15__between { get; set; }
+		public bool col15__isnull { get; set; } = false;
+		public bool col15__isnotnull { get; set; } = false;
 		#endregion
 		#region col16
 		public Int64? col16_eq { get; set; }
@@ -4736,6 +4766,8 @@ namespace peppa.Domain
 		public IEnumerable<Int64> col16__in { get; set; }
 		public IEnumerable<Int64> col16__ni { get; set; }
 		public (Int64? low, Int64? high)? col16__between { get; set; }
+		public bool col16__isnull { get; set; } = false;
+		public bool col16__isnotnull { get; set; } = false;
 		#endregion
 		#region col17
 		public byte? col17_eq { get; set; }
@@ -4744,6 +4776,8 @@ namespace peppa.Domain
 		#region col17_
 		public byte? col17__eq { get; set; }
 		public byte? col17__ne { get; set; }
+		public bool col17__isnull { get; set; } = false;
+		public bool col17__isnotnull { get; set; } = false;
 		#endregion
 		#region col18
 		public float? col18_eq { get; set; }
@@ -4766,6 +4800,8 @@ namespace peppa.Domain
 		public IEnumerable<float> col18__in { get; set; }
 		public IEnumerable<float> col18__ni { get; set; }
 		public (float? low, float? high)? col18__between { get; set; }
+		public bool col18__isnull { get; set; } = false;
+		public bool col18__isnotnull { get; set; } = false;
 		#endregion
 		#region col19
 		public decimal? col19_eq { get; set; }
@@ -4788,6 +4824,8 @@ namespace peppa.Domain
 		public IEnumerable<decimal> col19__in { get; set; }
 		public IEnumerable<decimal> col19__ni { get; set; }
 		public (decimal? low, decimal? high)? col19__between { get; set; }
+		public bool col19__isnull { get; set; } = false;
+		public bool col19__isnotnull { get; set; } = false;
 		#endregion
 		#region col20
 		public decimal? col20_eq { get; set; }
@@ -4810,6 +4848,8 @@ namespace peppa.Domain
 		public IEnumerable<decimal> col20__in { get; set; }
 		public IEnumerable<decimal> col20__ni { get; set; }
 		public (decimal? low, decimal? high)? col20__between { get; set; }
+		public bool col20__isnull { get; set; } = false;
+		public bool col20__isnotnull { get; set; } = false;
 		#endregion
 		#region col21
 		public decimal? col21_eq { get; set; }
@@ -4832,6 +4872,8 @@ namespace peppa.Domain
 		public IEnumerable<decimal> col21__in { get; set; }
 		public IEnumerable<decimal> col21__ni { get; set; }
 		public (decimal? low, decimal? high)? col21__between { get; set; }
+		public bool col21__isnull { get; set; } = false;
+		public bool col21__isnotnull { get; set; } = false;
 		#endregion
 		#region col22
 		public decimal? col22_eq { get; set; }
@@ -4854,6 +4896,8 @@ namespace peppa.Domain
 		public IEnumerable<decimal> col22__in { get; set; }
 		public IEnumerable<decimal> col22__ni { get; set; }
 		public (decimal? low, decimal? high)? col22__between { get; set; }
+		public bool col22__isnull { get; set; } = false;
+		public bool col22__isnotnull { get; set; } = false;
 		#endregion
 		#region col23
 		public DateTime? col23_eq { get; set; }
@@ -4876,6 +4920,8 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> col23__in { get; set; }
 		public IEnumerable<DateTime> col23__ni { get; set; }
 		public (DateTime? low, DateTime? high)? col23__between { get; set; }
+		public bool col23__isnull { get; set; } = false;
+		public bool col23__isnotnull { get; set; } = false;
 		#endregion
 		#region col24
 		public TimeSpan? col24_eq { get; set; }
@@ -4898,6 +4944,8 @@ namespace peppa.Domain
 		public IEnumerable<TimeSpan> col24__in { get; set; }
 		public IEnumerable<TimeSpan> col24__ni { get; set; }
 		public (TimeSpan? low, TimeSpan? high)? col24__between { get; set; }
+		public bool col24__isnull { get; set; } = false;
+		public bool col24__isnotnull { get; set; } = false;
 		#endregion
 		#region col25
 		public DateTime? col25_eq { get; set; }
@@ -4920,6 +4968,8 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> col25__in { get; set; }
 		public IEnumerable<DateTime> col25__ni { get; set; }
 		public (DateTime? low, DateTime? high)? col25__between { get; set; }
+		public bool col25__isnull { get; set; } = false;
+		public bool col25__isnotnull { get; set; } = false;
 		#endregion
 		#region col26
 		public DateTime? col26_eq { get; set; }
@@ -4942,6 +4992,8 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> col26__in { get; set; }
 		public IEnumerable<DateTime> col26__ni { get; set; }
 		public (DateTime? low, DateTime? high)? col26__between { get; set; }
+		public bool col26__isnull { get; set; } = false;
+		public bool col26__isnotnull { get; set; } = false;
 		#endregion
 		#region col27
 		public DateTime? col27_eq { get; set; }
@@ -4964,6 +5016,8 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> col27__in { get; set; }
 		public IEnumerable<DateTime> col27__ni { get; set; }
 		public (DateTime? low, DateTime? high)? col27__between { get; set; }
+		public bool col27__isnull { get; set; } = false;
+		public bool col27__isnotnull { get; set; } = false;
 		#endregion
 		#region col28
 		public DateTimeOffset? col28_eq { get; set; }
@@ -4986,6 +5040,8 @@ namespace peppa.Domain
 		public IEnumerable<DateTimeOffset> col28__in { get; set; }
 		public IEnumerable<DateTimeOffset> col28__ni { get; set; }
 		public (DateTimeOffset? low, DateTimeOffset? high)? col28__between { get; set; }
+		public bool col28__isnull { get; set; } = false;
+		public bool col28__isnotnull { get; set; } = false;
 		#endregion
 		#region col29
 		public byte[] col29_eq { get; set; }
@@ -5005,6 +5061,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region col01
 			if (col01_eq != null) predicate = predicate.And(_ => _.col01 == col01_eq);
@@ -5013,6 +5071,8 @@ namespace peppa.Domain
 			if (col01_gt != null) predicate = predicate.And(_ => _.col01 > col01_gt);
 			if (col01_le != null) predicate = predicate.And(_ => _.col01 <= col01_le);
 			if (col01_ge != null) predicate = predicate.And(_ => _.col01 >= col01_ge);
+            if (col01_in != null) predicate = predicate.And(_ => col01_in.Contains(_.col01));
+            if (col01_ni != null) predicate = predicate.And(_ => !col01_ni.Contains(_.col01));
 			#endregion
 			#region col01_
 			if (col01__eq != null) predicate = predicate.And(_ => _.col01_ == col01__eq);
@@ -5021,6 +5081,10 @@ namespace peppa.Domain
 			if (col01__gt != null) predicate = predicate.And(_ => _.col01_ > col01__gt);
 			if (col01__le != null) predicate = predicate.And(_ => _.col01_ <= col01__le);
 			if (col01__ge != null) predicate = predicate.And(_ => _.col01_ >= col01__ge);
+            if (col01__in != null) predicate = predicate.And(_ => col01__in.Contains(_.col01_.Value));
+            if (col01__ni != null) predicate = predicate.And(_ => !col01__ni.Contains(_.col01_.Value));
+			if (col01__isnull) predicate = predicate.And(_ => _.col01_ == null);
+			if (col01__isnotnull) predicate = predicate.And(_ => _.col01_ != null);
 			#endregion
 			#region col02
 			if (col02_eq != null) predicate = predicate.And(_ => _.col02 == col02_eq);
@@ -5029,6 +5093,8 @@ namespace peppa.Domain
 			if (col02_gt != null) predicate = predicate.And(_ => col02_gt.CompareTo(_.col02) < 0);
 			if (col02_le != null) predicate = predicate.And(_ => col02_le.CompareTo(_.col02) >= 0);
 			if (col02_ge != null) predicate = predicate.And(_ => col02_ge.CompareTo(_.col02) <= 0);
+            if (col02_in != null) predicate = predicate.And(_ => col02_in.Contains(_.col02));
+            if (col02_ni != null) predicate = predicate.And(_ => !col02_ni.Contains(_.col02));
 			#endregion
 			#region col02_
 			if (col02__eq != null) predicate = predicate.And(_ => _.col02_ == col02__eq);
@@ -5037,6 +5103,10 @@ namespace peppa.Domain
 			if (col02__gt != null) predicate = predicate.And(_ => col02__gt.CompareTo(_.col02_) < 0);
 			if (col02__le != null) predicate = predicate.And(_ => col02__le.CompareTo(_.col02_) >= 0);
 			if (col02__ge != null) predicate = predicate.And(_ => col02__ge.CompareTo(_.col02_) <= 0);
+            if (col02__in != null) predicate = predicate.And(_ => col02__in.Contains(_.col02_));
+            if (col02__ni != null) predicate = predicate.And(_ => !col02__ni.Contains(_.col02_));
+			if (col02__isnull) predicate = predicate.And(_ => _.col02_ == null);
+			if (col02__isnotnull) predicate = predicate.And(_ => _.col02_ != null);
 			#endregion
 			#region col03
 			if (col03_eq != null) predicate = predicate.And(_ => _.col03 == col03_eq);
@@ -5045,6 +5115,8 @@ namespace peppa.Domain
 			if (col03_gt != null) predicate = predicate.And(_ => col03_gt.CompareTo(_.col03) < 0);
 			if (col03_le != null) predicate = predicate.And(_ => col03_le.CompareTo(_.col03) >= 0);
 			if (col03_ge != null) predicate = predicate.And(_ => col03_ge.CompareTo(_.col03) <= 0);
+            if (col03_in != null) predicate = predicate.And(_ => col03_in.Contains(_.col03));
+            if (col03_ni != null) predicate = predicate.And(_ => !col03_ni.Contains(_.col03));
 			#endregion
 			#region col03_
 			if (col03__eq != null) predicate = predicate.And(_ => _.col03_ == col03__eq);
@@ -5053,6 +5125,10 @@ namespace peppa.Domain
 			if (col03__gt != null) predicate = predicate.And(_ => col03__gt.CompareTo(_.col03_) < 0);
 			if (col03__le != null) predicate = predicate.And(_ => col03__le.CompareTo(_.col03_) >= 0);
 			if (col03__ge != null) predicate = predicate.And(_ => col03__ge.CompareTo(_.col03_) <= 0);
+            if (col03__in != null) predicate = predicate.And(_ => col03__in.Contains(_.col03_));
+            if (col03__ni != null) predicate = predicate.And(_ => !col03__ni.Contains(_.col03_));
+			if (col03__isnull) predicate = predicate.And(_ => _.col03_ == null);
+			if (col03__isnotnull) predicate = predicate.And(_ => _.col03_ != null);
 			#endregion
 			#region col04
 			if (col04_eq != null) predicate = predicate.And(_ => _.col04 == col04_eq);
@@ -5061,6 +5137,8 @@ namespace peppa.Domain
 			if (col04_gt != null) predicate = predicate.And(_ => col04_gt.CompareTo(_.col04) < 0);
 			if (col04_le != null) predicate = predicate.And(_ => col04_le.CompareTo(_.col04) >= 0);
 			if (col04_ge != null) predicate = predicate.And(_ => col04_ge.CompareTo(_.col04) <= 0);
+            if (col04_in != null) predicate = predicate.And(_ => col04_in.Contains(_.col04));
+            if (col04_ni != null) predicate = predicate.And(_ => !col04_ni.Contains(_.col04));
 			#endregion
 			#region col04_
 			if (col04__eq != null) predicate = predicate.And(_ => _.col04_ == col04__eq);
@@ -5069,6 +5147,10 @@ namespace peppa.Domain
 			if (col04__gt != null) predicate = predicate.And(_ => col04__gt.CompareTo(_.col04_) < 0);
 			if (col04__le != null) predicate = predicate.And(_ => col04__le.CompareTo(_.col04_) >= 0);
 			if (col04__ge != null) predicate = predicate.And(_ => col04__ge.CompareTo(_.col04_) <= 0);
+            if (col04__in != null) predicate = predicate.And(_ => col04__in.Contains(_.col04_));
+            if (col04__ni != null) predicate = predicate.And(_ => !col04__ni.Contains(_.col04_));
+			if (col04__isnull) predicate = predicate.And(_ => _.col04_ == null);
+			if (col04__isnotnull) predicate = predicate.And(_ => _.col04_ != null);
 			#endregion
 			#region col05
 			if (col05_eq != null) predicate = predicate.And(_ => _.col05 == col05_eq);
@@ -5077,6 +5159,8 @@ namespace peppa.Domain
 			if (col05_gt != null) predicate = predicate.And(_ => _.col05 > col05_gt);
 			if (col05_le != null) predicate = predicate.And(_ => _.col05 <= col05_le);
 			if (col05_ge != null) predicate = predicate.And(_ => _.col05 >= col05_ge);
+            if (col05_in != null) predicate = predicate.And(_ => col05_in.Contains(_.col05));
+            if (col05_ni != null) predicate = predicate.And(_ => !col05_ni.Contains(_.col05));
 			#endregion
 			#region col05_
 			if (col05__eq != null) predicate = predicate.And(_ => _.col05_ == col05__eq);
@@ -5085,6 +5169,10 @@ namespace peppa.Domain
 			if (col05__gt != null) predicate = predicate.And(_ => _.col05_ > col05__gt);
 			if (col05__le != null) predicate = predicate.And(_ => _.col05_ <= col05__le);
 			if (col05__ge != null) predicate = predicate.And(_ => _.col05_ >= col05__ge);
+            if (col05__in != null) predicate = predicate.And(_ => col05__in.Contains(_.col05_.Value));
+            if (col05__ni != null) predicate = predicate.And(_ => !col05__ni.Contains(_.col05_.Value));
+			if (col05__isnull) predicate = predicate.And(_ => _.col05_ == null);
+			if (col05__isnotnull) predicate = predicate.And(_ => _.col05_ != null);
 			#endregion
 			#region col06
 			if (col06_eq != null) predicate = predicate.And(_ => _.col06 == col06_eq);
@@ -5093,6 +5181,8 @@ namespace peppa.Domain
 			if (col06_gt != null) predicate = predicate.And(_ => col06_gt.CompareTo(_.col06) < 0);
 			if (col06_le != null) predicate = predicate.And(_ => col06_le.CompareTo(_.col06) >= 0);
 			if (col06_ge != null) predicate = predicate.And(_ => col06_ge.CompareTo(_.col06) <= 0);
+            if (col06_in != null) predicate = predicate.And(_ => col06_in.Contains(_.col06));
+            if (col06_ni != null) predicate = predicate.And(_ => !col06_ni.Contains(_.col06));
 			#endregion
 			#region col06_
 			if (col06__eq != null) predicate = predicate.And(_ => _.col06_ == col06__eq);
@@ -5101,6 +5191,10 @@ namespace peppa.Domain
 			if (col06__gt != null) predicate = predicate.And(_ => col06__gt.CompareTo(_.col06_) < 0);
 			if (col06__le != null) predicate = predicate.And(_ => col06__le.CompareTo(_.col06_) >= 0);
 			if (col06__ge != null) predicate = predicate.And(_ => col06__ge.CompareTo(_.col06_) <= 0);
+            if (col06__in != null) predicate = predicate.And(_ => col06__in.Contains(_.col06_));
+            if (col06__ni != null) predicate = predicate.And(_ => !col06__ni.Contains(_.col06_));
+			if (col06__isnull) predicate = predicate.And(_ => _.col06_ == null);
+			if (col06__isnotnull) predicate = predicate.And(_ => _.col06_ != null);
 			#endregion
 			#region col07
 			if (col07_eq != null) predicate = predicate.And(_ => _.col07 == col07_eq);
@@ -5109,6 +5203,8 @@ namespace peppa.Domain
 			if (col07_gt != null) predicate = predicate.And(_ => col07_gt.CompareTo(_.col07) < 0);
 			if (col07_le != null) predicate = predicate.And(_ => col07_le.CompareTo(_.col07) >= 0);
 			if (col07_ge != null) predicate = predicate.And(_ => col07_ge.CompareTo(_.col07) <= 0);
+            if (col07_in != null) predicate = predicate.And(_ => col07_in.Contains(_.col07));
+            if (col07_ni != null) predicate = predicate.And(_ => !col07_ni.Contains(_.col07));
 			#endregion
 			#region col07_
 			if (col07__eq != null) predicate = predicate.And(_ => _.col07_ == col07__eq);
@@ -5117,6 +5213,10 @@ namespace peppa.Domain
 			if (col07__gt != null) predicate = predicate.And(_ => col07__gt.CompareTo(_.col07_) < 0);
 			if (col07__le != null) predicate = predicate.And(_ => col07__le.CompareTo(_.col07_) >= 0);
 			if (col07__ge != null) predicate = predicate.And(_ => col07__ge.CompareTo(_.col07_) <= 0);
+            if (col07__in != null) predicate = predicate.And(_ => col07__in.Contains(_.col07_));
+            if (col07__ni != null) predicate = predicate.And(_ => !col07__ni.Contains(_.col07_));
+			if (col07__isnull) predicate = predicate.And(_ => _.col07_ == null);
+			if (col07__isnotnull) predicate = predicate.And(_ => _.col07_ != null);
 			#endregion
 			#region col08
 			if (col08_eq != null) predicate = predicate.And(_ => _.col08 == col08_eq);
@@ -5125,6 +5225,8 @@ namespace peppa.Domain
 			if (col08_gt != null) predicate = predicate.And(_ => col08_gt.CompareTo(_.col08) < 0);
 			if (col08_le != null) predicate = predicate.And(_ => col08_le.CompareTo(_.col08) >= 0);
 			if (col08_ge != null) predicate = predicate.And(_ => col08_ge.CompareTo(_.col08) <= 0);
+            if (col08_in != null) predicate = predicate.And(_ => col08_in.Contains(_.col08));
+            if (col08_ni != null) predicate = predicate.And(_ => !col08_ni.Contains(_.col08));
 			#endregion
 			#region col08_
 			if (col08__eq != null) predicate = predicate.And(_ => _.col08_ == col08__eq);
@@ -5133,6 +5235,10 @@ namespace peppa.Domain
 			if (col08__gt != null) predicate = predicate.And(_ => col08__gt.CompareTo(_.col08_) < 0);
 			if (col08__le != null) predicate = predicate.And(_ => col08__le.CompareTo(_.col08_) >= 0);
 			if (col08__ge != null) predicate = predicate.And(_ => col08__ge.CompareTo(_.col08_) <= 0);
+            if (col08__in != null) predicate = predicate.And(_ => col08__in.Contains(_.col08_));
+            if (col08__ni != null) predicate = predicate.And(_ => !col08__ni.Contains(_.col08_));
+			if (col08__isnull) predicate = predicate.And(_ => _.col08_ == null);
+			if (col08__isnotnull) predicate = predicate.And(_ => _.col08_ != null);
 			#endregion
 			#region col09
 			if (col09_eq != null) predicate = predicate.And(_ => _.col09 == col09_eq);
@@ -5141,6 +5247,8 @@ namespace peppa.Domain
 			#region col09_
 			if (col09__eq != null) predicate = predicate.And(_ => _.col09_ == col09__eq);
 			if (col09__ne != null) predicate = predicate.And(_ => _.col09_ != col09__ne);
+			if (col09__isnull) predicate = predicate.And(_ => _.col09_ == null);
+			if (col09__isnotnull) predicate = predicate.And(_ => _.col09_ != null);
 			#endregion
 			#region col10
 			if (col10_eq != null) predicate = predicate.And(_ => _.col10 == col10_eq);
@@ -5149,6 +5257,8 @@ namespace peppa.Domain
 			#region col10_
 			if (col10__eq != null) predicate = predicate.And(_ => _.col10_ == col10__eq);
 			if (col10__ne != null) predicate = predicate.And(_ => _.col10_ != col10__ne);
+			if (col10__isnull) predicate = predicate.And(_ => _.col10_ == null);
+			if (col10__isnotnull) predicate = predicate.And(_ => _.col10_ != null);
 			#endregion
 			#region col11
 			if (col11_eq != null) predicate = predicate.And(_ => _.col11 == col11_eq);
@@ -5157,6 +5267,8 @@ namespace peppa.Domain
 			#region col11_
 			if (col11__eq != null) predicate = predicate.And(_ => _.col11_ == col11__eq);
 			if (col11__ne != null) predicate = predicate.And(_ => _.col11_ != col11__ne);
+			if (col11__isnull) predicate = predicate.And(_ => _.col11_ == null);
+			if (col11__isnotnull) predicate = predicate.And(_ => _.col11_ != null);
 			#endregion
 			#region col12
 			if (col12_eq != null) predicate = predicate.And(_ => _.col12 == col12_eq);
@@ -5165,6 +5277,8 @@ namespace peppa.Domain
 			#region col12_
 			if (col12__eq != null) predicate = predicate.And(_ => _.col12_ == col12__eq);
 			if (col12__ne != null) predicate = predicate.And(_ => _.col12_ != col12__ne);
+			if (col12__isnull) predicate = predicate.And(_ => _.col12_ == null);
+			if (col12__isnotnull) predicate = predicate.And(_ => _.col12_ != null);
 			#endregion
 			#region col13
 			if (col13_eq != null) predicate = predicate.And(_ => _.col13 == col13_eq);
@@ -5173,6 +5287,8 @@ namespace peppa.Domain
 			#region col13_
 			if (col13__eq != null) predicate = predicate.And(_ => _.col13_ == col13__eq);
 			if (col13__ne != null) predicate = predicate.And(_ => _.col13_ != col13__ne);
+			if (col13__isnull) predicate = predicate.And(_ => _.col13_ == null);
+			if (col13__isnotnull) predicate = predicate.And(_ => _.col13_ != null);
 			#endregion
 			#region col14
 			if (col14_eq != null) predicate = predicate.And(_ => _.col14 == col14_eq);
@@ -5181,6 +5297,8 @@ namespace peppa.Domain
 			if (col14_gt != null) predicate = predicate.And(_ => _.col14 > col14_gt);
 			if (col14_le != null) predicate = predicate.And(_ => _.col14 <= col14_le);
 			if (col14_ge != null) predicate = predicate.And(_ => _.col14 >= col14_ge);
+            if (col14_in != null) predicate = predicate.And(_ => col14_in.Contains(_.col14));
+            if (col14_ni != null) predicate = predicate.And(_ => !col14_ni.Contains(_.col14));
 			#endregion
 			#region col14_
 			if (col14__eq != null) predicate = predicate.And(_ => _.col14_ == col14__eq);
@@ -5189,6 +5307,10 @@ namespace peppa.Domain
 			if (col14__gt != null) predicate = predicate.And(_ => _.col14_ > col14__gt);
 			if (col14__le != null) predicate = predicate.And(_ => _.col14_ <= col14__le);
 			if (col14__ge != null) predicate = predicate.And(_ => _.col14_ >= col14__ge);
+            if (col14__in != null) predicate = predicate.And(_ => col14__in.Contains(_.col14_.Value));
+            if (col14__ni != null) predicate = predicate.And(_ => !col14__ni.Contains(_.col14_.Value));
+			if (col14__isnull) predicate = predicate.And(_ => _.col14_ == null);
+			if (col14__isnotnull) predicate = predicate.And(_ => _.col14_ != null);
 			#endregion
 			#region col15
 			if (col15_eq != null) predicate = predicate.And(_ => _.col15 == col15_eq);
@@ -5197,6 +5319,8 @@ namespace peppa.Domain
 			if (col15_gt != null) predicate = predicate.And(_ => _.col15 > col15_gt);
 			if (col15_le != null) predicate = predicate.And(_ => _.col15 <= col15_le);
 			if (col15_ge != null) predicate = predicate.And(_ => _.col15 >= col15_ge);
+            if (col15_in != null) predicate = predicate.And(_ => col15_in.Contains(_.col15));
+            if (col15_ni != null) predicate = predicate.And(_ => !col15_ni.Contains(_.col15));
 			#endregion
 			#region col15_
 			if (col15__eq != null) predicate = predicate.And(_ => _.col15_ == col15__eq);
@@ -5205,6 +5329,10 @@ namespace peppa.Domain
 			if (col15__gt != null) predicate = predicate.And(_ => _.col15_ > col15__gt);
 			if (col15__le != null) predicate = predicate.And(_ => _.col15_ <= col15__le);
 			if (col15__ge != null) predicate = predicate.And(_ => _.col15_ >= col15__ge);
+            if (col15__in != null) predicate = predicate.And(_ => col15__in.Contains(_.col15_.Value));
+            if (col15__ni != null) predicate = predicate.And(_ => !col15__ni.Contains(_.col15_.Value));
+			if (col15__isnull) predicate = predicate.And(_ => _.col15_ == null);
+			if (col15__isnotnull) predicate = predicate.And(_ => _.col15_ != null);
 			#endregion
 			#region col16
 			if (col16_eq != null) predicate = predicate.And(_ => _.col16 == col16_eq);
@@ -5213,6 +5341,8 @@ namespace peppa.Domain
 			if (col16_gt != null) predicate = predicate.And(_ => _.col16 > col16_gt);
 			if (col16_le != null) predicate = predicate.And(_ => _.col16 <= col16_le);
 			if (col16_ge != null) predicate = predicate.And(_ => _.col16 >= col16_ge);
+            if (col16_in != null) predicate = predicate.And(_ => col16_in.Contains(_.col16));
+            if (col16_ni != null) predicate = predicate.And(_ => !col16_ni.Contains(_.col16));
 			#endregion
 			#region col16_
 			if (col16__eq != null) predicate = predicate.And(_ => _.col16_ == col16__eq);
@@ -5221,6 +5351,10 @@ namespace peppa.Domain
 			if (col16__gt != null) predicate = predicate.And(_ => _.col16_ > col16__gt);
 			if (col16__le != null) predicate = predicate.And(_ => _.col16_ <= col16__le);
 			if (col16__ge != null) predicate = predicate.And(_ => _.col16_ >= col16__ge);
+            if (col16__in != null) predicate = predicate.And(_ => col16__in.Contains(_.col16_.Value));
+            if (col16__ni != null) predicate = predicate.And(_ => !col16__ni.Contains(_.col16_.Value));
+			if (col16__isnull) predicate = predicate.And(_ => _.col16_ == null);
+			if (col16__isnotnull) predicate = predicate.And(_ => _.col16_ != null);
 			#endregion
 			#region col17
 			if (col17_eq != null) predicate = predicate.And(_ => _.col17 == col17_eq);
@@ -5229,6 +5363,8 @@ namespace peppa.Domain
 			#region col17_
 			if (col17__eq != null) predicate = predicate.And(_ => _.col17_ == col17__eq);
 			if (col17__ne != null) predicate = predicate.And(_ => _.col17_ != col17__ne);
+			if (col17__isnull) predicate = predicate.And(_ => _.col17_ == null);
+			if (col17__isnotnull) predicate = predicate.And(_ => _.col17_ != null);
 			#endregion
 			#region col18
 			if (col18_eq != null) predicate = predicate.And(_ => _.col18 == col18_eq);
@@ -5237,6 +5373,8 @@ namespace peppa.Domain
 			if (col18_gt != null) predicate = predicate.And(_ => _.col18 > col18_gt);
 			if (col18_le != null) predicate = predicate.And(_ => _.col18 <= col18_le);
 			if (col18_ge != null) predicate = predicate.And(_ => _.col18 >= col18_ge);
+            if (col18_in != null) predicate = predicate.And(_ => col18_in.Contains(_.col18));
+            if (col18_ni != null) predicate = predicate.And(_ => !col18_ni.Contains(_.col18));
 			#endregion
 			#region col18_
 			if (col18__eq != null) predicate = predicate.And(_ => _.col18_ == col18__eq);
@@ -5245,6 +5383,10 @@ namespace peppa.Domain
 			if (col18__gt != null) predicate = predicate.And(_ => _.col18_ > col18__gt);
 			if (col18__le != null) predicate = predicate.And(_ => _.col18_ <= col18__le);
 			if (col18__ge != null) predicate = predicate.And(_ => _.col18_ >= col18__ge);
+            if (col18__in != null) predicate = predicate.And(_ => col18__in.Contains(_.col18_.Value));
+            if (col18__ni != null) predicate = predicate.And(_ => !col18__ni.Contains(_.col18_.Value));
+			if (col18__isnull) predicate = predicate.And(_ => _.col18_ == null);
+			if (col18__isnotnull) predicate = predicate.And(_ => _.col18_ != null);
 			#endregion
 			#region col19
 			if (col19_eq != null) predicate = predicate.And(_ => _.col19 == col19_eq);
@@ -5253,6 +5395,8 @@ namespace peppa.Domain
 			if (col19_gt != null) predicate = predicate.And(_ => _.col19 > col19_gt);
 			if (col19_le != null) predicate = predicate.And(_ => _.col19 <= col19_le);
 			if (col19_ge != null) predicate = predicate.And(_ => _.col19 >= col19_ge);
+            if (col19_in != null) predicate = predicate.And(_ => col19_in.Contains(_.col19));
+            if (col19_ni != null) predicate = predicate.And(_ => !col19_ni.Contains(_.col19));
 			#endregion
 			#region col19_
 			if (col19__eq != null) predicate = predicate.And(_ => _.col19_ == col19__eq);
@@ -5261,6 +5405,10 @@ namespace peppa.Domain
 			if (col19__gt != null) predicate = predicate.And(_ => _.col19_ > col19__gt);
 			if (col19__le != null) predicate = predicate.And(_ => _.col19_ <= col19__le);
 			if (col19__ge != null) predicate = predicate.And(_ => _.col19_ >= col19__ge);
+            if (col19__in != null) predicate = predicate.And(_ => col19__in.Contains(_.col19_.Value));
+            if (col19__ni != null) predicate = predicate.And(_ => !col19__ni.Contains(_.col19_.Value));
+			if (col19__isnull) predicate = predicate.And(_ => _.col19_ == null);
+			if (col19__isnotnull) predicate = predicate.And(_ => _.col19_ != null);
 			#endregion
 			#region col20
 			if (col20_eq != null) predicate = predicate.And(_ => _.col20 == col20_eq);
@@ -5269,6 +5417,8 @@ namespace peppa.Domain
 			if (col20_gt != null) predicate = predicate.And(_ => _.col20 > col20_gt);
 			if (col20_le != null) predicate = predicate.And(_ => _.col20 <= col20_le);
 			if (col20_ge != null) predicate = predicate.And(_ => _.col20 >= col20_ge);
+            if (col20_in != null) predicate = predicate.And(_ => col20_in.Contains(_.col20));
+            if (col20_ni != null) predicate = predicate.And(_ => !col20_ni.Contains(_.col20));
 			#endregion
 			#region col20_
 			if (col20__eq != null) predicate = predicate.And(_ => _.col20_ == col20__eq);
@@ -5277,6 +5427,10 @@ namespace peppa.Domain
 			if (col20__gt != null) predicate = predicate.And(_ => _.col20_ > col20__gt);
 			if (col20__le != null) predicate = predicate.And(_ => _.col20_ <= col20__le);
 			if (col20__ge != null) predicate = predicate.And(_ => _.col20_ >= col20__ge);
+            if (col20__in != null) predicate = predicate.And(_ => col20__in.Contains(_.col20_.Value));
+            if (col20__ni != null) predicate = predicate.And(_ => !col20__ni.Contains(_.col20_.Value));
+			if (col20__isnull) predicate = predicate.And(_ => _.col20_ == null);
+			if (col20__isnotnull) predicate = predicate.And(_ => _.col20_ != null);
 			#endregion
 			#region col21
 			if (col21_eq != null) predicate = predicate.And(_ => _.col21 == col21_eq);
@@ -5285,6 +5439,8 @@ namespace peppa.Domain
 			if (col21_gt != null) predicate = predicate.And(_ => _.col21 > col21_gt);
 			if (col21_le != null) predicate = predicate.And(_ => _.col21 <= col21_le);
 			if (col21_ge != null) predicate = predicate.And(_ => _.col21 >= col21_ge);
+            if (col21_in != null) predicate = predicate.And(_ => col21_in.Contains(_.col21));
+            if (col21_ni != null) predicate = predicate.And(_ => !col21_ni.Contains(_.col21));
 			#endregion
 			#region col21_
 			if (col21__eq != null) predicate = predicate.And(_ => _.col21_ == col21__eq);
@@ -5293,6 +5449,10 @@ namespace peppa.Domain
 			if (col21__gt != null) predicate = predicate.And(_ => _.col21_ > col21__gt);
 			if (col21__le != null) predicate = predicate.And(_ => _.col21_ <= col21__le);
 			if (col21__ge != null) predicate = predicate.And(_ => _.col21_ >= col21__ge);
+            if (col21__in != null) predicate = predicate.And(_ => col21__in.Contains(_.col21_.Value));
+            if (col21__ni != null) predicate = predicate.And(_ => !col21__ni.Contains(_.col21_.Value));
+			if (col21__isnull) predicate = predicate.And(_ => _.col21_ == null);
+			if (col21__isnotnull) predicate = predicate.And(_ => _.col21_ != null);
 			#endregion
 			#region col22
 			if (col22_eq != null) predicate = predicate.And(_ => _.col22 == col22_eq);
@@ -5301,6 +5461,8 @@ namespace peppa.Domain
 			if (col22_gt != null) predicate = predicate.And(_ => _.col22 > col22_gt);
 			if (col22_le != null) predicate = predicate.And(_ => _.col22 <= col22_le);
 			if (col22_ge != null) predicate = predicate.And(_ => _.col22 >= col22_ge);
+            if (col22_in != null) predicate = predicate.And(_ => col22_in.Contains(_.col22));
+            if (col22_ni != null) predicate = predicate.And(_ => !col22_ni.Contains(_.col22));
 			#endregion
 			#region col22_
 			if (col22__eq != null) predicate = predicate.And(_ => _.col22_ == col22__eq);
@@ -5309,6 +5471,10 @@ namespace peppa.Domain
 			if (col22__gt != null) predicate = predicate.And(_ => _.col22_ > col22__gt);
 			if (col22__le != null) predicate = predicate.And(_ => _.col22_ <= col22__le);
 			if (col22__ge != null) predicate = predicate.And(_ => _.col22_ >= col22__ge);
+            if (col22__in != null) predicate = predicate.And(_ => col22__in.Contains(_.col22_.Value));
+            if (col22__ni != null) predicate = predicate.And(_ => !col22__ni.Contains(_.col22_.Value));
+			if (col22__isnull) predicate = predicate.And(_ => _.col22_ == null);
+			if (col22__isnotnull) predicate = predicate.And(_ => _.col22_ != null);
 			#endregion
 			#region col23
 			if (col23_eq != null) predicate = predicate.And(_ => _.col23 == col23_eq);
@@ -5317,6 +5483,8 @@ namespace peppa.Domain
 			if (col23_gt != null) predicate = predicate.And(_ => _.col23 > col23_gt);
 			if (col23_le != null) predicate = predicate.And(_ => _.col23 <= col23_le);
 			if (col23_ge != null) predicate = predicate.And(_ => _.col23 >= col23_ge);
+            if (col23_in != null) predicate = predicate.And(_ => col23_in.Contains(_.col23));
+            if (col23_ni != null) predicate = predicate.And(_ => !col23_ni.Contains(_.col23));
 			#endregion
 			#region col23_
 			if (col23__eq != null) predicate = predicate.And(_ => _.col23_ == col23__eq);
@@ -5325,6 +5493,10 @@ namespace peppa.Domain
 			if (col23__gt != null) predicate = predicate.And(_ => _.col23_ > col23__gt);
 			if (col23__le != null) predicate = predicate.And(_ => _.col23_ <= col23__le);
 			if (col23__ge != null) predicate = predicate.And(_ => _.col23_ >= col23__ge);
+            if (col23__in != null) predicate = predicate.And(_ => col23__in.Contains(_.col23_.Value));
+            if (col23__ni != null) predicate = predicate.And(_ => !col23__ni.Contains(_.col23_.Value));
+			if (col23__isnull) predicate = predicate.And(_ => _.col23_ == null);
+			if (col23__isnotnull) predicate = predicate.And(_ => _.col23_ != null);
 			#endregion
 			#region col24
 			if (col24_eq != null) predicate = predicate.And(_ => _.col24 == col24_eq);
@@ -5333,6 +5505,8 @@ namespace peppa.Domain
 			if (col24_gt != null) predicate = predicate.And(_ => _.col24 > col24_gt);
 			if (col24_le != null) predicate = predicate.And(_ => _.col24 <= col24_le);
 			if (col24_ge != null) predicate = predicate.And(_ => _.col24 >= col24_ge);
+            if (col24_in != null) predicate = predicate.And(_ => col24_in.Contains(_.col24));
+            if (col24_ni != null) predicate = predicate.And(_ => !col24_ni.Contains(_.col24));
 			#endregion
 			#region col24_
 			if (col24__eq != null) predicate = predicate.And(_ => _.col24_ == col24__eq);
@@ -5341,6 +5515,10 @@ namespace peppa.Domain
 			if (col24__gt != null) predicate = predicate.And(_ => _.col24_ > col24__gt);
 			if (col24__le != null) predicate = predicate.And(_ => _.col24_ <= col24__le);
 			if (col24__ge != null) predicate = predicate.And(_ => _.col24_ >= col24__ge);
+            if (col24__in != null) predicate = predicate.And(_ => col24__in.Contains(_.col24_.Value));
+            if (col24__ni != null) predicate = predicate.And(_ => !col24__ni.Contains(_.col24_.Value));
+			if (col24__isnull) predicate = predicate.And(_ => _.col24_ == null);
+			if (col24__isnotnull) predicate = predicate.And(_ => _.col24_ != null);
 			#endregion
 			#region col25
 			if (col25_eq != null) predicate = predicate.And(_ => _.col25 == col25_eq);
@@ -5349,6 +5527,8 @@ namespace peppa.Domain
 			if (col25_gt != null) predicate = predicate.And(_ => _.col25 > col25_gt);
 			if (col25_le != null) predicate = predicate.And(_ => _.col25 <= col25_le);
 			if (col25_ge != null) predicate = predicate.And(_ => _.col25 >= col25_ge);
+            if (col25_in != null) predicate = predicate.And(_ => col25_in.Contains(_.col25));
+            if (col25_ni != null) predicate = predicate.And(_ => !col25_ni.Contains(_.col25));
 			#endregion
 			#region col25_
 			if (col25__eq != null) predicate = predicate.And(_ => _.col25_ == col25__eq);
@@ -5357,6 +5537,10 @@ namespace peppa.Domain
 			if (col25__gt != null) predicate = predicate.And(_ => _.col25_ > col25__gt);
 			if (col25__le != null) predicate = predicate.And(_ => _.col25_ <= col25__le);
 			if (col25__ge != null) predicate = predicate.And(_ => _.col25_ >= col25__ge);
+            if (col25__in != null) predicate = predicate.And(_ => col25__in.Contains(_.col25_.Value));
+            if (col25__ni != null) predicate = predicate.And(_ => !col25__ni.Contains(_.col25_.Value));
+			if (col25__isnull) predicate = predicate.And(_ => _.col25_ == null);
+			if (col25__isnotnull) predicate = predicate.And(_ => _.col25_ != null);
 			#endregion
 			#region col26
 			if (col26_eq != null) predicate = predicate.And(_ => _.col26 == col26_eq);
@@ -5365,6 +5549,8 @@ namespace peppa.Domain
 			if (col26_gt != null) predicate = predicate.And(_ => _.col26 > col26_gt);
 			if (col26_le != null) predicate = predicate.And(_ => _.col26 <= col26_le);
 			if (col26_ge != null) predicate = predicate.And(_ => _.col26 >= col26_ge);
+            if (col26_in != null) predicate = predicate.And(_ => col26_in.Contains(_.col26));
+            if (col26_ni != null) predicate = predicate.And(_ => !col26_ni.Contains(_.col26));
 			#endregion
 			#region col26_
 			if (col26__eq != null) predicate = predicate.And(_ => _.col26_ == col26__eq);
@@ -5373,6 +5559,10 @@ namespace peppa.Domain
 			if (col26__gt != null) predicate = predicate.And(_ => _.col26_ > col26__gt);
 			if (col26__le != null) predicate = predicate.And(_ => _.col26_ <= col26__le);
 			if (col26__ge != null) predicate = predicate.And(_ => _.col26_ >= col26__ge);
+            if (col26__in != null) predicate = predicate.And(_ => col26__in.Contains(_.col26_.Value));
+            if (col26__ni != null) predicate = predicate.And(_ => !col26__ni.Contains(_.col26_.Value));
+			if (col26__isnull) predicate = predicate.And(_ => _.col26_ == null);
+			if (col26__isnotnull) predicate = predicate.And(_ => _.col26_ != null);
 			#endregion
 			#region col27
 			if (col27_eq != null) predicate = predicate.And(_ => _.col27 == col27_eq);
@@ -5381,6 +5571,8 @@ namespace peppa.Domain
 			if (col27_gt != null) predicate = predicate.And(_ => _.col27 > col27_gt);
 			if (col27_le != null) predicate = predicate.And(_ => _.col27 <= col27_le);
 			if (col27_ge != null) predicate = predicate.And(_ => _.col27 >= col27_ge);
+            if (col27_in != null) predicate = predicate.And(_ => col27_in.Contains(_.col27));
+            if (col27_ni != null) predicate = predicate.And(_ => !col27_ni.Contains(_.col27));
 			#endregion
 			#region col27_
 			if (col27__eq != null) predicate = predicate.And(_ => _.col27_ == col27__eq);
@@ -5389,6 +5581,10 @@ namespace peppa.Domain
 			if (col27__gt != null) predicate = predicate.And(_ => _.col27_ > col27__gt);
 			if (col27__le != null) predicate = predicate.And(_ => _.col27_ <= col27__le);
 			if (col27__ge != null) predicate = predicate.And(_ => _.col27_ >= col27__ge);
+            if (col27__in != null) predicate = predicate.And(_ => col27__in.Contains(_.col27_.Value));
+            if (col27__ni != null) predicate = predicate.And(_ => !col27__ni.Contains(_.col27_.Value));
+			if (col27__isnull) predicate = predicate.And(_ => _.col27_ == null);
+			if (col27__isnotnull) predicate = predicate.And(_ => _.col27_ != null);
 			#endregion
 			#region col28
 			if (col28_eq != null) predicate = predicate.And(_ => _.col28 == col28_eq);
@@ -5397,6 +5593,8 @@ namespace peppa.Domain
 			if (col28_gt != null) predicate = predicate.And(_ => _.col28 > col28_gt);
 			if (col28_le != null) predicate = predicate.And(_ => _.col28 <= col28_le);
 			if (col28_ge != null) predicate = predicate.And(_ => _.col28 >= col28_ge);
+            if (col28_in != null) predicate = predicate.And(_ => col28_in.Contains(_.col28));
+            if (col28_ni != null) predicate = predicate.And(_ => !col28_ni.Contains(_.col28));
 			#endregion
 			#region col28_
 			if (col28__eq != null) predicate = predicate.And(_ => _.col28_ == col28__eq);
@@ -5405,6 +5603,10 @@ namespace peppa.Domain
 			if (col28__gt != null) predicate = predicate.And(_ => _.col28_ > col28__gt);
 			if (col28__le != null) predicate = predicate.And(_ => _.col28_ <= col28__le);
 			if (col28__ge != null) predicate = predicate.And(_ => _.col28_ >= col28__ge);
+            if (col28__in != null) predicate = predicate.And(_ => col28__in.Contains(_.col28_.Value));
+            if (col28__ni != null) predicate = predicate.And(_ => !col28__ni.Contains(_.col28_.Value));
+			if (col28__isnull) predicate = predicate.And(_ => _.col28_ == null);
+			if (col28__isnotnull) predicate = predicate.And(_ => _.col28_ != null);
 			#endregion
 			#region col29
 			if (col29_eq != null) predicate = predicate.And(_ => _.col29 == col29_eq);
@@ -6102,6 +6304,8 @@ namespace peppa.Domain
 		public IEnumerable<int> created_by_in { get; set; }
 		public IEnumerable<int> created_by_ni { get; set; }
 		public (int? low, int? high)? created_by_between { get; set; }
+		public bool created_by_isnull { get; set; } = false;
+		public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
 		public DateTime? modified_at_eq { get; set; }
@@ -6124,6 +6328,8 @@ namespace peppa.Domain
 		public IEnumerable<int> modified_by_in { get; set; }
 		public IEnumerable<int> modified_by_ni { get; set; }
 		public (int? low, int? high)? modified_by_between { get; set; }
+		public bool modified_by_isnull { get; set; } = false;
+		public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
 		public DateTime? removed_at_eq { get; set; }
@@ -6135,10 +6341,14 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> removed_at_in { get; set; }
 		public IEnumerable<DateTime> removed_at_ni { get; set; }
 		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		public bool removed_at_isnull { get; set; } = false;
+		public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
 		public byte[] row_version_eq { get; set; }
 		public byte[] row_version_ne { get; set; }
+		public bool row_version_isnull { get; set; } = false;
+		public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -6154,6 +6364,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region role_id
 			if (role_id_eq != null) predicate = predicate.And(_ => _.role_id == role_id_eq);
@@ -6162,6 +6374,8 @@ namespace peppa.Domain
 			if (role_id_gt != null) predicate = predicate.And(_ => role_id_gt.CompareTo(_.role_id) < 0);
 			if (role_id_le != null) predicate = predicate.And(_ => role_id_le.CompareTo(_.role_id) >= 0);
 			if (role_id_ge != null) predicate = predicate.And(_ => role_id_ge.CompareTo(_.role_id) <= 0);
+            if (role_id_in != null) predicate = predicate.And(_ => role_id_in.Contains(_.role_id));
+            if (role_id_ni != null) predicate = predicate.And(_ => !role_id_ni.Contains(_.role_id));
 			#endregion
 			#region name
 			if (name_eq != null) predicate = predicate.And(_ => _.name == name_eq);
@@ -6170,6 +6384,8 @@ namespace peppa.Domain
 			if (name_gt != null) predicate = predicate.And(_ => name_gt.CompareTo(_.name) < 0);
 			if (name_le != null) predicate = predicate.And(_ => name_le.CompareTo(_.name) >= 0);
 			if (name_ge != null) predicate = predicate.And(_ => name_ge.CompareTo(_.name) <= 0);
+            if (name_in != null) predicate = predicate.And(_ => name_in.Contains(_.name));
+            if (name_ni != null) predicate = predicate.And(_ => !name_ni.Contains(_.name));
 			#endregion
 			#region abbrev
 			if (abbrev_eq != null) predicate = predicate.And(_ => _.abbrev == abbrev_eq);
@@ -6178,6 +6394,8 @@ namespace peppa.Domain
 			if (abbrev_gt != null) predicate = predicate.And(_ => abbrev_gt.CompareTo(_.abbrev) < 0);
 			if (abbrev_le != null) predicate = predicate.And(_ => abbrev_le.CompareTo(_.abbrev) >= 0);
 			if (abbrev_ge != null) predicate = predicate.And(_ => abbrev_ge.CompareTo(_.abbrev) <= 0);
+            if (abbrev_in != null) predicate = predicate.And(_ => abbrev_in.Contains(_.abbrev));
+            if (abbrev_ni != null) predicate = predicate.And(_ => !abbrev_ni.Contains(_.abbrev));
 			#endregion
 			#region name_en
 			if (name_en_eq != null) predicate = predicate.And(_ => _.name_en == name_en_eq);
@@ -6186,6 +6404,8 @@ namespace peppa.Domain
 			if (name_en_gt != null) predicate = predicate.And(_ => name_en_gt.CompareTo(_.name_en) < 0);
 			if (name_en_le != null) predicate = predicate.And(_ => name_en_le.CompareTo(_.name_en) >= 0);
 			if (name_en_ge != null) predicate = predicate.And(_ => name_en_ge.CompareTo(_.name_en) <= 0);
+            if (name_en_in != null) predicate = predicate.And(_ => name_en_in.Contains(_.name_en));
+            if (name_en_ni != null) predicate = predicate.And(_ => !name_en_ni.Contains(_.name_en));
 			#endregion
 			#region abbrev_en
 			if (abbrev_en_eq != null) predicate = predicate.And(_ => _.abbrev_en == abbrev_en_eq);
@@ -6194,6 +6414,8 @@ namespace peppa.Domain
 			if (abbrev_en_gt != null) predicate = predicate.And(_ => abbrev_en_gt.CompareTo(_.abbrev_en) < 0);
 			if (abbrev_en_le != null) predicate = predicate.And(_ => abbrev_en_le.CompareTo(_.abbrev_en) >= 0);
 			if (abbrev_en_ge != null) predicate = predicate.And(_ => abbrev_en_ge.CompareTo(_.abbrev_en) <= 0);
+            if (abbrev_en_in != null) predicate = predicate.And(_ => abbrev_en_in.Contains(_.abbrev_en));
+            if (abbrev_en_ni != null) predicate = predicate.And(_ => !abbrev_en_ni.Contains(_.abbrev_en));
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -6202,6 +6424,8 @@ namespace peppa.Domain
 			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
 			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
 			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
 			#region created_by
 			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
@@ -6210,6 +6434,10 @@ namespace peppa.Domain
 			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
 			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
 			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
 			#endregion
 			#region modified_at
 			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
@@ -6218,6 +6446,8 @@ namespace peppa.Domain
 			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
 			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
 			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
 			#endregion
 			#region modified_by
 			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
@@ -6226,6 +6456,10 @@ namespace peppa.Domain
 			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
 			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
 			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
 			#endregion
 			#region removed_at
 			if (removed_at_eq != null) predicate = predicate.And(_ => _.removed_at == removed_at_eq);
@@ -6234,10 +6468,16 @@ namespace peppa.Domain
 			if (removed_at_gt != null) predicate = predicate.And(_ => _.removed_at > removed_at_gt);
 			if (removed_at_le != null) predicate = predicate.And(_ => _.removed_at <= removed_at_le);
 			if (removed_at_ge != null) predicate = predicate.And(_ => _.removed_at >= removed_at_ge);
+            if (removed_at_in != null) predicate = predicate.And(_ => removed_at_in.Contains(_.removed_at.Value));
+            if (removed_at_ni != null) predicate = predicate.And(_ => !removed_at_ni.Contains(_.removed_at.Value));
+			if (removed_at_isnull) predicate = predicate.And(_ => _.removed_at == null);
+			if (removed_at_isnotnull) predicate = predicate.And(_ => _.removed_at != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
 			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
 			#endregion
 
 			return predicate;
@@ -6963,6 +7203,8 @@ namespace peppa.Domain
 		public IEnumerable<int> created_by_in { get; set; }
 		public IEnumerable<int> created_by_ni { get; set; }
 		public (int? low, int? high)? created_by_between { get; set; }
+		public bool created_by_isnull { get; set; } = false;
+		public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
 		public DateTime? modified_at_eq { get; set; }
@@ -6985,10 +7227,14 @@ namespace peppa.Domain
 		public IEnumerable<int> modified_by_in { get; set; }
 		public IEnumerable<int> modified_by_ni { get; set; }
 		public (int? low, int? high)? modified_by_between { get; set; }
+		public bool modified_by_isnull { get; set; } = false;
+		public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
 		public byte[] row_version_eq { get; set; }
 		public byte[] row_version_ne { get; set; }
+		public bool row_version_isnull { get; set; } = false;
+		public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -7004,6 +7250,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region role_id
 			if (role_id_eq != null) predicate = predicate.And(_ => _.role_id == role_id_eq);
@@ -7012,6 +7260,8 @@ namespace peppa.Domain
 			if (role_id_gt != null) predicate = predicate.And(_ => role_id_gt.CompareTo(_.role_id) < 0);
 			if (role_id_le != null) predicate = predicate.And(_ => role_id_le.CompareTo(_.role_id) >= 0);
 			if (role_id_ge != null) predicate = predicate.And(_ => role_id_ge.CompareTo(_.role_id) <= 0);
+            if (role_id_in != null) predicate = predicate.And(_ => role_id_in.Contains(_.role_id));
+            if (role_id_ni != null) predicate = predicate.And(_ => !role_id_ni.Contains(_.role_id));
 			#endregion
 			#region permission_id
 			if (_permission_id_eq != null) predicate = predicate.And(_ => _.permission_id == _permission_id_eq);
@@ -7020,6 +7270,8 @@ namespace peppa.Domain
 			if (_permission_id_gt != null) predicate = predicate.And(_ => _permission_id_gt.CompareTo(_.permission_id) < 0);
 			if (_permission_id_le != null) predicate = predicate.And(_ => _permission_id_le.CompareTo(_.permission_id) >= 0);
 			if (_permission_id_ge != null) predicate = predicate.And(_ => _permission_id_ge.CompareTo(_.permission_id) <= 0);
+            if (_permission_id_in != null) predicate = predicate.And(_ => _permission_id_in.Contains(_.permission_id));
+            if (_permission_id_ni != null) predicate = predicate.And(_ => !_permission_id_ni.Contains(_.permission_id));
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -7028,6 +7280,8 @@ namespace peppa.Domain
 			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
 			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
 			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
 			#region created_by
 			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
@@ -7036,6 +7290,10 @@ namespace peppa.Domain
 			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
 			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
 			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
 			#endregion
 			#region modified_at
 			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
@@ -7044,6 +7302,8 @@ namespace peppa.Domain
 			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
 			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
 			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
 			#endregion
 			#region modified_by
 			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
@@ -7052,10 +7312,16 @@ namespace peppa.Domain
 			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
 			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
 			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
 			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
 			#endregion
 
 			return predicate;
@@ -7943,6 +8209,8 @@ namespace peppa.Domain
 		public IEnumerable<string> staff_no_in { get; set; }
 		public IEnumerable<string> staff_no_ni { get; set; }
 		public (string low, string high)? staff_no_between { get; set; }
+		public bool staff_no_isnull { get; set; } = false;
+		public bool staff_no_isnotnull { get; set; } = false;
 		public string staff_no_like { get; set; }
 		#endregion
 		#region teacher_no
@@ -7955,6 +8223,8 @@ namespace peppa.Domain
 		public IEnumerable<string> teacher_no_in { get; set; }
 		public IEnumerable<string> teacher_no_ni { get; set; }
 		public (string low, string high)? teacher_no_between { get; set; }
+		public bool teacher_no_isnull { get; set; } = false;
+		public bool teacher_no_isnotnull { get; set; } = false;
 		public string teacher_no_like { get; set; }
 		#endregion
 		#region student_no
@@ -7967,6 +8237,8 @@ namespace peppa.Domain
 		public IEnumerable<string> student_no_in { get; set; }
 		public IEnumerable<string> student_no_ni { get; set; }
 		public (string low, string high)? student_no_between { get; set; }
+		public bool student_no_isnull { get; set; } = false;
+		public bool student_no_isnotnull { get; set; } = false;
 		public string student_no_like { get; set; }
 		#endregion
 		#region out_student_no
@@ -7979,6 +8251,8 @@ namespace peppa.Domain
 		public IEnumerable<string> out_student_no_in { get; set; }
 		public IEnumerable<string> out_student_no_ni { get; set; }
 		public (string low, string high)? out_student_no_between { get; set; }
+		public bool out_student_no_isnull { get; set; } = false;
+		public bool out_student_no_isnotnull { get; set; } = false;
 		public string out_student_no_like { get; set; }
 		#endregion
 		#region parent_no
@@ -7991,6 +8265,8 @@ namespace peppa.Domain
 		public IEnumerable<string> parent_no_in { get; set; }
 		public IEnumerable<string> parent_no_ni { get; set; }
 		public (string low, string high)? parent_no_between { get; set; }
+		public bool parent_no_isnull { get; set; } = false;
+		public bool parent_no_isnotnull { get; set; } = false;
 		public string parent_no_like { get; set; }
 		#endregion
 		#region user_no
@@ -8003,6 +8279,8 @@ namespace peppa.Domain
 		public IEnumerable<string> user_no_in { get; set; }
 		public IEnumerable<string> user_no_ni { get; set; }
 		public (string low, string high)? user_no_between { get; set; }
+		public bool user_no_isnull { get; set; } = false;
+		public bool user_no_isnotnull { get; set; } = false;
 		public string user_no_like { get; set; }
 		#endregion
 		#region auth_method_type (AuthMethodType)
@@ -8144,6 +8422,8 @@ namespace peppa.Domain
 		public IEnumerable<int> created_by_in { get; set; }
 		public IEnumerable<int> created_by_ni { get; set; }
 		public (int? low, int? high)? created_by_between { get; set; }
+		public bool created_by_isnull { get; set; } = false;
+		public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
 		public DateTime? modified_at_eq { get; set; }
@@ -8166,6 +8446,8 @@ namespace peppa.Domain
 		public IEnumerable<int> modified_by_in { get; set; }
 		public IEnumerable<int> modified_by_ni { get; set; }
 		public (int? low, int? high)? modified_by_between { get; set; }
+		public bool modified_by_isnull { get; set; } = false;
+		public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
 		public DateTime? removed_at_eq { get; set; }
@@ -8177,10 +8459,14 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> removed_at_in { get; set; }
 		public IEnumerable<DateTime> removed_at_ni { get; set; }
 		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		public bool removed_at_isnull { get; set; } = false;
+		public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
 		public byte[] row_version_eq { get; set; }
 		public byte[] row_version_ne { get; set; }
+		public bool row_version_isnull { get; set; } = false;
+		public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -8196,6 +8482,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region account_id
 			if (account_id_eq != null) predicate = predicate.And(_ => _.account_id == account_id_eq);
@@ -8204,6 +8492,8 @@ namespace peppa.Domain
 			if (account_id_gt != null) predicate = predicate.And(_ => _.account_id > account_id_gt);
 			if (account_id_le != null) predicate = predicate.And(_ => _.account_id <= account_id_le);
 			if (account_id_ge != null) predicate = predicate.And(_ => _.account_id >= account_id_ge);
+            if (account_id_in != null) predicate = predicate.And(_ => account_id_in.Contains(_.account_id));
+            if (account_id_ni != null) predicate = predicate.And(_ => !account_id_ni.Contains(_.account_id));
 			#endregion
 			#region staff_no
 			if (staff_no_eq != null) predicate = predicate.And(_ => _.staff_no == staff_no_eq);
@@ -8212,6 +8502,10 @@ namespace peppa.Domain
 			if (staff_no_gt != null) predicate = predicate.And(_ => staff_no_gt.CompareTo(_.staff_no) < 0);
 			if (staff_no_le != null) predicate = predicate.And(_ => staff_no_le.CompareTo(_.staff_no) >= 0);
 			if (staff_no_ge != null) predicate = predicate.And(_ => staff_no_ge.CompareTo(_.staff_no) <= 0);
+            if (staff_no_in != null) predicate = predicate.And(_ => staff_no_in.Contains(_.staff_no));
+            if (staff_no_ni != null) predicate = predicate.And(_ => !staff_no_ni.Contains(_.staff_no));
+			if (staff_no_isnull) predicate = predicate.And(_ => _.staff_no == null);
+			if (staff_no_isnotnull) predicate = predicate.And(_ => _.staff_no != null);
 			#endregion
 			#region teacher_no
 			if (teacher_no_eq != null) predicate = predicate.And(_ => _.teacher_no == teacher_no_eq);
@@ -8220,6 +8514,10 @@ namespace peppa.Domain
 			if (teacher_no_gt != null) predicate = predicate.And(_ => teacher_no_gt.CompareTo(_.teacher_no) < 0);
 			if (teacher_no_le != null) predicate = predicate.And(_ => teacher_no_le.CompareTo(_.teacher_no) >= 0);
 			if (teacher_no_ge != null) predicate = predicate.And(_ => teacher_no_ge.CompareTo(_.teacher_no) <= 0);
+            if (teacher_no_in != null) predicate = predicate.And(_ => teacher_no_in.Contains(_.teacher_no));
+            if (teacher_no_ni != null) predicate = predicate.And(_ => !teacher_no_ni.Contains(_.teacher_no));
+			if (teacher_no_isnull) predicate = predicate.And(_ => _.teacher_no == null);
+			if (teacher_no_isnotnull) predicate = predicate.And(_ => _.teacher_no != null);
 			#endregion
 			#region student_no
 			if (student_no_eq != null) predicate = predicate.And(_ => _.student_no == student_no_eq);
@@ -8228,6 +8526,10 @@ namespace peppa.Domain
 			if (student_no_gt != null) predicate = predicate.And(_ => student_no_gt.CompareTo(_.student_no) < 0);
 			if (student_no_le != null) predicate = predicate.And(_ => student_no_le.CompareTo(_.student_no) >= 0);
 			if (student_no_ge != null) predicate = predicate.And(_ => student_no_ge.CompareTo(_.student_no) <= 0);
+            if (student_no_in != null) predicate = predicate.And(_ => student_no_in.Contains(_.student_no));
+            if (student_no_ni != null) predicate = predicate.And(_ => !student_no_ni.Contains(_.student_no));
+			if (student_no_isnull) predicate = predicate.And(_ => _.student_no == null);
+			if (student_no_isnotnull) predicate = predicate.And(_ => _.student_no != null);
 			#endregion
 			#region out_student_no
 			if (out_student_no_eq != null) predicate = predicate.And(_ => _.out_student_no == out_student_no_eq);
@@ -8236,6 +8538,10 @@ namespace peppa.Domain
 			if (out_student_no_gt != null) predicate = predicate.And(_ => out_student_no_gt.CompareTo(_.out_student_no) < 0);
 			if (out_student_no_le != null) predicate = predicate.And(_ => out_student_no_le.CompareTo(_.out_student_no) >= 0);
 			if (out_student_no_ge != null) predicate = predicate.And(_ => out_student_no_ge.CompareTo(_.out_student_no) <= 0);
+            if (out_student_no_in != null) predicate = predicate.And(_ => out_student_no_in.Contains(_.out_student_no));
+            if (out_student_no_ni != null) predicate = predicate.And(_ => !out_student_no_ni.Contains(_.out_student_no));
+			if (out_student_no_isnull) predicate = predicate.And(_ => _.out_student_no == null);
+			if (out_student_no_isnotnull) predicate = predicate.And(_ => _.out_student_no != null);
 			#endregion
 			#region parent_no
 			if (parent_no_eq != null) predicate = predicate.And(_ => _.parent_no == parent_no_eq);
@@ -8244,6 +8550,10 @@ namespace peppa.Domain
 			if (parent_no_gt != null) predicate = predicate.And(_ => parent_no_gt.CompareTo(_.parent_no) < 0);
 			if (parent_no_le != null) predicate = predicate.And(_ => parent_no_le.CompareTo(_.parent_no) >= 0);
 			if (parent_no_ge != null) predicate = predicate.And(_ => parent_no_ge.CompareTo(_.parent_no) <= 0);
+            if (parent_no_in != null) predicate = predicate.And(_ => parent_no_in.Contains(_.parent_no));
+            if (parent_no_ni != null) predicate = predicate.And(_ => !parent_no_ni.Contains(_.parent_no));
+			if (parent_no_isnull) predicate = predicate.And(_ => _.parent_no == null);
+			if (parent_no_isnotnull) predicate = predicate.And(_ => _.parent_no != null);
 			#endregion
 			#region user_no
 			if (user_no_eq != null) predicate = predicate.And(_ => _.user_no == user_no_eq);
@@ -8252,6 +8562,10 @@ namespace peppa.Domain
 			if (user_no_gt != null) predicate = predicate.And(_ => user_no_gt.CompareTo(_.user_no) < 0);
 			if (user_no_le != null) predicate = predicate.And(_ => user_no_le.CompareTo(_.user_no) >= 0);
 			if (user_no_ge != null) predicate = predicate.And(_ => user_no_ge.CompareTo(_.user_no) <= 0);
+            if (user_no_in != null) predicate = predicate.And(_ => user_no_in.Contains(_.user_no));
+            if (user_no_ni != null) predicate = predicate.And(_ => !user_no_ni.Contains(_.user_no));
+			if (user_no_isnull) predicate = predicate.And(_ => _.user_no == null);
+			if (user_no_isnotnull) predicate = predicate.And(_ => _.user_no != null);
 			#endregion
 			#region auth_method_type
 			if (_auth_method_type_eq != null) predicate = predicate.And(_ => _.auth_method_type == _auth_method_type_eq);
@@ -8260,6 +8574,8 @@ namespace peppa.Domain
 			if (_auth_method_type_gt != null) predicate = predicate.And(_ => _auth_method_type_gt.CompareTo(_.auth_method_type) < 0);
 			if (_auth_method_type_le != null) predicate = predicate.And(_ => _auth_method_type_le.CompareTo(_.auth_method_type) >= 0);
 			if (_auth_method_type_ge != null) predicate = predicate.And(_ => _auth_method_type_ge.CompareTo(_.auth_method_type) <= 0);
+            if (_auth_method_type_in != null) predicate = predicate.And(_ => _auth_method_type_in.Contains(_.auth_method_type));
+            if (_auth_method_type_ni != null) predicate = predicate.And(_ => !_auth_method_type_ni.Contains(_.auth_method_type));
 			#endregion
 			#region is_valid
 			if (_is_valid_eq != null) predicate = predicate.And(_ => _.is_valid == _is_valid_eq);
@@ -8268,6 +8584,8 @@ namespace peppa.Domain
 			if (_is_valid_gt != null) predicate = predicate.And(_ => _.is_valid > _is_valid_gt);
 			if (_is_valid_le != null) predicate = predicate.And(_ => _.is_valid <= _is_valid_le);
 			if (_is_valid_ge != null) predicate = predicate.And(_ => _.is_valid >= _is_valid_ge);
+            if (_is_valid_in != null) predicate = predicate.And(_ => _is_valid_in.Contains(_.is_valid));
+            if (_is_valid_ni != null) predicate = predicate.And(_ => !_is_valid_ni.Contains(_.is_valid));
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -8276,6 +8594,8 @@ namespace peppa.Domain
 			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
 			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
 			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
 			#region created_by
 			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
@@ -8284,6 +8604,10 @@ namespace peppa.Domain
 			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
 			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
 			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
 			#endregion
 			#region modified_at
 			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
@@ -8292,6 +8616,8 @@ namespace peppa.Domain
 			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
 			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
 			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
 			#endregion
 			#region modified_by
 			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
@@ -8300,6 +8626,10 @@ namespace peppa.Domain
 			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
 			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
 			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
 			#endregion
 			#region removed_at
 			if (removed_at_eq != null) predicate = predicate.And(_ => _.removed_at == removed_at_eq);
@@ -8308,10 +8638,16 @@ namespace peppa.Domain
 			if (removed_at_gt != null) predicate = predicate.And(_ => _.removed_at > removed_at_gt);
 			if (removed_at_le != null) predicate = predicate.And(_ => _.removed_at <= removed_at_le);
 			if (removed_at_ge != null) predicate = predicate.And(_ => _.removed_at >= removed_at_ge);
+            if (removed_at_in != null) predicate = predicate.And(_ => removed_at_in.Contains(_.removed_at.Value));
+            if (removed_at_ni != null) predicate = predicate.And(_ => !removed_at_ni.Contains(_.removed_at.Value));
+			if (removed_at_isnull) predicate = predicate.And(_ => _.removed_at == null);
+			if (removed_at_isnotnull) predicate = predicate.And(_ => _.removed_at != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
 			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
 			#endregion
 
 			return predicate;
@@ -8898,6 +9234,8 @@ namespace peppa.Domain
 		public IEnumerable<int> created_by_in { get; set; }
 		public IEnumerable<int> created_by_ni { get; set; }
 		public (int? low, int? high)? created_by_between { get; set; }
+		public bool created_by_isnull { get; set; } = false;
+		public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
 		public DateTime? modified_at_eq { get; set; }
@@ -8920,6 +9258,8 @@ namespace peppa.Domain
 		public IEnumerable<int> modified_by_in { get; set; }
 		public IEnumerable<int> modified_by_ni { get; set; }
 		public (int? low, int? high)? modified_by_between { get; set; }
+		public bool modified_by_isnull { get; set; } = false;
+		public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
 		public DateTime? removed_at_eq { get; set; }
@@ -8931,10 +9271,14 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> removed_at_in { get; set; }
 		public IEnumerable<DateTime> removed_at_ni { get; set; }
 		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		public bool removed_at_isnull { get; set; } = false;
+		public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
 		public byte[] row_version_eq { get; set; }
 		public byte[] row_version_ne { get; set; }
+		public bool row_version_isnull { get; set; } = false;
+		public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -8950,6 +9294,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region account_id
 			if (account_id_eq != null) predicate = predicate.And(_ => _.account_id == account_id_eq);
@@ -8958,6 +9304,8 @@ namespace peppa.Domain
 			if (account_id_gt != null) predicate = predicate.And(_ => _.account_id > account_id_gt);
 			if (account_id_le != null) predicate = predicate.And(_ => _.account_id <= account_id_le);
 			if (account_id_ge != null) predicate = predicate.And(_ => _.account_id >= account_id_ge);
+            if (account_id_in != null) predicate = predicate.And(_ => account_id_in.Contains(_.account_id));
+            if (account_id_ni != null) predicate = predicate.And(_ => !account_id_ni.Contains(_.account_id));
 			#endregion
 			#region role_id
 			if (role_id_eq != null) predicate = predicate.And(_ => _.role_id == role_id_eq);
@@ -8966,6 +9314,8 @@ namespace peppa.Domain
 			if (role_id_gt != null) predicate = predicate.And(_ => role_id_gt.CompareTo(_.role_id) < 0);
 			if (role_id_le != null) predicate = predicate.And(_ => role_id_le.CompareTo(_.role_id) >= 0);
 			if (role_id_ge != null) predicate = predicate.And(_ => role_id_ge.CompareTo(_.role_id) <= 0);
+            if (role_id_in != null) predicate = predicate.And(_ => role_id_in.Contains(_.role_id));
+            if (role_id_ni != null) predicate = predicate.And(_ => !role_id_ni.Contains(_.role_id));
 			#endregion
 			#region note
 			if (note_eq != null) predicate = predicate.And(_ => _.note == note_eq);
@@ -8974,6 +9324,8 @@ namespace peppa.Domain
 			if (note_gt != null) predicate = predicate.And(_ => note_gt.CompareTo(_.note) < 0);
 			if (note_le != null) predicate = predicate.And(_ => note_le.CompareTo(_.note) >= 0);
 			if (note_ge != null) predicate = predicate.And(_ => note_ge.CompareTo(_.note) <= 0);
+            if (note_in != null) predicate = predicate.And(_ => note_in.Contains(_.note));
+            if (note_ni != null) predicate = predicate.And(_ => !note_ni.Contains(_.note));
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -8982,6 +9334,8 @@ namespace peppa.Domain
 			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
 			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
 			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
 			#region created_by
 			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
@@ -8990,6 +9344,10 @@ namespace peppa.Domain
 			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
 			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
 			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
 			#endregion
 			#region modified_at
 			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
@@ -8998,6 +9356,8 @@ namespace peppa.Domain
 			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
 			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
 			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
 			#endregion
 			#region modified_by
 			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
@@ -9006,6 +9366,10 @@ namespace peppa.Domain
 			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
 			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
 			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
 			#endregion
 			#region removed_at
 			if (removed_at_eq != null) predicate = predicate.And(_ => _.removed_at == removed_at_eq);
@@ -9014,10 +9378,16 @@ namespace peppa.Domain
 			if (removed_at_gt != null) predicate = predicate.And(_ => _.removed_at > removed_at_gt);
 			if (removed_at_le != null) predicate = predicate.And(_ => _.removed_at <= removed_at_le);
 			if (removed_at_ge != null) predicate = predicate.And(_ => _.removed_at >= removed_at_ge);
+            if (removed_at_in != null) predicate = predicate.And(_ => removed_at_in.Contains(_.removed_at.Value));
+            if (removed_at_ni != null) predicate = predicate.And(_ => !removed_at_ni.Contains(_.removed_at.Value));
+			if (removed_at_isnull) predicate = predicate.And(_ => _.removed_at == null);
+			if (removed_at_isnotnull) predicate = predicate.And(_ => _.removed_at != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
 			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
 			#endregion
 
 			return predicate;
@@ -10073,6 +10443,18 @@ namespace peppa.Domain
 			get => _gender_between.HasValue ? (_gender_between.Value.low.ToGender().Value, _gender_between.Value.high.ToGender().Value) : ((Gender, Gender)?)null;
 			set => _gender_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((int, int)?)null;
 		}
+		private bool _gender_isnull { get; set; } = false;
+		public bool Gender_isnull
+		{
+			get => _gender_isnull;
+			set => _gender_isnull = value;
+		}
+		private bool _gender_isnotnull { get; set; } = false;
+		public bool Gender_isnotnull
+		{
+			get => _gender_isnotnull;
+			set => _gender_isnotnull = value;
+		}
 		#endregion
 		#region birth_date
 		public DateTime? birth_date_eq { get; set; }
@@ -10084,6 +10466,8 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> birth_date_in { get; set; }
 		public IEnumerable<DateTime> birth_date_ni { get; set; }
 		public (DateTime? low, DateTime? high)? birth_date_between { get; set; }
+		public bool birth_date_isnull { get; set; } = false;
+		public bool birth_date_isnotnull { get; set; } = false;
 		#endregion
 		#region created_at
 		public DateTime? created_at_eq { get; set; }
@@ -10106,6 +10490,8 @@ namespace peppa.Domain
 		public IEnumerable<int> created_by_in { get; set; }
 		public IEnumerable<int> created_by_ni { get; set; }
 		public (int? low, int? high)? created_by_between { get; set; }
+		public bool created_by_isnull { get; set; } = false;
+		public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
 		public DateTime? modified_at_eq { get; set; }
@@ -10128,6 +10514,8 @@ namespace peppa.Domain
 		public IEnumerable<int> modified_by_in { get; set; }
 		public IEnumerable<int> modified_by_ni { get; set; }
 		public (int? low, int? high)? modified_by_between { get; set; }
+		public bool modified_by_isnull { get; set; } = false;
+		public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
 		public DateTime? removed_at_eq { get; set; }
@@ -10139,10 +10527,14 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> removed_at_in { get; set; }
 		public IEnumerable<DateTime> removed_at_ni { get; set; }
 		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		public bool removed_at_isnull { get; set; } = false;
+		public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
 		public byte[] row_version_eq { get; set; }
 		public byte[] row_version_ne { get; set; }
+		public bool row_version_isnull { get; set; } = false;
+		public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -10158,6 +10550,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region user_type
 			if (_user_type_eq != null) predicate = predicate.And(_ => _.user_type == _user_type_eq);
@@ -10166,6 +10560,8 @@ namespace peppa.Domain
 			if (_user_type_gt != null) predicate = predicate.And(_ => _.user_type > _user_type_gt);
 			if (_user_type_le != null) predicate = predicate.And(_ => _.user_type <= _user_type_le);
 			if (_user_type_ge != null) predicate = predicate.And(_ => _.user_type >= _user_type_ge);
+            if (_user_type_in != null) predicate = predicate.And(_ => _user_type_in.Contains(_.user_type));
+            if (_user_type_ni != null) predicate = predicate.And(_ => !_user_type_ni.Contains(_.user_type));
 			#endregion
 			#region staff_no
 			if (staff_no_eq != null) predicate = predicate.And(_ => _.staff_no == staff_no_eq);
@@ -10174,6 +10570,8 @@ namespace peppa.Domain
 			if (staff_no_gt != null) predicate = predicate.And(_ => staff_no_gt.CompareTo(_.staff_no) < 0);
 			if (staff_no_le != null) predicate = predicate.And(_ => staff_no_le.CompareTo(_.staff_no) >= 0);
 			if (staff_no_ge != null) predicate = predicate.And(_ => staff_no_ge.CompareTo(_.staff_no) <= 0);
+            if (staff_no_in != null) predicate = predicate.And(_ => staff_no_in.Contains(_.staff_no));
+            if (staff_no_ni != null) predicate = predicate.And(_ => !staff_no_ni.Contains(_.staff_no));
 			#endregion
 			#region name
 			if (name_eq != null) predicate = predicate.And(_ => _.name == name_eq);
@@ -10182,6 +10580,8 @@ namespace peppa.Domain
 			if (name_gt != null) predicate = predicate.And(_ => name_gt.CompareTo(_.name) < 0);
 			if (name_le != null) predicate = predicate.And(_ => name_le.CompareTo(_.name) >= 0);
 			if (name_ge != null) predicate = predicate.And(_ => name_ge.CompareTo(_.name) <= 0);
+            if (name_in != null) predicate = predicate.And(_ => name_in.Contains(_.name));
+            if (name_ni != null) predicate = predicate.And(_ => !name_ni.Contains(_.name));
 			#endregion
 			#region kana
 			if (kana_eq != null) predicate = predicate.And(_ => _.kana == kana_eq);
@@ -10190,6 +10590,8 @@ namespace peppa.Domain
 			if (kana_gt != null) predicate = predicate.And(_ => kana_gt.CompareTo(_.kana) < 0);
 			if (kana_le != null) predicate = predicate.And(_ => kana_le.CompareTo(_.kana) >= 0);
 			if (kana_ge != null) predicate = predicate.And(_ => kana_ge.CompareTo(_.kana) <= 0);
+            if (kana_in != null) predicate = predicate.And(_ => kana_in.Contains(_.kana));
+            if (kana_ni != null) predicate = predicate.And(_ => !kana_ni.Contains(_.kana));
 			#endregion
 			#region name_abbrev
 			if (name_abbrev_eq != null) predicate = predicate.And(_ => _.name_abbrev == name_abbrev_eq);
@@ -10198,6 +10600,8 @@ namespace peppa.Domain
 			if (name_abbrev_gt != null) predicate = predicate.And(_ => name_abbrev_gt.CompareTo(_.name_abbrev) < 0);
 			if (name_abbrev_le != null) predicate = predicate.And(_ => name_abbrev_le.CompareTo(_.name_abbrev) >= 0);
 			if (name_abbrev_ge != null) predicate = predicate.And(_ => name_abbrev_ge.CompareTo(_.name_abbrev) <= 0);
+            if (name_abbrev_in != null) predicate = predicate.And(_ => name_abbrev_in.Contains(_.name_abbrev));
+            if (name_abbrev_ni != null) predicate = predicate.And(_ => !name_abbrev_ni.Contains(_.name_abbrev));
 			#endregion
 			#region name_eng
 			if (name_eng_eq != null) predicate = predicate.And(_ => _.name_eng == name_eng_eq);
@@ -10206,6 +10610,8 @@ namespace peppa.Domain
 			if (name_eng_gt != null) predicate = predicate.And(_ => name_eng_gt.CompareTo(_.name_eng) < 0);
 			if (name_eng_le != null) predicate = predicate.And(_ => name_eng_le.CompareTo(_.name_eng) >= 0);
 			if (name_eng_ge != null) predicate = predicate.And(_ => name_eng_ge.CompareTo(_.name_eng) <= 0);
+            if (name_eng_in != null) predicate = predicate.And(_ => name_eng_in.Contains(_.name_eng));
+            if (name_eng_ni != null) predicate = predicate.And(_ => !name_eng_ni.Contains(_.name_eng));
 			#endregion
 			#region name_eng_abbrev
 			if (name_eng_abbrev_eq != null) predicate = predicate.And(_ => _.name_eng_abbrev == name_eng_abbrev_eq);
@@ -10214,6 +10620,8 @@ namespace peppa.Domain
 			if (name_eng_abbrev_gt != null) predicate = predicate.And(_ => name_eng_abbrev_gt.CompareTo(_.name_eng_abbrev) < 0);
 			if (name_eng_abbrev_le != null) predicate = predicate.And(_ => name_eng_abbrev_le.CompareTo(_.name_eng_abbrev) >= 0);
 			if (name_eng_abbrev_ge != null) predicate = predicate.And(_ => name_eng_abbrev_ge.CompareTo(_.name_eng_abbrev) <= 0);
+            if (name_eng_abbrev_in != null) predicate = predicate.And(_ => name_eng_abbrev_in.Contains(_.name_eng_abbrev));
+            if (name_eng_abbrev_ni != null) predicate = predicate.And(_ => !name_eng_abbrev_ni.Contains(_.name_eng_abbrev));
 			#endregion
 			#region gender
 			if (_gender_eq != null) predicate = predicate.And(_ => _.gender == _gender_eq);
@@ -10222,6 +10630,10 @@ namespace peppa.Domain
 			if (_gender_gt != null) predicate = predicate.And(_ => _.gender > _gender_gt);
 			if (_gender_le != null) predicate = predicate.And(_ => _.gender <= _gender_le);
 			if (_gender_ge != null) predicate = predicate.And(_ => _.gender >= _gender_ge);
+            if (_gender_in != null) predicate = predicate.And(_ => _gender_in.Contains(_.gender.Value));
+            if (_gender_ni != null) predicate = predicate.And(_ => !_gender_ni.Contains(_.gender.Value));
+			if (_gender_isnull) predicate = predicate.And(_ => _.gender == null);
+			if (_gender_isnotnull) predicate = predicate.And(_ => _.gender != null);
 			#endregion
 			#region birth_date
 			if (birth_date_eq != null) predicate = predicate.And(_ => _.birth_date == birth_date_eq);
@@ -10230,6 +10642,10 @@ namespace peppa.Domain
 			if (birth_date_gt != null) predicate = predicate.And(_ => _.birth_date > birth_date_gt);
 			if (birth_date_le != null) predicate = predicate.And(_ => _.birth_date <= birth_date_le);
 			if (birth_date_ge != null) predicate = predicate.And(_ => _.birth_date >= birth_date_ge);
+            if (birth_date_in != null) predicate = predicate.And(_ => birth_date_in.Contains(_.birth_date.Value));
+            if (birth_date_ni != null) predicate = predicate.And(_ => !birth_date_ni.Contains(_.birth_date.Value));
+			if (birth_date_isnull) predicate = predicate.And(_ => _.birth_date == null);
+			if (birth_date_isnotnull) predicate = predicate.And(_ => _.birth_date != null);
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -10238,6 +10654,8 @@ namespace peppa.Domain
 			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
 			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
 			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
 			#region created_by
 			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
@@ -10246,6 +10664,10 @@ namespace peppa.Domain
 			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
 			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
 			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
 			#endregion
 			#region modified_at
 			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
@@ -10254,6 +10676,8 @@ namespace peppa.Domain
 			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
 			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
 			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
 			#endregion
 			#region modified_by
 			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
@@ -10262,6 +10686,10 @@ namespace peppa.Domain
 			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
 			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
 			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
 			#endregion
 			#region removed_at
 			if (removed_at_eq != null) predicate = predicate.And(_ => _.removed_at == removed_at_eq);
@@ -10270,10 +10698,16 @@ namespace peppa.Domain
 			if (removed_at_gt != null) predicate = predicate.And(_ => _.removed_at > removed_at_gt);
 			if (removed_at_le != null) predicate = predicate.And(_ => _.removed_at <= removed_at_le);
 			if (removed_at_ge != null) predicate = predicate.And(_ => _.removed_at >= removed_at_ge);
+            if (removed_at_in != null) predicate = predicate.And(_ => removed_at_in.Contains(_.removed_at.Value));
+            if (removed_at_ni != null) predicate = predicate.And(_ => !removed_at_ni.Contains(_.removed_at.Value));
+			if (removed_at_isnull) predicate = predicate.And(_ => _.removed_at == null);
+			if (removed_at_isnotnull) predicate = predicate.And(_ => _.removed_at != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
 			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
 			#endregion
 
 			return predicate;
@@ -11380,6 +11814,8 @@ namespace peppa.Domain
 		public IEnumerable<decimal> latitude_in { get; set; }
 		public IEnumerable<decimal> latitude_ni { get; set; }
 		public (decimal? low, decimal? high)? latitude_between { get; set; }
+		public bool latitude_isnull { get; set; } = false;
+		public bool latitude_isnotnull { get; set; } = false;
 		#endregion
 		#region longitude
 		public decimal? longitude_eq { get; set; }
@@ -11391,6 +11827,8 @@ namespace peppa.Domain
 		public IEnumerable<decimal> longitude_in { get; set; }
 		public IEnumerable<decimal> longitude_ni { get; set; }
 		public (decimal? low, decimal? high)? longitude_between { get; set; }
+		public bool longitude_isnull { get; set; } = false;
+		public bool longitude_isnotnull { get; set; } = false;
 		#endregion
 		#region enter_date
 		public DateTime? enter_date_eq { get; set; }
@@ -11402,6 +11840,8 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> enter_date_in { get; set; }
 		public IEnumerable<DateTime> enter_date_ni { get; set; }
 		public (DateTime? low, DateTime? high)? enter_date_between { get; set; }
+		public bool enter_date_isnull { get; set; } = false;
+		public bool enter_date_isnotnull { get; set; } = false;
 		#endregion
 		#region leave_date
 		public DateTime? leave_date_eq { get; set; }
@@ -11413,6 +11853,8 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> leave_date_in { get; set; }
 		public IEnumerable<DateTime> leave_date_ni { get; set; }
 		public (DateTime? low, DateTime? high)? leave_date_between { get; set; }
+		public bool leave_date_isnull { get; set; } = false;
+		public bool leave_date_isnotnull { get; set; } = false;
 		#endregion
 		#region created_at
 		public DateTime? created_at_eq { get; set; }
@@ -11435,6 +11877,8 @@ namespace peppa.Domain
 		public IEnumerable<int> created_by_in { get; set; }
 		public IEnumerable<int> created_by_ni { get; set; }
 		public (int? low, int? high)? created_by_between { get; set; }
+		public bool created_by_isnull { get; set; } = false;
+		public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
 		public DateTime? modified_at_eq { get; set; }
@@ -11457,10 +11901,14 @@ namespace peppa.Domain
 		public IEnumerable<int> modified_by_in { get; set; }
 		public IEnumerable<int> modified_by_ni { get; set; }
 		public (int? low, int? high)? modified_by_between { get; set; }
+		public bool modified_by_isnull { get; set; } = false;
+		public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
 		public byte[] row_version_eq { get; set; }
 		public byte[] row_version_ne { get; set; }
+		public bool row_version_isnull { get; set; } = false;
+		public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -11476,6 +11924,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region user_type
 			if (_user_type_eq != null) predicate = predicate.And(_ => _.user_type == _user_type_eq);
@@ -11484,6 +11934,8 @@ namespace peppa.Domain
 			if (_user_type_gt != null) predicate = predicate.And(_ => _.user_type > _user_type_gt);
 			if (_user_type_le != null) predicate = predicate.And(_ => _.user_type <= _user_type_le);
 			if (_user_type_ge != null) predicate = predicate.And(_ => _.user_type >= _user_type_ge);
+            if (_user_type_in != null) predicate = predicate.And(_ => _user_type_in.Contains(_.user_type));
+            if (_user_type_ni != null) predicate = predicate.And(_ => !_user_type_ni.Contains(_.user_type));
 			#endregion
 			#region generic_user_no
 			if (generic_user_no_eq != null) predicate = predicate.And(_ => _.generic_user_no == generic_user_no_eq);
@@ -11492,6 +11944,8 @@ namespace peppa.Domain
 			if (generic_user_no_gt != null) predicate = predicate.And(_ => generic_user_no_gt.CompareTo(_.generic_user_no) < 0);
 			if (generic_user_no_le != null) predicate = predicate.And(_ => generic_user_no_le.CompareTo(_.generic_user_no) >= 0);
 			if (generic_user_no_ge != null) predicate = predicate.And(_ => generic_user_no_ge.CompareTo(_.generic_user_no) <= 0);
+            if (generic_user_no_in != null) predicate = predicate.And(_ => generic_user_no_in.Contains(_.generic_user_no));
+            if (generic_user_no_ni != null) predicate = predicate.And(_ => !generic_user_no_ni.Contains(_.generic_user_no));
 			#endregion
 			#region seq
 			if (seq_eq != null) predicate = predicate.And(_ => _.seq == seq_eq);
@@ -11500,6 +11954,8 @@ namespace peppa.Domain
 			if (seq_gt != null) predicate = predicate.And(_ => _.seq > seq_gt);
 			if (seq_le != null) predicate = predicate.And(_ => _.seq <= seq_le);
 			if (seq_ge != null) predicate = predicate.And(_ => _.seq >= seq_ge);
+            if (seq_in != null) predicate = predicate.And(_ => seq_in.Contains(_.seq));
+            if (seq_ni != null) predicate = predicate.And(_ => !seq_ni.Contains(_.seq));
 			#endregion
 			#region address_type_id
 			if (address_type_id_eq != null) predicate = predicate.And(_ => _.address_type_id == address_type_id_eq);
@@ -11508,6 +11964,8 @@ namespace peppa.Domain
 			if (address_type_id_gt != null) predicate = predicate.And(_ => _.address_type_id > address_type_id_gt);
 			if (address_type_id_le != null) predicate = predicate.And(_ => _.address_type_id <= address_type_id_le);
 			if (address_type_id_ge != null) predicate = predicate.And(_ => _.address_type_id >= address_type_id_ge);
+            if (address_type_id_in != null) predicate = predicate.And(_ => address_type_id_in.Contains(_.address_type_id));
+            if (address_type_id_ni != null) predicate = predicate.And(_ => !address_type_id_ni.Contains(_.address_type_id));
 			#endregion
 			#region postal_code
 			if (postal_code_eq != null) predicate = predicate.And(_ => _.postal_code == postal_code_eq);
@@ -11516,6 +11974,8 @@ namespace peppa.Domain
 			if (postal_code_gt != null) predicate = predicate.And(_ => postal_code_gt.CompareTo(_.postal_code) < 0);
 			if (postal_code_le != null) predicate = predicate.And(_ => postal_code_le.CompareTo(_.postal_code) >= 0);
 			if (postal_code_ge != null) predicate = predicate.And(_ => postal_code_ge.CompareTo(_.postal_code) <= 0);
+            if (postal_code_in != null) predicate = predicate.And(_ => postal_code_in.Contains(_.postal_code));
+            if (postal_code_ni != null) predicate = predicate.And(_ => !postal_code_ni.Contains(_.postal_code));
 			#endregion
 			#region prefecture_code
 			if (prefecture_code_eq != null) predicate = predicate.And(_ => _.prefecture_code == prefecture_code_eq);
@@ -11524,6 +11984,8 @@ namespace peppa.Domain
 			if (prefecture_code_gt != null) predicate = predicate.And(_ => _.prefecture_code > prefecture_code_gt);
 			if (prefecture_code_le != null) predicate = predicate.And(_ => _.prefecture_code <= prefecture_code_le);
 			if (prefecture_code_ge != null) predicate = predicate.And(_ => _.prefecture_code >= prefecture_code_ge);
+            if (prefecture_code_in != null) predicate = predicate.And(_ => prefecture_code_in.Contains(_.prefecture_code));
+            if (prefecture_code_ni != null) predicate = predicate.And(_ => !prefecture_code_ni.Contains(_.prefecture_code));
 			#endregion
 			#region address1
 			if (address1_eq != null) predicate = predicate.And(_ => _.address1 == address1_eq);
@@ -11532,6 +11994,8 @@ namespace peppa.Domain
 			if (address1_gt != null) predicate = predicate.And(_ => address1_gt.CompareTo(_.address1) < 0);
 			if (address1_le != null) predicate = predicate.And(_ => address1_le.CompareTo(_.address1) >= 0);
 			if (address1_ge != null) predicate = predicate.And(_ => address1_ge.CompareTo(_.address1) <= 0);
+            if (address1_in != null) predicate = predicate.And(_ => address1_in.Contains(_.address1));
+            if (address1_ni != null) predicate = predicate.And(_ => !address1_ni.Contains(_.address1));
 			#endregion
 			#region address2
 			if (address2_eq != null) predicate = predicate.And(_ => _.address2 == address2_eq);
@@ -11540,6 +12004,8 @@ namespace peppa.Domain
 			if (address2_gt != null) predicate = predicate.And(_ => address2_gt.CompareTo(_.address2) < 0);
 			if (address2_le != null) predicate = predicate.And(_ => address2_le.CompareTo(_.address2) >= 0);
 			if (address2_ge != null) predicate = predicate.And(_ => address2_ge.CompareTo(_.address2) <= 0);
+            if (address2_in != null) predicate = predicate.And(_ => address2_in.Contains(_.address2));
+            if (address2_ni != null) predicate = predicate.And(_ => !address2_ni.Contains(_.address2));
 			#endregion
 			#region address3
 			if (address3_eq != null) predicate = predicate.And(_ => _.address3 == address3_eq);
@@ -11548,6 +12014,8 @@ namespace peppa.Domain
 			if (address3_gt != null) predicate = predicate.And(_ => address3_gt.CompareTo(_.address3) < 0);
 			if (address3_le != null) predicate = predicate.And(_ => address3_le.CompareTo(_.address3) >= 0);
 			if (address3_ge != null) predicate = predicate.And(_ => address3_ge.CompareTo(_.address3) <= 0);
+            if (address3_in != null) predicate = predicate.And(_ => address3_in.Contains(_.address3));
+            if (address3_ni != null) predicate = predicate.And(_ => !address3_ni.Contains(_.address3));
 			#endregion
 			#region latitude
 			if (latitude_eq != null) predicate = predicate.And(_ => _.latitude == latitude_eq);
@@ -11556,6 +12024,10 @@ namespace peppa.Domain
 			if (latitude_gt != null) predicate = predicate.And(_ => _.latitude > latitude_gt);
 			if (latitude_le != null) predicate = predicate.And(_ => _.latitude <= latitude_le);
 			if (latitude_ge != null) predicate = predicate.And(_ => _.latitude >= latitude_ge);
+            if (latitude_in != null) predicate = predicate.And(_ => latitude_in.Contains(_.latitude.Value));
+            if (latitude_ni != null) predicate = predicate.And(_ => !latitude_ni.Contains(_.latitude.Value));
+			if (latitude_isnull) predicate = predicate.And(_ => _.latitude == null);
+			if (latitude_isnotnull) predicate = predicate.And(_ => _.latitude != null);
 			#endregion
 			#region longitude
 			if (longitude_eq != null) predicate = predicate.And(_ => _.longitude == longitude_eq);
@@ -11564,6 +12036,10 @@ namespace peppa.Domain
 			if (longitude_gt != null) predicate = predicate.And(_ => _.longitude > longitude_gt);
 			if (longitude_le != null) predicate = predicate.And(_ => _.longitude <= longitude_le);
 			if (longitude_ge != null) predicate = predicate.And(_ => _.longitude >= longitude_ge);
+            if (longitude_in != null) predicate = predicate.And(_ => longitude_in.Contains(_.longitude.Value));
+            if (longitude_ni != null) predicate = predicate.And(_ => !longitude_ni.Contains(_.longitude.Value));
+			if (longitude_isnull) predicate = predicate.And(_ => _.longitude == null);
+			if (longitude_isnotnull) predicate = predicate.And(_ => _.longitude != null);
 			#endregion
 			#region enter_date
 			if (enter_date_eq != null) predicate = predicate.And(_ => _.enter_date == enter_date_eq);
@@ -11572,6 +12048,10 @@ namespace peppa.Domain
 			if (enter_date_gt != null) predicate = predicate.And(_ => _.enter_date > enter_date_gt);
 			if (enter_date_le != null) predicate = predicate.And(_ => _.enter_date <= enter_date_le);
 			if (enter_date_ge != null) predicate = predicate.And(_ => _.enter_date >= enter_date_ge);
+            if (enter_date_in != null) predicate = predicate.And(_ => enter_date_in.Contains(_.enter_date.Value));
+            if (enter_date_ni != null) predicate = predicate.And(_ => !enter_date_ni.Contains(_.enter_date.Value));
+			if (enter_date_isnull) predicate = predicate.And(_ => _.enter_date == null);
+			if (enter_date_isnotnull) predicate = predicate.And(_ => _.enter_date != null);
 			#endregion
 			#region leave_date
 			if (leave_date_eq != null) predicate = predicate.And(_ => _.leave_date == leave_date_eq);
@@ -11580,6 +12060,10 @@ namespace peppa.Domain
 			if (leave_date_gt != null) predicate = predicate.And(_ => _.leave_date > leave_date_gt);
 			if (leave_date_le != null) predicate = predicate.And(_ => _.leave_date <= leave_date_le);
 			if (leave_date_ge != null) predicate = predicate.And(_ => _.leave_date >= leave_date_ge);
+            if (leave_date_in != null) predicate = predicate.And(_ => leave_date_in.Contains(_.leave_date.Value));
+            if (leave_date_ni != null) predicate = predicate.And(_ => !leave_date_ni.Contains(_.leave_date.Value));
+			if (leave_date_isnull) predicate = predicate.And(_ => _.leave_date == null);
+			if (leave_date_isnotnull) predicate = predicate.And(_ => _.leave_date != null);
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -11588,6 +12072,8 @@ namespace peppa.Domain
 			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
 			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
 			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
 			#region created_by
 			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
@@ -11596,6 +12082,10 @@ namespace peppa.Domain
 			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
 			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
 			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
 			#endregion
 			#region modified_at
 			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
@@ -11604,6 +12094,8 @@ namespace peppa.Domain
 			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
 			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
 			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
 			#endregion
 			#region modified_by
 			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
@@ -11612,10 +12104,16 @@ namespace peppa.Domain
 			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
 			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
 			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
 			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
 			#endregion
 
 			return predicate;
@@ -12214,6 +12712,8 @@ namespace peppa.Domain
 		public IEnumerable<int> created_by_in { get; set; }
 		public IEnumerable<int> created_by_ni { get; set; }
 		public (int? low, int? high)? created_by_between { get; set; }
+		public bool created_by_isnull { get; set; } = false;
+		public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
 		public DateTime? modified_at_eq { get; set; }
@@ -12236,6 +12736,8 @@ namespace peppa.Domain
 		public IEnumerable<int> modified_by_in { get; set; }
 		public IEnumerable<int> modified_by_ni { get; set; }
 		public (int? low, int? high)? modified_by_between { get; set; }
+		public bool modified_by_isnull { get; set; } = false;
+		public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
 		public DateTime? removed_at_eq { get; set; }
@@ -12247,10 +12749,14 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> removed_at_in { get; set; }
 		public IEnumerable<DateTime> removed_at_ni { get; set; }
 		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		public bool removed_at_isnull { get; set; } = false;
+		public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
 		public byte[] row_version_eq { get; set; }
 		public byte[] row_version_ne { get; set; }
+		public bool row_version_isnull { get; set; } = false;
+		public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -12266,6 +12772,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region address_type_id
 			if (address_type_id_eq != null) predicate = predicate.And(_ => _.address_type_id == address_type_id_eq);
@@ -12274,6 +12782,8 @@ namespace peppa.Domain
 			if (address_type_id_gt != null) predicate = predicate.And(_ => _.address_type_id > address_type_id_gt);
 			if (address_type_id_le != null) predicate = predicate.And(_ => _.address_type_id <= address_type_id_le);
 			if (address_type_id_ge != null) predicate = predicate.And(_ => _.address_type_id >= address_type_id_ge);
+            if (address_type_id_in != null) predicate = predicate.And(_ => address_type_id_in.Contains(_.address_type_id));
+            if (address_type_id_ni != null) predicate = predicate.And(_ => !address_type_id_ni.Contains(_.address_type_id));
 			#endregion
 			#region name
 			if (name_eq != null) predicate = predicate.And(_ => _.name == name_eq);
@@ -12282,6 +12792,8 @@ namespace peppa.Domain
 			if (name_gt != null) predicate = predicate.And(_ => name_gt.CompareTo(_.name) < 0);
 			if (name_le != null) predicate = predicate.And(_ => name_le.CompareTo(_.name) >= 0);
 			if (name_ge != null) predicate = predicate.And(_ => name_ge.CompareTo(_.name) <= 0);
+            if (name_in != null) predicate = predicate.And(_ => name_in.Contains(_.name));
+            if (name_ni != null) predicate = predicate.And(_ => !name_ni.Contains(_.name));
 			#endregion
 			#region description
 			if (description_eq != null) predicate = predicate.And(_ => _.description == description_eq);
@@ -12290,6 +12802,8 @@ namespace peppa.Domain
 			if (description_gt != null) predicate = predicate.And(_ => description_gt.CompareTo(_.description) < 0);
 			if (description_le != null) predicate = predicate.And(_ => description_le.CompareTo(_.description) >= 0);
 			if (description_ge != null) predicate = predicate.And(_ => description_ge.CompareTo(_.description) <= 0);
+            if (description_in != null) predicate = predicate.And(_ => description_in.Contains(_.description));
+            if (description_ni != null) predicate = predicate.And(_ => !description_ni.Contains(_.description));
 			#endregion
 			#region display_order
 			if (display_order_eq != null) predicate = predicate.And(_ => _.display_order == display_order_eq);
@@ -12298,6 +12812,8 @@ namespace peppa.Domain
 			if (display_order_gt != null) predicate = predicate.And(_ => _.display_order > display_order_gt);
 			if (display_order_le != null) predicate = predicate.And(_ => _.display_order <= display_order_le);
 			if (display_order_ge != null) predicate = predicate.And(_ => _.display_order >= display_order_ge);
+            if (display_order_in != null) predicate = predicate.And(_ => display_order_in.Contains(_.display_order));
+            if (display_order_ni != null) predicate = predicate.And(_ => !display_order_ni.Contains(_.display_order));
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -12306,6 +12822,8 @@ namespace peppa.Domain
 			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
 			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
 			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
 			#region created_by
 			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
@@ -12314,6 +12832,10 @@ namespace peppa.Domain
 			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
 			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
 			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
 			#endregion
 			#region modified_at
 			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
@@ -12322,6 +12844,8 @@ namespace peppa.Domain
 			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
 			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
 			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
 			#endregion
 			#region modified_by
 			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
@@ -12330,6 +12854,10 @@ namespace peppa.Domain
 			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
 			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
 			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
 			#endregion
 			#region removed_at
 			if (removed_at_eq != null) predicate = predicate.And(_ => _.removed_at == removed_at_eq);
@@ -12338,10 +12866,16 @@ namespace peppa.Domain
 			if (removed_at_gt != null) predicate = predicate.And(_ => _.removed_at > removed_at_gt);
 			if (removed_at_le != null) predicate = predicate.And(_ => _.removed_at <= removed_at_le);
 			if (removed_at_ge != null) predicate = predicate.And(_ => _.removed_at >= removed_at_ge);
+            if (removed_at_in != null) predicate = predicate.And(_ => removed_at_in.Contains(_.removed_at.Value));
+            if (removed_at_ni != null) predicate = predicate.And(_ => !removed_at_ni.Contains(_.removed_at.Value));
+			if (removed_at_isnull) predicate = predicate.And(_ => _.removed_at == null);
+			if (removed_at_isnotnull) predicate = predicate.And(_ => _.removed_at != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
 			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
 			#endregion
 
 			return predicate;
@@ -13137,6 +13671,8 @@ namespace peppa.Domain
 		public IEnumerable<int> created_by_in { get; set; }
 		public IEnumerable<int> created_by_ni { get; set; }
 		public (int? low, int? high)? created_by_between { get; set; }
+		public bool created_by_isnull { get; set; } = false;
+		public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
 		public DateTime? modified_at_eq { get; set; }
@@ -13159,10 +13695,14 @@ namespace peppa.Domain
 		public IEnumerable<int> modified_by_in { get; set; }
 		public IEnumerable<int> modified_by_ni { get; set; }
 		public (int? low, int? high)? modified_by_between { get; set; }
+		public bool modified_by_isnull { get; set; } = false;
+		public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
 		public byte[] row_version_eq { get; set; }
 		public byte[] row_version_ne { get; set; }
+		public bool row_version_isnull { get; set; } = false;
+		public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -13178,6 +13718,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region user_type
 			if (_user_type_eq != null) predicate = predicate.And(_ => _.user_type == _user_type_eq);
@@ -13186,6 +13728,8 @@ namespace peppa.Domain
 			if (_user_type_gt != null) predicate = predicate.And(_ => _.user_type > _user_type_gt);
 			if (_user_type_le != null) predicate = predicate.And(_ => _.user_type <= _user_type_le);
 			if (_user_type_ge != null) predicate = predicate.And(_ => _.user_type >= _user_type_ge);
+            if (_user_type_in != null) predicate = predicate.And(_ => _user_type_in.Contains(_.user_type));
+            if (_user_type_ni != null) predicate = predicate.And(_ => !_user_type_ni.Contains(_.user_type));
 			#endregion
 			#region generic_user_no
 			if (generic_user_no_eq != null) predicate = predicate.And(_ => _.generic_user_no == generic_user_no_eq);
@@ -13194,6 +13738,8 @@ namespace peppa.Domain
 			if (generic_user_no_gt != null) predicate = predicate.And(_ => generic_user_no_gt.CompareTo(_.generic_user_no) < 0);
 			if (generic_user_no_le != null) predicate = predicate.And(_ => generic_user_no_le.CompareTo(_.generic_user_no) >= 0);
 			if (generic_user_no_ge != null) predicate = predicate.And(_ => generic_user_no_ge.CompareTo(_.generic_user_no) <= 0);
+            if (generic_user_no_in != null) predicate = predicate.And(_ => generic_user_no_in.Contains(_.generic_user_no));
+            if (generic_user_no_ni != null) predicate = predicate.And(_ => !generic_user_no_ni.Contains(_.generic_user_no));
 			#endregion
 			#region seq
 			if (seq_eq != null) predicate = predicate.And(_ => _.seq == seq_eq);
@@ -13202,6 +13748,8 @@ namespace peppa.Domain
 			if (seq_gt != null) predicate = predicate.And(_ => _.seq > seq_gt);
 			if (seq_le != null) predicate = predicate.And(_ => _.seq <= seq_le);
 			if (seq_ge != null) predicate = predicate.And(_ => _.seq >= seq_ge);
+            if (seq_in != null) predicate = predicate.And(_ => seq_in.Contains(_.seq));
+            if (seq_ni != null) predicate = predicate.And(_ => !seq_ni.Contains(_.seq));
 			#endregion
 			#region contact_type_id
 			if (contact_type_id_eq != null) predicate = predicate.And(_ => _.contact_type_id == contact_type_id_eq);
@@ -13210,6 +13758,8 @@ namespace peppa.Domain
 			if (contact_type_id_gt != null) predicate = predicate.And(_ => _.contact_type_id > contact_type_id_gt);
 			if (contact_type_id_le != null) predicate = predicate.And(_ => _.contact_type_id <= contact_type_id_le);
 			if (contact_type_id_ge != null) predicate = predicate.And(_ => _.contact_type_id >= contact_type_id_ge);
+            if (contact_type_id_in != null) predicate = predicate.And(_ => contact_type_id_in.Contains(_.contact_type_id));
+            if (contact_type_id_ni != null) predicate = predicate.And(_ => !contact_type_id_ni.Contains(_.contact_type_id));
 			#endregion
 			#region contact
 			if (contact_eq != null) predicate = predicate.And(_ => _.contact == contact_eq);
@@ -13218,6 +13768,8 @@ namespace peppa.Domain
 			if (contact_gt != null) predicate = predicate.And(_ => contact_gt.CompareTo(_.contact) < 0);
 			if (contact_le != null) predicate = predicate.And(_ => contact_le.CompareTo(_.contact) >= 0);
 			if (contact_ge != null) predicate = predicate.And(_ => contact_ge.CompareTo(_.contact) <= 0);
+            if (contact_in != null) predicate = predicate.And(_ => contact_in.Contains(_.contact));
+            if (contact_ni != null) predicate = predicate.And(_ => !contact_ni.Contains(_.contact));
 			#endregion
 			#region note
 			if (note_eq != null) predicate = predicate.And(_ => _.note == note_eq);
@@ -13226,6 +13778,8 @@ namespace peppa.Domain
 			if (note_gt != null) predicate = predicate.And(_ => note_gt.CompareTo(_.note) < 0);
 			if (note_le != null) predicate = predicate.And(_ => note_le.CompareTo(_.note) >= 0);
 			if (note_ge != null) predicate = predicate.And(_ => note_ge.CompareTo(_.note) <= 0);
+            if (note_in != null) predicate = predicate.And(_ => note_in.Contains(_.note));
+            if (note_ni != null) predicate = predicate.And(_ => !note_ni.Contains(_.note));
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -13234,6 +13788,8 @@ namespace peppa.Domain
 			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
 			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
 			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
 			#region created_by
 			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
@@ -13242,6 +13798,10 @@ namespace peppa.Domain
 			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
 			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
 			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
 			#endregion
 			#region modified_at
 			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
@@ -13250,6 +13810,8 @@ namespace peppa.Domain
 			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
 			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
 			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
 			#endregion
 			#region modified_by
 			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
@@ -13258,10 +13820,16 @@ namespace peppa.Domain
 			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
 			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
 			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
 			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
 			#endregion
 
 			return predicate;
@@ -13860,6 +14428,8 @@ namespace peppa.Domain
 		public IEnumerable<int> created_by_in { get; set; }
 		public IEnumerable<int> created_by_ni { get; set; }
 		public (int? low, int? high)? created_by_between { get; set; }
+		public bool created_by_isnull { get; set; } = false;
+		public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
 		public DateTime? modified_at_eq { get; set; }
@@ -13882,6 +14452,8 @@ namespace peppa.Domain
 		public IEnumerable<int> modified_by_in { get; set; }
 		public IEnumerable<int> modified_by_ni { get; set; }
 		public (int? low, int? high)? modified_by_between { get; set; }
+		public bool modified_by_isnull { get; set; } = false;
+		public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
 		public DateTime? removed_at_eq { get; set; }
@@ -13893,10 +14465,14 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> removed_at_in { get; set; }
 		public IEnumerable<DateTime> removed_at_ni { get; set; }
 		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		public bool removed_at_isnull { get; set; } = false;
+		public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
 		public byte[] row_version_eq { get; set; }
 		public byte[] row_version_ne { get; set; }
+		public bool row_version_isnull { get; set; } = false;
+		public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -13912,6 +14488,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region contact_type_id
 			if (contact_type_id_eq != null) predicate = predicate.And(_ => _.contact_type_id == contact_type_id_eq);
@@ -13920,6 +14498,8 @@ namespace peppa.Domain
 			if (contact_type_id_gt != null) predicate = predicate.And(_ => _.contact_type_id > contact_type_id_gt);
 			if (contact_type_id_le != null) predicate = predicate.And(_ => _.contact_type_id <= contact_type_id_le);
 			if (contact_type_id_ge != null) predicate = predicate.And(_ => _.contact_type_id >= contact_type_id_ge);
+            if (contact_type_id_in != null) predicate = predicate.And(_ => contact_type_id_in.Contains(_.contact_type_id));
+            if (contact_type_id_ni != null) predicate = predicate.And(_ => !contact_type_id_ni.Contains(_.contact_type_id));
 			#endregion
 			#region name
 			if (name_eq != null) predicate = predicate.And(_ => _.name == name_eq);
@@ -13928,6 +14508,8 @@ namespace peppa.Domain
 			if (name_gt != null) predicate = predicate.And(_ => name_gt.CompareTo(_.name) < 0);
 			if (name_le != null) predicate = predicate.And(_ => name_le.CompareTo(_.name) >= 0);
 			if (name_ge != null) predicate = predicate.And(_ => name_ge.CompareTo(_.name) <= 0);
+            if (name_in != null) predicate = predicate.And(_ => name_in.Contains(_.name));
+            if (name_ni != null) predicate = predicate.And(_ => !name_ni.Contains(_.name));
 			#endregion
 			#region description
 			if (description_eq != null) predicate = predicate.And(_ => _.description == description_eq);
@@ -13936,6 +14518,8 @@ namespace peppa.Domain
 			if (description_gt != null) predicate = predicate.And(_ => description_gt.CompareTo(_.description) < 0);
 			if (description_le != null) predicate = predicate.And(_ => description_le.CompareTo(_.description) >= 0);
 			if (description_ge != null) predicate = predicate.And(_ => description_ge.CompareTo(_.description) <= 0);
+            if (description_in != null) predicate = predicate.And(_ => description_in.Contains(_.description));
+            if (description_ni != null) predicate = predicate.And(_ => !description_ni.Contains(_.description));
 			#endregion
 			#region display_order
 			if (display_order_eq != null) predicate = predicate.And(_ => _.display_order == display_order_eq);
@@ -13944,6 +14528,8 @@ namespace peppa.Domain
 			if (display_order_gt != null) predicate = predicate.And(_ => _.display_order > display_order_gt);
 			if (display_order_le != null) predicate = predicate.And(_ => _.display_order <= display_order_le);
 			if (display_order_ge != null) predicate = predicate.And(_ => _.display_order >= display_order_ge);
+            if (display_order_in != null) predicate = predicate.And(_ => display_order_in.Contains(_.display_order));
+            if (display_order_ni != null) predicate = predicate.And(_ => !display_order_ni.Contains(_.display_order));
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -13952,6 +14538,8 @@ namespace peppa.Domain
 			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
 			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
 			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
 			#region created_by
 			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
@@ -13960,6 +14548,10 @@ namespace peppa.Domain
 			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
 			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
 			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
 			#endregion
 			#region modified_at
 			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
@@ -13968,6 +14560,8 @@ namespace peppa.Domain
 			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
 			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
 			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
 			#endregion
 			#region modified_by
 			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
@@ -13976,6 +14570,10 @@ namespace peppa.Domain
 			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
 			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
 			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
 			#endregion
 			#region removed_at
 			if (removed_at_eq != null) predicate = predicate.And(_ => _.removed_at == removed_at_eq);
@@ -13984,10 +14582,16 @@ namespace peppa.Domain
 			if (removed_at_gt != null) predicate = predicate.And(_ => _.removed_at > removed_at_gt);
 			if (removed_at_le != null) predicate = predicate.And(_ => _.removed_at <= removed_at_le);
 			if (removed_at_ge != null) predicate = predicate.And(_ => _.removed_at >= removed_at_ge);
+            if (removed_at_in != null) predicate = predicate.And(_ => removed_at_in.Contains(_.removed_at.Value));
+            if (removed_at_ni != null) predicate = predicate.And(_ => !removed_at_ni.Contains(_.removed_at.Value));
+			if (removed_at_isnull) predicate = predicate.And(_ => _.removed_at == null);
+			if (removed_at_isnotnull) predicate = predicate.And(_ => _.removed_at != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
 			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
 			#endregion
 
 			return predicate;
@@ -14640,6 +15244,8 @@ namespace peppa.Domain
 		public IEnumerable<int> created_by_in { get; set; }
 		public IEnumerable<int> created_by_ni { get; set; }
 		public (int? low, int? high)? created_by_between { get; set; }
+		public bool created_by_isnull { get; set; } = false;
+		public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
 		public DateTime? modified_at_eq { get; set; }
@@ -14662,6 +15268,8 @@ namespace peppa.Domain
 		public IEnumerable<int> modified_by_in { get; set; }
 		public IEnumerable<int> modified_by_ni { get; set; }
 		public (int? low, int? high)? modified_by_between { get; set; }
+		public bool modified_by_isnull { get; set; } = false;
+		public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
 		public DateTime? removed_at_eq { get; set; }
@@ -14673,10 +15281,14 @@ namespace peppa.Domain
 		public IEnumerable<DateTime> removed_at_in { get; set; }
 		public IEnumerable<DateTime> removed_at_ni { get; set; }
 		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		public bool removed_at_isnull { get; set; } = false;
+		public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
 		public byte[] row_version_eq { get; set; }
 		public byte[] row_version_ne { get; set; }
+		public bool row_version_isnull { get; set; } = false;
+		public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -14692,6 +15304,8 @@ namespace peppa.Domain
 			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
 			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
 			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
 			#endregion
 			#region category
 			if (category_eq != null) predicate = predicate.And(_ => _.category == category_eq);
@@ -14700,6 +15314,8 @@ namespace peppa.Domain
 			if (category_gt != null) predicate = predicate.And(_ => category_gt.CompareTo(_.category) < 0);
 			if (category_le != null) predicate = predicate.And(_ => category_le.CompareTo(_.category) >= 0);
 			if (category_ge != null) predicate = predicate.And(_ => category_ge.CompareTo(_.category) <= 0);
+            if (category_in != null) predicate = predicate.And(_ => category_in.Contains(_.category));
+            if (category_ni != null) predicate = predicate.And(_ => !category_ni.Contains(_.category));
 			#endregion
 			#region type
 			if (type_eq != null) predicate = predicate.And(_ => _.type == type_eq);
@@ -14708,6 +15324,8 @@ namespace peppa.Domain
 			if (type_gt != null) predicate = predicate.And(_ => type_gt.CompareTo(_.type) < 0);
 			if (type_le != null) predicate = predicate.And(_ => type_le.CompareTo(_.type) >= 0);
 			if (type_ge != null) predicate = predicate.And(_ => type_ge.CompareTo(_.type) <= 0);
+            if (type_in != null) predicate = predicate.And(_ => type_in.Contains(_.type));
+            if (type_ni != null) predicate = predicate.And(_ => !type_ni.Contains(_.type));
 			#endregion
 			#region level
 			if (level_eq != null) predicate = predicate.And(_ => _.level == level_eq);
@@ -14716,6 +15334,8 @@ namespace peppa.Domain
 			if (level_gt != null) predicate = predicate.And(_ => _.level > level_gt);
 			if (level_le != null) predicate = predicate.And(_ => _.level <= level_le);
 			if (level_ge != null) predicate = predicate.And(_ => _.level >= level_ge);
+            if (level_in != null) predicate = predicate.And(_ => level_in.Contains(_.level));
+            if (level_ni != null) predicate = predicate.And(_ => !level_ni.Contains(_.level));
 			#endregion
 			#region url
 			if (url_eq != null) predicate = predicate.And(_ => _.url == url_eq);
@@ -14724,6 +15344,8 @@ namespace peppa.Domain
 			if (url_gt != null) predicate = predicate.And(_ => url_gt.CompareTo(_.url) < 0);
 			if (url_le != null) predicate = predicate.And(_ => url_le.CompareTo(_.url) >= 0);
 			if (url_ge != null) predicate = predicate.And(_ => url_ge.CompareTo(_.url) <= 0);
+            if (url_in != null) predicate = predicate.And(_ => url_in.Contains(_.url));
+            if (url_ni != null) predicate = predicate.And(_ => !url_ni.Contains(_.url));
 			#endregion
 			#region methods
 			if (methods_eq != null) predicate = predicate.And(_ => _.methods == methods_eq);
@@ -14732,6 +15354,8 @@ namespace peppa.Domain
 			if (methods_gt != null) predicate = predicate.And(_ => methods_gt.CompareTo(_.methods) < 0);
 			if (methods_le != null) predicate = predicate.And(_ => methods_le.CompareTo(_.methods) >= 0);
 			if (methods_ge != null) predicate = predicate.And(_ => methods_ge.CompareTo(_.methods) <= 0);
+            if (methods_in != null) predicate = predicate.And(_ => methods_in.Contains(_.methods));
+            if (methods_ni != null) predicate = predicate.And(_ => !methods_ni.Contains(_.methods));
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -14740,6 +15364,8 @@ namespace peppa.Domain
 			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
 			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
 			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
 			#region created_by
 			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
@@ -14748,6 +15374,10 @@ namespace peppa.Domain
 			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
 			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
 			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
 			#endregion
 			#region modified_at
 			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
@@ -14756,6 +15386,8 @@ namespace peppa.Domain
 			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
 			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
 			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
 			#endregion
 			#region modified_by
 			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
@@ -14764,6 +15396,10 @@ namespace peppa.Domain
 			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
 			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
 			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
 			#endregion
 			#region removed_at
 			if (removed_at_eq != null) predicate = predicate.And(_ => _.removed_at == removed_at_eq);
@@ -14772,10 +15408,16 @@ namespace peppa.Domain
 			if (removed_at_gt != null) predicate = predicate.And(_ => _.removed_at > removed_at_gt);
 			if (removed_at_le != null) predicate = predicate.And(_ => _.removed_at <= removed_at_le);
 			if (removed_at_ge != null) predicate = predicate.And(_ => _.removed_at >= removed_at_ge);
+            if (removed_at_in != null) predicate = predicate.And(_ => removed_at_in.Contains(_.removed_at.Value));
+            if (removed_at_ni != null) predicate = predicate.And(_ => !removed_at_ni.Contains(_.removed_at.Value));
+			if (removed_at_isnull) predicate = predicate.And(_ => _.removed_at == null);
+			if (removed_at_isnotnull) predicate = predicate.And(_ => _.removed_at != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
 			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
 			#endregion
 
 			return predicate;

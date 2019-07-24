@@ -11,9 +11,15 @@ using peppa.Domain;
 
 namespace MockWebAPI.Controllers
 {
+    /// <summary>
+    /// AddressTypeのCRUD
+    /// </summary>
     public class AddressTypeController : ApiController
     {
-        // GET: api/AddressType
+        /// <summary>
+        /// AddressTypeを全て取得
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<AddressType> Get()
         {
 #if DEBUG
@@ -24,7 +30,9 @@ namespace MockWebAPI.Controllers
             {
                 var cond = new AddressTypeCondition
                 {
-                    address_type_id_ge = 0,
+                    name_in = new[] { "現住所", "本籍" },
+                    name_ni = new[] { "旧住所" },
+                    removed_at_isnull = true,
                 };
                 return db.AddressType.Where(cond.CreatePredicate()).ToList();
             }
