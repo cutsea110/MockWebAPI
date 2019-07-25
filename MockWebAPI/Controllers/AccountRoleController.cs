@@ -17,18 +17,18 @@ using peppa.Domain;
 namespace MockWebAPI.Controllers
 {
 	/// <summary>
-	/// 住所種別のWebAPI
+	/// アカウントロールのWebAPI
 	/// </summary>
-	[RoutePrefix("api/addresstype")]
-	public partial class AddressTypeController : ApiController
+	[RoutePrefix("api/accountrole")]
+	public partial class AccountRoleController : ApiController
 	{
 		/// <summary>
-		/// 住所種別の検索
+		/// アカウントロールの検索
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns></returns>
 		[HttpGet, Route("search")]
-		public IEnumerable<AddressType> Search([FromUri]AddressTypeCondition c)
+		public IEnumerable<AccountRole> Search([FromUri]AccountRoleCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -37,19 +37,20 @@ namespace MockWebAPI.Controllers
 			using (var db = new peppaDB())
 			{
 				var list =
-					c == null ? db.AddressType.ToList() :
-					db.AddressType.Where(c.CreatePredicate()).ToList();
+					c == null ? db.AccountRole.ToList() :
+					db.AccountRole.Where(c.CreatePredicate()).ToList();
 				return list;
 			}
 		}
 
 		/// <summary>
-		/// 住所種別の取得
+		/// アカウントロールの取得
 		/// </summary>
-		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
+		/// <param name="accountId">アカウントID(account_id)</param>
+		/// <param name="roleId">ロールID(role_id)</param>
 		/// <returns></returns>
-		[HttpGet, Route("get/{addressTypeId}")]
-		public AddressType Get(int addressTypeId)
+		[HttpGet, Route("get/{accountId}/{roleId}")]
+		public AccountRole Get(int accountId, string roleId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -57,18 +58,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.AddressType.Find(addressTypeId);
+				var o = db.AccountRole.Find(accountId, roleId);
 				return o;
 			}
 		}
 
 		/// <summary>
-		/// 住所種別の作成
+		/// アカウントロールの作成
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>作成件数</returns>
 		[HttpPost, Route("create")]
-		public int Post([FromBody]AddressType o)
+		public int Post([FromBody]AccountRole o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -76,19 +77,20 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Insert<AddressType>(o);
+				var count = db.Insert<AccountRole>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 住所種別の更新
+		/// アカウントロールの更新
 		/// </summary>
-		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
+		/// <param name="accountId">アカウントID(account_id)</param>
+		/// <param name="roleId">ロールID(role_id)</param>
 		/// <param name="o"></param>
 		/// <returns>更新件数</returns>
-		[HttpPut, Route("modify/{addressTypeId}")]
-		public int Modify(int addressTypeId, [FromBody]AddressType o)
+		[HttpPut, Route("modify/{accountId}/{roleId}")]
+		public int Modify(int accountId, string roleId, [FromBody]AccountRole o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -96,17 +98,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Update<AddressType>(o);
+				var count = db.Update<AccountRole>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 住所種別の削除(論理)
+		/// アカウントロールの削除(物理)
 		/// </summary>
-		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
-		[HttpDelete, Route("remove/{addressTypeId}")]
-		public int Remove(int addressTypeId)
+		/// <param name="accountId">アカウントID(account_id)</param>
+		/// <param name="roleId">ロールID(role_id)</param>
+		[HttpDelete, Route("remove/{accountId}/{roleId}")]
+		public int Remove(int accountId, string roleId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -114,9 +117,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.AddressType.Find(addressTypeId);
-				o.removed_at = DateTime.Now;
-				var count = db.Update<AddressType>(o);
+				var o = db.AccountRole.Find(accountId, roleId);
+				var count = db.Delete<AccountRole>(o);
 				return count;
 			}
 		}

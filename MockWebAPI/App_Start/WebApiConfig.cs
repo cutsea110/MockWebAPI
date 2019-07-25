@@ -18,8 +18,16 @@ namespace MockWebAPI
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{id}/{id1}/{id2}/{id3}/{id4}/{id5}",
+                defaults: new
+                {
+                    id = RouteParameter.Optional,
+                    id1 = RouteParameter.Optional,
+                    id2 = RouteParameter.Optional,
+                    id3 = RouteParameter.Optional,
+                    id4 = RouteParameter.Optional,
+                    id5 = RouteParameter.Optional,
+                }
             );
         }
     }

@@ -8992,46 +8992,6 @@ namespace peppa.Domain
 		#endregion
 
 		#endregion
-		#region removed_at : DateTime?
-
-		private DateTime? _removed_at;
-		/// <summary>
-		/// 削除日時
-		/// </summary>
-		[Column(DbType="datetime2(7)", DataType=DataType.DateTime2, Precision=7), DataMember, Nullable]
-		public  DateTime?  removed_at
-		{
-			get { return _removed_at; }
-			set
-			{
-				if (_removed_at != value)
-				{
-					Beforeremoved_atChanged(value);
-					_removed_at = value;
-					Afterremoved_atChanged();
-
-					Onremoved_atChanged();
-				}
-			}
-		}
-
-		#region INotifyPropertyChanged support
-
-		partial void Beforeremoved_atChanged(DateTime? newValue);
-		partial void Afterremoved_atChanged();
-
-		public const string NameOfremoved_at = "removed_at";
-
-		private static readonly PropertyChangedEventArgs _removed_atChangedEventArgs = new PropertyChangedEventArgs(NameOfremoved_at);
-
-		private void Onremoved_atChanged()
-		{
-			OnPropertyChanged(_removed_atChangedEventArgs);
-		}
-
-		#endregion
-
-		#endregion
 		#region row_version : byte[]
 
 		private byte[] _row_version;
@@ -9089,7 +9049,6 @@ namespace peppa.Domain
 			created_by = null;
 			modified_at = DateTime.UtcNow;
 			modified_by = null;
-			removed_at = null;
 			row_version = default(byte[]);
 			#endregion
 		}
@@ -9271,19 +9230,6 @@ namespace peppa.Domain
 		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
 		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
-		#region removed_at
-		[DataMember] public DateTime? removed_at_eq { get; set; }
-		[DataMember] public DateTime? removed_at_ne { get; set; }
-		[DataMember] public DateTime? removed_at_lt { get; set; }
-		[DataMember] public DateTime? removed_at_gt { get; set; }
-		[DataMember] public DateTime? removed_at_le { get; set; }
-		[DataMember] public DateTime? removed_at_ge { get; set; }
-		[DataMember] public IEnumerable<DateTime> removed_at_in { get; set; }
-		[DataMember] public IEnumerable<DateTime> removed_at_ni { get; set; }
-		[DataMember] public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
-		[DataMember] public bool removed_at_isnull { get; set; } =  true ;
-		[DataMember] public bool removed_at_isnotnull { get; set; } = false;
-		#endregion
 		#region row_version
 		[DataMember] public byte[] row_version_eq { get; set; }
 		[DataMember] public byte[] row_version_ne { get; set; }
@@ -9380,18 +9326,6 @@ namespace peppa.Domain
             if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
 			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
 			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
-			#endregion
-			#region removed_at
-			if (removed_at_eq != null) predicate = predicate.And(_ => _.removed_at == removed_at_eq);
-			if (removed_at_ne != null) predicate = predicate.And(_ => _.removed_at != removed_at_ne);
-			if (removed_at_lt != null) predicate = predicate.And(_ => _.removed_at < removed_at_lt);
-			if (removed_at_gt != null) predicate = predicate.And(_ => _.removed_at > removed_at_gt);
-			if (removed_at_le != null) predicate = predicate.And(_ => _.removed_at <= removed_at_le);
-			if (removed_at_ge != null) predicate = predicate.And(_ => _.removed_at >= removed_at_ge);
-            if (removed_at_in != null) predicate = predicate.And(_ => removed_at_in.Contains(_.removed_at.Value));
-            if (removed_at_ni != null) predicate = predicate.And(_ => !removed_at_ni.Contains(_.removed_at.Value));
-			if (removed_at_isnull) predicate = predicate.And(_ => _.removed_at == null);
-			if (removed_at_isnotnull) predicate = predicate.And(_ => _.removed_at != null);
 			#endregion
 			#region row_version
 			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);

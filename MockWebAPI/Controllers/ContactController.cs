@@ -17,18 +17,18 @@ using peppa.Domain;
 namespace MockWebAPI.Controllers
 {
 	/// <summary>
-	/// 住所種別のWebAPI
+	/// 連絡先のWebAPI
 	/// </summary>
-	[RoutePrefix("api/addresstype")]
-	public partial class AddressTypeController : ApiController
+	[RoutePrefix("api/contact")]
+	public partial class ContactController : ApiController
 	{
 		/// <summary>
-		/// 住所種別の検索
+		/// 連絡先の検索
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns></returns>
 		[HttpGet, Route("search")]
-		public IEnumerable<AddressType> Search([FromUri]AddressTypeCondition c)
+		public IEnumerable<Contact> Search([FromUri]ContactCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -37,19 +37,21 @@ namespace MockWebAPI.Controllers
 			using (var db = new peppaDB())
 			{
 				var list =
-					c == null ? db.AddressType.ToList() :
-					db.AddressType.Where(c.CreatePredicate()).ToList();
+					c == null ? db.Contact.ToList() :
+					db.Contact.Where(c.CreatePredicate()).ToList();
 				return list;
 			}
 		}
 
 		/// <summary>
-		/// 住所種別の取得
+		/// 連絡先の取得
 		/// </summary>
-		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
+		/// <param name="userType">利用者種別(user_type)</param>
+		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
+		/// <param name="seq">連番(seq)</param>
 		/// <returns></returns>
-		[HttpGet, Route("get/{addressTypeId}")]
-		public AddressType Get(int addressTypeId)
+		[HttpGet, Route("get/{userType}/{genericUserNo}/{seq}")]
+		public Contact Get(int userType, string genericUserNo, int seq)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -57,18 +59,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.AddressType.Find(addressTypeId);
+				var o = db.Contact.Find(userType, genericUserNo, seq);
 				return o;
 			}
 		}
 
 		/// <summary>
-		/// 住所種別の作成
+		/// 連絡先の作成
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>作成件数</returns>
 		[HttpPost, Route("create")]
-		public int Post([FromBody]AddressType o)
+		public int Post([FromBody]Contact o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -76,19 +78,21 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Insert<AddressType>(o);
+				var count = db.Insert<Contact>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 住所種別の更新
+		/// 連絡先の更新
 		/// </summary>
-		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
+		/// <param name="userType">利用者種別(user_type)</param>
+		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
+		/// <param name="seq">連番(seq)</param>
 		/// <param name="o"></param>
 		/// <returns>更新件数</returns>
-		[HttpPut, Route("modify/{addressTypeId}")]
-		public int Modify(int addressTypeId, [FromBody]AddressType o)
+		[HttpPut, Route("modify/{userType}/{genericUserNo}/{seq}")]
+		public int Modify(int userType, string genericUserNo, int seq, [FromBody]Contact o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -96,17 +100,19 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Update<AddressType>(o);
+				var count = db.Update<Contact>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 住所種別の削除(論理)
+		/// 連絡先の削除(物理)
 		/// </summary>
-		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
-		[HttpDelete, Route("remove/{addressTypeId}")]
-		public int Remove(int addressTypeId)
+		/// <param name="userType">利用者種別(user_type)</param>
+		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
+		/// <param name="seq">連番(seq)</param>
+		[HttpDelete, Route("remove/{userType}/{genericUserNo}/{seq}")]
+		public int Remove(int userType, string genericUserNo, int seq)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -114,9 +120,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.AddressType.Find(addressTypeId);
-				o.removed_at = DateTime.Now;
-				var count = db.Update<AddressType>(o);
+				var o = db.Contact.Find(userType, genericUserNo, seq);
+				var count = db.Delete<Contact>(o);
 				return count;
 			}
 		}
