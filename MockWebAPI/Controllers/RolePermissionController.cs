@@ -67,7 +67,7 @@ namespace MockWebAPI.Controllers
 		/// ロール権限の作成
 		/// </summary>
 		/// <param name="o"></param>
-		/// <returns>作成件数</returns>
+		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
 		public int Post([FromBody]RolePermission o)
 		{
@@ -77,8 +77,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Insert<RolePermission>(o);
-				return count;
+				int uid = (int)db.InsertWithIdentity<RolePermission>(o);
+				return uid;
 			}
 		}
 

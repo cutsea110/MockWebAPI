@@ -66,7 +66,7 @@ namespace MockWebAPI.Controllers
 		/// 職員の作成
 		/// </summary>
 		/// <param name="o"></param>
-		/// <returns>作成件数</returns>
+		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
 		public int Post([FromBody]Staff o)
 		{
@@ -76,8 +76,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Insert<Staff>(o);
-				return count;
+				int uid = (int)db.InsertWithIdentity<Staff>(o);
+				return uid;
 			}
 		}
 

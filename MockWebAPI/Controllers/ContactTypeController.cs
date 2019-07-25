@@ -66,7 +66,7 @@ namespace MockWebAPI.Controllers
 		/// 連絡先種別の作成
 		/// </summary>
 		/// <param name="o"></param>
-		/// <returns>作成件数</returns>
+		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
 		public int Post([FromBody]ContactType o)
 		{
@@ -76,8 +76,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Insert<ContactType>(o);
-				return count;
+				int uid = (int)db.InsertWithIdentity<ContactType>(o);
+				return uid;
 			}
 		}
 
