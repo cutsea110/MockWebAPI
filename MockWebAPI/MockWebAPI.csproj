@@ -101,6 +101,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="bo\DbContext.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AddressTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

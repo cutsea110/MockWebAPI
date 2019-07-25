@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using LinqToDB;
 using LinqToDB.Data;
@@ -12,15 +10,17 @@ using peppa.Domain;
 namespace MockWebAPI.Controllers
 {
     /// <summary>
-    /// AddressTypeのCRUD
+    /// 住所種別のAPI
     /// </summary>
     public class AddressTypeController : ApiController
     {
         /// <summary>
-        /// AddressTypeを全て取得
+        /// 住所の検索
+        /// GET: api/AddressType
         /// </summary>
-        /// <returns></returns>
-        public IEnumerable<AddressType> Get()
+        /// <param name="c">AddressTypeCondition</param>
+        /// <returns>検索条件に合致するAddressTypeのリスト</returns>
+        public IEnumerable<AddressType> Get([FromUri]AddressTypeCondition c)
         {
 #if DEBUG
             DataConnection.TurnTraceSwitchOn();
@@ -28,35 +28,83 @@ namespace MockWebAPI.Controllers
 #endif
             using (var db = new peppaDB())
             {
-                var cond = new AddressTypeCondition
-                {
-                    name_in = new[] { "現住所", "本籍" },
-                    name_ni = new[] { "旧住所" },
-                    removed_at_isnull = true,
-                };
-                return db.AddressType.Where(cond.CreatePredicate()).ToList();
+                var list = db.AddressType.Where(c.CreatePredicate()).ToList();
+                return list;
             }
         }
 
-        // GET: api/AddressType/5
-        public string Get(int id)
+        /// <summary>
+        /// 住所の取得
+        /// </summary>
+        /// <param name="id">住所種別ID</param>
+        /// <returns></returns>
+        public AddressType Get(int id)
         {
-            return "value";
+#if DEBUG
+            DataConnection.TurnTraceSwitchOn();
+            DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+            using (var db = new peppaDB())
+            {
+                var o = db.AddressType.Find(id);
+                return o;
+            }
         }
 
-        // POST: api/AddressType
-        public void Post([FromBody]string value)
+        /// <summary>
+        /// 住所の作成
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns>作成件数</returns>
+        public int Post([FromBody]AddressType o)
         {
+#if DEBUG
+            DataConnection.TurnTraceSwitchOn();
+            DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+            using (var db = new peppaDB())
+            {
+                var count = db.Insert<AddressType>(o);
+                return count;
+            }
         }
 
-        // PUT: api/AddressType/5
-        public void Put(int id, [FromBody]string value)
+        /// <summary>
+        /// 住所の更新
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="o"></param>
+        /// <returns>更新件数</returns>
+        public int Put(int id, [FromBody]AddressType o)
         {
+#if DEBUG
+            DataConnection.TurnTraceSwitchOn();
+            DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+            using (var db = new peppaDB())
+            {
+                var count = db.Update<AddressType>(o);
+                return count;
+            }
         }
 
-        // DELETE: api/AddressType/5
-        public void Delete(int id)
+        /// <summary>
+        /// 住所の削除(論理)
+        /// </summary>
+        /// <param name="id"></param>
+        public int Delete(int id)
         {
+#if DEBUG
+            DataConnection.TurnTraceSwitchOn();
+            DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+            using (var db = new peppaDB())
+            {
+                var o = db.AddressType.Find(id);
+                o.removed_at = DateTime.Now;
+                var count = db.Update<AddressType>(o);
+                return count;
+            }
         }
     }
 }

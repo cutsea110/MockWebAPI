@@ -117,356 +117,361 @@ namespace peppa.Domain
 	#region enum
 	/// <summary>
 	/// 有効フラグ
-	/// <summary>
+	/// </summary>
+	[DataContract]
 	public enum ValidityFlag
 	{
 		/// <summary>
 		/// 名称 : 無効
 		/// 説明 : 無効
 		/// </summary>
-		[MapValue(Value = 0)]
+		[MapValue(Value = 0), DataMember]
 		無効 = 0,
 		/// <summary>
 		/// 名称 : 有効
 		/// 説明 : 有効
 		/// </summary>
-		[MapValue(Value = 1)]
+		[MapValue(Value = 1), DataMember]
 		有効 = 1,
 	}
 	/// <summary>
 	/// 認証方式
-	/// <summary>
+	/// </summary>
+	[DataContract]
 	public enum AuthMethod
 	{
 		/// <summary>
 		/// 名称 : 無認証
 		/// 説明 : 無認証
 		/// </summary>
-		[MapValue(Value = "None")]
+		[MapValue(Value = "None"), DataMember]
 		無認証,
 		/// <summary>
 		/// 名称 : パスワード
 		/// 説明 : パスワード
 		/// </summary>
-		[MapValue(Value = "Password")]
+		[MapValue(Value = "Password"), DataMember]
 		パスワード,
 		/// <summary>
 		/// 名称 : LDAP
 		/// 説明 : LDAP
 		/// </summary>
-		[MapValue(Value = "LDAP")]
+		[MapValue(Value = "LDAP"), DataMember]
 		LDAP,
 		/// <summary>
 		/// 名称 : OAuth2
 		/// 説明 : OAuth2
 		/// </summary>
-		[MapValue(Value = "OAuth2")]
+		[MapValue(Value = "OAuth2"), DataMember]
 		OAuth2,
 	}
 	/// <summary>
 	/// 性別
-	/// <summary>
+	/// </summary>
+	[DataContract]
 	public enum Gender
 	{
 		/// <summary>
 		/// 名称 : 男性
 		/// 説明 : 男性
 		/// </summary>
-		[MapValue(Value = 1)]
+		[MapValue(Value = 1), DataMember]
 		男性 = 1,
 		/// <summary>
 		/// 名称 : 女性
 		/// 説明 : 女性
 		/// </summary>
-		[MapValue(Value = 2)]
+		[MapValue(Value = 2), DataMember]
 		女性 = 2,
 	}
 	/// <summary>
 	/// ユーザ種別
-	/// <summary>
+	/// </summary>
+	[DataContract]
 	public enum UserType
 	{
 		/// <summary>
 		/// 名称 : 職員
 		/// 説明 : 職員
 		/// </summary>
-		[MapValue(Value = 1)]
+		[MapValue(Value = 1), DataMember]
 		職員 = 1,
 		/// <summary>
 		/// 名称 : 教員
 		/// 説明 : 教員
 		/// </summary>
-		[MapValue(Value = 2)]
+		[MapValue(Value = 2), DataMember]
 		教員 = 2,
 		/// <summary>
 		/// 名称 : 在学生
 		/// 説明 : 在学生
 		/// </summary>
-		[MapValue(Value = 3)]
+		[MapValue(Value = 3), DataMember]
 		在学生 = 3,
 		/// <summary>
 		/// 名称 : 除籍生
 		/// 説明 : 除籍生
 		/// </summary>
-		[MapValue(Value = 4)]
+		[MapValue(Value = 4), DataMember]
 		除籍生 = 4,
 		/// <summary>
 		/// 名称 : 保護者
 		/// 説明 : 保護者
 		/// </summary>
-		[MapValue(Value = 5)]
+		[MapValue(Value = 5), DataMember]
 		保護者 = 5,
 		/// <summary>
 		/// 名称 : 他ユーザ
 		/// 説明 : SEなどその他のシステムアカウント用ユーザ
 		/// </summary>
-		[MapValue(Value = 99)]
+		[MapValue(Value = 99), DataMember]
 		他ユーザ = 99,
 	}
 	/// <summary>
 	/// 権限
-	/// <summary>
+	/// </summary>
+	[DataContract]
 	public enum PermissionType
 	{
 		/// <summary>
 		/// 名称 : ロール作成
 		/// 説明 : ロールマスタの新規作成
 		/// </summary>
-		[MapValue(Value = "Create_Role")]
+		[MapValue(Value = "Create_Role"), DataMember]
 		ロール作成,
 		/// <summary>
 		/// 名称 : ロール表示
 		/// 説明 : ロールマスタの閲覧
 		/// </summary>
-		[MapValue(Value = "Read_Role")]
+		[MapValue(Value = "Read_Role"), DataMember]
 		ロール表示,
 		/// <summary>
 		/// 名称 : ロール更新
 		/// 説明 : ロールマスタの変更
 		/// </summary>
-		[MapValue(Value = "Update_Role")]
+		[MapValue(Value = "Update_Role"), DataMember]
 		ロール更新,
 		/// <summary>
 		/// 名称 : ロール削除
 		/// 説明 : ロールマスタの削除
 		/// </summary>
-		[MapValue(Value = "Delete_Role")]
+		[MapValue(Value = "Delete_Role"), DataMember]
 		ロール削除,
 		/// <summary>
 		/// 名称 : ロール権限作成
 		/// 説明 : ロール権限の新規作成
 		/// </summary>
-		[MapValue(Value = "Create_RolePermission")]
+		[MapValue(Value = "Create_RolePermission"), DataMember]
 		ロール権限作成,
 		/// <summary>
 		/// 名称 : ロール権限表示
 		/// 説明 : ロール権限の閲覧
 		/// </summary>
-		[MapValue(Value = "Read_RolePermission")]
+		[MapValue(Value = "Read_RolePermission"), DataMember]
 		ロール権限表示,
 		/// <summary>
 		/// 名称 : ロール権限更新
 		/// 説明 : ロール権限の変更
 		/// </summary>
-		[MapValue(Value = "Update_RolePermission")]
+		[MapValue(Value = "Update_RolePermission"), DataMember]
 		ロール権限更新,
 		/// <summary>
 		/// 名称 : ロール権限削除
 		/// 説明 : ロール権限の削除
 		/// </summary>
-		[MapValue(Value = "Delete_RolePermission")]
+		[MapValue(Value = "Delete_RolePermission"), DataMember]
 		ロール権限削除,
 		/// <summary>
 		/// 名称 : アカウント作成
 		/// 説明 : アカウントの新規作成
 		/// </summary>
-		[MapValue(Value = "Create_Account")]
+		[MapValue(Value = "Create_Account"), DataMember]
 		アカウント作成,
 		/// <summary>
 		/// 名称 : アカウント表示
 		/// 説明 : アカウントの閲覧
 		/// </summary>
-		[MapValue(Value = "Read_Account")]
+		[MapValue(Value = "Read_Account"), DataMember]
 		アカウント表示,
 		/// <summary>
 		/// 名称 : アカウント更新
 		/// 説明 : アカウントの変更
 		/// </summary>
-		[MapValue(Value = "Update_Account")]
+		[MapValue(Value = "Update_Account"), DataMember]
 		アカウント更新,
 		/// <summary>
 		/// 名称 : アカウント削除
 		/// 説明 : アカウントの削除
 		/// </summary>
-		[MapValue(Value = "Delete_Account")]
+		[MapValue(Value = "Delete_Account"), DataMember]
 		アカウント削除,
 		/// <summary>
 		/// 名称 : アカウントロール作成
 		/// 説明 : アカウントロールの新規作成
 		/// </summary>
-		[MapValue(Value = "Create_AccountRole")]
+		[MapValue(Value = "Create_AccountRole"), DataMember]
 		アカウントロール作成,
 		/// <summary>
 		/// 名称 : アカウントロール表示
 		/// 説明 : アカウントロールの閲覧
 		/// </summary>
-		[MapValue(Value = "Read_AccountRole")]
+		[MapValue(Value = "Read_AccountRole"), DataMember]
 		アカウントロール表示,
 		/// <summary>
 		/// 名称 : アカウントロール更新
 		/// 説明 : アカウントロールの変更
 		/// </summary>
-		[MapValue(Value = "Update_AccountRole")]
+		[MapValue(Value = "Update_AccountRole"), DataMember]
 		アカウントロール更新,
 		/// <summary>
 		/// 名称 : アカウントロール削除
 		/// 説明 : アカウントロールの削除
 		/// </summary>
-		[MapValue(Value = "Delete_AccountRole")]
+		[MapValue(Value = "Delete_AccountRole"), DataMember]
 		アカウントロール削除,
 		/// <summary>
 		/// 名称 : 職員作成
 		/// 説明 : 職員マスタの新規作成
 		/// </summary>
-		[MapValue(Value = "Create_Staff")]
+		[MapValue(Value = "Create_Staff"), DataMember]
 		職員作成,
 		/// <summary>
 		/// 名称 : 職員表示
 		/// 説明 : 職員マスタの閲覧
 		/// </summary>
-		[MapValue(Value = "Read_Staff")]
+		[MapValue(Value = "Read_Staff"), DataMember]
 		職員表示,
 		/// <summary>
 		/// 名称 : 職員更新
 		/// 説明 : 職員マスタの変更
 		/// </summary>
-		[MapValue(Value = "Update_Staff")]
+		[MapValue(Value = "Update_Staff"), DataMember]
 		職員更新,
 		/// <summary>
 		/// 名称 : 職員削除
 		/// 説明 : 職員マスタの削除
 		/// </summary>
-		[MapValue(Value = "Delete_Staff")]
+		[MapValue(Value = "Delete_Staff"), DataMember]
 		職員削除,
 		/// <summary>
 		/// 名称 : 住所作成
 		/// 説明 : 住所の新規作成
 		/// </summary>
-		[MapValue(Value = "Create_Address")]
+		[MapValue(Value = "Create_Address"), DataMember]
 		住所作成,
 		/// <summary>
 		/// 名称 : 住所表示
 		/// 説明 : 住所の閲覧
 		/// </summary>
-		[MapValue(Value = "Read_Address")]
+		[MapValue(Value = "Read_Address"), DataMember]
 		住所表示,
 		/// <summary>
 		/// 名称 : 住所更新
 		/// 説明 : 住所の変更
 		/// </summary>
-		[MapValue(Value = "Update_Address")]
+		[MapValue(Value = "Update_Address"), DataMember]
 		住所更新,
 		/// <summary>
 		/// 名称 : 住所削除
 		/// 説明 : 住所の削除
 		/// </summary>
-		[MapValue(Value = "Delete_Address")]
+		[MapValue(Value = "Delete_Address"), DataMember]
 		住所削除,
 		/// <summary>
 		/// 名称 : 住所種別作成
 		/// 説明 : 住所種別の新規作成
 		/// </summary>
-		[MapValue(Value = "Create_AddressType")]
+		[MapValue(Value = "Create_AddressType"), DataMember]
 		住所種別作成,
 		/// <summary>
 		/// 名称 : 住所種別表示
 		/// 説明 : 住所種別の閲覧
 		/// </summary>
-		[MapValue(Value = "Read_AddressType")]
+		[MapValue(Value = "Read_AddressType"), DataMember]
 		住所種別表示,
 		/// <summary>
 		/// 名称 : 住所種別更新
 		/// 説明 : 住所種別の変更
 		/// </summary>
-		[MapValue(Value = "Update_AddressType")]
+		[MapValue(Value = "Update_AddressType"), DataMember]
 		住所種別更新,
 		/// <summary>
 		/// 名称 : 住所種別削除
 		/// 説明 : 住所種別の削除
 		/// </summary>
-		[MapValue(Value = "Delete_AddressType")]
+		[MapValue(Value = "Delete_AddressType"), DataMember]
 		住所種別削除,
 		/// <summary>
 		/// 名称 : 連絡先作成
 		/// 説明 : 連絡先の新規作成
 		/// </summary>
-		[MapValue(Value = "Create_Contact")]
+		[MapValue(Value = "Create_Contact"), DataMember]
 		連絡先作成,
 		/// <summary>
 		/// 名称 : 連絡先表示
 		/// 説明 : 連絡先の閲覧
 		/// </summary>
-		[MapValue(Value = "Read_Contact")]
+		[MapValue(Value = "Read_Contact"), DataMember]
 		連絡先表示,
 		/// <summary>
 		/// 名称 : 連絡先更新
 		/// 説明 : 連絡先の変更
 		/// </summary>
-		[MapValue(Value = "Update_Contact")]
+		[MapValue(Value = "Update_Contact"), DataMember]
 		連絡先更新,
 		/// <summary>
 		/// 名称 : 連絡先削除
 		/// 説明 : 連絡先の削除
 		/// </summary>
-		[MapValue(Value = "Delete_Contact")]
+		[MapValue(Value = "Delete_Contact"), DataMember]
 		連絡先削除,
 		/// <summary>
 		/// 名称 : 連絡先種別作成
 		/// 説明 : 連絡先種別の新規作成
 		/// </summary>
-		[MapValue(Value = "Create_ContactType")]
+		[MapValue(Value = "Create_ContactType"), DataMember]
 		連絡先種別作成,
 		/// <summary>
 		/// 名称 : 連絡先種別表示
 		/// 説明 : 連絡先種別の閲覧
 		/// </summary>
-		[MapValue(Value = "Read_ContactType")]
+		[MapValue(Value = "Read_ContactType"), DataMember]
 		連絡先種別表示,
 		/// <summary>
 		/// 名称 : 連絡先種別更新
 		/// 説明 : 連絡先種別の変更
 		/// </summary>
-		[MapValue(Value = "Update_ContactType")]
+		[MapValue(Value = "Update_ContactType"), DataMember]
 		連絡先種別更新,
 		/// <summary>
 		/// 名称 : 連絡先種別削除
 		/// 説明 : 連絡先種別の削除
 		/// </summary>
-		[MapValue(Value = "Delete_ContactType")]
+		[MapValue(Value = "Delete_ContactType"), DataMember]
 		連絡先種別削除,
 		/// <summary>
 		/// 名称 : エラーログ作成
 		/// 説明 : エラーログの新規作成
 		/// </summary>
-		[MapValue(Value = "Create_ErrorLog")]
+		[MapValue(Value = "Create_ErrorLog"), DataMember]
 		エラーログ作成,
 		/// <summary>
 		/// 名称 : エラーログ表示
 		/// 説明 : エラーログの閲覧
 		/// </summary>
-		[MapValue(Value = "Read_ErrorLog")]
+		[MapValue(Value = "Read_ErrorLog"), DataMember]
 		エラーログ表示,
 		/// <summary>
 		/// 名称 : エラーログ更新
 		/// 説明 : エラーログの変更
 		/// </summary>
-		[MapValue(Value = "Update_ErrorLog")]
+		[MapValue(Value = "Update_ErrorLog"), DataMember]
 		エラーログ更新,
 		/// <summary>
 		/// 名称 : エラーログ削除
 		/// 説明 : エラーログの削除
 		/// </summary>
-		[MapValue(Value = "Delete_ErrorLog")]
+		[MapValue(Value = "Delete_ErrorLog"), DataMember]
 		エラーログ削除,
 	}
 	#endregion
@@ -4429,623 +4434,624 @@ namespace peppa.Domain
 	/// <summary>
 	/// テスト条件
 	/// </summary>
+	[DataContract]
 	public partial class TestCondition : ConditionBase<Test>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region col01
-		public char? col01_eq { get; set; }
-		public char? col01_ne { get; set; }
-		public char? col01_lt { get; set; }
-		public char? col01_gt { get; set; }
-		public char? col01_le { get; set; }
-		public char? col01_ge { get; set; }
-		public IEnumerable<char> col01_in { get; set; }
-		public IEnumerable<char> col01_ni { get; set; }
-		public (char? low, char? high)? col01_between { get; set; }
+		[DataMember] public char? col01_eq { get; set; }
+		[DataMember] public char? col01_ne { get; set; }
+		[DataMember] public char? col01_lt { get; set; }
+		[DataMember] public char? col01_gt { get; set; }
+		[DataMember] public char? col01_le { get; set; }
+		[DataMember] public char? col01_ge { get; set; }
+		[DataMember] public IEnumerable<char> col01_in { get; set; }
+		[DataMember] public IEnumerable<char> col01_ni { get; set; }
+		[DataMember] public (char? low, char? high)? col01_between { get; set; }
 		#endregion
 		#region col01_
-		public char? col01__eq { get; set; }
-		public char? col01__ne { get; set; }
-		public char? col01__lt { get; set; }
-		public char? col01__gt { get; set; }
-		public char? col01__le { get; set; }
-		public char? col01__ge { get; set; }
-		public IEnumerable<char> col01__in { get; set; }
-		public IEnumerable<char> col01__ni { get; set; }
-		public (char? low, char? high)? col01__between { get; set; }
-		public bool col01__isnull { get; set; } = false;
-		public bool col01__isnotnull { get; set; } = false;
+		[DataMember] public char? col01__eq { get; set; }
+		[DataMember] public char? col01__ne { get; set; }
+		[DataMember] public char? col01__lt { get; set; }
+		[DataMember] public char? col01__gt { get; set; }
+		[DataMember] public char? col01__le { get; set; }
+		[DataMember] public char? col01__ge { get; set; }
+		[DataMember] public IEnumerable<char> col01__in { get; set; }
+		[DataMember] public IEnumerable<char> col01__ni { get; set; }
+		[DataMember] public (char? low, char? high)? col01__between { get; set; }
+		[DataMember] public bool col01__isnull { get; set; } =  false ;
+		[DataMember] public bool col01__isnotnull { get; set; } = false;
 		#endregion
 		#region col02
-		public string col02_eq { get; set; }
-		public string col02_ne { get; set; }
-		public string col02_lt { get; set; }
-		public string col02_gt { get; set; }
-		public string col02_le { get; set; }
-		public string col02_ge { get; set; }
-		public IEnumerable<string> col02_in { get; set; }
-		public IEnumerable<string> col02_ni { get; set; }
-		public (string low, string high)? col02_between { get; set; }
-		public string col02_like { get; set; }
+		[DataMember] public string col02_eq { get; set; }
+		[DataMember] public string col02_ne { get; set; }
+		[DataMember] public string col02_lt { get; set; }
+		[DataMember] public string col02_gt { get; set; }
+		[DataMember] public string col02_le { get; set; }
+		[DataMember] public string col02_ge { get; set; }
+		[DataMember] public IEnumerable<string> col02_in { get; set; }
+		[DataMember] public IEnumerable<string> col02_ni { get; set; }
+		[DataMember] public (string low, string high)? col02_between { get; set; }
+		[DataMember] public string col02_like { get; set; }
 		#endregion
 		#region col02_
-		public string col02__eq { get; set; }
-		public string col02__ne { get; set; }
-		public string col02__lt { get; set; }
-		public string col02__gt { get; set; }
-		public string col02__le { get; set; }
-		public string col02__ge { get; set; }
-		public IEnumerable<string> col02__in { get; set; }
-		public IEnumerable<string> col02__ni { get; set; }
-		public (string low, string high)? col02__between { get; set; }
-		public bool col02__isnull { get; set; } = false;
-		public bool col02__isnotnull { get; set; } = false;
-		public string col02__like { get; set; }
+		[DataMember] public string col02__eq { get; set; }
+		[DataMember] public string col02__ne { get; set; }
+		[DataMember] public string col02__lt { get; set; }
+		[DataMember] public string col02__gt { get; set; }
+		[DataMember] public string col02__le { get; set; }
+		[DataMember] public string col02__ge { get; set; }
+		[DataMember] public IEnumerable<string> col02__in { get; set; }
+		[DataMember] public IEnumerable<string> col02__ni { get; set; }
+		[DataMember] public (string low, string high)? col02__between { get; set; }
+		[DataMember] public bool col02__isnull { get; set; } =  false ;
+		[DataMember] public bool col02__isnotnull { get; set; } = false;
+		[DataMember] public string col02__like { get; set; }
 		#endregion
 		#region col03
-		public string col03_eq { get; set; }
-		public string col03_ne { get; set; }
-		public string col03_lt { get; set; }
-		public string col03_gt { get; set; }
-		public string col03_le { get; set; }
-		public string col03_ge { get; set; }
-		public IEnumerable<string> col03_in { get; set; }
-		public IEnumerable<string> col03_ni { get; set; }
-		public (string low, string high)? col03_between { get; set; }
-		public string col03_like { get; set; }
+		[DataMember] public string col03_eq { get; set; }
+		[DataMember] public string col03_ne { get; set; }
+		[DataMember] public string col03_lt { get; set; }
+		[DataMember] public string col03_gt { get; set; }
+		[DataMember] public string col03_le { get; set; }
+		[DataMember] public string col03_ge { get; set; }
+		[DataMember] public IEnumerable<string> col03_in { get; set; }
+		[DataMember] public IEnumerable<string> col03_ni { get; set; }
+		[DataMember] public (string low, string high)? col03_between { get; set; }
+		[DataMember] public string col03_like { get; set; }
 		#endregion
 		#region col03_
-		public string col03__eq { get; set; }
-		public string col03__ne { get; set; }
-		public string col03__lt { get; set; }
-		public string col03__gt { get; set; }
-		public string col03__le { get; set; }
-		public string col03__ge { get; set; }
-		public IEnumerable<string> col03__in { get; set; }
-		public IEnumerable<string> col03__ni { get; set; }
-		public (string low, string high)? col03__between { get; set; }
-		public bool col03__isnull { get; set; } = false;
-		public bool col03__isnotnull { get; set; } = false;
-		public string col03__like { get; set; }
+		[DataMember] public string col03__eq { get; set; }
+		[DataMember] public string col03__ne { get; set; }
+		[DataMember] public string col03__lt { get; set; }
+		[DataMember] public string col03__gt { get; set; }
+		[DataMember] public string col03__le { get; set; }
+		[DataMember] public string col03__ge { get; set; }
+		[DataMember] public IEnumerable<string> col03__in { get; set; }
+		[DataMember] public IEnumerable<string> col03__ni { get; set; }
+		[DataMember] public (string low, string high)? col03__between { get; set; }
+		[DataMember] public bool col03__isnull { get; set; } =  false ;
+		[DataMember] public bool col03__isnotnull { get; set; } = false;
+		[DataMember] public string col03__like { get; set; }
 		#endregion
 		#region col04
-		public string col04_eq { get; set; }
-		public string col04_ne { get; set; }
-		public string col04_lt { get; set; }
-		public string col04_gt { get; set; }
-		public string col04_le { get; set; }
-		public string col04_ge { get; set; }
-		public IEnumerable<string> col04_in { get; set; }
-		public IEnumerable<string> col04_ni { get; set; }
-		public (string low, string high)? col04_between { get; set; }
-		public string col04_like { get; set; }
+		[DataMember] public string col04_eq { get; set; }
+		[DataMember] public string col04_ne { get; set; }
+		[DataMember] public string col04_lt { get; set; }
+		[DataMember] public string col04_gt { get; set; }
+		[DataMember] public string col04_le { get; set; }
+		[DataMember] public string col04_ge { get; set; }
+		[DataMember] public IEnumerable<string> col04_in { get; set; }
+		[DataMember] public IEnumerable<string> col04_ni { get; set; }
+		[DataMember] public (string low, string high)? col04_between { get; set; }
+		[DataMember] public string col04_like { get; set; }
 		#endregion
 		#region col04_
-		public string col04__eq { get; set; }
-		public string col04__ne { get; set; }
-		public string col04__lt { get; set; }
-		public string col04__gt { get; set; }
-		public string col04__le { get; set; }
-		public string col04__ge { get; set; }
-		public IEnumerable<string> col04__in { get; set; }
-		public IEnumerable<string> col04__ni { get; set; }
-		public (string low, string high)? col04__between { get; set; }
-		public bool col04__isnull { get; set; } = false;
-		public bool col04__isnotnull { get; set; } = false;
-		public string col04__like { get; set; }
+		[DataMember] public string col04__eq { get; set; }
+		[DataMember] public string col04__ne { get; set; }
+		[DataMember] public string col04__lt { get; set; }
+		[DataMember] public string col04__gt { get; set; }
+		[DataMember] public string col04__le { get; set; }
+		[DataMember] public string col04__ge { get; set; }
+		[DataMember] public IEnumerable<string> col04__in { get; set; }
+		[DataMember] public IEnumerable<string> col04__ni { get; set; }
+		[DataMember] public (string low, string high)? col04__between { get; set; }
+		[DataMember] public bool col04__isnull { get; set; } =  false ;
+		[DataMember] public bool col04__isnotnull { get; set; } = false;
+		[DataMember] public string col04__like { get; set; }
 		#endregion
 		#region col05
-		public char? col05_eq { get; set; }
-		public char? col05_ne { get; set; }
-		public char? col05_lt { get; set; }
-		public char? col05_gt { get; set; }
-		public char? col05_le { get; set; }
-		public char? col05_ge { get; set; }
-		public IEnumerable<char> col05_in { get; set; }
-		public IEnumerable<char> col05_ni { get; set; }
-		public (char? low, char? high)? col05_between { get; set; }
+		[DataMember] public char? col05_eq { get; set; }
+		[DataMember] public char? col05_ne { get; set; }
+		[DataMember] public char? col05_lt { get; set; }
+		[DataMember] public char? col05_gt { get; set; }
+		[DataMember] public char? col05_le { get; set; }
+		[DataMember] public char? col05_ge { get; set; }
+		[DataMember] public IEnumerable<char> col05_in { get; set; }
+		[DataMember] public IEnumerable<char> col05_ni { get; set; }
+		[DataMember] public (char? low, char? high)? col05_between { get; set; }
 		#endregion
 		#region col05_
-		public char? col05__eq { get; set; }
-		public char? col05__ne { get; set; }
-		public char? col05__lt { get; set; }
-		public char? col05__gt { get; set; }
-		public char? col05__le { get; set; }
-		public char? col05__ge { get; set; }
-		public IEnumerable<char> col05__in { get; set; }
-		public IEnumerable<char> col05__ni { get; set; }
-		public (char? low, char? high)? col05__between { get; set; }
-		public bool col05__isnull { get; set; } = false;
-		public bool col05__isnotnull { get; set; } = false;
+		[DataMember] public char? col05__eq { get; set; }
+		[DataMember] public char? col05__ne { get; set; }
+		[DataMember] public char? col05__lt { get; set; }
+		[DataMember] public char? col05__gt { get; set; }
+		[DataMember] public char? col05__le { get; set; }
+		[DataMember] public char? col05__ge { get; set; }
+		[DataMember] public IEnumerable<char> col05__in { get; set; }
+		[DataMember] public IEnumerable<char> col05__ni { get; set; }
+		[DataMember] public (char? low, char? high)? col05__between { get; set; }
+		[DataMember] public bool col05__isnull { get; set; } =  false ;
+		[DataMember] public bool col05__isnotnull { get; set; } = false;
 		#endregion
 		#region col06
-		public string col06_eq { get; set; }
-		public string col06_ne { get; set; }
-		public string col06_lt { get; set; }
-		public string col06_gt { get; set; }
-		public string col06_le { get; set; }
-		public string col06_ge { get; set; }
-		public IEnumerable<string> col06_in { get; set; }
-		public IEnumerable<string> col06_ni { get; set; }
-		public (string low, string high)? col06_between { get; set; }
-		public string col06_like { get; set; }
+		[DataMember] public string col06_eq { get; set; }
+		[DataMember] public string col06_ne { get; set; }
+		[DataMember] public string col06_lt { get; set; }
+		[DataMember] public string col06_gt { get; set; }
+		[DataMember] public string col06_le { get; set; }
+		[DataMember] public string col06_ge { get; set; }
+		[DataMember] public IEnumerable<string> col06_in { get; set; }
+		[DataMember] public IEnumerable<string> col06_ni { get; set; }
+		[DataMember] public (string low, string high)? col06_between { get; set; }
+		[DataMember] public string col06_like { get; set; }
 		#endregion
 		#region col06_
-		public string col06__eq { get; set; }
-		public string col06__ne { get; set; }
-		public string col06__lt { get; set; }
-		public string col06__gt { get; set; }
-		public string col06__le { get; set; }
-		public string col06__ge { get; set; }
-		public IEnumerable<string> col06__in { get; set; }
-		public IEnumerable<string> col06__ni { get; set; }
-		public (string low, string high)? col06__between { get; set; }
-		public bool col06__isnull { get; set; } = false;
-		public bool col06__isnotnull { get; set; } = false;
-		public string col06__like { get; set; }
+		[DataMember] public string col06__eq { get; set; }
+		[DataMember] public string col06__ne { get; set; }
+		[DataMember] public string col06__lt { get; set; }
+		[DataMember] public string col06__gt { get; set; }
+		[DataMember] public string col06__le { get; set; }
+		[DataMember] public string col06__ge { get; set; }
+		[DataMember] public IEnumerable<string> col06__in { get; set; }
+		[DataMember] public IEnumerable<string> col06__ni { get; set; }
+		[DataMember] public (string low, string high)? col06__between { get; set; }
+		[DataMember] public bool col06__isnull { get; set; } =  false ;
+		[DataMember] public bool col06__isnotnull { get; set; } = false;
+		[DataMember] public string col06__like { get; set; }
 		#endregion
 		#region col07
-		public string col07_eq { get; set; }
-		public string col07_ne { get; set; }
-		public string col07_lt { get; set; }
-		public string col07_gt { get; set; }
-		public string col07_le { get; set; }
-		public string col07_ge { get; set; }
-		public IEnumerable<string> col07_in { get; set; }
-		public IEnumerable<string> col07_ni { get; set; }
-		public (string low, string high)? col07_between { get; set; }
-		public string col07_like { get; set; }
+		[DataMember] public string col07_eq { get; set; }
+		[DataMember] public string col07_ne { get; set; }
+		[DataMember] public string col07_lt { get; set; }
+		[DataMember] public string col07_gt { get; set; }
+		[DataMember] public string col07_le { get; set; }
+		[DataMember] public string col07_ge { get; set; }
+		[DataMember] public IEnumerable<string> col07_in { get; set; }
+		[DataMember] public IEnumerable<string> col07_ni { get; set; }
+		[DataMember] public (string low, string high)? col07_between { get; set; }
+		[DataMember] public string col07_like { get; set; }
 		#endregion
 		#region col07_
-		public string col07__eq { get; set; }
-		public string col07__ne { get; set; }
-		public string col07__lt { get; set; }
-		public string col07__gt { get; set; }
-		public string col07__le { get; set; }
-		public string col07__ge { get; set; }
-		public IEnumerable<string> col07__in { get; set; }
-		public IEnumerable<string> col07__ni { get; set; }
-		public (string low, string high)? col07__between { get; set; }
-		public bool col07__isnull { get; set; } = false;
-		public bool col07__isnotnull { get; set; } = false;
-		public string col07__like { get; set; }
+		[DataMember] public string col07__eq { get; set; }
+		[DataMember] public string col07__ne { get; set; }
+		[DataMember] public string col07__lt { get; set; }
+		[DataMember] public string col07__gt { get; set; }
+		[DataMember] public string col07__le { get; set; }
+		[DataMember] public string col07__ge { get; set; }
+		[DataMember] public IEnumerable<string> col07__in { get; set; }
+		[DataMember] public IEnumerable<string> col07__ni { get; set; }
+		[DataMember] public (string low, string high)? col07__between { get; set; }
+		[DataMember] public bool col07__isnull { get; set; } =  false ;
+		[DataMember] public bool col07__isnotnull { get; set; } = false;
+		[DataMember] public string col07__like { get; set; }
 		#endregion
 		#region col08
-		public string col08_eq { get; set; }
-		public string col08_ne { get; set; }
-		public string col08_lt { get; set; }
-		public string col08_gt { get; set; }
-		public string col08_le { get; set; }
-		public string col08_ge { get; set; }
-		public IEnumerable<string> col08_in { get; set; }
-		public IEnumerable<string> col08_ni { get; set; }
-		public (string low, string high)? col08_between { get; set; }
-		public string col08_like { get; set; }
+		[DataMember] public string col08_eq { get; set; }
+		[DataMember] public string col08_ne { get; set; }
+		[DataMember] public string col08_lt { get; set; }
+		[DataMember] public string col08_gt { get; set; }
+		[DataMember] public string col08_le { get; set; }
+		[DataMember] public string col08_ge { get; set; }
+		[DataMember] public IEnumerable<string> col08_in { get; set; }
+		[DataMember] public IEnumerable<string> col08_ni { get; set; }
+		[DataMember] public (string low, string high)? col08_between { get; set; }
+		[DataMember] public string col08_like { get; set; }
 		#endregion
 		#region col08_
-		public string col08__eq { get; set; }
-		public string col08__ne { get; set; }
-		public string col08__lt { get; set; }
-		public string col08__gt { get; set; }
-		public string col08__le { get; set; }
-		public string col08__ge { get; set; }
-		public IEnumerable<string> col08__in { get; set; }
-		public IEnumerable<string> col08__ni { get; set; }
-		public (string low, string high)? col08__between { get; set; }
-		public bool col08__isnull { get; set; } = false;
-		public bool col08__isnotnull { get; set; } = false;
-		public string col08__like { get; set; }
+		[DataMember] public string col08__eq { get; set; }
+		[DataMember] public string col08__ne { get; set; }
+		[DataMember] public string col08__lt { get; set; }
+		[DataMember] public string col08__gt { get; set; }
+		[DataMember] public string col08__le { get; set; }
+		[DataMember] public string col08__ge { get; set; }
+		[DataMember] public IEnumerable<string> col08__in { get; set; }
+		[DataMember] public IEnumerable<string> col08__ni { get; set; }
+		[DataMember] public (string low, string high)? col08__between { get; set; }
+		[DataMember] public bool col08__isnull { get; set; } =  false ;
+		[DataMember] public bool col08__isnotnull { get; set; } = false;
+		[DataMember] public string col08__like { get; set; }
 		#endregion
 		#region col09
-		public byte[] col09_eq { get; set; }
-		public byte[] col09_ne { get; set; }
+		[DataMember] public byte[] col09_eq { get; set; }
+		[DataMember] public byte[] col09_ne { get; set; }
 		#endregion
 		#region col09_
-		public byte[] col09__eq { get; set; }
-		public byte[] col09__ne { get; set; }
-		public bool col09__isnull { get; set; } = false;
-		public bool col09__isnotnull { get; set; } = false;
+		[DataMember] public byte[] col09__eq { get; set; }
+		[DataMember] public byte[] col09__ne { get; set; }
+		[DataMember] public bool col09__isnull { get; set; } =  false ;
+		[DataMember] public bool col09__isnotnull { get; set; } = false;
 		#endregion
 		#region col10
-		public byte[] col10_eq { get; set; }
-		public byte[] col10_ne { get; set; }
+		[DataMember] public byte[] col10_eq { get; set; }
+		[DataMember] public byte[] col10_ne { get; set; }
 		#endregion
 		#region col10_
-		public byte[] col10__eq { get; set; }
-		public byte[] col10__ne { get; set; }
-		public bool col10__isnull { get; set; } = false;
-		public bool col10__isnotnull { get; set; } = false;
+		[DataMember] public byte[] col10__eq { get; set; }
+		[DataMember] public byte[] col10__ne { get; set; }
+		[DataMember] public bool col10__isnull { get; set; } =  false ;
+		[DataMember] public bool col10__isnotnull { get; set; } = false;
 		#endregion
 		#region col11
-		public byte[] col11_eq { get; set; }
-		public byte[] col11_ne { get; set; }
+		[DataMember] public byte[] col11_eq { get; set; }
+		[DataMember] public byte[] col11_ne { get; set; }
 		#endregion
 		#region col11_
-		public byte[] col11__eq { get; set; }
-		public byte[] col11__ne { get; set; }
-		public bool col11__isnull { get; set; } = false;
-		public bool col11__isnotnull { get; set; } = false;
+		[DataMember] public byte[] col11__eq { get; set; }
+		[DataMember] public byte[] col11__ne { get; set; }
+		[DataMember] public bool col11__isnull { get; set; } =  false ;
+		[DataMember] public bool col11__isnotnull { get; set; } = false;
 		#endregion
 		#region col12
-		public bool? col12_eq { get; set; }
-		public bool? col12_ne { get; set; }
+		[DataMember] public bool? col12_eq { get; set; }
+		[DataMember] public bool? col12_ne { get; set; }
 		#endregion
 		#region col12_
-		public bool? col12__eq { get; set; }
-		public bool? col12__ne { get; set; }
-		public bool col12__isnull { get; set; } = false;
-		public bool col12__isnotnull { get; set; } = false;
+		[DataMember] public bool? col12__eq { get; set; }
+		[DataMember] public bool? col12__ne { get; set; }
+		[DataMember] public bool col12__isnull { get; set; } =  false ;
+		[DataMember] public bool col12__isnotnull { get; set; } = false;
 		#endregion
 		#region col13
-		public Guid? col13_eq { get; set; }
-		public Guid? col13_ne { get; set; }
+		[DataMember] public Guid? col13_eq { get; set; }
+		[DataMember] public Guid? col13_ne { get; set; }
 		#endregion
 		#region col13_
-		public Guid? col13__eq { get; set; }
-		public Guid? col13__ne { get; set; }
-		public bool col13__isnull { get; set; } = false;
-		public bool col13__isnotnull { get; set; } = false;
+		[DataMember] public Guid? col13__eq { get; set; }
+		[DataMember] public Guid? col13__ne { get; set; }
+		[DataMember] public bool col13__isnull { get; set; } =  false ;
+		[DataMember] public bool col13__isnotnull { get; set; } = false;
 		#endregion
 		#region col14
-		public Int16? col14_eq { get; set; }
-		public Int16? col14_ne { get; set; }
-		public Int16? col14_lt { get; set; }
-		public Int16? col14_gt { get; set; }
-		public Int16? col14_le { get; set; }
-		public Int16? col14_ge { get; set; }
-		public IEnumerable<Int16> col14_in { get; set; }
-		public IEnumerable<Int16> col14_ni { get; set; }
-		public (Int16? low, Int16? high)? col14_between { get; set; }
+		[DataMember] public Int16? col14_eq { get; set; }
+		[DataMember] public Int16? col14_ne { get; set; }
+		[DataMember] public Int16? col14_lt { get; set; }
+		[DataMember] public Int16? col14_gt { get; set; }
+		[DataMember] public Int16? col14_le { get; set; }
+		[DataMember] public Int16? col14_ge { get; set; }
+		[DataMember] public IEnumerable<Int16> col14_in { get; set; }
+		[DataMember] public IEnumerable<Int16> col14_ni { get; set; }
+		[DataMember] public (Int16? low, Int16? high)? col14_between { get; set; }
 		#endregion
 		#region col14_
-		public Int16? col14__eq { get; set; }
-		public Int16? col14__ne { get; set; }
-		public Int16? col14__lt { get; set; }
-		public Int16? col14__gt { get; set; }
-		public Int16? col14__le { get; set; }
-		public Int16? col14__ge { get; set; }
-		public IEnumerable<Int16> col14__in { get; set; }
-		public IEnumerable<Int16> col14__ni { get; set; }
-		public (Int16? low, Int16? high)? col14__between { get; set; }
-		public bool col14__isnull { get; set; } = false;
-		public bool col14__isnotnull { get; set; } = false;
+		[DataMember] public Int16? col14__eq { get; set; }
+		[DataMember] public Int16? col14__ne { get; set; }
+		[DataMember] public Int16? col14__lt { get; set; }
+		[DataMember] public Int16? col14__gt { get; set; }
+		[DataMember] public Int16? col14__le { get; set; }
+		[DataMember] public Int16? col14__ge { get; set; }
+		[DataMember] public IEnumerable<Int16> col14__in { get; set; }
+		[DataMember] public IEnumerable<Int16> col14__ni { get; set; }
+		[DataMember] public (Int16? low, Int16? high)? col14__between { get; set; }
+		[DataMember] public bool col14__isnull { get; set; } =  false ;
+		[DataMember] public bool col14__isnotnull { get; set; } = false;
 		#endregion
 		#region col15
-		public int? col15_eq { get; set; }
-		public int? col15_ne { get; set; }
-		public int? col15_lt { get; set; }
-		public int? col15_gt { get; set; }
-		public int? col15_le { get; set; }
-		public int? col15_ge { get; set; }
-		public IEnumerable<int> col15_in { get; set; }
-		public IEnumerable<int> col15_ni { get; set; }
-		public (int? low, int? high)? col15_between { get; set; }
+		[DataMember] public int? col15_eq { get; set; }
+		[DataMember] public int? col15_ne { get; set; }
+		[DataMember] public int? col15_lt { get; set; }
+		[DataMember] public int? col15_gt { get; set; }
+		[DataMember] public int? col15_le { get; set; }
+		[DataMember] public int? col15_ge { get; set; }
+		[DataMember] public IEnumerable<int> col15_in { get; set; }
+		[DataMember] public IEnumerable<int> col15_ni { get; set; }
+		[DataMember] public (int? low, int? high)? col15_between { get; set; }
 		#endregion
 		#region col15_
-		public int? col15__eq { get; set; }
-		public int? col15__ne { get; set; }
-		public int? col15__lt { get; set; }
-		public int? col15__gt { get; set; }
-		public int? col15__le { get; set; }
-		public int? col15__ge { get; set; }
-		public IEnumerable<int> col15__in { get; set; }
-		public IEnumerable<int> col15__ni { get; set; }
-		public (int? low, int? high)? col15__between { get; set; }
-		public bool col15__isnull { get; set; } = false;
-		public bool col15__isnotnull { get; set; } = false;
+		[DataMember] public int? col15__eq { get; set; }
+		[DataMember] public int? col15__ne { get; set; }
+		[DataMember] public int? col15__lt { get; set; }
+		[DataMember] public int? col15__gt { get; set; }
+		[DataMember] public int? col15__le { get; set; }
+		[DataMember] public int? col15__ge { get; set; }
+		[DataMember] public IEnumerable<int> col15__in { get; set; }
+		[DataMember] public IEnumerable<int> col15__ni { get; set; }
+		[DataMember] public (int? low, int? high)? col15__between { get; set; }
+		[DataMember] public bool col15__isnull { get; set; } =  false ;
+		[DataMember] public bool col15__isnotnull { get; set; } = false;
 		#endregion
 		#region col16
-		public Int64? col16_eq { get; set; }
-		public Int64? col16_ne { get; set; }
-		public Int64? col16_lt { get; set; }
-		public Int64? col16_gt { get; set; }
-		public Int64? col16_le { get; set; }
-		public Int64? col16_ge { get; set; }
-		public IEnumerable<Int64> col16_in { get; set; }
-		public IEnumerable<Int64> col16_ni { get; set; }
-		public (Int64? low, Int64? high)? col16_between { get; set; }
+		[DataMember] public Int64? col16_eq { get; set; }
+		[DataMember] public Int64? col16_ne { get; set; }
+		[DataMember] public Int64? col16_lt { get; set; }
+		[DataMember] public Int64? col16_gt { get; set; }
+		[DataMember] public Int64? col16_le { get; set; }
+		[DataMember] public Int64? col16_ge { get; set; }
+		[DataMember] public IEnumerable<Int64> col16_in { get; set; }
+		[DataMember] public IEnumerable<Int64> col16_ni { get; set; }
+		[DataMember] public (Int64? low, Int64? high)? col16_between { get; set; }
 		#endregion
 		#region col16_
-		public Int64? col16__eq { get; set; }
-		public Int64? col16__ne { get; set; }
-		public Int64? col16__lt { get; set; }
-		public Int64? col16__gt { get; set; }
-		public Int64? col16__le { get; set; }
-		public Int64? col16__ge { get; set; }
-		public IEnumerable<Int64> col16__in { get; set; }
-		public IEnumerable<Int64> col16__ni { get; set; }
-		public (Int64? low, Int64? high)? col16__between { get; set; }
-		public bool col16__isnull { get; set; } = false;
-		public bool col16__isnotnull { get; set; } = false;
+		[DataMember] public Int64? col16__eq { get; set; }
+		[DataMember] public Int64? col16__ne { get; set; }
+		[DataMember] public Int64? col16__lt { get; set; }
+		[DataMember] public Int64? col16__gt { get; set; }
+		[DataMember] public Int64? col16__le { get; set; }
+		[DataMember] public Int64? col16__ge { get; set; }
+		[DataMember] public IEnumerable<Int64> col16__in { get; set; }
+		[DataMember] public IEnumerable<Int64> col16__ni { get; set; }
+		[DataMember] public (Int64? low, Int64? high)? col16__between { get; set; }
+		[DataMember] public bool col16__isnull { get; set; } =  false ;
+		[DataMember] public bool col16__isnotnull { get; set; } = false;
 		#endregion
 		#region col17
-		public byte? col17_eq { get; set; }
-		public byte? col17_ne { get; set; }
+		[DataMember] public byte? col17_eq { get; set; }
+		[DataMember] public byte? col17_ne { get; set; }
 		#endregion
 		#region col17_
-		public byte? col17__eq { get; set; }
-		public byte? col17__ne { get; set; }
-		public bool col17__isnull { get; set; } = false;
-		public bool col17__isnotnull { get; set; } = false;
+		[DataMember] public byte? col17__eq { get; set; }
+		[DataMember] public byte? col17__ne { get; set; }
+		[DataMember] public bool col17__isnull { get; set; } =  false ;
+		[DataMember] public bool col17__isnotnull { get; set; } = false;
 		#endregion
 		#region col18
-		public float? col18_eq { get; set; }
-		public float? col18_ne { get; set; }
-		public float? col18_lt { get; set; }
-		public float? col18_gt { get; set; }
-		public float? col18_le { get; set; }
-		public float? col18_ge { get; set; }
-		public IEnumerable<float> col18_in { get; set; }
-		public IEnumerable<float> col18_ni { get; set; }
-		public (float? low, float? high)? col18_between { get; set; }
+		[DataMember] public float? col18_eq { get; set; }
+		[DataMember] public float? col18_ne { get; set; }
+		[DataMember] public float? col18_lt { get; set; }
+		[DataMember] public float? col18_gt { get; set; }
+		[DataMember] public float? col18_le { get; set; }
+		[DataMember] public float? col18_ge { get; set; }
+		[DataMember] public IEnumerable<float> col18_in { get; set; }
+		[DataMember] public IEnumerable<float> col18_ni { get; set; }
+		[DataMember] public (float? low, float? high)? col18_between { get; set; }
 		#endregion
 		#region col18_
-		public float? col18__eq { get; set; }
-		public float? col18__ne { get; set; }
-		public float? col18__lt { get; set; }
-		public float? col18__gt { get; set; }
-		public float? col18__le { get; set; }
-		public float? col18__ge { get; set; }
-		public IEnumerable<float> col18__in { get; set; }
-		public IEnumerable<float> col18__ni { get; set; }
-		public (float? low, float? high)? col18__between { get; set; }
-		public bool col18__isnull { get; set; } = false;
-		public bool col18__isnotnull { get; set; } = false;
+		[DataMember] public float? col18__eq { get; set; }
+		[DataMember] public float? col18__ne { get; set; }
+		[DataMember] public float? col18__lt { get; set; }
+		[DataMember] public float? col18__gt { get; set; }
+		[DataMember] public float? col18__le { get; set; }
+		[DataMember] public float? col18__ge { get; set; }
+		[DataMember] public IEnumerable<float> col18__in { get; set; }
+		[DataMember] public IEnumerable<float> col18__ni { get; set; }
+		[DataMember] public (float? low, float? high)? col18__between { get; set; }
+		[DataMember] public bool col18__isnull { get; set; } =  false ;
+		[DataMember] public bool col18__isnotnull { get; set; } = false;
 		#endregion
 		#region col19
-		public decimal? col19_eq { get; set; }
-		public decimal? col19_ne { get; set; }
-		public decimal? col19_lt { get; set; }
-		public decimal? col19_gt { get; set; }
-		public decimal? col19_le { get; set; }
-		public decimal? col19_ge { get; set; }
-		public IEnumerable<decimal> col19_in { get; set; }
-		public IEnumerable<decimal> col19_ni { get; set; }
-		public (decimal? low, decimal? high)? col19_between { get; set; }
+		[DataMember] public decimal? col19_eq { get; set; }
+		[DataMember] public decimal? col19_ne { get; set; }
+		[DataMember] public decimal? col19_lt { get; set; }
+		[DataMember] public decimal? col19_gt { get; set; }
+		[DataMember] public decimal? col19_le { get; set; }
+		[DataMember] public decimal? col19_ge { get; set; }
+		[DataMember] public IEnumerable<decimal> col19_in { get; set; }
+		[DataMember] public IEnumerable<decimal> col19_ni { get; set; }
+		[DataMember] public (decimal? low, decimal? high)? col19_between { get; set; }
 		#endregion
 		#region col19_
-		public decimal? col19__eq { get; set; }
-		public decimal? col19__ne { get; set; }
-		public decimal? col19__lt { get; set; }
-		public decimal? col19__gt { get; set; }
-		public decimal? col19__le { get; set; }
-		public decimal? col19__ge { get; set; }
-		public IEnumerable<decimal> col19__in { get; set; }
-		public IEnumerable<decimal> col19__ni { get; set; }
-		public (decimal? low, decimal? high)? col19__between { get; set; }
-		public bool col19__isnull { get; set; } = false;
-		public bool col19__isnotnull { get; set; } = false;
+		[DataMember] public decimal? col19__eq { get; set; }
+		[DataMember] public decimal? col19__ne { get; set; }
+		[DataMember] public decimal? col19__lt { get; set; }
+		[DataMember] public decimal? col19__gt { get; set; }
+		[DataMember] public decimal? col19__le { get; set; }
+		[DataMember] public decimal? col19__ge { get; set; }
+		[DataMember] public IEnumerable<decimal> col19__in { get; set; }
+		[DataMember] public IEnumerable<decimal> col19__ni { get; set; }
+		[DataMember] public (decimal? low, decimal? high)? col19__between { get; set; }
+		[DataMember] public bool col19__isnull { get; set; } =  false ;
+		[DataMember] public bool col19__isnotnull { get; set; } = false;
 		#endregion
 		#region col20
-		public decimal? col20_eq { get; set; }
-		public decimal? col20_ne { get; set; }
-		public decimal? col20_lt { get; set; }
-		public decimal? col20_gt { get; set; }
-		public decimal? col20_le { get; set; }
-		public decimal? col20_ge { get; set; }
-		public IEnumerable<decimal> col20_in { get; set; }
-		public IEnumerable<decimal> col20_ni { get; set; }
-		public (decimal? low, decimal? high)? col20_between { get; set; }
+		[DataMember] public decimal? col20_eq { get; set; }
+		[DataMember] public decimal? col20_ne { get; set; }
+		[DataMember] public decimal? col20_lt { get; set; }
+		[DataMember] public decimal? col20_gt { get; set; }
+		[DataMember] public decimal? col20_le { get; set; }
+		[DataMember] public decimal? col20_ge { get; set; }
+		[DataMember] public IEnumerable<decimal> col20_in { get; set; }
+		[DataMember] public IEnumerable<decimal> col20_ni { get; set; }
+		[DataMember] public (decimal? low, decimal? high)? col20_between { get; set; }
 		#endregion
 		#region col20_
-		public decimal? col20__eq { get; set; }
-		public decimal? col20__ne { get; set; }
-		public decimal? col20__lt { get; set; }
-		public decimal? col20__gt { get; set; }
-		public decimal? col20__le { get; set; }
-		public decimal? col20__ge { get; set; }
-		public IEnumerable<decimal> col20__in { get; set; }
-		public IEnumerable<decimal> col20__ni { get; set; }
-		public (decimal? low, decimal? high)? col20__between { get; set; }
-		public bool col20__isnull { get; set; } = false;
-		public bool col20__isnotnull { get; set; } = false;
+		[DataMember] public decimal? col20__eq { get; set; }
+		[DataMember] public decimal? col20__ne { get; set; }
+		[DataMember] public decimal? col20__lt { get; set; }
+		[DataMember] public decimal? col20__gt { get; set; }
+		[DataMember] public decimal? col20__le { get; set; }
+		[DataMember] public decimal? col20__ge { get; set; }
+		[DataMember] public IEnumerable<decimal> col20__in { get; set; }
+		[DataMember] public IEnumerable<decimal> col20__ni { get; set; }
+		[DataMember] public (decimal? low, decimal? high)? col20__between { get; set; }
+		[DataMember] public bool col20__isnull { get; set; } =  false ;
+		[DataMember] public bool col20__isnotnull { get; set; } = false;
 		#endregion
 		#region col21
-		public decimal? col21_eq { get; set; }
-		public decimal? col21_ne { get; set; }
-		public decimal? col21_lt { get; set; }
-		public decimal? col21_gt { get; set; }
-		public decimal? col21_le { get; set; }
-		public decimal? col21_ge { get; set; }
-		public IEnumerable<decimal> col21_in { get; set; }
-		public IEnumerable<decimal> col21_ni { get; set; }
-		public (decimal? low, decimal? high)? col21_between { get; set; }
+		[DataMember] public decimal? col21_eq { get; set; }
+		[DataMember] public decimal? col21_ne { get; set; }
+		[DataMember] public decimal? col21_lt { get; set; }
+		[DataMember] public decimal? col21_gt { get; set; }
+		[DataMember] public decimal? col21_le { get; set; }
+		[DataMember] public decimal? col21_ge { get; set; }
+		[DataMember] public IEnumerable<decimal> col21_in { get; set; }
+		[DataMember] public IEnumerable<decimal> col21_ni { get; set; }
+		[DataMember] public (decimal? low, decimal? high)? col21_between { get; set; }
 		#endregion
 		#region col21_
-		public decimal? col21__eq { get; set; }
-		public decimal? col21__ne { get; set; }
-		public decimal? col21__lt { get; set; }
-		public decimal? col21__gt { get; set; }
-		public decimal? col21__le { get; set; }
-		public decimal? col21__ge { get; set; }
-		public IEnumerable<decimal> col21__in { get; set; }
-		public IEnumerable<decimal> col21__ni { get; set; }
-		public (decimal? low, decimal? high)? col21__between { get; set; }
-		public bool col21__isnull { get; set; } = false;
-		public bool col21__isnotnull { get; set; } = false;
+		[DataMember] public decimal? col21__eq { get; set; }
+		[DataMember] public decimal? col21__ne { get; set; }
+		[DataMember] public decimal? col21__lt { get; set; }
+		[DataMember] public decimal? col21__gt { get; set; }
+		[DataMember] public decimal? col21__le { get; set; }
+		[DataMember] public decimal? col21__ge { get; set; }
+		[DataMember] public IEnumerable<decimal> col21__in { get; set; }
+		[DataMember] public IEnumerable<decimal> col21__ni { get; set; }
+		[DataMember] public (decimal? low, decimal? high)? col21__between { get; set; }
+		[DataMember] public bool col21__isnull { get; set; } =  false ;
+		[DataMember] public bool col21__isnotnull { get; set; } = false;
 		#endregion
 		#region col22
-		public decimal? col22_eq { get; set; }
-		public decimal? col22_ne { get; set; }
-		public decimal? col22_lt { get; set; }
-		public decimal? col22_gt { get; set; }
-		public decimal? col22_le { get; set; }
-		public decimal? col22_ge { get; set; }
-		public IEnumerable<decimal> col22_in { get; set; }
-		public IEnumerable<decimal> col22_ni { get; set; }
-		public (decimal? low, decimal? high)? col22_between { get; set; }
+		[DataMember] public decimal? col22_eq { get; set; }
+		[DataMember] public decimal? col22_ne { get; set; }
+		[DataMember] public decimal? col22_lt { get; set; }
+		[DataMember] public decimal? col22_gt { get; set; }
+		[DataMember] public decimal? col22_le { get; set; }
+		[DataMember] public decimal? col22_ge { get; set; }
+		[DataMember] public IEnumerable<decimal> col22_in { get; set; }
+		[DataMember] public IEnumerable<decimal> col22_ni { get; set; }
+		[DataMember] public (decimal? low, decimal? high)? col22_between { get; set; }
 		#endregion
 		#region col22_
-		public decimal? col22__eq { get; set; }
-		public decimal? col22__ne { get; set; }
-		public decimal? col22__lt { get; set; }
-		public decimal? col22__gt { get; set; }
-		public decimal? col22__le { get; set; }
-		public decimal? col22__ge { get; set; }
-		public IEnumerable<decimal> col22__in { get; set; }
-		public IEnumerable<decimal> col22__ni { get; set; }
-		public (decimal? low, decimal? high)? col22__between { get; set; }
-		public bool col22__isnull { get; set; } = false;
-		public bool col22__isnotnull { get; set; } = false;
+		[DataMember] public decimal? col22__eq { get; set; }
+		[DataMember] public decimal? col22__ne { get; set; }
+		[DataMember] public decimal? col22__lt { get; set; }
+		[DataMember] public decimal? col22__gt { get; set; }
+		[DataMember] public decimal? col22__le { get; set; }
+		[DataMember] public decimal? col22__ge { get; set; }
+		[DataMember] public IEnumerable<decimal> col22__in { get; set; }
+		[DataMember] public IEnumerable<decimal> col22__ni { get; set; }
+		[DataMember] public (decimal? low, decimal? high)? col22__between { get; set; }
+		[DataMember] public bool col22__isnull { get; set; } =  false ;
+		[DataMember] public bool col22__isnotnull { get; set; } = false;
 		#endregion
 		#region col23
-		public DateTime? col23_eq { get; set; }
-		public DateTime? col23_ne { get; set; }
-		public DateTime? col23_lt { get; set; }
-		public DateTime? col23_gt { get; set; }
-		public DateTime? col23_le { get; set; }
-		public DateTime? col23_ge { get; set; }
-		public IEnumerable<DateTime> col23_in { get; set; }
-		public IEnumerable<DateTime> col23_ni { get; set; }
-		public (DateTime? low, DateTime? high)? col23_between { get; set; }
+		[DataMember] public DateTime? col23_eq { get; set; }
+		[DataMember] public DateTime? col23_ne { get; set; }
+		[DataMember] public DateTime? col23_lt { get; set; }
+		[DataMember] public DateTime? col23_gt { get; set; }
+		[DataMember] public DateTime? col23_le { get; set; }
+		[DataMember] public DateTime? col23_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> col23_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> col23_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? col23_between { get; set; }
 		#endregion
 		#region col23_
-		public DateTime? col23__eq { get; set; }
-		public DateTime? col23__ne { get; set; }
-		public DateTime? col23__lt { get; set; }
-		public DateTime? col23__gt { get; set; }
-		public DateTime? col23__le { get; set; }
-		public DateTime? col23__ge { get; set; }
-		public IEnumerable<DateTime> col23__in { get; set; }
-		public IEnumerable<DateTime> col23__ni { get; set; }
-		public (DateTime? low, DateTime? high)? col23__between { get; set; }
-		public bool col23__isnull { get; set; } = false;
-		public bool col23__isnotnull { get; set; } = false;
+		[DataMember] public DateTime? col23__eq { get; set; }
+		[DataMember] public DateTime? col23__ne { get; set; }
+		[DataMember] public DateTime? col23__lt { get; set; }
+		[DataMember] public DateTime? col23__gt { get; set; }
+		[DataMember] public DateTime? col23__le { get; set; }
+		[DataMember] public DateTime? col23__ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> col23__in { get; set; }
+		[DataMember] public IEnumerable<DateTime> col23__ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? col23__between { get; set; }
+		[DataMember] public bool col23__isnull { get; set; } =  false ;
+		[DataMember] public bool col23__isnotnull { get; set; } = false;
 		#endregion
 		#region col24
-		public TimeSpan? col24_eq { get; set; }
-		public TimeSpan? col24_ne { get; set; }
-		public TimeSpan? col24_lt { get; set; }
-		public TimeSpan? col24_gt { get; set; }
-		public TimeSpan? col24_le { get; set; }
-		public TimeSpan? col24_ge { get; set; }
-		public IEnumerable<TimeSpan> col24_in { get; set; }
-		public IEnumerable<TimeSpan> col24_ni { get; set; }
-		public (TimeSpan? low, TimeSpan? high)? col24_between { get; set; }
+		[DataMember] public TimeSpan? col24_eq { get; set; }
+		[DataMember] public TimeSpan? col24_ne { get; set; }
+		[DataMember] public TimeSpan? col24_lt { get; set; }
+		[DataMember] public TimeSpan? col24_gt { get; set; }
+		[DataMember] public TimeSpan? col24_le { get; set; }
+		[DataMember] public TimeSpan? col24_ge { get; set; }
+		[DataMember] public IEnumerable<TimeSpan> col24_in { get; set; }
+		[DataMember] public IEnumerable<TimeSpan> col24_ni { get; set; }
+		[DataMember] public (TimeSpan? low, TimeSpan? high)? col24_between { get; set; }
 		#endregion
 		#region col24_
-		public TimeSpan? col24__eq { get; set; }
-		public TimeSpan? col24__ne { get; set; }
-		public TimeSpan? col24__lt { get; set; }
-		public TimeSpan? col24__gt { get; set; }
-		public TimeSpan? col24__le { get; set; }
-		public TimeSpan? col24__ge { get; set; }
-		public IEnumerable<TimeSpan> col24__in { get; set; }
-		public IEnumerable<TimeSpan> col24__ni { get; set; }
-		public (TimeSpan? low, TimeSpan? high)? col24__between { get; set; }
-		public bool col24__isnull { get; set; } = false;
-		public bool col24__isnotnull { get; set; } = false;
+		[DataMember] public TimeSpan? col24__eq { get; set; }
+		[DataMember] public TimeSpan? col24__ne { get; set; }
+		[DataMember] public TimeSpan? col24__lt { get; set; }
+		[DataMember] public TimeSpan? col24__gt { get; set; }
+		[DataMember] public TimeSpan? col24__le { get; set; }
+		[DataMember] public TimeSpan? col24__ge { get; set; }
+		[DataMember] public IEnumerable<TimeSpan> col24__in { get; set; }
+		[DataMember] public IEnumerable<TimeSpan> col24__ni { get; set; }
+		[DataMember] public (TimeSpan? low, TimeSpan? high)? col24__between { get; set; }
+		[DataMember] public bool col24__isnull { get; set; } =  false ;
+		[DataMember] public bool col24__isnotnull { get; set; } = false;
 		#endregion
 		#region col25
-		public DateTime? col25_eq { get; set; }
-		public DateTime? col25_ne { get; set; }
-		public DateTime? col25_lt { get; set; }
-		public DateTime? col25_gt { get; set; }
-		public DateTime? col25_le { get; set; }
-		public DateTime? col25_ge { get; set; }
-		public IEnumerable<DateTime> col25_in { get; set; }
-		public IEnumerable<DateTime> col25_ni { get; set; }
-		public (DateTime? low, DateTime? high)? col25_between { get; set; }
+		[DataMember] public DateTime? col25_eq { get; set; }
+		[DataMember] public DateTime? col25_ne { get; set; }
+		[DataMember] public DateTime? col25_lt { get; set; }
+		[DataMember] public DateTime? col25_gt { get; set; }
+		[DataMember] public DateTime? col25_le { get; set; }
+		[DataMember] public DateTime? col25_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> col25_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> col25_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? col25_between { get; set; }
 		#endregion
 		#region col25_
-		public DateTime? col25__eq { get; set; }
-		public DateTime? col25__ne { get; set; }
-		public DateTime? col25__lt { get; set; }
-		public DateTime? col25__gt { get; set; }
-		public DateTime? col25__le { get; set; }
-		public DateTime? col25__ge { get; set; }
-		public IEnumerable<DateTime> col25__in { get; set; }
-		public IEnumerable<DateTime> col25__ni { get; set; }
-		public (DateTime? low, DateTime? high)? col25__between { get; set; }
-		public bool col25__isnull { get; set; } = false;
-		public bool col25__isnotnull { get; set; } = false;
+		[DataMember] public DateTime? col25__eq { get; set; }
+		[DataMember] public DateTime? col25__ne { get; set; }
+		[DataMember] public DateTime? col25__lt { get; set; }
+		[DataMember] public DateTime? col25__gt { get; set; }
+		[DataMember] public DateTime? col25__le { get; set; }
+		[DataMember] public DateTime? col25__ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> col25__in { get; set; }
+		[DataMember] public IEnumerable<DateTime> col25__ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? col25__between { get; set; }
+		[DataMember] public bool col25__isnull { get; set; } =  false ;
+		[DataMember] public bool col25__isnotnull { get; set; } = false;
 		#endregion
 		#region col26
-		public DateTime? col26_eq { get; set; }
-		public DateTime? col26_ne { get; set; }
-		public DateTime? col26_lt { get; set; }
-		public DateTime? col26_gt { get; set; }
-		public DateTime? col26_le { get; set; }
-		public DateTime? col26_ge { get; set; }
-		public IEnumerable<DateTime> col26_in { get; set; }
-		public IEnumerable<DateTime> col26_ni { get; set; }
-		public (DateTime? low, DateTime? high)? col26_between { get; set; }
+		[DataMember] public DateTime? col26_eq { get; set; }
+		[DataMember] public DateTime? col26_ne { get; set; }
+		[DataMember] public DateTime? col26_lt { get; set; }
+		[DataMember] public DateTime? col26_gt { get; set; }
+		[DataMember] public DateTime? col26_le { get; set; }
+		[DataMember] public DateTime? col26_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> col26_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> col26_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? col26_between { get; set; }
 		#endregion
 		#region col26_
-		public DateTime? col26__eq { get; set; }
-		public DateTime? col26__ne { get; set; }
-		public DateTime? col26__lt { get; set; }
-		public DateTime? col26__gt { get; set; }
-		public DateTime? col26__le { get; set; }
-		public DateTime? col26__ge { get; set; }
-		public IEnumerable<DateTime> col26__in { get; set; }
-		public IEnumerable<DateTime> col26__ni { get; set; }
-		public (DateTime? low, DateTime? high)? col26__between { get; set; }
-		public bool col26__isnull { get; set; } = false;
-		public bool col26__isnotnull { get; set; } = false;
+		[DataMember] public DateTime? col26__eq { get; set; }
+		[DataMember] public DateTime? col26__ne { get; set; }
+		[DataMember] public DateTime? col26__lt { get; set; }
+		[DataMember] public DateTime? col26__gt { get; set; }
+		[DataMember] public DateTime? col26__le { get; set; }
+		[DataMember] public DateTime? col26__ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> col26__in { get; set; }
+		[DataMember] public IEnumerable<DateTime> col26__ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? col26__between { get; set; }
+		[DataMember] public bool col26__isnull { get; set; } =  false ;
+		[DataMember] public bool col26__isnotnull { get; set; } = false;
 		#endregion
 		#region col27
-		public DateTime? col27_eq { get; set; }
-		public DateTime? col27_ne { get; set; }
-		public DateTime? col27_lt { get; set; }
-		public DateTime? col27_gt { get; set; }
-		public DateTime? col27_le { get; set; }
-		public DateTime? col27_ge { get; set; }
-		public IEnumerable<DateTime> col27_in { get; set; }
-		public IEnumerable<DateTime> col27_ni { get; set; }
-		public (DateTime? low, DateTime? high)? col27_between { get; set; }
+		[DataMember] public DateTime? col27_eq { get; set; }
+		[DataMember] public DateTime? col27_ne { get; set; }
+		[DataMember] public DateTime? col27_lt { get; set; }
+		[DataMember] public DateTime? col27_gt { get; set; }
+		[DataMember] public DateTime? col27_le { get; set; }
+		[DataMember] public DateTime? col27_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> col27_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> col27_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? col27_between { get; set; }
 		#endregion
 		#region col27_
-		public DateTime? col27__eq { get; set; }
-		public DateTime? col27__ne { get; set; }
-		public DateTime? col27__lt { get; set; }
-		public DateTime? col27__gt { get; set; }
-		public DateTime? col27__le { get; set; }
-		public DateTime? col27__ge { get; set; }
-		public IEnumerable<DateTime> col27__in { get; set; }
-		public IEnumerable<DateTime> col27__ni { get; set; }
-		public (DateTime? low, DateTime? high)? col27__between { get; set; }
-		public bool col27__isnull { get; set; } = false;
-		public bool col27__isnotnull { get; set; } = false;
+		[DataMember] public DateTime? col27__eq { get; set; }
+		[DataMember] public DateTime? col27__ne { get; set; }
+		[DataMember] public DateTime? col27__lt { get; set; }
+		[DataMember] public DateTime? col27__gt { get; set; }
+		[DataMember] public DateTime? col27__le { get; set; }
+		[DataMember] public DateTime? col27__ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> col27__in { get; set; }
+		[DataMember] public IEnumerable<DateTime> col27__ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? col27__between { get; set; }
+		[DataMember] public bool col27__isnull { get; set; } =  false ;
+		[DataMember] public bool col27__isnotnull { get; set; } = false;
 		#endregion
 		#region col28
-		public DateTimeOffset? col28_eq { get; set; }
-		public DateTimeOffset? col28_ne { get; set; }
-		public DateTimeOffset? col28_lt { get; set; }
-		public DateTimeOffset? col28_gt { get; set; }
-		public DateTimeOffset? col28_le { get; set; }
-		public DateTimeOffset? col28_ge { get; set; }
-		public IEnumerable<DateTimeOffset> col28_in { get; set; }
-		public IEnumerable<DateTimeOffset> col28_ni { get; set; }
-		public (DateTimeOffset? low, DateTimeOffset? high)? col28_between { get; set; }
+		[DataMember] public DateTimeOffset? col28_eq { get; set; }
+		[DataMember] public DateTimeOffset? col28_ne { get; set; }
+		[DataMember] public DateTimeOffset? col28_lt { get; set; }
+		[DataMember] public DateTimeOffset? col28_gt { get; set; }
+		[DataMember] public DateTimeOffset? col28_le { get; set; }
+		[DataMember] public DateTimeOffset? col28_ge { get; set; }
+		[DataMember] public IEnumerable<DateTimeOffset> col28_in { get; set; }
+		[DataMember] public IEnumerable<DateTimeOffset> col28_ni { get; set; }
+		[DataMember] public (DateTimeOffset? low, DateTimeOffset? high)? col28_between { get; set; }
 		#endregion
 		#region col28_
-		public DateTimeOffset? col28__eq { get; set; }
-		public DateTimeOffset? col28__ne { get; set; }
-		public DateTimeOffset? col28__lt { get; set; }
-		public DateTimeOffset? col28__gt { get; set; }
-		public DateTimeOffset? col28__le { get; set; }
-		public DateTimeOffset? col28__ge { get; set; }
-		public IEnumerable<DateTimeOffset> col28__in { get; set; }
-		public IEnumerable<DateTimeOffset> col28__ni { get; set; }
-		public (DateTimeOffset? low, DateTimeOffset? high)? col28__between { get; set; }
-		public bool col28__isnull { get; set; } = false;
-		public bool col28__isnotnull { get; set; } = false;
+		[DataMember] public DateTimeOffset? col28__eq { get; set; }
+		[DataMember] public DateTimeOffset? col28__ne { get; set; }
+		[DataMember] public DateTimeOffset? col28__lt { get; set; }
+		[DataMember] public DateTimeOffset? col28__gt { get; set; }
+		[DataMember] public DateTimeOffset? col28__le { get; set; }
+		[DataMember] public DateTimeOffset? col28__ge { get; set; }
+		[DataMember] public IEnumerable<DateTimeOffset> col28__in { get; set; }
+		[DataMember] public IEnumerable<DateTimeOffset> col28__ni { get; set; }
+		[DataMember] public (DateTimeOffset? low, DateTimeOffset? high)? col28__between { get; set; }
+		[DataMember] public bool col28__isnull { get; set; } =  false ;
+		[DataMember] public bool col28__isnotnull { get; set; } = false;
 		#endregion
 		#region col29
-		public byte[] col29_eq { get; set; }
-		public byte[] col29_ne { get; set; }
+		[DataMember] public byte[] col29_eq { get; set; }
+		[DataMember] public byte[] col29_ne { get; set; }
 		#endregion
 		#endregion
 
@@ -6209,146 +6215,147 @@ namespace peppa.Domain
 	/// <summary>
 	/// ロールマスタ条件
 	/// </summary>
+	[DataContract]
 	public partial class RoleCondition : ConditionBase<Role>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region role_id
-		public string role_id_eq { get; set; }
-		public string role_id_ne { get; set; }
-		public string role_id_lt { get; set; }
-		public string role_id_gt { get; set; }
-		public string role_id_le { get; set; }
-		public string role_id_ge { get; set; }
-		public IEnumerable<string> role_id_in { get; set; }
-		public IEnumerable<string> role_id_ni { get; set; }
-		public (string low, string high)? role_id_between { get; set; }
-		public string role_id_like { get; set; }
+		[DataMember] public string role_id_eq { get; set; }
+		[DataMember] public string role_id_ne { get; set; }
+		[DataMember] public string role_id_lt { get; set; }
+		[DataMember] public string role_id_gt { get; set; }
+		[DataMember] public string role_id_le { get; set; }
+		[DataMember] public string role_id_ge { get; set; }
+		[DataMember] public IEnumerable<string> role_id_in { get; set; }
+		[DataMember] public IEnumerable<string> role_id_ni { get; set; }
+		[DataMember] public (string low, string high)? role_id_between { get; set; }
+		[DataMember] public string role_id_like { get; set; }
 		#endregion
 		#region name
-		public string name_eq { get; set; }
-		public string name_ne { get; set; }
-		public string name_lt { get; set; }
-		public string name_gt { get; set; }
-		public string name_le { get; set; }
-		public string name_ge { get; set; }
-		public IEnumerable<string> name_in { get; set; }
-		public IEnumerable<string> name_ni { get; set; }
-		public (string low, string high)? name_between { get; set; }
-		public string name_like { get; set; }
+		[DataMember] public string name_eq { get; set; }
+		[DataMember] public string name_ne { get; set; }
+		[DataMember] public string name_lt { get; set; }
+		[DataMember] public string name_gt { get; set; }
+		[DataMember] public string name_le { get; set; }
+		[DataMember] public string name_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_in { get; set; }
+		[DataMember] public IEnumerable<string> name_ni { get; set; }
+		[DataMember] public (string low, string high)? name_between { get; set; }
+		[DataMember] public string name_like { get; set; }
 		#endregion
 		#region abbrev
-		public string abbrev_eq { get; set; }
-		public string abbrev_ne { get; set; }
-		public string abbrev_lt { get; set; }
-		public string abbrev_gt { get; set; }
-		public string abbrev_le { get; set; }
-		public string abbrev_ge { get; set; }
-		public IEnumerable<string> abbrev_in { get; set; }
-		public IEnumerable<string> abbrev_ni { get; set; }
-		public (string low, string high)? abbrev_between { get; set; }
-		public string abbrev_like { get; set; }
+		[DataMember] public string abbrev_eq { get; set; }
+		[DataMember] public string abbrev_ne { get; set; }
+		[DataMember] public string abbrev_lt { get; set; }
+		[DataMember] public string abbrev_gt { get; set; }
+		[DataMember] public string abbrev_le { get; set; }
+		[DataMember] public string abbrev_ge { get; set; }
+		[DataMember] public IEnumerable<string> abbrev_in { get; set; }
+		[DataMember] public IEnumerable<string> abbrev_ni { get; set; }
+		[DataMember] public (string low, string high)? abbrev_between { get; set; }
+		[DataMember] public string abbrev_like { get; set; }
 		#endregion
 		#region name_en
-		public string name_en_eq { get; set; }
-		public string name_en_ne { get; set; }
-		public string name_en_lt { get; set; }
-		public string name_en_gt { get; set; }
-		public string name_en_le { get; set; }
-		public string name_en_ge { get; set; }
-		public IEnumerable<string> name_en_in { get; set; }
-		public IEnumerable<string> name_en_ni { get; set; }
-		public (string low, string high)? name_en_between { get; set; }
-		public string name_en_like { get; set; }
+		[DataMember] public string name_en_eq { get; set; }
+		[DataMember] public string name_en_ne { get; set; }
+		[DataMember] public string name_en_lt { get; set; }
+		[DataMember] public string name_en_gt { get; set; }
+		[DataMember] public string name_en_le { get; set; }
+		[DataMember] public string name_en_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_en_in { get; set; }
+		[DataMember] public IEnumerable<string> name_en_ni { get; set; }
+		[DataMember] public (string low, string high)? name_en_between { get; set; }
+		[DataMember] public string name_en_like { get; set; }
 		#endregion
 		#region abbrev_en
-		public string abbrev_en_eq { get; set; }
-		public string abbrev_en_ne { get; set; }
-		public string abbrev_en_lt { get; set; }
-		public string abbrev_en_gt { get; set; }
-		public string abbrev_en_le { get; set; }
-		public string abbrev_en_ge { get; set; }
-		public IEnumerable<string> abbrev_en_in { get; set; }
-		public IEnumerable<string> abbrev_en_ni { get; set; }
-		public (string low, string high)? abbrev_en_between { get; set; }
-		public string abbrev_en_like { get; set; }
+		[DataMember] public string abbrev_en_eq { get; set; }
+		[DataMember] public string abbrev_en_ne { get; set; }
+		[DataMember] public string abbrev_en_lt { get; set; }
+		[DataMember] public string abbrev_en_gt { get; set; }
+		[DataMember] public string abbrev_en_le { get; set; }
+		[DataMember] public string abbrev_en_ge { get; set; }
+		[DataMember] public IEnumerable<string> abbrev_en_in { get; set; }
+		[DataMember] public IEnumerable<string> abbrev_en_ni { get; set; }
+		[DataMember] public (string low, string high)? abbrev_en_between { get; set; }
+		[DataMember] public string abbrev_en_like { get; set; }
 		#endregion
 		#region created_at
-		public DateTime? created_at_eq { get; set; }
-		public DateTime? created_at_ne { get; set; }
-		public DateTime? created_at_lt { get; set; }
-		public DateTime? created_at_gt { get; set; }
-		public DateTime? created_at_le { get; set; }
-		public DateTime? created_at_ge { get; set; }
-		public IEnumerable<DateTime> created_at_in { get; set; }
-		public IEnumerable<DateTime> created_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
 		#endregion
 		#region created_by
-		public int? created_by_eq { get; set; }
-		public int? created_by_ne { get; set; }
-		public int? created_by_lt { get; set; }
-		public int? created_by_gt { get; set; }
-		public int? created_by_le { get; set; }
-		public int? created_by_ge { get; set; }
-		public IEnumerable<int> created_by_in { get; set; }
-		public IEnumerable<int> created_by_ni { get; set; }
-		public (int? low, int? high)? created_by_between { get; set; }
-		public bool created_by_isnull { get; set; } = false;
-		public bool created_by_isnotnull { get; set; } = false;
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
-		public DateTime? modified_at_eq { get; set; }
-		public DateTime? modified_at_ne { get; set; }
-		public DateTime? modified_at_lt { get; set; }
-		public DateTime? modified_at_gt { get; set; }
-		public DateTime? modified_at_le { get; set; }
-		public DateTime? modified_at_ge { get; set; }
-		public IEnumerable<DateTime> modified_at_in { get; set; }
-		public IEnumerable<DateTime> modified_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
 		#endregion
 		#region modified_by
-		public int? modified_by_eq { get; set; }
-		public int? modified_by_ne { get; set; }
-		public int? modified_by_lt { get; set; }
-		public int? modified_by_gt { get; set; }
-		public int? modified_by_le { get; set; }
-		public int? modified_by_ge { get; set; }
-		public IEnumerable<int> modified_by_in { get; set; }
-		public IEnumerable<int> modified_by_ni { get; set; }
-		public (int? low, int? high)? modified_by_between { get; set; }
-		public bool modified_by_isnull { get; set; } = false;
-		public bool modified_by_isnotnull { get; set; } = false;
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
-		public DateTime? removed_at_eq { get; set; }
-		public DateTime? removed_at_ne { get; set; }
-		public DateTime? removed_at_lt { get; set; }
-		public DateTime? removed_at_gt { get; set; }
-		public DateTime? removed_at_le { get; set; }
-		public DateTime? removed_at_ge { get; set; }
-		public IEnumerable<DateTime> removed_at_in { get; set; }
-		public IEnumerable<DateTime> removed_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
-		public bool removed_at_isnull { get; set; } = false;
-		public bool removed_at_isnotnull { get; set; } = false;
+		[DataMember] public DateTime? removed_at_eq { get; set; }
+		[DataMember] public DateTime? removed_at_ne { get; set; }
+		[DataMember] public DateTime? removed_at_lt { get; set; }
+		[DataMember] public DateTime? removed_at_gt { get; set; }
+		[DataMember] public DateTime? removed_at_le { get; set; }
+		[DataMember] public DateTime? removed_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		[DataMember] public bool removed_at_isnull { get; set; } =  true ;
+		[DataMember] public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
-		public byte[] row_version_eq { get; set; }
-		public byte[] row_version_ne { get; set; }
-		public bool row_version_isnull { get; set; } = false;
-		public bool row_version_isnotnull { get; set; } = false;
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -7094,147 +7101,148 @@ namespace peppa.Domain
 	/// <summary>
 	/// ロール権限条件
 	/// </summary>
+	[DataContract]
 	public partial class RolePermissionCondition : ConditionBase<RolePermission>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region role_id
-		public string role_id_eq { get; set; }
-		public string role_id_ne { get; set; }
-		public string role_id_lt { get; set; }
-		public string role_id_gt { get; set; }
-		public string role_id_le { get; set; }
-		public string role_id_ge { get; set; }
-		public IEnumerable<string> role_id_in { get; set; }
-		public IEnumerable<string> role_id_ni { get; set; }
-		public (string low, string high)? role_id_between { get; set; }
-		public string role_id_like { get; set; }
+		[DataMember] public string role_id_eq { get; set; }
+		[DataMember] public string role_id_ne { get; set; }
+		[DataMember] public string role_id_lt { get; set; }
+		[DataMember] public string role_id_gt { get; set; }
+		[DataMember] public string role_id_le { get; set; }
+		[DataMember] public string role_id_ge { get; set; }
+		[DataMember] public IEnumerable<string> role_id_in { get; set; }
+		[DataMember] public IEnumerable<string> role_id_ni { get; set; }
+		[DataMember] public (string low, string high)? role_id_between { get; set; }
+		[DataMember] public string role_id_like { get; set; }
 		#endregion
 		#region permission_id (PermissionId)
 		private string _permission_id_eq;
-		public PermissionType? PermissionId_eq
+		[DataMember] public PermissionType? PermissionId_eq
 		{
 			get => _permission_id_eq?.ToPermissionType();
 			set => _permission_id_eq = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private string _permission_id_ne;
-		public PermissionType? PermissionId_ne
+		[DataMember] public PermissionType? PermissionId_ne
 		{
 			get => _permission_id_ne?.ToPermissionType();
 			set => _permission_id_ne = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private string _permission_id_lt;
-		public PermissionType? PermissionId_lt
+		[DataMember] public PermissionType? PermissionId_lt
 		{
 			get => _permission_id_lt?.ToPermissionType();
 			set => _permission_id_lt = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private string _permission_id_gt;
-		public PermissionType? PermissionId_gt
+		[DataMember] public PermissionType? PermissionId_gt
 		{
 			get => _permission_id_gt?.ToPermissionType();
 			set => _permission_id_gt = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private string _permission_id_le;
-		public PermissionType? PermissionId_le
+		[DataMember] public PermissionType? PermissionId_le
 		{
 			get => _permission_id_le?.ToPermissionType();
 			set => _permission_id_le = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private string _permission_id_ge;
-		public PermissionType? PermissionId_ge
+		[DataMember] public PermissionType? PermissionId_ge
 		{
 			get => _permission_id_ge?.ToPermissionType();
 			set => _permission_id_ge = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private IEnumerable<string> _permission_id_in;
-		public IEnumerable<PermissionType> PermissionId_in
+		[DataMember] public IEnumerable<PermissionType> PermissionId_in
 		{
 			get => _permission_id_in.Select(_ => _.ToPermissionType().Value);
 			set => _permission_id_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<string> _permission_id_ni;
-		public IEnumerable<PermissionType> PermissionId_ni
+		[DataMember] public IEnumerable<PermissionType> PermissionId_ni
 		{
 			get => _permission_id_ni.Select(_ => _.ToPermissionType().Value);
 			set => _permission_id_ni = value.Select(_ => _.Val());
 		}
 		private (string low, string high)? _permission_id_between;
-		public (PermissionType low, PermissionType high)? PermissionId_between
+		[DataMember] public (PermissionType low, PermissionType high)? PermissionId_between
 		{
 			get => _permission_id_between.HasValue ? (_permission_id_between.Value.low.ToPermissionType().Value, _permission_id_between.Value.high.ToPermissionType().Value) : ((PermissionType, PermissionType)?)null;
 			set => _permission_id_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((string, string)?)null;
 		}
 		private string _permission_id_like;
-		public PermissionType? PermissionId_like
+		[DataMember] public PermissionType? PermissionId_like
 		{
 			get => _permission_id_like?.ToPermissionType();
 			set => _permission_id_like = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		#endregion
 		#region created_at
-		public DateTime? created_at_eq { get; set; }
-		public DateTime? created_at_ne { get; set; }
-		public DateTime? created_at_lt { get; set; }
-		public DateTime? created_at_gt { get; set; }
-		public DateTime? created_at_le { get; set; }
-		public DateTime? created_at_ge { get; set; }
-		public IEnumerable<DateTime> created_at_in { get; set; }
-		public IEnumerable<DateTime> created_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
 		#endregion
 		#region created_by
-		public int? created_by_eq { get; set; }
-		public int? created_by_ne { get; set; }
-		public int? created_by_lt { get; set; }
-		public int? created_by_gt { get; set; }
-		public int? created_by_le { get; set; }
-		public int? created_by_ge { get; set; }
-		public IEnumerable<int> created_by_in { get; set; }
-		public IEnumerable<int> created_by_ni { get; set; }
-		public (int? low, int? high)? created_by_between { get; set; }
-		public bool created_by_isnull { get; set; } = false;
-		public bool created_by_isnotnull { get; set; } = false;
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
-		public DateTime? modified_at_eq { get; set; }
-		public DateTime? modified_at_ne { get; set; }
-		public DateTime? modified_at_lt { get; set; }
-		public DateTime? modified_at_gt { get; set; }
-		public DateTime? modified_at_le { get; set; }
-		public DateTime? modified_at_ge { get; set; }
-		public IEnumerable<DateTime> modified_at_in { get; set; }
-		public IEnumerable<DateTime> modified_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
 		#endregion
 		#region modified_by
-		public int? modified_by_eq { get; set; }
-		public int? modified_by_ne { get; set; }
-		public int? modified_by_lt { get; set; }
-		public int? modified_by_gt { get; set; }
-		public int? modified_by_le { get; set; }
-		public int? modified_by_ge { get; set; }
-		public IEnumerable<int> modified_by_in { get; set; }
-		public IEnumerable<int> modified_by_ni { get; set; }
-		public (int? low, int? high)? modified_by_between { get; set; }
-		public bool modified_by_isnull { get; set; } = false;
-		public bool modified_by_isnotnull { get; set; } = false;
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
-		public byte[] row_version_eq { get; set; }
-		public byte[] row_version_ne { get; set; }
-		public bool row_version_isnull { get; set; } = false;
-		public bool row_version_isnotnull { get; set; } = false;
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -8174,172 +8182,173 @@ namespace peppa.Domain
 	/// <summary>
 	/// アカウント条件
 	/// </summary>
+	[DataContract]
 	public partial class AccountCondition : ConditionBase<Account>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region account_id
-		public int? account_id_eq { get; set; }
-		public int? account_id_ne { get; set; }
-		public int? account_id_lt { get; set; }
-		public int? account_id_gt { get; set; }
-		public int? account_id_le { get; set; }
-		public int? account_id_ge { get; set; }
-		public IEnumerable<int> account_id_in { get; set; }
-		public IEnumerable<int> account_id_ni { get; set; }
-		public (int? low, int? high)? account_id_between { get; set; }
+		[DataMember] public int? account_id_eq { get; set; }
+		[DataMember] public int? account_id_ne { get; set; }
+		[DataMember] public int? account_id_lt { get; set; }
+		[DataMember] public int? account_id_gt { get; set; }
+		[DataMember] public int? account_id_le { get; set; }
+		[DataMember] public int? account_id_ge { get; set; }
+		[DataMember] public IEnumerable<int> account_id_in { get; set; }
+		[DataMember] public IEnumerable<int> account_id_ni { get; set; }
+		[DataMember] public (int? low, int? high)? account_id_between { get; set; }
 		#endregion
 		#region staff_no
-		public string staff_no_eq { get; set; }
-		public string staff_no_ne { get; set; }
-		public string staff_no_lt { get; set; }
-		public string staff_no_gt { get; set; }
-		public string staff_no_le { get; set; }
-		public string staff_no_ge { get; set; }
-		public IEnumerable<string> staff_no_in { get; set; }
-		public IEnumerable<string> staff_no_ni { get; set; }
-		public (string low, string high)? staff_no_between { get; set; }
-		public bool staff_no_isnull { get; set; } = false;
-		public bool staff_no_isnotnull { get; set; } = false;
-		public string staff_no_like { get; set; }
+		[DataMember] public string staff_no_eq { get; set; }
+		[DataMember] public string staff_no_ne { get; set; }
+		[DataMember] public string staff_no_lt { get; set; }
+		[DataMember] public string staff_no_gt { get; set; }
+		[DataMember] public string staff_no_le { get; set; }
+		[DataMember] public string staff_no_ge { get; set; }
+		[DataMember] public IEnumerable<string> staff_no_in { get; set; }
+		[DataMember] public IEnumerable<string> staff_no_ni { get; set; }
+		[DataMember] public (string low, string high)? staff_no_between { get; set; }
+		[DataMember] public bool staff_no_isnull { get; set; } =  false ;
+		[DataMember] public bool staff_no_isnotnull { get; set; } = false;
+		[DataMember] public string staff_no_like { get; set; }
 		#endregion
 		#region teacher_no
-		public string teacher_no_eq { get; set; }
-		public string teacher_no_ne { get; set; }
-		public string teacher_no_lt { get; set; }
-		public string teacher_no_gt { get; set; }
-		public string teacher_no_le { get; set; }
-		public string teacher_no_ge { get; set; }
-		public IEnumerable<string> teacher_no_in { get; set; }
-		public IEnumerable<string> teacher_no_ni { get; set; }
-		public (string low, string high)? teacher_no_between { get; set; }
-		public bool teacher_no_isnull { get; set; } = false;
-		public bool teacher_no_isnotnull { get; set; } = false;
-		public string teacher_no_like { get; set; }
+		[DataMember] public string teacher_no_eq { get; set; }
+		[DataMember] public string teacher_no_ne { get; set; }
+		[DataMember] public string teacher_no_lt { get; set; }
+		[DataMember] public string teacher_no_gt { get; set; }
+		[DataMember] public string teacher_no_le { get; set; }
+		[DataMember] public string teacher_no_ge { get; set; }
+		[DataMember] public IEnumerable<string> teacher_no_in { get; set; }
+		[DataMember] public IEnumerable<string> teacher_no_ni { get; set; }
+		[DataMember] public (string low, string high)? teacher_no_between { get; set; }
+		[DataMember] public bool teacher_no_isnull { get; set; } =  false ;
+		[DataMember] public bool teacher_no_isnotnull { get; set; } = false;
+		[DataMember] public string teacher_no_like { get; set; }
 		#endregion
 		#region student_no
-		public string student_no_eq { get; set; }
-		public string student_no_ne { get; set; }
-		public string student_no_lt { get; set; }
-		public string student_no_gt { get; set; }
-		public string student_no_le { get; set; }
-		public string student_no_ge { get; set; }
-		public IEnumerable<string> student_no_in { get; set; }
-		public IEnumerable<string> student_no_ni { get; set; }
-		public (string low, string high)? student_no_between { get; set; }
-		public bool student_no_isnull { get; set; } = false;
-		public bool student_no_isnotnull { get; set; } = false;
-		public string student_no_like { get; set; }
+		[DataMember] public string student_no_eq { get; set; }
+		[DataMember] public string student_no_ne { get; set; }
+		[DataMember] public string student_no_lt { get; set; }
+		[DataMember] public string student_no_gt { get; set; }
+		[DataMember] public string student_no_le { get; set; }
+		[DataMember] public string student_no_ge { get; set; }
+		[DataMember] public IEnumerable<string> student_no_in { get; set; }
+		[DataMember] public IEnumerable<string> student_no_ni { get; set; }
+		[DataMember] public (string low, string high)? student_no_between { get; set; }
+		[DataMember] public bool student_no_isnull { get; set; } =  false ;
+		[DataMember] public bool student_no_isnotnull { get; set; } = false;
+		[DataMember] public string student_no_like { get; set; }
 		#endregion
 		#region out_student_no
-		public string out_student_no_eq { get; set; }
-		public string out_student_no_ne { get; set; }
-		public string out_student_no_lt { get; set; }
-		public string out_student_no_gt { get; set; }
-		public string out_student_no_le { get; set; }
-		public string out_student_no_ge { get; set; }
-		public IEnumerable<string> out_student_no_in { get; set; }
-		public IEnumerable<string> out_student_no_ni { get; set; }
-		public (string low, string high)? out_student_no_between { get; set; }
-		public bool out_student_no_isnull { get; set; } = false;
-		public bool out_student_no_isnotnull { get; set; } = false;
-		public string out_student_no_like { get; set; }
+		[DataMember] public string out_student_no_eq { get; set; }
+		[DataMember] public string out_student_no_ne { get; set; }
+		[DataMember] public string out_student_no_lt { get; set; }
+		[DataMember] public string out_student_no_gt { get; set; }
+		[DataMember] public string out_student_no_le { get; set; }
+		[DataMember] public string out_student_no_ge { get; set; }
+		[DataMember] public IEnumerable<string> out_student_no_in { get; set; }
+		[DataMember] public IEnumerable<string> out_student_no_ni { get; set; }
+		[DataMember] public (string low, string high)? out_student_no_between { get; set; }
+		[DataMember] public bool out_student_no_isnull { get; set; } =  false ;
+		[DataMember] public bool out_student_no_isnotnull { get; set; } = false;
+		[DataMember] public string out_student_no_like { get; set; }
 		#endregion
 		#region parent_no
-		public string parent_no_eq { get; set; }
-		public string parent_no_ne { get; set; }
-		public string parent_no_lt { get; set; }
-		public string parent_no_gt { get; set; }
-		public string parent_no_le { get; set; }
-		public string parent_no_ge { get; set; }
-		public IEnumerable<string> parent_no_in { get; set; }
-		public IEnumerable<string> parent_no_ni { get; set; }
-		public (string low, string high)? parent_no_between { get; set; }
-		public bool parent_no_isnull { get; set; } = false;
-		public bool parent_no_isnotnull { get; set; } = false;
-		public string parent_no_like { get; set; }
+		[DataMember] public string parent_no_eq { get; set; }
+		[DataMember] public string parent_no_ne { get; set; }
+		[DataMember] public string parent_no_lt { get; set; }
+		[DataMember] public string parent_no_gt { get; set; }
+		[DataMember] public string parent_no_le { get; set; }
+		[DataMember] public string parent_no_ge { get; set; }
+		[DataMember] public IEnumerable<string> parent_no_in { get; set; }
+		[DataMember] public IEnumerable<string> parent_no_ni { get; set; }
+		[DataMember] public (string low, string high)? parent_no_between { get; set; }
+		[DataMember] public bool parent_no_isnull { get; set; } =  false ;
+		[DataMember] public bool parent_no_isnotnull { get; set; } = false;
+		[DataMember] public string parent_no_like { get; set; }
 		#endregion
 		#region user_no
-		public string user_no_eq { get; set; }
-		public string user_no_ne { get; set; }
-		public string user_no_lt { get; set; }
-		public string user_no_gt { get; set; }
-		public string user_no_le { get; set; }
-		public string user_no_ge { get; set; }
-		public IEnumerable<string> user_no_in { get; set; }
-		public IEnumerable<string> user_no_ni { get; set; }
-		public (string low, string high)? user_no_between { get; set; }
-		public bool user_no_isnull { get; set; } = false;
-		public bool user_no_isnotnull { get; set; } = false;
-		public string user_no_like { get; set; }
+		[DataMember] public string user_no_eq { get; set; }
+		[DataMember] public string user_no_ne { get; set; }
+		[DataMember] public string user_no_lt { get; set; }
+		[DataMember] public string user_no_gt { get; set; }
+		[DataMember] public string user_no_le { get; set; }
+		[DataMember] public string user_no_ge { get; set; }
+		[DataMember] public IEnumerable<string> user_no_in { get; set; }
+		[DataMember] public IEnumerable<string> user_no_ni { get; set; }
+		[DataMember] public (string low, string high)? user_no_between { get; set; }
+		[DataMember] public bool user_no_isnull { get; set; } =  false ;
+		[DataMember] public bool user_no_isnotnull { get; set; } = false;
+		[DataMember] public string user_no_like { get; set; }
 		#endregion
 		#region auth_method_type (AuthMethodType)
 		private string _auth_method_type_eq;
-		public AuthMethod? AuthMethodType_eq
+		[DataMember] public AuthMethod? AuthMethodType_eq
 		{
 			get => _auth_method_type_eq?.ToAuthMethod();
 			set => _auth_method_type_eq = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private string _auth_method_type_ne;
-		public AuthMethod? AuthMethodType_ne
+		[DataMember] public AuthMethod? AuthMethodType_ne
 		{
 			get => _auth_method_type_ne?.ToAuthMethod();
 			set => _auth_method_type_ne = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private string _auth_method_type_lt;
-		public AuthMethod? AuthMethodType_lt
+		[DataMember] public AuthMethod? AuthMethodType_lt
 		{
 			get => _auth_method_type_lt?.ToAuthMethod();
 			set => _auth_method_type_lt = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private string _auth_method_type_gt;
-		public AuthMethod? AuthMethodType_gt
+		[DataMember] public AuthMethod? AuthMethodType_gt
 		{
 			get => _auth_method_type_gt?.ToAuthMethod();
 			set => _auth_method_type_gt = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private string _auth_method_type_le;
-		public AuthMethod? AuthMethodType_le
+		[DataMember] public AuthMethod? AuthMethodType_le
 		{
 			get => _auth_method_type_le?.ToAuthMethod();
 			set => _auth_method_type_le = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private string _auth_method_type_ge;
-		public AuthMethod? AuthMethodType_ge
+		[DataMember] public AuthMethod? AuthMethodType_ge
 		{
 			get => _auth_method_type_ge?.ToAuthMethod();
 			set => _auth_method_type_ge = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		private IEnumerable<string> _auth_method_type_in;
-		public IEnumerable<AuthMethod> AuthMethodType_in
+		[DataMember] public IEnumerable<AuthMethod> AuthMethodType_in
 		{
 			get => _auth_method_type_in.Select(_ => _.ToAuthMethod().Value);
 			set => _auth_method_type_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<string> _auth_method_type_ni;
-		public IEnumerable<AuthMethod> AuthMethodType_ni
+		[DataMember] public IEnumerable<AuthMethod> AuthMethodType_ni
 		{
 			get => _auth_method_type_ni.Select(_ => _.ToAuthMethod().Value);
 			set => _auth_method_type_ni = value.Select(_ => _.Val());
 		}
 		private (string low, string high)? _auth_method_type_between;
-		public (AuthMethod low, AuthMethod high)? AuthMethodType_between
+		[DataMember] public (AuthMethod low, AuthMethod high)? AuthMethodType_between
 		{
 			get => _auth_method_type_between.HasValue ? (_auth_method_type_between.Value.low.ToAuthMethod().Value, _auth_method_type_between.Value.high.ToAuthMethod().Value) : ((AuthMethod, AuthMethod)?)null;
 			set => _auth_method_type_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((string, string)?)null;
 		}
 		private string _auth_method_type_like;
-		public AuthMethod? AuthMethodType_like
+		[DataMember] public AuthMethod? AuthMethodType_like
 		{
 			get => _auth_method_type_like?.ToAuthMethod();
 			set => _auth_method_type_like = value.HasValue ? value.Value.Val() : (string)null;
@@ -8347,126 +8356,126 @@ namespace peppa.Domain
 		#endregion
 		#region is_valid (IsValid)
 		private int? _is_valid_eq;
-		public ValidityFlag? IsValid_eq
+		[DataMember] public ValidityFlag? IsValid_eq
 		{
 			get => _is_valid_eq?.ToValidityFlag();
 			set => _is_valid_eq = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _is_valid_ne;
-		public ValidityFlag? IsValid_ne
+		[DataMember] public ValidityFlag? IsValid_ne
 		{
 			get => _is_valid_ne?.ToValidityFlag();
 			set => _is_valid_ne = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _is_valid_lt;
-		public ValidityFlag? IsValid_lt
+		[DataMember] public ValidityFlag? IsValid_lt
 		{
 			get => _is_valid_lt?.ToValidityFlag();
 			set => _is_valid_lt = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _is_valid_gt;
-		public ValidityFlag? IsValid_gt
+		[DataMember] public ValidityFlag? IsValid_gt
 		{
 			get => _is_valid_gt?.ToValidityFlag();
 			set => _is_valid_gt = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _is_valid_le;
-		public ValidityFlag? IsValid_le
+		[DataMember] public ValidityFlag? IsValid_le
 		{
 			get => _is_valid_le?.ToValidityFlag();
 			set => _is_valid_le = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _is_valid_ge;
-		public ValidityFlag? IsValid_ge
+		[DataMember] public ValidityFlag? IsValid_ge
 		{
 			get => _is_valid_ge?.ToValidityFlag();
 			set => _is_valid_ge = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private IEnumerable<int> _is_valid_in;
-		public IEnumerable<ValidityFlag> IsValid_in
+		[DataMember] public IEnumerable<ValidityFlag> IsValid_in
 		{
 			get => _is_valid_in.Select(_ => _.ToValidityFlag().Value);
 			set => _is_valid_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<int> _is_valid_ni;
-		public IEnumerable<ValidityFlag> IsValid_ni
+		[DataMember] public IEnumerable<ValidityFlag> IsValid_ni
 		{
 			get => _is_valid_ni.Select(_ => _.ToValidityFlag().Value);
 			set => _is_valid_ni = value.Select(_ => _.Val());
 		}
 		private (int low, int high)? _is_valid_between;
-		public (ValidityFlag low, ValidityFlag high)? IsValid_between
+		[DataMember] public (ValidityFlag low, ValidityFlag high)? IsValid_between
 		{
 			get => _is_valid_between.HasValue ? (_is_valid_between.Value.low.ToValidityFlag().Value, _is_valid_between.Value.high.ToValidityFlag().Value) : ((ValidityFlag, ValidityFlag)?)null;
 			set => _is_valid_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((int, int)?)null;
 		}
 		#endregion
 		#region created_at
-		public DateTime? created_at_eq { get; set; }
-		public DateTime? created_at_ne { get; set; }
-		public DateTime? created_at_lt { get; set; }
-		public DateTime? created_at_gt { get; set; }
-		public DateTime? created_at_le { get; set; }
-		public DateTime? created_at_ge { get; set; }
-		public IEnumerable<DateTime> created_at_in { get; set; }
-		public IEnumerable<DateTime> created_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
 		#endregion
 		#region created_by
-		public int? created_by_eq { get; set; }
-		public int? created_by_ne { get; set; }
-		public int? created_by_lt { get; set; }
-		public int? created_by_gt { get; set; }
-		public int? created_by_le { get; set; }
-		public int? created_by_ge { get; set; }
-		public IEnumerable<int> created_by_in { get; set; }
-		public IEnumerable<int> created_by_ni { get; set; }
-		public (int? low, int? high)? created_by_between { get; set; }
-		public bool created_by_isnull { get; set; } = false;
-		public bool created_by_isnotnull { get; set; } = false;
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
-		public DateTime? modified_at_eq { get; set; }
-		public DateTime? modified_at_ne { get; set; }
-		public DateTime? modified_at_lt { get; set; }
-		public DateTime? modified_at_gt { get; set; }
-		public DateTime? modified_at_le { get; set; }
-		public DateTime? modified_at_ge { get; set; }
-		public IEnumerable<DateTime> modified_at_in { get; set; }
-		public IEnumerable<DateTime> modified_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
 		#endregion
 		#region modified_by
-		public int? modified_by_eq { get; set; }
-		public int? modified_by_ne { get; set; }
-		public int? modified_by_lt { get; set; }
-		public int? modified_by_gt { get; set; }
-		public int? modified_by_le { get; set; }
-		public int? modified_by_ge { get; set; }
-		public IEnumerable<int> modified_by_in { get; set; }
-		public IEnumerable<int> modified_by_ni { get; set; }
-		public (int? low, int? high)? modified_by_between { get; set; }
-		public bool modified_by_isnull { get; set; } = false;
-		public bool modified_by_isnotnull { get; set; } = false;
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
-		public DateTime? removed_at_eq { get; set; }
-		public DateTime? removed_at_ne { get; set; }
-		public DateTime? removed_at_lt { get; set; }
-		public DateTime? removed_at_gt { get; set; }
-		public DateTime? removed_at_le { get; set; }
-		public DateTime? removed_at_ge { get; set; }
-		public IEnumerable<DateTime> removed_at_in { get; set; }
-		public IEnumerable<DateTime> removed_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
-		public bool removed_at_isnull { get; set; } = false;
-		public bool removed_at_isnotnull { get; set; } = false;
+		[DataMember] public DateTime? removed_at_eq { get; set; }
+		[DataMember] public DateTime? removed_at_ne { get; set; }
+		[DataMember] public DateTime? removed_at_lt { get; set; }
+		[DataMember] public DateTime? removed_at_gt { get; set; }
+		[DataMember] public DateTime? removed_at_le { get; set; }
+		[DataMember] public DateTime? removed_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		[DataMember] public bool removed_at_isnull { get; set; } =  true ;
+		[DataMember] public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
-		public byte[] row_version_eq { get; set; }
-		public byte[] row_version_ne { get; set; }
-		public bool row_version_isnull { get; set; } = false;
-		public bool row_version_isnotnull { get; set; } = false;
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -9164,121 +9173,122 @@ namespace peppa.Domain
 	/// <summary>
 	/// アカウントロール条件
 	/// </summary>
+	[DataContract]
 	public partial class AccountRoleCondition : ConditionBase<AccountRole>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region account_id
-		public int? account_id_eq { get; set; }
-		public int? account_id_ne { get; set; }
-		public int? account_id_lt { get; set; }
-		public int? account_id_gt { get; set; }
-		public int? account_id_le { get; set; }
-		public int? account_id_ge { get; set; }
-		public IEnumerable<int> account_id_in { get; set; }
-		public IEnumerable<int> account_id_ni { get; set; }
-		public (int? low, int? high)? account_id_between { get; set; }
+		[DataMember] public int? account_id_eq { get; set; }
+		[DataMember] public int? account_id_ne { get; set; }
+		[DataMember] public int? account_id_lt { get; set; }
+		[DataMember] public int? account_id_gt { get; set; }
+		[DataMember] public int? account_id_le { get; set; }
+		[DataMember] public int? account_id_ge { get; set; }
+		[DataMember] public IEnumerable<int> account_id_in { get; set; }
+		[DataMember] public IEnumerable<int> account_id_ni { get; set; }
+		[DataMember] public (int? low, int? high)? account_id_between { get; set; }
 		#endregion
 		#region role_id
-		public string role_id_eq { get; set; }
-		public string role_id_ne { get; set; }
-		public string role_id_lt { get; set; }
-		public string role_id_gt { get; set; }
-		public string role_id_le { get; set; }
-		public string role_id_ge { get; set; }
-		public IEnumerable<string> role_id_in { get; set; }
-		public IEnumerable<string> role_id_ni { get; set; }
-		public (string low, string high)? role_id_between { get; set; }
-		public string role_id_like { get; set; }
+		[DataMember] public string role_id_eq { get; set; }
+		[DataMember] public string role_id_ne { get; set; }
+		[DataMember] public string role_id_lt { get; set; }
+		[DataMember] public string role_id_gt { get; set; }
+		[DataMember] public string role_id_le { get; set; }
+		[DataMember] public string role_id_ge { get; set; }
+		[DataMember] public IEnumerable<string> role_id_in { get; set; }
+		[DataMember] public IEnumerable<string> role_id_ni { get; set; }
+		[DataMember] public (string low, string high)? role_id_between { get; set; }
+		[DataMember] public string role_id_like { get; set; }
 		#endregion
 		#region note
-		public string note_eq { get; set; }
-		public string note_ne { get; set; }
-		public string note_lt { get; set; }
-		public string note_gt { get; set; }
-		public string note_le { get; set; }
-		public string note_ge { get; set; }
-		public IEnumerable<string> note_in { get; set; }
-		public IEnumerable<string> note_ni { get; set; }
-		public (string low, string high)? note_between { get; set; }
-		public string note_like { get; set; }
+		[DataMember] public string note_eq { get; set; }
+		[DataMember] public string note_ne { get; set; }
+		[DataMember] public string note_lt { get; set; }
+		[DataMember] public string note_gt { get; set; }
+		[DataMember] public string note_le { get; set; }
+		[DataMember] public string note_ge { get; set; }
+		[DataMember] public IEnumerable<string> note_in { get; set; }
+		[DataMember] public IEnumerable<string> note_ni { get; set; }
+		[DataMember] public (string low, string high)? note_between { get; set; }
+		[DataMember] public string note_like { get; set; }
 		#endregion
 		#region created_at
-		public DateTime? created_at_eq { get; set; }
-		public DateTime? created_at_ne { get; set; }
-		public DateTime? created_at_lt { get; set; }
-		public DateTime? created_at_gt { get; set; }
-		public DateTime? created_at_le { get; set; }
-		public DateTime? created_at_ge { get; set; }
-		public IEnumerable<DateTime> created_at_in { get; set; }
-		public IEnumerable<DateTime> created_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
 		#endregion
 		#region created_by
-		public int? created_by_eq { get; set; }
-		public int? created_by_ne { get; set; }
-		public int? created_by_lt { get; set; }
-		public int? created_by_gt { get; set; }
-		public int? created_by_le { get; set; }
-		public int? created_by_ge { get; set; }
-		public IEnumerable<int> created_by_in { get; set; }
-		public IEnumerable<int> created_by_ni { get; set; }
-		public (int? low, int? high)? created_by_between { get; set; }
-		public bool created_by_isnull { get; set; } = false;
-		public bool created_by_isnotnull { get; set; } = false;
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
-		public DateTime? modified_at_eq { get; set; }
-		public DateTime? modified_at_ne { get; set; }
-		public DateTime? modified_at_lt { get; set; }
-		public DateTime? modified_at_gt { get; set; }
-		public DateTime? modified_at_le { get; set; }
-		public DateTime? modified_at_ge { get; set; }
-		public IEnumerable<DateTime> modified_at_in { get; set; }
-		public IEnumerable<DateTime> modified_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
 		#endregion
 		#region modified_by
-		public int? modified_by_eq { get; set; }
-		public int? modified_by_ne { get; set; }
-		public int? modified_by_lt { get; set; }
-		public int? modified_by_gt { get; set; }
-		public int? modified_by_le { get; set; }
-		public int? modified_by_ge { get; set; }
-		public IEnumerable<int> modified_by_in { get; set; }
-		public IEnumerable<int> modified_by_ni { get; set; }
-		public (int? low, int? high)? modified_by_between { get; set; }
-		public bool modified_by_isnull { get; set; } = false;
-		public bool modified_by_isnotnull { get; set; } = false;
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
-		public DateTime? removed_at_eq { get; set; }
-		public DateTime? removed_at_ne { get; set; }
-		public DateTime? removed_at_lt { get; set; }
-		public DateTime? removed_at_gt { get; set; }
-		public DateTime? removed_at_le { get; set; }
-		public DateTime? removed_at_ge { get; set; }
-		public IEnumerable<DateTime> removed_at_in { get; set; }
-		public IEnumerable<DateTime> removed_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
-		public bool removed_at_isnull { get; set; } = false;
-		public bool removed_at_isnotnull { get; set; } = false;
+		[DataMember] public DateTime? removed_at_eq { get; set; }
+		[DataMember] public DateTime? removed_at_ne { get; set; }
+		[DataMember] public DateTime? removed_at_lt { get; set; }
+		[DataMember] public DateTime? removed_at_gt { get; set; }
+		[DataMember] public DateTime? removed_at_le { get; set; }
+		[DataMember] public DateTime? removed_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		[DataMember] public bool removed_at_isnull { get; set; } =  true ;
+		[DataMember] public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
-		public byte[] row_version_eq { get; set; }
-		public byte[] row_version_ne { get; set; }
-		public bool row_version_isnull { get; set; } = false;
-		public bool row_version_isnotnull { get; set; } = false;
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -10246,295 +10256,296 @@ namespace peppa.Domain
 	/// <summary>
 	/// 職員条件
 	/// </summary>
+	[DataContract]
 	public partial class StaffCondition : ConditionBase<Staff>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region user_type (UserType)
 		private int? _user_type_eq;
-		public UserType? UserType_eq
+		[DataMember] public UserType? UserType_eq
 		{
 			get => _user_type_eq?.ToUserType();
 			set => _user_type_eq = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_ne;
-		public UserType? UserType_ne
+		[DataMember] public UserType? UserType_ne
 		{
 			get => _user_type_ne?.ToUserType();
 			set => _user_type_ne = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_lt;
-		public UserType? UserType_lt
+		[DataMember] public UserType? UserType_lt
 		{
 			get => _user_type_lt?.ToUserType();
 			set => _user_type_lt = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_gt;
-		public UserType? UserType_gt
+		[DataMember] public UserType? UserType_gt
 		{
 			get => _user_type_gt?.ToUserType();
 			set => _user_type_gt = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_le;
-		public UserType? UserType_le
+		[DataMember] public UserType? UserType_le
 		{
 			get => _user_type_le?.ToUserType();
 			set => _user_type_le = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_ge;
-		public UserType? UserType_ge
+		[DataMember] public UserType? UserType_ge
 		{
 			get => _user_type_ge?.ToUserType();
 			set => _user_type_ge = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private IEnumerable<int> _user_type_in;
-		public IEnumerable<UserType> UserType_in
+		[DataMember] public IEnumerable<UserType> UserType_in
 		{
 			get => _user_type_in.Select(_ => _.ToUserType().Value);
 			set => _user_type_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<int> _user_type_ni;
-		public IEnumerable<UserType> UserType_ni
+		[DataMember] public IEnumerable<UserType> UserType_ni
 		{
 			get => _user_type_ni.Select(_ => _.ToUserType().Value);
 			set => _user_type_ni = value.Select(_ => _.Val());
 		}
 		private (int low, int high)? _user_type_between;
-		public (UserType low, UserType high)? UserType_between
+		[DataMember] public (UserType low, UserType high)? UserType_between
 		{
 			get => _user_type_between.HasValue ? (_user_type_between.Value.low.ToUserType().Value, _user_type_between.Value.high.ToUserType().Value) : ((UserType, UserType)?)null;
 			set => _user_type_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((int, int)?)null;
 		}
 		#endregion
 		#region staff_no
-		public string staff_no_eq { get; set; }
-		public string staff_no_ne { get; set; }
-		public string staff_no_lt { get; set; }
-		public string staff_no_gt { get; set; }
-		public string staff_no_le { get; set; }
-		public string staff_no_ge { get; set; }
-		public IEnumerable<string> staff_no_in { get; set; }
-		public IEnumerable<string> staff_no_ni { get; set; }
-		public (string low, string high)? staff_no_between { get; set; }
-		public string staff_no_like { get; set; }
+		[DataMember] public string staff_no_eq { get; set; }
+		[DataMember] public string staff_no_ne { get; set; }
+		[DataMember] public string staff_no_lt { get; set; }
+		[DataMember] public string staff_no_gt { get; set; }
+		[DataMember] public string staff_no_le { get; set; }
+		[DataMember] public string staff_no_ge { get; set; }
+		[DataMember] public IEnumerable<string> staff_no_in { get; set; }
+		[DataMember] public IEnumerable<string> staff_no_ni { get; set; }
+		[DataMember] public (string low, string high)? staff_no_between { get; set; }
+		[DataMember] public string staff_no_like { get; set; }
 		#endregion
 		#region name
-		public string name_eq { get; set; }
-		public string name_ne { get; set; }
-		public string name_lt { get; set; }
-		public string name_gt { get; set; }
-		public string name_le { get; set; }
-		public string name_ge { get; set; }
-		public IEnumerable<string> name_in { get; set; }
-		public IEnumerable<string> name_ni { get; set; }
-		public (string low, string high)? name_between { get; set; }
-		public string name_like { get; set; }
+		[DataMember] public string name_eq { get; set; }
+		[DataMember] public string name_ne { get; set; }
+		[DataMember] public string name_lt { get; set; }
+		[DataMember] public string name_gt { get; set; }
+		[DataMember] public string name_le { get; set; }
+		[DataMember] public string name_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_in { get; set; }
+		[DataMember] public IEnumerable<string> name_ni { get; set; }
+		[DataMember] public (string low, string high)? name_between { get; set; }
+		[DataMember] public string name_like { get; set; }
 		#endregion
 		#region kana
-		public string kana_eq { get; set; }
-		public string kana_ne { get; set; }
-		public string kana_lt { get; set; }
-		public string kana_gt { get; set; }
-		public string kana_le { get; set; }
-		public string kana_ge { get; set; }
-		public IEnumerable<string> kana_in { get; set; }
-		public IEnumerable<string> kana_ni { get; set; }
-		public (string low, string high)? kana_between { get; set; }
-		public string kana_like { get; set; }
+		[DataMember] public string kana_eq { get; set; }
+		[DataMember] public string kana_ne { get; set; }
+		[DataMember] public string kana_lt { get; set; }
+		[DataMember] public string kana_gt { get; set; }
+		[DataMember] public string kana_le { get; set; }
+		[DataMember] public string kana_ge { get; set; }
+		[DataMember] public IEnumerable<string> kana_in { get; set; }
+		[DataMember] public IEnumerable<string> kana_ni { get; set; }
+		[DataMember] public (string low, string high)? kana_between { get; set; }
+		[DataMember] public string kana_like { get; set; }
 		#endregion
 		#region name_abbrev
-		public string name_abbrev_eq { get; set; }
-		public string name_abbrev_ne { get; set; }
-		public string name_abbrev_lt { get; set; }
-		public string name_abbrev_gt { get; set; }
-		public string name_abbrev_le { get; set; }
-		public string name_abbrev_ge { get; set; }
-		public IEnumerable<string> name_abbrev_in { get; set; }
-		public IEnumerable<string> name_abbrev_ni { get; set; }
-		public (string low, string high)? name_abbrev_between { get; set; }
-		public string name_abbrev_like { get; set; }
+		[DataMember] public string name_abbrev_eq { get; set; }
+		[DataMember] public string name_abbrev_ne { get; set; }
+		[DataMember] public string name_abbrev_lt { get; set; }
+		[DataMember] public string name_abbrev_gt { get; set; }
+		[DataMember] public string name_abbrev_le { get; set; }
+		[DataMember] public string name_abbrev_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_abbrev_in { get; set; }
+		[DataMember] public IEnumerable<string> name_abbrev_ni { get; set; }
+		[DataMember] public (string low, string high)? name_abbrev_between { get; set; }
+		[DataMember] public string name_abbrev_like { get; set; }
 		#endregion
 		#region name_eng
-		public string name_eng_eq { get; set; }
-		public string name_eng_ne { get; set; }
-		public string name_eng_lt { get; set; }
-		public string name_eng_gt { get; set; }
-		public string name_eng_le { get; set; }
-		public string name_eng_ge { get; set; }
-		public IEnumerable<string> name_eng_in { get; set; }
-		public IEnumerable<string> name_eng_ni { get; set; }
-		public (string low, string high)? name_eng_between { get; set; }
-		public string name_eng_like { get; set; }
+		[DataMember] public string name_eng_eq { get; set; }
+		[DataMember] public string name_eng_ne { get; set; }
+		[DataMember] public string name_eng_lt { get; set; }
+		[DataMember] public string name_eng_gt { get; set; }
+		[DataMember] public string name_eng_le { get; set; }
+		[DataMember] public string name_eng_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_eng_in { get; set; }
+		[DataMember] public IEnumerable<string> name_eng_ni { get; set; }
+		[DataMember] public (string low, string high)? name_eng_between { get; set; }
+		[DataMember] public string name_eng_like { get; set; }
 		#endregion
 		#region name_eng_abbrev
-		public string name_eng_abbrev_eq { get; set; }
-		public string name_eng_abbrev_ne { get; set; }
-		public string name_eng_abbrev_lt { get; set; }
-		public string name_eng_abbrev_gt { get; set; }
-		public string name_eng_abbrev_le { get; set; }
-		public string name_eng_abbrev_ge { get; set; }
-		public IEnumerable<string> name_eng_abbrev_in { get; set; }
-		public IEnumerable<string> name_eng_abbrev_ni { get; set; }
-		public (string low, string high)? name_eng_abbrev_between { get; set; }
-		public string name_eng_abbrev_like { get; set; }
+		[DataMember] public string name_eng_abbrev_eq { get; set; }
+		[DataMember] public string name_eng_abbrev_ne { get; set; }
+		[DataMember] public string name_eng_abbrev_lt { get; set; }
+		[DataMember] public string name_eng_abbrev_gt { get; set; }
+		[DataMember] public string name_eng_abbrev_le { get; set; }
+		[DataMember] public string name_eng_abbrev_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_eng_abbrev_in { get; set; }
+		[DataMember] public IEnumerable<string> name_eng_abbrev_ni { get; set; }
+		[DataMember] public (string low, string high)? name_eng_abbrev_between { get; set; }
+		[DataMember] public string name_eng_abbrev_like { get; set; }
 		#endregion
 		#region gender (Gender)
 		private int? _gender_eq;
-		public Gender? Gender_eq
+		[DataMember] public Gender? Gender_eq
 		{
 			get => _gender_eq?.ToGender();
 			set => _gender_eq = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _gender_ne;
-		public Gender? Gender_ne
+		[DataMember] public Gender? Gender_ne
 		{
 			get => _gender_ne?.ToGender();
 			set => _gender_ne = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _gender_lt;
-		public Gender? Gender_lt
+		[DataMember] public Gender? Gender_lt
 		{
 			get => _gender_lt?.ToGender();
 			set => _gender_lt = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _gender_gt;
-		public Gender? Gender_gt
+		[DataMember] public Gender? Gender_gt
 		{
 			get => _gender_gt?.ToGender();
 			set => _gender_gt = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _gender_le;
-		public Gender? Gender_le
+		[DataMember] public Gender? Gender_le
 		{
 			get => _gender_le?.ToGender();
 			set => _gender_le = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _gender_ge;
-		public Gender? Gender_ge
+		[DataMember] public Gender? Gender_ge
 		{
 			get => _gender_ge?.ToGender();
 			set => _gender_ge = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private IEnumerable<int> _gender_in;
-		public IEnumerable<Gender> Gender_in
+		[DataMember] public IEnumerable<Gender> Gender_in
 		{
 			get => _gender_in.Select(_ => _.ToGender().Value);
 			set => _gender_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<int> _gender_ni;
-		public IEnumerable<Gender> Gender_ni
+		[DataMember] public IEnumerable<Gender> Gender_ni
 		{
 			get => _gender_ni.Select(_ => _.ToGender().Value);
 			set => _gender_ni = value.Select(_ => _.Val());
 		}
 		private (int low, int high)? _gender_between;
-		public (Gender low, Gender high)? Gender_between
+		[DataMember] public (Gender low, Gender high)? Gender_between
 		{
 			get => _gender_between.HasValue ? (_gender_between.Value.low.ToGender().Value, _gender_between.Value.high.ToGender().Value) : ((Gender, Gender)?)null;
 			set => _gender_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((int, int)?)null;
 		}
-		private bool _gender_isnull { get; set; } = false;
-		public bool Gender_isnull
+		private bool _gender_isnull { get; set; } =  false ;
+		[DataMember] public bool Gender_isnull
 		{
 			get => _gender_isnull;
 			set => _gender_isnull = value;
 		}
 		private bool _gender_isnotnull { get; set; } = false;
-		public bool Gender_isnotnull
+		[DataMember] public bool Gender_isnotnull
 		{
 			get => _gender_isnotnull;
 			set => _gender_isnotnull = value;
 		}
 		#endregion
 		#region birth_date
-		public DateTime? birth_date_eq { get; set; }
-		public DateTime? birth_date_ne { get; set; }
-		public DateTime? birth_date_lt { get; set; }
-		public DateTime? birth_date_gt { get; set; }
-		public DateTime? birth_date_le { get; set; }
-		public DateTime? birth_date_ge { get; set; }
-		public IEnumerable<DateTime> birth_date_in { get; set; }
-		public IEnumerable<DateTime> birth_date_ni { get; set; }
-		public (DateTime? low, DateTime? high)? birth_date_between { get; set; }
-		public bool birth_date_isnull { get; set; } = false;
-		public bool birth_date_isnotnull { get; set; } = false;
+		[DataMember] public DateTime? birth_date_eq { get; set; }
+		[DataMember] public DateTime? birth_date_ne { get; set; }
+		[DataMember] public DateTime? birth_date_lt { get; set; }
+		[DataMember] public DateTime? birth_date_gt { get; set; }
+		[DataMember] public DateTime? birth_date_le { get; set; }
+		[DataMember] public DateTime? birth_date_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> birth_date_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> birth_date_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? birth_date_between { get; set; }
+		[DataMember] public bool birth_date_isnull { get; set; } =  false ;
+		[DataMember] public bool birth_date_isnotnull { get; set; } = false;
 		#endregion
 		#region created_at
-		public DateTime? created_at_eq { get; set; }
-		public DateTime? created_at_ne { get; set; }
-		public DateTime? created_at_lt { get; set; }
-		public DateTime? created_at_gt { get; set; }
-		public DateTime? created_at_le { get; set; }
-		public DateTime? created_at_ge { get; set; }
-		public IEnumerable<DateTime> created_at_in { get; set; }
-		public IEnumerable<DateTime> created_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
 		#endregion
 		#region created_by
-		public int? created_by_eq { get; set; }
-		public int? created_by_ne { get; set; }
-		public int? created_by_lt { get; set; }
-		public int? created_by_gt { get; set; }
-		public int? created_by_le { get; set; }
-		public int? created_by_ge { get; set; }
-		public IEnumerable<int> created_by_in { get; set; }
-		public IEnumerable<int> created_by_ni { get; set; }
-		public (int? low, int? high)? created_by_between { get; set; }
-		public bool created_by_isnull { get; set; } = false;
-		public bool created_by_isnotnull { get; set; } = false;
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
-		public DateTime? modified_at_eq { get; set; }
-		public DateTime? modified_at_ne { get; set; }
-		public DateTime? modified_at_lt { get; set; }
-		public DateTime? modified_at_gt { get; set; }
-		public DateTime? modified_at_le { get; set; }
-		public DateTime? modified_at_ge { get; set; }
-		public IEnumerable<DateTime> modified_at_in { get; set; }
-		public IEnumerable<DateTime> modified_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
 		#endregion
 		#region modified_by
-		public int? modified_by_eq { get; set; }
-		public int? modified_by_ne { get; set; }
-		public int? modified_by_lt { get; set; }
-		public int? modified_by_gt { get; set; }
-		public int? modified_by_le { get; set; }
-		public int? modified_by_ge { get; set; }
-		public IEnumerable<int> modified_by_in { get; set; }
-		public IEnumerable<int> modified_by_ni { get; set; }
-		public (int? low, int? high)? modified_by_between { get; set; }
-		public bool modified_by_isnull { get; set; } = false;
-		public bool modified_by_isnotnull { get; set; } = false;
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
-		public DateTime? removed_at_eq { get; set; }
-		public DateTime? removed_at_ne { get; set; }
-		public DateTime? removed_at_lt { get; set; }
-		public DateTime? removed_at_gt { get; set; }
-		public DateTime? removed_at_le { get; set; }
-		public DateTime? removed_at_ge { get; set; }
-		public IEnumerable<DateTime> removed_at_in { get; set; }
-		public IEnumerable<DateTime> removed_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
-		public bool removed_at_isnull { get; set; } = false;
-		public bool removed_at_isnotnull { get; set; } = false;
+		[DataMember] public DateTime? removed_at_eq { get; set; }
+		[DataMember] public DateTime? removed_at_ne { get; set; }
+		[DataMember] public DateTime? removed_at_lt { get; set; }
+		[DataMember] public DateTime? removed_at_gt { get; set; }
+		[DataMember] public DateTime? removed_at_le { get; set; }
+		[DataMember] public DateTime? removed_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		[DataMember] public bool removed_at_isnull { get; set; } =  true ;
+		[DataMember] public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
-		public byte[] row_version_eq { get; set; }
-		public byte[] row_version_ne { get; set; }
-		public bool row_version_isnull { get; set; } = false;
-		public bool row_version_isnotnull { get; set; } = false;
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -11641,274 +11652,275 @@ namespace peppa.Domain
 	/// <summary>
 	/// 住所条件
 	/// </summary>
+	[DataContract]
 	public partial class AddressCondition : ConditionBase<Address>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region user_type (UserType)
 		private int? _user_type_eq;
-		public UserType? UserType_eq
+		[DataMember] public UserType? UserType_eq
 		{
 			get => _user_type_eq?.ToUserType();
 			set => _user_type_eq = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_ne;
-		public UserType? UserType_ne
+		[DataMember] public UserType? UserType_ne
 		{
 			get => _user_type_ne?.ToUserType();
 			set => _user_type_ne = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_lt;
-		public UserType? UserType_lt
+		[DataMember] public UserType? UserType_lt
 		{
 			get => _user_type_lt?.ToUserType();
 			set => _user_type_lt = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_gt;
-		public UserType? UserType_gt
+		[DataMember] public UserType? UserType_gt
 		{
 			get => _user_type_gt?.ToUserType();
 			set => _user_type_gt = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_le;
-		public UserType? UserType_le
+		[DataMember] public UserType? UserType_le
 		{
 			get => _user_type_le?.ToUserType();
 			set => _user_type_le = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_ge;
-		public UserType? UserType_ge
+		[DataMember] public UserType? UserType_ge
 		{
 			get => _user_type_ge?.ToUserType();
 			set => _user_type_ge = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private IEnumerable<int> _user_type_in;
-		public IEnumerable<UserType> UserType_in
+		[DataMember] public IEnumerable<UserType> UserType_in
 		{
 			get => _user_type_in.Select(_ => _.ToUserType().Value);
 			set => _user_type_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<int> _user_type_ni;
-		public IEnumerable<UserType> UserType_ni
+		[DataMember] public IEnumerable<UserType> UserType_ni
 		{
 			get => _user_type_ni.Select(_ => _.ToUserType().Value);
 			set => _user_type_ni = value.Select(_ => _.Val());
 		}
 		private (int low, int high)? _user_type_between;
-		public (UserType low, UserType high)? UserType_between
+		[DataMember] public (UserType low, UserType high)? UserType_between
 		{
 			get => _user_type_between.HasValue ? (_user_type_between.Value.low.ToUserType().Value, _user_type_between.Value.high.ToUserType().Value) : ((UserType, UserType)?)null;
 			set => _user_type_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((int, int)?)null;
 		}
 		#endregion
 		#region generic_user_no
-		public string generic_user_no_eq { get; set; }
-		public string generic_user_no_ne { get; set; }
-		public string generic_user_no_lt { get; set; }
-		public string generic_user_no_gt { get; set; }
-		public string generic_user_no_le { get; set; }
-		public string generic_user_no_ge { get; set; }
-		public IEnumerable<string> generic_user_no_in { get; set; }
-		public IEnumerable<string> generic_user_no_ni { get; set; }
-		public (string low, string high)? generic_user_no_between { get; set; }
-		public string generic_user_no_like { get; set; }
+		[DataMember] public string generic_user_no_eq { get; set; }
+		[DataMember] public string generic_user_no_ne { get; set; }
+		[DataMember] public string generic_user_no_lt { get; set; }
+		[DataMember] public string generic_user_no_gt { get; set; }
+		[DataMember] public string generic_user_no_le { get; set; }
+		[DataMember] public string generic_user_no_ge { get; set; }
+		[DataMember] public IEnumerable<string> generic_user_no_in { get; set; }
+		[DataMember] public IEnumerable<string> generic_user_no_ni { get; set; }
+		[DataMember] public (string low, string high)? generic_user_no_between { get; set; }
+		[DataMember] public string generic_user_no_like { get; set; }
 		#endregion
 		#region seq
-		public int? seq_eq { get; set; }
-		public int? seq_ne { get; set; }
-		public int? seq_lt { get; set; }
-		public int? seq_gt { get; set; }
-		public int? seq_le { get; set; }
-		public int? seq_ge { get; set; }
-		public IEnumerable<int> seq_in { get; set; }
-		public IEnumerable<int> seq_ni { get; set; }
-		public (int? low, int? high)? seq_between { get; set; }
+		[DataMember] public int? seq_eq { get; set; }
+		[DataMember] public int? seq_ne { get; set; }
+		[DataMember] public int? seq_lt { get; set; }
+		[DataMember] public int? seq_gt { get; set; }
+		[DataMember] public int? seq_le { get; set; }
+		[DataMember] public int? seq_ge { get; set; }
+		[DataMember] public IEnumerable<int> seq_in { get; set; }
+		[DataMember] public IEnumerable<int> seq_ni { get; set; }
+		[DataMember] public (int? low, int? high)? seq_between { get; set; }
 		#endregion
 		#region address_type_id
-		public int? address_type_id_eq { get; set; }
-		public int? address_type_id_ne { get; set; }
-		public int? address_type_id_lt { get; set; }
-		public int? address_type_id_gt { get; set; }
-		public int? address_type_id_le { get; set; }
-		public int? address_type_id_ge { get; set; }
-		public IEnumerable<int> address_type_id_in { get; set; }
-		public IEnumerable<int> address_type_id_ni { get; set; }
-		public (int? low, int? high)? address_type_id_between { get; set; }
+		[DataMember] public int? address_type_id_eq { get; set; }
+		[DataMember] public int? address_type_id_ne { get; set; }
+		[DataMember] public int? address_type_id_lt { get; set; }
+		[DataMember] public int? address_type_id_gt { get; set; }
+		[DataMember] public int? address_type_id_le { get; set; }
+		[DataMember] public int? address_type_id_ge { get; set; }
+		[DataMember] public IEnumerable<int> address_type_id_in { get; set; }
+		[DataMember] public IEnumerable<int> address_type_id_ni { get; set; }
+		[DataMember] public (int? low, int? high)? address_type_id_between { get; set; }
 		#endregion
 		#region postal_code
-		public string postal_code_eq { get; set; }
-		public string postal_code_ne { get; set; }
-		public string postal_code_lt { get; set; }
-		public string postal_code_gt { get; set; }
-		public string postal_code_le { get; set; }
-		public string postal_code_ge { get; set; }
-		public IEnumerable<string> postal_code_in { get; set; }
-		public IEnumerable<string> postal_code_ni { get; set; }
-		public (string low, string high)? postal_code_between { get; set; }
-		public string postal_code_like { get; set; }
+		[DataMember] public string postal_code_eq { get; set; }
+		[DataMember] public string postal_code_ne { get; set; }
+		[DataMember] public string postal_code_lt { get; set; }
+		[DataMember] public string postal_code_gt { get; set; }
+		[DataMember] public string postal_code_le { get; set; }
+		[DataMember] public string postal_code_ge { get; set; }
+		[DataMember] public IEnumerable<string> postal_code_in { get; set; }
+		[DataMember] public IEnumerable<string> postal_code_ni { get; set; }
+		[DataMember] public (string low, string high)? postal_code_between { get; set; }
+		[DataMember] public string postal_code_like { get; set; }
 		#endregion
 		#region prefecture_code
-		public int? prefecture_code_eq { get; set; }
-		public int? prefecture_code_ne { get; set; }
-		public int? prefecture_code_lt { get; set; }
-		public int? prefecture_code_gt { get; set; }
-		public int? prefecture_code_le { get; set; }
-		public int? prefecture_code_ge { get; set; }
-		public IEnumerable<int> prefecture_code_in { get; set; }
-		public IEnumerable<int> prefecture_code_ni { get; set; }
-		public (int? low, int? high)? prefecture_code_between { get; set; }
+		[DataMember] public int? prefecture_code_eq { get; set; }
+		[DataMember] public int? prefecture_code_ne { get; set; }
+		[DataMember] public int? prefecture_code_lt { get; set; }
+		[DataMember] public int? prefecture_code_gt { get; set; }
+		[DataMember] public int? prefecture_code_le { get; set; }
+		[DataMember] public int? prefecture_code_ge { get; set; }
+		[DataMember] public IEnumerable<int> prefecture_code_in { get; set; }
+		[DataMember] public IEnumerable<int> prefecture_code_ni { get; set; }
+		[DataMember] public (int? low, int? high)? prefecture_code_between { get; set; }
 		#endregion
 		#region address1
-		public string address1_eq { get; set; }
-		public string address1_ne { get; set; }
-		public string address1_lt { get; set; }
-		public string address1_gt { get; set; }
-		public string address1_le { get; set; }
-		public string address1_ge { get; set; }
-		public IEnumerable<string> address1_in { get; set; }
-		public IEnumerable<string> address1_ni { get; set; }
-		public (string low, string high)? address1_between { get; set; }
-		public string address1_like { get; set; }
+		[DataMember] public string address1_eq { get; set; }
+		[DataMember] public string address1_ne { get; set; }
+		[DataMember] public string address1_lt { get; set; }
+		[DataMember] public string address1_gt { get; set; }
+		[DataMember] public string address1_le { get; set; }
+		[DataMember] public string address1_ge { get; set; }
+		[DataMember] public IEnumerable<string> address1_in { get; set; }
+		[DataMember] public IEnumerable<string> address1_ni { get; set; }
+		[DataMember] public (string low, string high)? address1_between { get; set; }
+		[DataMember] public string address1_like { get; set; }
 		#endregion
 		#region address2
-		public string address2_eq { get; set; }
-		public string address2_ne { get; set; }
-		public string address2_lt { get; set; }
-		public string address2_gt { get; set; }
-		public string address2_le { get; set; }
-		public string address2_ge { get; set; }
-		public IEnumerable<string> address2_in { get; set; }
-		public IEnumerable<string> address2_ni { get; set; }
-		public (string low, string high)? address2_between { get; set; }
-		public string address2_like { get; set; }
+		[DataMember] public string address2_eq { get; set; }
+		[DataMember] public string address2_ne { get; set; }
+		[DataMember] public string address2_lt { get; set; }
+		[DataMember] public string address2_gt { get; set; }
+		[DataMember] public string address2_le { get; set; }
+		[DataMember] public string address2_ge { get; set; }
+		[DataMember] public IEnumerable<string> address2_in { get; set; }
+		[DataMember] public IEnumerable<string> address2_ni { get; set; }
+		[DataMember] public (string low, string high)? address2_between { get; set; }
+		[DataMember] public string address2_like { get; set; }
 		#endregion
 		#region address3
-		public string address3_eq { get; set; }
-		public string address3_ne { get; set; }
-		public string address3_lt { get; set; }
-		public string address3_gt { get; set; }
-		public string address3_le { get; set; }
-		public string address3_ge { get; set; }
-		public IEnumerable<string> address3_in { get; set; }
-		public IEnumerable<string> address3_ni { get; set; }
-		public (string low, string high)? address3_between { get; set; }
-		public string address3_like { get; set; }
+		[DataMember] public string address3_eq { get; set; }
+		[DataMember] public string address3_ne { get; set; }
+		[DataMember] public string address3_lt { get; set; }
+		[DataMember] public string address3_gt { get; set; }
+		[DataMember] public string address3_le { get; set; }
+		[DataMember] public string address3_ge { get; set; }
+		[DataMember] public IEnumerable<string> address3_in { get; set; }
+		[DataMember] public IEnumerable<string> address3_ni { get; set; }
+		[DataMember] public (string low, string high)? address3_between { get; set; }
+		[DataMember] public string address3_like { get; set; }
 		#endregion
 		#region latitude
-		public decimal? latitude_eq { get; set; }
-		public decimal? latitude_ne { get; set; }
-		public decimal? latitude_lt { get; set; }
-		public decimal? latitude_gt { get; set; }
-		public decimal? latitude_le { get; set; }
-		public decimal? latitude_ge { get; set; }
-		public IEnumerable<decimal> latitude_in { get; set; }
-		public IEnumerable<decimal> latitude_ni { get; set; }
-		public (decimal? low, decimal? high)? latitude_between { get; set; }
-		public bool latitude_isnull { get; set; } = false;
-		public bool latitude_isnotnull { get; set; } = false;
+		[DataMember] public decimal? latitude_eq { get; set; }
+		[DataMember] public decimal? latitude_ne { get; set; }
+		[DataMember] public decimal? latitude_lt { get; set; }
+		[DataMember] public decimal? latitude_gt { get; set; }
+		[DataMember] public decimal? latitude_le { get; set; }
+		[DataMember] public decimal? latitude_ge { get; set; }
+		[DataMember] public IEnumerable<decimal> latitude_in { get; set; }
+		[DataMember] public IEnumerable<decimal> latitude_ni { get; set; }
+		[DataMember] public (decimal? low, decimal? high)? latitude_between { get; set; }
+		[DataMember] public bool latitude_isnull { get; set; } =  false ;
+		[DataMember] public bool latitude_isnotnull { get; set; } = false;
 		#endregion
 		#region longitude
-		public decimal? longitude_eq { get; set; }
-		public decimal? longitude_ne { get; set; }
-		public decimal? longitude_lt { get; set; }
-		public decimal? longitude_gt { get; set; }
-		public decimal? longitude_le { get; set; }
-		public decimal? longitude_ge { get; set; }
-		public IEnumerable<decimal> longitude_in { get; set; }
-		public IEnumerable<decimal> longitude_ni { get; set; }
-		public (decimal? low, decimal? high)? longitude_between { get; set; }
-		public bool longitude_isnull { get; set; } = false;
-		public bool longitude_isnotnull { get; set; } = false;
+		[DataMember] public decimal? longitude_eq { get; set; }
+		[DataMember] public decimal? longitude_ne { get; set; }
+		[DataMember] public decimal? longitude_lt { get; set; }
+		[DataMember] public decimal? longitude_gt { get; set; }
+		[DataMember] public decimal? longitude_le { get; set; }
+		[DataMember] public decimal? longitude_ge { get; set; }
+		[DataMember] public IEnumerable<decimal> longitude_in { get; set; }
+		[DataMember] public IEnumerable<decimal> longitude_ni { get; set; }
+		[DataMember] public (decimal? low, decimal? high)? longitude_between { get; set; }
+		[DataMember] public bool longitude_isnull { get; set; } =  false ;
+		[DataMember] public bool longitude_isnotnull { get; set; } = false;
 		#endregion
 		#region enter_date
-		public DateTime? enter_date_eq { get; set; }
-		public DateTime? enter_date_ne { get; set; }
-		public DateTime? enter_date_lt { get; set; }
-		public DateTime? enter_date_gt { get; set; }
-		public DateTime? enter_date_le { get; set; }
-		public DateTime? enter_date_ge { get; set; }
-		public IEnumerable<DateTime> enter_date_in { get; set; }
-		public IEnumerable<DateTime> enter_date_ni { get; set; }
-		public (DateTime? low, DateTime? high)? enter_date_between { get; set; }
-		public bool enter_date_isnull { get; set; } = false;
-		public bool enter_date_isnotnull { get; set; } = false;
+		[DataMember] public DateTime? enter_date_eq { get; set; }
+		[DataMember] public DateTime? enter_date_ne { get; set; }
+		[DataMember] public DateTime? enter_date_lt { get; set; }
+		[DataMember] public DateTime? enter_date_gt { get; set; }
+		[DataMember] public DateTime? enter_date_le { get; set; }
+		[DataMember] public DateTime? enter_date_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> enter_date_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> enter_date_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? enter_date_between { get; set; }
+		[DataMember] public bool enter_date_isnull { get; set; } =  false ;
+		[DataMember] public bool enter_date_isnotnull { get; set; } = false;
 		#endregion
 		#region leave_date
-		public DateTime? leave_date_eq { get; set; }
-		public DateTime? leave_date_ne { get; set; }
-		public DateTime? leave_date_lt { get; set; }
-		public DateTime? leave_date_gt { get; set; }
-		public DateTime? leave_date_le { get; set; }
-		public DateTime? leave_date_ge { get; set; }
-		public IEnumerable<DateTime> leave_date_in { get; set; }
-		public IEnumerable<DateTime> leave_date_ni { get; set; }
-		public (DateTime? low, DateTime? high)? leave_date_between { get; set; }
-		public bool leave_date_isnull { get; set; } = false;
-		public bool leave_date_isnotnull { get; set; } = false;
+		[DataMember] public DateTime? leave_date_eq { get; set; }
+		[DataMember] public DateTime? leave_date_ne { get; set; }
+		[DataMember] public DateTime? leave_date_lt { get; set; }
+		[DataMember] public DateTime? leave_date_gt { get; set; }
+		[DataMember] public DateTime? leave_date_le { get; set; }
+		[DataMember] public DateTime? leave_date_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> leave_date_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> leave_date_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? leave_date_between { get; set; }
+		[DataMember] public bool leave_date_isnull { get; set; } =  false ;
+		[DataMember] public bool leave_date_isnotnull { get; set; } = false;
 		#endregion
 		#region created_at
-		public DateTime? created_at_eq { get; set; }
-		public DateTime? created_at_ne { get; set; }
-		public DateTime? created_at_lt { get; set; }
-		public DateTime? created_at_gt { get; set; }
-		public DateTime? created_at_le { get; set; }
-		public DateTime? created_at_ge { get; set; }
-		public IEnumerable<DateTime> created_at_in { get; set; }
-		public IEnumerable<DateTime> created_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
 		#endregion
 		#region created_by
-		public int? created_by_eq { get; set; }
-		public int? created_by_ne { get; set; }
-		public int? created_by_lt { get; set; }
-		public int? created_by_gt { get; set; }
-		public int? created_by_le { get; set; }
-		public int? created_by_ge { get; set; }
-		public IEnumerable<int> created_by_in { get; set; }
-		public IEnumerable<int> created_by_ni { get; set; }
-		public (int? low, int? high)? created_by_between { get; set; }
-		public bool created_by_isnull { get; set; } = false;
-		public bool created_by_isnotnull { get; set; } = false;
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
-		public DateTime? modified_at_eq { get; set; }
-		public DateTime? modified_at_ne { get; set; }
-		public DateTime? modified_at_lt { get; set; }
-		public DateTime? modified_at_gt { get; set; }
-		public DateTime? modified_at_le { get; set; }
-		public DateTime? modified_at_ge { get; set; }
-		public IEnumerable<DateTime> modified_at_in { get; set; }
-		public IEnumerable<DateTime> modified_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
 		#endregion
 		#region modified_by
-		public int? modified_by_eq { get; set; }
-		public int? modified_by_ne { get; set; }
-		public int? modified_by_lt { get; set; }
-		public int? modified_by_gt { get; set; }
-		public int? modified_by_le { get; set; }
-		public int? modified_by_ge { get; set; }
-		public IEnumerable<int> modified_by_in { get; set; }
-		public IEnumerable<int> modified_by_ni { get; set; }
-		public (int? low, int? high)? modified_by_between { get; set; }
-		public bool modified_by_isnull { get; set; } = false;
-		public bool modified_by_isnotnull { get; set; } = false;
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
-		public byte[] row_version_eq { get; set; }
-		public byte[] row_version_ne { get; set; }
-		public bool row_version_isnull { get; set; } = false;
-		public bool row_version_isnotnull { get; set; } = false;
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -12631,132 +12643,133 @@ namespace peppa.Domain
 	/// <summary>
 	/// 住所種別条件
 	/// </summary>
+	[DataContract]
 	public partial class AddressTypeCondition : ConditionBase<AddressType>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region address_type_id
-		public int? address_type_id_eq { get; set; }
-		public int? address_type_id_ne { get; set; }
-		public int? address_type_id_lt { get; set; }
-		public int? address_type_id_gt { get; set; }
-		public int? address_type_id_le { get; set; }
-		public int? address_type_id_ge { get; set; }
-		public IEnumerable<int> address_type_id_in { get; set; }
-		public IEnumerable<int> address_type_id_ni { get; set; }
-		public (int? low, int? high)? address_type_id_between { get; set; }
+		[DataMember] public int? address_type_id_eq { get; set; }
+		[DataMember] public int? address_type_id_ne { get; set; }
+		[DataMember] public int? address_type_id_lt { get; set; }
+		[DataMember] public int? address_type_id_gt { get; set; }
+		[DataMember] public int? address_type_id_le { get; set; }
+		[DataMember] public int? address_type_id_ge { get; set; }
+		[DataMember] public IEnumerable<int> address_type_id_in { get; set; }
+		[DataMember] public IEnumerable<int> address_type_id_ni { get; set; }
+		[DataMember] public (int? low, int? high)? address_type_id_between { get; set; }
 		#endregion
 		#region name
-		public string name_eq { get; set; }
-		public string name_ne { get; set; }
-		public string name_lt { get; set; }
-		public string name_gt { get; set; }
-		public string name_le { get; set; }
-		public string name_ge { get; set; }
-		public IEnumerable<string> name_in { get; set; }
-		public IEnumerable<string> name_ni { get; set; }
-		public (string low, string high)? name_between { get; set; }
-		public string name_like { get; set; }
+		[DataMember] public string name_eq { get; set; }
+		[DataMember] public string name_ne { get; set; }
+		[DataMember] public string name_lt { get; set; }
+		[DataMember] public string name_gt { get; set; }
+		[DataMember] public string name_le { get; set; }
+		[DataMember] public string name_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_in { get; set; }
+		[DataMember] public IEnumerable<string> name_ni { get; set; }
+		[DataMember] public (string low, string high)? name_between { get; set; }
+		[DataMember] public string name_like { get; set; }
 		#endregion
 		#region description
-		public string description_eq { get; set; }
-		public string description_ne { get; set; }
-		public string description_lt { get; set; }
-		public string description_gt { get; set; }
-		public string description_le { get; set; }
-		public string description_ge { get; set; }
-		public IEnumerable<string> description_in { get; set; }
-		public IEnumerable<string> description_ni { get; set; }
-		public (string low, string high)? description_between { get; set; }
-		public string description_like { get; set; }
+		[DataMember] public string description_eq { get; set; }
+		[DataMember] public string description_ne { get; set; }
+		[DataMember] public string description_lt { get; set; }
+		[DataMember] public string description_gt { get; set; }
+		[DataMember] public string description_le { get; set; }
+		[DataMember] public string description_ge { get; set; }
+		[DataMember] public IEnumerable<string> description_in { get; set; }
+		[DataMember] public IEnumerable<string> description_ni { get; set; }
+		[DataMember] public (string low, string high)? description_between { get; set; }
+		[DataMember] public string description_like { get; set; }
 		#endregion
 		#region display_order
-		public int? display_order_eq { get; set; }
-		public int? display_order_ne { get; set; }
-		public int? display_order_lt { get; set; }
-		public int? display_order_gt { get; set; }
-		public int? display_order_le { get; set; }
-		public int? display_order_ge { get; set; }
-		public IEnumerable<int> display_order_in { get; set; }
-		public IEnumerable<int> display_order_ni { get; set; }
-		public (int? low, int? high)? display_order_between { get; set; }
+		[DataMember] public int? display_order_eq { get; set; }
+		[DataMember] public int? display_order_ne { get; set; }
+		[DataMember] public int? display_order_lt { get; set; }
+		[DataMember] public int? display_order_gt { get; set; }
+		[DataMember] public int? display_order_le { get; set; }
+		[DataMember] public int? display_order_ge { get; set; }
+		[DataMember] public IEnumerable<int> display_order_in { get; set; }
+		[DataMember] public IEnumerable<int> display_order_ni { get; set; }
+		[DataMember] public (int? low, int? high)? display_order_between { get; set; }
 		#endregion
 		#region created_at
-		public DateTime? created_at_eq { get; set; }
-		public DateTime? created_at_ne { get; set; }
-		public DateTime? created_at_lt { get; set; }
-		public DateTime? created_at_gt { get; set; }
-		public DateTime? created_at_le { get; set; }
-		public DateTime? created_at_ge { get; set; }
-		public IEnumerable<DateTime> created_at_in { get; set; }
-		public IEnumerable<DateTime> created_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
 		#endregion
 		#region created_by
-		public int? created_by_eq { get; set; }
-		public int? created_by_ne { get; set; }
-		public int? created_by_lt { get; set; }
-		public int? created_by_gt { get; set; }
-		public int? created_by_le { get; set; }
-		public int? created_by_ge { get; set; }
-		public IEnumerable<int> created_by_in { get; set; }
-		public IEnumerable<int> created_by_ni { get; set; }
-		public (int? low, int? high)? created_by_between { get; set; }
-		public bool created_by_isnull { get; set; } = false;
-		public bool created_by_isnotnull { get; set; } = false;
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
-		public DateTime? modified_at_eq { get; set; }
-		public DateTime? modified_at_ne { get; set; }
-		public DateTime? modified_at_lt { get; set; }
-		public DateTime? modified_at_gt { get; set; }
-		public DateTime? modified_at_le { get; set; }
-		public DateTime? modified_at_ge { get; set; }
-		public IEnumerable<DateTime> modified_at_in { get; set; }
-		public IEnumerable<DateTime> modified_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
 		#endregion
 		#region modified_by
-		public int? modified_by_eq { get; set; }
-		public int? modified_by_ne { get; set; }
-		public int? modified_by_lt { get; set; }
-		public int? modified_by_gt { get; set; }
-		public int? modified_by_le { get; set; }
-		public int? modified_by_ge { get; set; }
-		public IEnumerable<int> modified_by_in { get; set; }
-		public IEnumerable<int> modified_by_ni { get; set; }
-		public (int? low, int? high)? modified_by_between { get; set; }
-		public bool modified_by_isnull { get; set; } = false;
-		public bool modified_by_isnotnull { get; set; } = false;
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
-		public DateTime? removed_at_eq { get; set; }
-		public DateTime? removed_at_ne { get; set; }
-		public DateTime? removed_at_lt { get; set; }
-		public DateTime? removed_at_gt { get; set; }
-		public DateTime? removed_at_le { get; set; }
-		public DateTime? removed_at_ge { get; set; }
-		public IEnumerable<DateTime> removed_at_in { get; set; }
-		public IEnumerable<DateTime> removed_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
-		public bool removed_at_isnull { get; set; } = false;
-		public bool removed_at_isnotnull { get; set; } = false;
+		[DataMember] public DateTime? removed_at_eq { get; set; }
+		[DataMember] public DateTime? removed_at_ne { get; set; }
+		[DataMember] public DateTime? removed_at_lt { get; set; }
+		[DataMember] public DateTime? removed_at_gt { get; set; }
+		[DataMember] public DateTime? removed_at_le { get; set; }
+		[DataMember] public DateTime? removed_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		[DataMember] public bool removed_at_isnull { get; set; } =  true ;
+		[DataMember] public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
-		public byte[] row_version_eq { get; set; }
-		public byte[] row_version_ne { get; set; }
-		public bool row_version_isnull { get; set; } = false;
-		public bool row_version_isnotnull { get; set; } = false;
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -13522,187 +13535,188 @@ namespace peppa.Domain
 	/// <summary>
 	/// 連絡先条件
 	/// </summary>
+	[DataContract]
 	public partial class ContactCondition : ConditionBase<Contact>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region user_type (UserType)
 		private int? _user_type_eq;
-		public UserType? UserType_eq
+		[DataMember] public UserType? UserType_eq
 		{
 			get => _user_type_eq?.ToUserType();
 			set => _user_type_eq = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_ne;
-		public UserType? UserType_ne
+		[DataMember] public UserType? UserType_ne
 		{
 			get => _user_type_ne?.ToUserType();
 			set => _user_type_ne = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_lt;
-		public UserType? UserType_lt
+		[DataMember] public UserType? UserType_lt
 		{
 			get => _user_type_lt?.ToUserType();
 			set => _user_type_lt = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_gt;
-		public UserType? UserType_gt
+		[DataMember] public UserType? UserType_gt
 		{
 			get => _user_type_gt?.ToUserType();
 			set => _user_type_gt = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_le;
-		public UserType? UserType_le
+		[DataMember] public UserType? UserType_le
 		{
 			get => _user_type_le?.ToUserType();
 			set => _user_type_le = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private int? _user_type_ge;
-		public UserType? UserType_ge
+		[DataMember] public UserType? UserType_ge
 		{
 			get => _user_type_ge?.ToUserType();
 			set => _user_type_ge = value.HasValue ? value.Value.Val() : (int?)null;
 		}
 		private IEnumerable<int> _user_type_in;
-		public IEnumerable<UserType> UserType_in
+		[DataMember] public IEnumerable<UserType> UserType_in
 		{
 			get => _user_type_in.Select(_ => _.ToUserType().Value);
 			set => _user_type_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<int> _user_type_ni;
-		public IEnumerable<UserType> UserType_ni
+		[DataMember] public IEnumerable<UserType> UserType_ni
 		{
 			get => _user_type_ni.Select(_ => _.ToUserType().Value);
 			set => _user_type_ni = value.Select(_ => _.Val());
 		}
 		private (int low, int high)? _user_type_between;
-		public (UserType low, UserType high)? UserType_between
+		[DataMember] public (UserType low, UserType high)? UserType_between
 		{
 			get => _user_type_between.HasValue ? (_user_type_between.Value.low.ToUserType().Value, _user_type_between.Value.high.ToUserType().Value) : ((UserType, UserType)?)null;
 			set => _user_type_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((int, int)?)null;
 		}
 		#endregion
 		#region generic_user_no
-		public string generic_user_no_eq { get; set; }
-		public string generic_user_no_ne { get; set; }
-		public string generic_user_no_lt { get; set; }
-		public string generic_user_no_gt { get; set; }
-		public string generic_user_no_le { get; set; }
-		public string generic_user_no_ge { get; set; }
-		public IEnumerable<string> generic_user_no_in { get; set; }
-		public IEnumerable<string> generic_user_no_ni { get; set; }
-		public (string low, string high)? generic_user_no_between { get; set; }
-		public string generic_user_no_like { get; set; }
+		[DataMember] public string generic_user_no_eq { get; set; }
+		[DataMember] public string generic_user_no_ne { get; set; }
+		[DataMember] public string generic_user_no_lt { get; set; }
+		[DataMember] public string generic_user_no_gt { get; set; }
+		[DataMember] public string generic_user_no_le { get; set; }
+		[DataMember] public string generic_user_no_ge { get; set; }
+		[DataMember] public IEnumerable<string> generic_user_no_in { get; set; }
+		[DataMember] public IEnumerable<string> generic_user_no_ni { get; set; }
+		[DataMember] public (string low, string high)? generic_user_no_between { get; set; }
+		[DataMember] public string generic_user_no_like { get; set; }
 		#endregion
 		#region seq
-		public int? seq_eq { get; set; }
-		public int? seq_ne { get; set; }
-		public int? seq_lt { get; set; }
-		public int? seq_gt { get; set; }
-		public int? seq_le { get; set; }
-		public int? seq_ge { get; set; }
-		public IEnumerable<int> seq_in { get; set; }
-		public IEnumerable<int> seq_ni { get; set; }
-		public (int? low, int? high)? seq_between { get; set; }
+		[DataMember] public int? seq_eq { get; set; }
+		[DataMember] public int? seq_ne { get; set; }
+		[DataMember] public int? seq_lt { get; set; }
+		[DataMember] public int? seq_gt { get; set; }
+		[DataMember] public int? seq_le { get; set; }
+		[DataMember] public int? seq_ge { get; set; }
+		[DataMember] public IEnumerable<int> seq_in { get; set; }
+		[DataMember] public IEnumerable<int> seq_ni { get; set; }
+		[DataMember] public (int? low, int? high)? seq_between { get; set; }
 		#endregion
 		#region contact_type_id
-		public int? contact_type_id_eq { get; set; }
-		public int? contact_type_id_ne { get; set; }
-		public int? contact_type_id_lt { get; set; }
-		public int? contact_type_id_gt { get; set; }
-		public int? contact_type_id_le { get; set; }
-		public int? contact_type_id_ge { get; set; }
-		public IEnumerable<int> contact_type_id_in { get; set; }
-		public IEnumerable<int> contact_type_id_ni { get; set; }
-		public (int? low, int? high)? contact_type_id_between { get; set; }
+		[DataMember] public int? contact_type_id_eq { get; set; }
+		[DataMember] public int? contact_type_id_ne { get; set; }
+		[DataMember] public int? contact_type_id_lt { get; set; }
+		[DataMember] public int? contact_type_id_gt { get; set; }
+		[DataMember] public int? contact_type_id_le { get; set; }
+		[DataMember] public int? contact_type_id_ge { get; set; }
+		[DataMember] public IEnumerable<int> contact_type_id_in { get; set; }
+		[DataMember] public IEnumerable<int> contact_type_id_ni { get; set; }
+		[DataMember] public (int? low, int? high)? contact_type_id_between { get; set; }
 		#endregion
 		#region contact
-		public string contact_eq { get; set; }
-		public string contact_ne { get; set; }
-		public string contact_lt { get; set; }
-		public string contact_gt { get; set; }
-		public string contact_le { get; set; }
-		public string contact_ge { get; set; }
-		public IEnumerable<string> contact_in { get; set; }
-		public IEnumerable<string> contact_ni { get; set; }
-		public (string low, string high)? contact_between { get; set; }
-		public string contact_like { get; set; }
+		[DataMember] public string contact_eq { get; set; }
+		[DataMember] public string contact_ne { get; set; }
+		[DataMember] public string contact_lt { get; set; }
+		[DataMember] public string contact_gt { get; set; }
+		[DataMember] public string contact_le { get; set; }
+		[DataMember] public string contact_ge { get; set; }
+		[DataMember] public IEnumerable<string> contact_in { get; set; }
+		[DataMember] public IEnumerable<string> contact_ni { get; set; }
+		[DataMember] public (string low, string high)? contact_between { get; set; }
+		[DataMember] public string contact_like { get; set; }
 		#endregion
 		#region note
-		public string note_eq { get; set; }
-		public string note_ne { get; set; }
-		public string note_lt { get; set; }
-		public string note_gt { get; set; }
-		public string note_le { get; set; }
-		public string note_ge { get; set; }
-		public IEnumerable<string> note_in { get; set; }
-		public IEnumerable<string> note_ni { get; set; }
-		public (string low, string high)? note_between { get; set; }
-		public string note_like { get; set; }
+		[DataMember] public string note_eq { get; set; }
+		[DataMember] public string note_ne { get; set; }
+		[DataMember] public string note_lt { get; set; }
+		[DataMember] public string note_gt { get; set; }
+		[DataMember] public string note_le { get; set; }
+		[DataMember] public string note_ge { get; set; }
+		[DataMember] public IEnumerable<string> note_in { get; set; }
+		[DataMember] public IEnumerable<string> note_ni { get; set; }
+		[DataMember] public (string low, string high)? note_between { get; set; }
+		[DataMember] public string note_like { get; set; }
 		#endregion
 		#region created_at
-		public DateTime? created_at_eq { get; set; }
-		public DateTime? created_at_ne { get; set; }
-		public DateTime? created_at_lt { get; set; }
-		public DateTime? created_at_gt { get; set; }
-		public DateTime? created_at_le { get; set; }
-		public DateTime? created_at_ge { get; set; }
-		public IEnumerable<DateTime> created_at_in { get; set; }
-		public IEnumerable<DateTime> created_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
 		#endregion
 		#region created_by
-		public int? created_by_eq { get; set; }
-		public int? created_by_ne { get; set; }
-		public int? created_by_lt { get; set; }
-		public int? created_by_gt { get; set; }
-		public int? created_by_le { get; set; }
-		public int? created_by_ge { get; set; }
-		public IEnumerable<int> created_by_in { get; set; }
-		public IEnumerable<int> created_by_ni { get; set; }
-		public (int? low, int? high)? created_by_between { get; set; }
-		public bool created_by_isnull { get; set; } = false;
-		public bool created_by_isnotnull { get; set; } = false;
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
-		public DateTime? modified_at_eq { get; set; }
-		public DateTime? modified_at_ne { get; set; }
-		public DateTime? modified_at_lt { get; set; }
-		public DateTime? modified_at_gt { get; set; }
-		public DateTime? modified_at_le { get; set; }
-		public DateTime? modified_at_ge { get; set; }
-		public IEnumerable<DateTime> modified_at_in { get; set; }
-		public IEnumerable<DateTime> modified_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
 		#endregion
 		#region modified_by
-		public int? modified_by_eq { get; set; }
-		public int? modified_by_ne { get; set; }
-		public int? modified_by_lt { get; set; }
-		public int? modified_by_gt { get; set; }
-		public int? modified_by_le { get; set; }
-		public int? modified_by_ge { get; set; }
-		public IEnumerable<int> modified_by_in { get; set; }
-		public IEnumerable<int> modified_by_ni { get; set; }
-		public (int? low, int? high)? modified_by_between { get; set; }
-		public bool modified_by_isnull { get; set; } = false;
-		public bool modified_by_isnotnull { get; set; } = false;
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
-		public byte[] row_version_eq { get; set; }
-		public byte[] row_version_ne { get; set; }
-		public bool row_version_isnull { get; set; } = false;
-		public bool row_version_isnotnull { get; set; } = false;
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -14347,132 +14361,133 @@ namespace peppa.Domain
 	/// <summary>
 	/// 連絡先種別条件
 	/// </summary>
+	[DataContract]
 	public partial class ContactTypeCondition : ConditionBase<ContactType>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region contact_type_id
-		public int? contact_type_id_eq { get; set; }
-		public int? contact_type_id_ne { get; set; }
-		public int? contact_type_id_lt { get; set; }
-		public int? contact_type_id_gt { get; set; }
-		public int? contact_type_id_le { get; set; }
-		public int? contact_type_id_ge { get; set; }
-		public IEnumerable<int> contact_type_id_in { get; set; }
-		public IEnumerable<int> contact_type_id_ni { get; set; }
-		public (int? low, int? high)? contact_type_id_between { get; set; }
+		[DataMember] public int? contact_type_id_eq { get; set; }
+		[DataMember] public int? contact_type_id_ne { get; set; }
+		[DataMember] public int? contact_type_id_lt { get; set; }
+		[DataMember] public int? contact_type_id_gt { get; set; }
+		[DataMember] public int? contact_type_id_le { get; set; }
+		[DataMember] public int? contact_type_id_ge { get; set; }
+		[DataMember] public IEnumerable<int> contact_type_id_in { get; set; }
+		[DataMember] public IEnumerable<int> contact_type_id_ni { get; set; }
+		[DataMember] public (int? low, int? high)? contact_type_id_between { get; set; }
 		#endregion
 		#region name
-		public string name_eq { get; set; }
-		public string name_ne { get; set; }
-		public string name_lt { get; set; }
-		public string name_gt { get; set; }
-		public string name_le { get; set; }
-		public string name_ge { get; set; }
-		public IEnumerable<string> name_in { get; set; }
-		public IEnumerable<string> name_ni { get; set; }
-		public (string low, string high)? name_between { get; set; }
-		public string name_like { get; set; }
+		[DataMember] public string name_eq { get; set; }
+		[DataMember] public string name_ne { get; set; }
+		[DataMember] public string name_lt { get; set; }
+		[DataMember] public string name_gt { get; set; }
+		[DataMember] public string name_le { get; set; }
+		[DataMember] public string name_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_in { get; set; }
+		[DataMember] public IEnumerable<string> name_ni { get; set; }
+		[DataMember] public (string low, string high)? name_between { get; set; }
+		[DataMember] public string name_like { get; set; }
 		#endregion
 		#region description
-		public string description_eq { get; set; }
-		public string description_ne { get; set; }
-		public string description_lt { get; set; }
-		public string description_gt { get; set; }
-		public string description_le { get; set; }
-		public string description_ge { get; set; }
-		public IEnumerable<string> description_in { get; set; }
-		public IEnumerable<string> description_ni { get; set; }
-		public (string low, string high)? description_between { get; set; }
-		public string description_like { get; set; }
+		[DataMember] public string description_eq { get; set; }
+		[DataMember] public string description_ne { get; set; }
+		[DataMember] public string description_lt { get; set; }
+		[DataMember] public string description_gt { get; set; }
+		[DataMember] public string description_le { get; set; }
+		[DataMember] public string description_ge { get; set; }
+		[DataMember] public IEnumerable<string> description_in { get; set; }
+		[DataMember] public IEnumerable<string> description_ni { get; set; }
+		[DataMember] public (string low, string high)? description_between { get; set; }
+		[DataMember] public string description_like { get; set; }
 		#endregion
 		#region display_order
-		public int? display_order_eq { get; set; }
-		public int? display_order_ne { get; set; }
-		public int? display_order_lt { get; set; }
-		public int? display_order_gt { get; set; }
-		public int? display_order_le { get; set; }
-		public int? display_order_ge { get; set; }
-		public IEnumerable<int> display_order_in { get; set; }
-		public IEnumerable<int> display_order_ni { get; set; }
-		public (int? low, int? high)? display_order_between { get; set; }
+		[DataMember] public int? display_order_eq { get; set; }
+		[DataMember] public int? display_order_ne { get; set; }
+		[DataMember] public int? display_order_lt { get; set; }
+		[DataMember] public int? display_order_gt { get; set; }
+		[DataMember] public int? display_order_le { get; set; }
+		[DataMember] public int? display_order_ge { get; set; }
+		[DataMember] public IEnumerable<int> display_order_in { get; set; }
+		[DataMember] public IEnumerable<int> display_order_ni { get; set; }
+		[DataMember] public (int? low, int? high)? display_order_between { get; set; }
 		#endregion
 		#region created_at
-		public DateTime? created_at_eq { get; set; }
-		public DateTime? created_at_ne { get; set; }
-		public DateTime? created_at_lt { get; set; }
-		public DateTime? created_at_gt { get; set; }
-		public DateTime? created_at_le { get; set; }
-		public DateTime? created_at_ge { get; set; }
-		public IEnumerable<DateTime> created_at_in { get; set; }
-		public IEnumerable<DateTime> created_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
 		#endregion
 		#region created_by
-		public int? created_by_eq { get; set; }
-		public int? created_by_ne { get; set; }
-		public int? created_by_lt { get; set; }
-		public int? created_by_gt { get; set; }
-		public int? created_by_le { get; set; }
-		public int? created_by_ge { get; set; }
-		public IEnumerable<int> created_by_in { get; set; }
-		public IEnumerable<int> created_by_ni { get; set; }
-		public (int? low, int? high)? created_by_between { get; set; }
-		public bool created_by_isnull { get; set; } = false;
-		public bool created_by_isnotnull { get; set; } = false;
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
-		public DateTime? modified_at_eq { get; set; }
-		public DateTime? modified_at_ne { get; set; }
-		public DateTime? modified_at_lt { get; set; }
-		public DateTime? modified_at_gt { get; set; }
-		public DateTime? modified_at_le { get; set; }
-		public DateTime? modified_at_ge { get; set; }
-		public IEnumerable<DateTime> modified_at_in { get; set; }
-		public IEnumerable<DateTime> modified_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
 		#endregion
 		#region modified_by
-		public int? modified_by_eq { get; set; }
-		public int? modified_by_ne { get; set; }
-		public int? modified_by_lt { get; set; }
-		public int? modified_by_gt { get; set; }
-		public int? modified_by_le { get; set; }
-		public int? modified_by_ge { get; set; }
-		public IEnumerable<int> modified_by_in { get; set; }
-		public IEnumerable<int> modified_by_ni { get; set; }
-		public (int? low, int? high)? modified_by_between { get; set; }
-		public bool modified_by_isnull { get; set; } = false;
-		public bool modified_by_isnotnull { get; set; } = false;
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
-		public DateTime? removed_at_eq { get; set; }
-		public DateTime? removed_at_ne { get; set; }
-		public DateTime? removed_at_lt { get; set; }
-		public DateTime? removed_at_gt { get; set; }
-		public DateTime? removed_at_le { get; set; }
-		public DateTime? removed_at_ge { get; set; }
-		public IEnumerable<DateTime> removed_at_in { get; set; }
-		public IEnumerable<DateTime> removed_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
-		public bool removed_at_isnull { get; set; } = false;
-		public bool removed_at_isnotnull { get; set; } = false;
+		[DataMember] public DateTime? removed_at_eq { get; set; }
+		[DataMember] public DateTime? removed_at_ne { get; set; }
+		[DataMember] public DateTime? removed_at_lt { get; set; }
+		[DataMember] public DateTime? removed_at_gt { get; set; }
+		[DataMember] public DateTime? removed_at_le { get; set; }
+		[DataMember] public DateTime? removed_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		[DataMember] public bool removed_at_isnull { get; set; } =  true ;
+		[DataMember] public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
-		public byte[] row_version_eq { get; set; }
-		public byte[] row_version_ne { get; set; }
-		public bool row_version_isnull { get; set; } = false;
-		public bool row_version_isnotnull { get; set; } = false;
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
@@ -15150,145 +15165,146 @@ namespace peppa.Domain
 	/// <summary>
 	/// エラーログ条件
 	/// </summary>
+	[DataContract]
 	public partial class ErrorLogCondition : ConditionBase<ErrorLog>
 	{
 		#region properties
 		#region uid
-		public int? uid_eq { get; set; }
-		public int? uid_ne { get; set; }
-		public int? uid_lt { get; set; }
-		public int? uid_gt { get; set; }
-		public int? uid_le { get; set; }
-		public int? uid_ge { get; set; }
-		public IEnumerable<int> uid_in { get; set; }
-		public IEnumerable<int> uid_ni { get; set; }
-		public (int? low, int? high)? uid_between { get; set; }
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
 		#endregion
 		#region category
-		public string category_eq { get; set; }
-		public string category_ne { get; set; }
-		public string category_lt { get; set; }
-		public string category_gt { get; set; }
-		public string category_le { get; set; }
-		public string category_ge { get; set; }
-		public IEnumerable<string> category_in { get; set; }
-		public IEnumerable<string> category_ni { get; set; }
-		public (string low, string high)? category_between { get; set; }
-		public string category_like { get; set; }
+		[DataMember] public string category_eq { get; set; }
+		[DataMember] public string category_ne { get; set; }
+		[DataMember] public string category_lt { get; set; }
+		[DataMember] public string category_gt { get; set; }
+		[DataMember] public string category_le { get; set; }
+		[DataMember] public string category_ge { get; set; }
+		[DataMember] public IEnumerable<string> category_in { get; set; }
+		[DataMember] public IEnumerable<string> category_ni { get; set; }
+		[DataMember] public (string low, string high)? category_between { get; set; }
+		[DataMember] public string category_like { get; set; }
 		#endregion
 		#region type
-		public string type_eq { get; set; }
-		public string type_ne { get; set; }
-		public string type_lt { get; set; }
-		public string type_gt { get; set; }
-		public string type_le { get; set; }
-		public string type_ge { get; set; }
-		public IEnumerable<string> type_in { get; set; }
-		public IEnumerable<string> type_ni { get; set; }
-		public (string low, string high)? type_between { get; set; }
-		public string type_like { get; set; }
+		[DataMember] public string type_eq { get; set; }
+		[DataMember] public string type_ne { get; set; }
+		[DataMember] public string type_lt { get; set; }
+		[DataMember] public string type_gt { get; set; }
+		[DataMember] public string type_le { get; set; }
+		[DataMember] public string type_ge { get; set; }
+		[DataMember] public IEnumerable<string> type_in { get; set; }
+		[DataMember] public IEnumerable<string> type_ni { get; set; }
+		[DataMember] public (string low, string high)? type_between { get; set; }
+		[DataMember] public string type_like { get; set; }
 		#endregion
 		#region level
-		public int? level_eq { get; set; }
-		public int? level_ne { get; set; }
-		public int? level_lt { get; set; }
-		public int? level_gt { get; set; }
-		public int? level_le { get; set; }
-		public int? level_ge { get; set; }
-		public IEnumerable<int> level_in { get; set; }
-		public IEnumerable<int> level_ni { get; set; }
-		public (int? low, int? high)? level_between { get; set; }
+		[DataMember] public int? level_eq { get; set; }
+		[DataMember] public int? level_ne { get; set; }
+		[DataMember] public int? level_lt { get; set; }
+		[DataMember] public int? level_gt { get; set; }
+		[DataMember] public int? level_le { get; set; }
+		[DataMember] public int? level_ge { get; set; }
+		[DataMember] public IEnumerable<int> level_in { get; set; }
+		[DataMember] public IEnumerable<int> level_ni { get; set; }
+		[DataMember] public (int? low, int? high)? level_between { get; set; }
 		#endregion
 		#region url
-		public string url_eq { get; set; }
-		public string url_ne { get; set; }
-		public string url_lt { get; set; }
-		public string url_gt { get; set; }
-		public string url_le { get; set; }
-		public string url_ge { get; set; }
-		public IEnumerable<string> url_in { get; set; }
-		public IEnumerable<string> url_ni { get; set; }
-		public (string low, string high)? url_between { get; set; }
-		public string url_like { get; set; }
+		[DataMember] public string url_eq { get; set; }
+		[DataMember] public string url_ne { get; set; }
+		[DataMember] public string url_lt { get; set; }
+		[DataMember] public string url_gt { get; set; }
+		[DataMember] public string url_le { get; set; }
+		[DataMember] public string url_ge { get; set; }
+		[DataMember] public IEnumerable<string> url_in { get; set; }
+		[DataMember] public IEnumerable<string> url_ni { get; set; }
+		[DataMember] public (string low, string high)? url_between { get; set; }
+		[DataMember] public string url_like { get; set; }
 		#endregion
 		#region methods
-		public string methods_eq { get; set; }
-		public string methods_ne { get; set; }
-		public string methods_lt { get; set; }
-		public string methods_gt { get; set; }
-		public string methods_le { get; set; }
-		public string methods_ge { get; set; }
-		public IEnumerable<string> methods_in { get; set; }
-		public IEnumerable<string> methods_ni { get; set; }
-		public (string low, string high)? methods_between { get; set; }
-		public string methods_like { get; set; }
+		[DataMember] public string methods_eq { get; set; }
+		[DataMember] public string methods_ne { get; set; }
+		[DataMember] public string methods_lt { get; set; }
+		[DataMember] public string methods_gt { get; set; }
+		[DataMember] public string methods_le { get; set; }
+		[DataMember] public string methods_ge { get; set; }
+		[DataMember] public IEnumerable<string> methods_in { get; set; }
+		[DataMember] public IEnumerable<string> methods_ni { get; set; }
+		[DataMember] public (string low, string high)? methods_between { get; set; }
+		[DataMember] public string methods_like { get; set; }
 		#endregion
 		#region created_at
-		public DateTime? created_at_eq { get; set; }
-		public DateTime? created_at_ne { get; set; }
-		public DateTime? created_at_lt { get; set; }
-		public DateTime? created_at_gt { get; set; }
-		public DateTime? created_at_le { get; set; }
-		public DateTime? created_at_ge { get; set; }
-		public IEnumerable<DateTime> created_at_in { get; set; }
-		public IEnumerable<DateTime> created_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
 		#endregion
 		#region created_by
-		public int? created_by_eq { get; set; }
-		public int? created_by_ne { get; set; }
-		public int? created_by_lt { get; set; }
-		public int? created_by_gt { get; set; }
-		public int? created_by_le { get; set; }
-		public int? created_by_ge { get; set; }
-		public IEnumerable<int> created_by_in { get; set; }
-		public IEnumerable<int> created_by_ni { get; set; }
-		public (int? low, int? high)? created_by_between { get; set; }
-		public bool created_by_isnull { get; set; } = false;
-		public bool created_by_isnotnull { get; set; } = false;
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
 		#endregion
 		#region modified_at
-		public DateTime? modified_at_eq { get; set; }
-		public DateTime? modified_at_ne { get; set; }
-		public DateTime? modified_at_lt { get; set; }
-		public DateTime? modified_at_gt { get; set; }
-		public DateTime? modified_at_le { get; set; }
-		public DateTime? modified_at_ge { get; set; }
-		public IEnumerable<DateTime> modified_at_in { get; set; }
-		public IEnumerable<DateTime> modified_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
 		#endregion
 		#region modified_by
-		public int? modified_by_eq { get; set; }
-		public int? modified_by_ne { get; set; }
-		public int? modified_by_lt { get; set; }
-		public int? modified_by_gt { get; set; }
-		public int? modified_by_le { get; set; }
-		public int? modified_by_ge { get; set; }
-		public IEnumerable<int> modified_by_in { get; set; }
-		public IEnumerable<int> modified_by_ni { get; set; }
-		public (int? low, int? high)? modified_by_between { get; set; }
-		public bool modified_by_isnull { get; set; } = false;
-		public bool modified_by_isnotnull { get; set; } = false;
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
 		#endregion
 		#region removed_at
-		public DateTime? removed_at_eq { get; set; }
-		public DateTime? removed_at_ne { get; set; }
-		public DateTime? removed_at_lt { get; set; }
-		public DateTime? removed_at_gt { get; set; }
-		public DateTime? removed_at_le { get; set; }
-		public DateTime? removed_at_ge { get; set; }
-		public IEnumerable<DateTime> removed_at_in { get; set; }
-		public IEnumerable<DateTime> removed_at_ni { get; set; }
-		public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
-		public bool removed_at_isnull { get; set; } = false;
-		public bool removed_at_isnotnull { get; set; } = false;
+		[DataMember] public DateTime? removed_at_eq { get; set; }
+		[DataMember] public DateTime? removed_at_ne { get; set; }
+		[DataMember] public DateTime? removed_at_lt { get; set; }
+		[DataMember] public DateTime? removed_at_gt { get; set; }
+		[DataMember] public DateTime? removed_at_le { get; set; }
+		[DataMember] public DateTime? removed_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		[DataMember] public bool removed_at_isnull { get; set; } =  true ;
+		[DataMember] public bool removed_at_isnotnull { get; set; } = false;
 		#endregion
 		#region row_version
-		public byte[] row_version_eq { get; set; }
-		public byte[] row_version_ne { get; set; }
-		public bool row_version_isnull { get; set; } = false;
-		public bool row_version_isnotnull { get; set; } = false;
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
 		#endregion
 		#endregion
 
