@@ -7199,13 +7199,13 @@ namespace peppa.Domain
 		private IEnumerable<string> _permission_id_in;
 		[DataMember] public IEnumerable<PermissionType> PermissionId_in
 		{
-			get => _permission_id_in.Select(_ => _.ToPermissionType().Value);
+			get => _permission_id_in?.Select(_ => _.ToPermissionType().Value) ?? Enumerable.Empty<PermissionType>();
 			set => _permission_id_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<string> _permission_id_ni;
 		[DataMember] public IEnumerable<PermissionType> PermissionId_ni
 		{
-			get => _permission_id_ni.Select(_ => _.ToPermissionType().Value);
+			get => _permission_id_ni?.Select(_ => _.ToPermissionType().Value) ?? Enumerable.Empty<PermissionType>();
 			set => _permission_id_ni = value.Select(_ => _.Val());
 		}
 		private (string low, string high)? _permission_id_between;
@@ -7213,12 +7213,6 @@ namespace peppa.Domain
 		{
 			get => _permission_id_between.HasValue ? (_permission_id_between.Value.low.ToPermissionType().Value, _permission_id_between.Value.high.ToPermissionType().Value) : ((PermissionType, PermissionType)?)null;
 			set => _permission_id_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((string, string)?)null;
-		}
-		private string _permission_id_like;
-		[DataMember] public PermissionType? PermissionId_like
-		{
-			get => _permission_id_like?.ToPermissionType();
-			set => _permission_id_like = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		#endregion
 		#region created_at
@@ -8371,13 +8365,13 @@ namespace peppa.Domain
 		private IEnumerable<string> _auth_method_type_in;
 		[DataMember] public IEnumerable<AuthMethod> AuthMethodType_in
 		{
-			get => _auth_method_type_in.Select(_ => _.ToAuthMethod().Value);
+			get => _auth_method_type_in?.Select(_ => _.ToAuthMethod().Value) ?? Enumerable.Empty<AuthMethod>();
 			set => _auth_method_type_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<string> _auth_method_type_ni;
 		[DataMember] public IEnumerable<AuthMethod> AuthMethodType_ni
 		{
-			get => _auth_method_type_ni.Select(_ => _.ToAuthMethod().Value);
+			get => _auth_method_type_ni?.Select(_ => _.ToAuthMethod().Value) ?? Enumerable.Empty<AuthMethod>();
 			set => _auth_method_type_ni = value.Select(_ => _.Val());
 		}
 		private (string low, string high)? _auth_method_type_between;
@@ -8385,12 +8379,6 @@ namespace peppa.Domain
 		{
 			get => _auth_method_type_between.HasValue ? (_auth_method_type_between.Value.low.ToAuthMethod().Value, _auth_method_type_between.Value.high.ToAuthMethod().Value) : ((AuthMethod, AuthMethod)?)null;
 			set => _auth_method_type_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((string, string)?)null;
-		}
-		private string _auth_method_type_like;
-		[DataMember] public AuthMethod? AuthMethodType_like
-		{
-			get => _auth_method_type_like?.ToAuthMethod();
-			set => _auth_method_type_like = value.HasValue ? value.Value.Val() : (string)null;
 		}
 		#endregion
 		#region is_valid (IsValid)
@@ -8433,13 +8421,13 @@ namespace peppa.Domain
 		private IEnumerable<int> _is_valid_in;
 		[DataMember] public IEnumerable<ValidityFlag> IsValid_in
 		{
-			get => _is_valid_in.Select(_ => _.ToValidityFlag().Value);
+			get => _is_valid_in?.Select(_ => _.ToValidityFlag().Value) ?? Enumerable.Empty<ValidityFlag>();
 			set => _is_valid_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<int> _is_valid_ni;
 		[DataMember] public IEnumerable<ValidityFlag> IsValid_ni
 		{
-			get => _is_valid_ni.Select(_ => _.ToValidityFlag().Value);
+			get => _is_valid_ni?.Select(_ => _.ToValidityFlag().Value) ?? Enumerable.Empty<ValidityFlag>();
 			set => _is_valid_ni = value.Select(_ => _.Val());
 		}
 		private (int low, int high)? _is_valid_between;
@@ -10300,13 +10288,13 @@ namespace peppa.Domain
 		private IEnumerable<int> _user_type_in;
 		[DataMember] public IEnumerable<UserType> UserType_in
 		{
-			get => _user_type_in.Select(_ => _.ToUserType().Value);
+			get => _user_type_in?.Select(_ => _.ToUserType().Value) ?? Enumerable.Empty<UserType>();
 			set => _user_type_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<int> _user_type_ni;
 		[DataMember] public IEnumerable<UserType> UserType_ni
 		{
-			get => _user_type_ni.Select(_ => _.ToUserType().Value);
+			get => _user_type_ni?.Select(_ => _.ToUserType().Value) ?? Enumerable.Empty<UserType>();
 			set => _user_type_ni = value.Select(_ => _.Val());
 		}
 		private (int low, int high)? _user_type_between;
@@ -10428,13 +10416,13 @@ namespace peppa.Domain
 		private IEnumerable<int> _gender_in;
 		[DataMember] public IEnumerable<Gender> Gender_in
 		{
-			get => _gender_in.Select(_ => _.ToGender().Value);
+			get => _gender_in?.Select(_ => _.ToGender().Value) ?? Enumerable.Empty<Gender>();
 			set => _gender_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<int> _gender_ni;
 		[DataMember] public IEnumerable<Gender> Gender_ni
 		{
-			get => _gender_ni.Select(_ => _.ToGender().Value);
+			get => _gender_ni?.Select(_ => _.ToGender().Value) ?? Enumerable.Empty<Gender>();
 			set => _gender_ni = value.Select(_ => _.Val());
 		}
 		private (int low, int high)? _gender_between;
@@ -11704,13 +11692,13 @@ namespace peppa.Domain
 		private IEnumerable<int> _user_type_in;
 		[DataMember] public IEnumerable<UserType> UserType_in
 		{
-			get => _user_type_in.Select(_ => _.ToUserType().Value);
+			get => _user_type_in?.Select(_ => _.ToUserType().Value) ?? Enumerable.Empty<UserType>();
 			set => _user_type_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<int> _user_type_ni;
 		[DataMember] public IEnumerable<UserType> UserType_ni
 		{
-			get => _user_type_ni.Select(_ => _.ToUserType().Value);
+			get => _user_type_ni?.Select(_ => _.ToUserType().Value) ?? Enumerable.Empty<UserType>();
 			set => _user_type_ni = value.Select(_ => _.Val());
 		}
 		private (int low, int high)? _user_type_between;
@@ -13603,13 +13591,13 @@ namespace peppa.Domain
 		private IEnumerable<int> _user_type_in;
 		[DataMember] public IEnumerable<UserType> UserType_in
 		{
-			get => _user_type_in.Select(_ => _.ToUserType().Value);
+			get => _user_type_in?.Select(_ => _.ToUserType().Value) ?? Enumerable.Empty<UserType>();
 			set => _user_type_in = value.Select(_ => _.Val());
 		}
 		private IEnumerable<int> _user_type_ni;
 		[DataMember] public IEnumerable<UserType> UserType_ni
 		{
-			get => _user_type_ni.Select(_ => _.ToUserType().Value);
+			get => _user_type_ni?.Select(_ => _.ToUserType().Value) ?? Enumerable.Empty<UserType>();
 			set => _user_type_ni = value.Select(_ => _.Val());
 		}
 		private (int low, int high)? _user_type_between;

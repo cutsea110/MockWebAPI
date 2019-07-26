@@ -80,10 +80,13 @@ namespace MockWebAPI.Controllers
 		/// <summary>
 		/// 職員の取得
 		/// </summary>
+		/// <param name="with_AccountList">AccountListをLoadWithするか</param>
+		/// <param name="with_AddressList">AddressListをLoadWithするか</param>
+		/// <param name="with_ContactList">ContactListをLoadWithするか</param>
 		/// <param name="staffNo">職員番号(staff_no)</param>
 		/// <returns></returns>
 		[HttpGet, Route("get/{staffNo}")]
-		public Staff Get(string staffNo)
+		public Staff Get([FromUri]bool with_AccountList, [FromUri]bool with_AddressList, [FromUri]bool with_ContactList, string staffNo)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -91,7 +94,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.Staff.Find(staffNo);
+				var q = db.Staff;
+
+				#region LoadWith
+				if (with_AccountList)
+					q = q.LoadWith(_ => _.AccountList);
+				if (with_AddressList)
+					q = q.LoadWith(_ => _.AddressList);
+				if (with_ContactList)
+					q = q.LoadWith(_ => _.ContactList);
+				#endregion
+
+				var o = q.Find(staffNo);
 				return o;
 			}
 		}

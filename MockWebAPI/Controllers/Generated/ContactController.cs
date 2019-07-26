@@ -77,12 +77,14 @@ namespace MockWebAPI.Controllers
 		/// <summary>
 		/// 連絡先の取得
 		/// </summary>
+		/// <param name="with_ContactType">ContactTypeをLoadWithするか</param>
+		/// <param name="with_Staff">StaffをLoadWithするか</param>
 		/// <param name="userType">利用者種別(user_type)</param>
 		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
 		/// <param name="seq">連番(seq)</param>
 		/// <returns></returns>
 		[HttpGet, Route("get/{userType}/{genericUserNo}/{seq}")]
-		public Contact Get(int userType, string genericUserNo, int seq)
+		public Contact Get([FromUri]bool with_ContactType, [FromUri]bool with_Staff, int userType, string genericUserNo, int seq)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -90,7 +92,16 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.Contact.Find(userType, genericUserNo, seq);
+				var q = db.Contact;
+
+				#region LoadWith
+				if (with_ContactType)
+					q = q.LoadWith(_ => _.ContactType);
+				if (with_Staff)
+					q = q.LoadWith(_ => _.Staff);
+				#endregion
+
+				var o = q.Find(userType, genericUserNo, seq);
 				return o;
 			}
 		}

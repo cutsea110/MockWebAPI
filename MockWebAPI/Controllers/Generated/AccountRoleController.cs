@@ -74,11 +74,12 @@ namespace MockWebAPI.Controllers
 		/// <summary>
 		/// アカウントロールの取得
 		/// </summary>
+		/// <param name="with_Role">RoleをLoadWithするか</param>
 		/// <param name="accountId">アカウントID(account_id)</param>
 		/// <param name="roleId">ロールID(role_id)</param>
 		/// <returns></returns>
 		[HttpGet, Route("get/{accountId}/{roleId}")]
-		public AccountRole Get(int accountId, string roleId)
+		public AccountRole Get([FromUri]bool with_Role, int accountId, string roleId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -86,7 +87,14 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.AccountRole.Find(accountId, roleId);
+				var q = db.AccountRole;
+
+				#region LoadWith
+				if (with_Role)
+					q = q.LoadWith(_ => _.Role);
+				#endregion
+
+				var o = q.Find(accountId, roleId);
 				return o;
 			}
 		}

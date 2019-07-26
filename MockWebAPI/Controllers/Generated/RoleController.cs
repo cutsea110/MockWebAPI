@@ -74,10 +74,11 @@ namespace MockWebAPI.Controllers
 		/// <summary>
 		/// ロールマスタの取得
 		/// </summary>
+		/// <param name="with_RolePermissionList">RolePermissionListをLoadWithするか</param>
 		/// <param name="roleId">ロールID(role_id)</param>
 		/// <returns></returns>
 		[HttpGet, Route("get/{roleId}")]
-		public Role Get(string roleId)
+		public Role Get([FromUri]bool with_RolePermissionList, string roleId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -85,7 +86,14 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.Role.Find(roleId);
+				var q = db.Role;
+
+				#region LoadWith
+				if (with_RolePermissionList)
+					q = q.LoadWith(_ => _.RolePermissionList);
+				#endregion
+
+				var o = q.Find(roleId);
 				return o;
 			}
 		}

@@ -78,7 +78,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.AddressType.Find(addressTypeId);
+				var q = db.AddressType;
+				var o = q.Find(addressTypeId);
 				return o;
 			}
 		}

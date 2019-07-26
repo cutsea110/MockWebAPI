@@ -79,7 +79,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.RolePermission.Find(roleId, permissionId);
+				var q = db.RolePermission;
+				var o = q.Find(roleId, permissionId);
 				return o;
 			}
 		}

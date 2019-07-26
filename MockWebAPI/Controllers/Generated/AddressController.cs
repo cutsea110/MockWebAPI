@@ -77,12 +77,14 @@ namespace MockWebAPI.Controllers
 		/// <summary>
 		/// 住所の取得
 		/// </summary>
+		/// <param name="with_AddressType">AddressTypeをLoadWithするか</param>
+		/// <param name="with_Staff">StaffをLoadWithするか</param>
 		/// <param name="userType">利用者種別(user_type)</param>
 		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
 		/// <param name="seq">連番(seq)</param>
 		/// <returns></returns>
 		[HttpGet, Route("get/{userType}/{genericUserNo}/{seq}")]
-		public Address Get(int userType, string genericUserNo, int seq)
+		public Address Get([FromUri]bool with_AddressType, [FromUri]bool with_Staff, int userType, string genericUserNo, int seq)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -90,7 +92,16 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.Address.Find(userType, genericUserNo, seq);
+				var q = db.Address;
+
+				#region LoadWith
+				if (with_AddressType)
+					q = q.LoadWith(_ => _.AddressType);
+				if (with_Staff)
+					q = q.LoadWith(_ => _.Staff);
+				#endregion
+
+				var o = q.Find(userType, genericUserNo, seq);
 				return o;
 			}
 		}
