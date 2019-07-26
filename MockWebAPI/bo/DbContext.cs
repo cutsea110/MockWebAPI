@@ -4437,13 +4437,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region テスト条件
 	/// <summary>
 	/// テスト条件
 	/// </summary>
 	[DataContract]
-	public partial class TestConditionPrim : ConditionBase<Test>
+	public partial class TestCondition : ConditionBase<Test>
 	{
 		#region properties
 		#region uid
@@ -5632,29 +5631,6 @@ namespace peppa.Domain
 		#endregion
 	}
 	#endregion
-
-	#region テスト条件(サブ条件付)
-	/// <summary>
-	/// テスト条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class TestCondition : TestConditionPrim
-    {
-
-		#region Sub condition
-		#endregion
-
-        public override Expression<Func<Test, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			#endregion
-
-            return predicate;
-        }
-    }
-	#endregion
 	#endregion
 	#region ロールマスタ
 	/// <summary>
@@ -6242,13 +6218,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region ロールマスタ条件
 	/// <summary>
 	/// ロールマスタ条件
 	/// </summary>
 	[DataContract]
-	public partial class RoleConditionPrim : ConditionBase<Role>
+	public partial class RoleCondition : ConditionBase<Role>
 	{
 		#region properties
 		#region uid
@@ -6523,33 +6498,6 @@ namespace peppa.Domain
 		}
 		#endregion
 	}
-	#endregion
-
-	#region ロールマスタ条件(サブ条件付)
-	/// <summary>
-	/// ロールマスタ条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class RoleCondition : RoleConditionPrim
-    {
-
-		#region Sub condition
-		[DataMember] public RolePermissionConditionPrim RolePermissionList_All { get; set; }
-		[DataMember] public RolePermissionConditionPrim RolePermissionList_Any { get; set; }
-		#endregion
-
-        public override Expression<Func<Role, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			if (RolePermissionList_All != null) predicate = predicate.And(_ => _.RolePermissionList.AsQueryable().All(RolePermissionList_All.CreatePredicate()));
-			if (RolePermissionList_Any != null) predicate = predicate.And(_ => _.RolePermissionList.AsQueryable().Any(RolePermissionList_Any.CreatePredicate()));
-			#endregion
-
-            return predicate;
-        }
-    }
 	#endregion
 	#endregion
 	#region ロール権限
@@ -7156,13 +7104,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region ロール権限条件
 	/// <summary>
 	/// ロール権限条件
 	/// </summary>
 	[DataContract]
-	public partial class RolePermissionConditionPrim : ConditionBase<RolePermission>
+	public partial class RolePermissionCondition : ConditionBase<RolePermission>
 	{
 		#region properties
 		#region uid
@@ -7396,29 +7343,6 @@ namespace peppa.Domain
 		}
 		#endregion
 	}
-	#endregion
-
-	#region ロール権限条件(サブ条件付)
-	/// <summary>
-	/// ロール権限条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class RolePermissionCondition : RolePermissionConditionPrim
-    {
-
-		#region Sub condition
-		#endregion
-
-        public override Expression<Func<RolePermission, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			#endregion
-
-            return predicate;
-        }
-    }
 	#endregion
 	#endregion
 	#region アカウント
@@ -8261,13 +8185,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region アカウント条件
 	/// <summary>
 	/// アカウント条件
 	/// </summary>
 	[DataContract]
-	public partial class AccountConditionPrim : ConditionBase<Account>
+	public partial class AccountCondition : ConditionBase<Account>
 	{
 		#region properties
 		#region uid
@@ -8748,35 +8671,6 @@ namespace peppa.Domain
 		#endregion
 	}
 	#endregion
-
-	#region アカウント条件(サブ条件付)
-	/// <summary>
-	/// アカウント条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class AccountCondition : AccountConditionPrim
-    {
-
-		#region Sub condition
-		[DataMember] public StaffConditionPrim StaffCondition { get; set; }
-		[DataMember] public AccountRoleConditionPrim AccountRoleList_All { get; set; }
-		[DataMember] public AccountRoleConditionPrim AccountRoleList_Any { get; set; }
-		#endregion
-
-        public override Expression<Func<Account, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			// TODO
-			if (AccountRoleList_All != null) predicate = predicate.And(_ => _.AccountRoleList.AsQueryable().All(AccountRoleList_All.CreatePredicate()));
-			if (AccountRoleList_Any != null) predicate = predicate.And(_ => _.AccountRoleList.AsQueryable().Any(AccountRoleList_Any.CreatePredicate()));
-			#endregion
-
-            return predicate;
-        }
-    }
-	#endregion
 	#endregion
 	#region アカウントロール
 	/// <summary>
@@ -9241,13 +9135,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region アカウントロール条件
 	/// <summary>
 	/// アカウントロール条件
 	/// </summary>
 	[DataContract]
-	public partial class AccountRoleConditionPrim : ConditionBase<AccountRole>
+	public partial class AccountRoleCondition : ConditionBase<AccountRole>
 	{
 		#region properties
 		#region uid
@@ -9452,31 +9345,6 @@ namespace peppa.Domain
 		}
 		#endregion
 	}
-	#endregion
-
-	#region アカウントロール条件(サブ条件付)
-	/// <summary>
-	/// アカウントロール条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class AccountRoleCondition : AccountRoleConditionPrim
-    {
-
-		#region Sub condition
-		[DataMember] public RoleConditionPrim RoleCondition { get; set; }
-		#endregion
-
-        public override Expression<Func<AccountRole, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			// TODO
-			#endregion
-
-            return predicate;
-        }
-    }
 	#endregion
 	#endregion
 	#region 職員
@@ -10325,13 +10193,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region 職員条件
 	/// <summary>
 	/// 職員条件
 	/// </summary>
 	[DataContract]
-	public partial class StaffConditionPrim : ConditionBase<Staff>
+	public partial class StaffCondition : ConditionBase<Staff>
 	{
 		#region properties
 		#region uid
@@ -10799,41 +10666,6 @@ namespace peppa.Domain
 		}
 		#endregion
 	}
-	#endregion
-
-	#region 職員条件(サブ条件付)
-	/// <summary>
-	/// 職員条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class StaffCondition : StaffConditionPrim
-    {
-
-		#region Sub condition
-		[DataMember] public AccountConditionPrim AccountList_All { get; set; }
-		[DataMember] public AccountConditionPrim AccountList_Any { get; set; }
-		[DataMember] public AddressConditionPrim AddressList_All { get; set; }
-		[DataMember] public AddressConditionPrim AddressList_Any { get; set; }
-		[DataMember] public ContactConditionPrim ContactList_All { get; set; }
-		[DataMember] public ContactConditionPrim ContactList_Any { get; set; }
-		#endregion
-
-        public override Expression<Func<Staff, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			if (AccountList_All != null) predicate = predicate.And(_ => _.AccountList.AsQueryable().All(AccountList_All.CreatePredicate()));
-			if (AccountList_Any != null) predicate = predicate.And(_ => _.AccountList.AsQueryable().Any(AccountList_Any.CreatePredicate()));
-			if (AddressList_All != null) predicate = predicate.And(_ => _.AddressList.AsQueryable().All(AddressList_All.CreatePredicate()));
-			if (AddressList_Any != null) predicate = predicate.And(_ => _.AddressList.AsQueryable().Any(AddressList_Any.CreatePredicate()));
-			if (ContactList_All != null) predicate = predicate.And(_ => _.ContactList.AsQueryable().All(ContactList_All.CreatePredicate()));
-			if (ContactList_Any != null) predicate = predicate.And(_ => _.ContactList.AsQueryable().Any(ContactList_Any.CreatePredicate()));
-			#endregion
-
-            return predicate;
-        }
-    }
 	#endregion
 	#endregion
 	#region 住所
@@ -11757,13 +11589,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region 住所条件
 	/// <summary>
 	/// 住所条件
 	/// </summary>
 	[DataContract]
-	public partial class AddressConditionPrim : ConditionBase<Address>
+	public partial class AddressCondition : ConditionBase<Address>
 	{
 		#region properties
 		#region uid
@@ -12242,33 +12073,6 @@ namespace peppa.Domain
 		}
 		#endregion
 	}
-	#endregion
-
-	#region 住所条件(サブ条件付)
-	/// <summary>
-	/// 住所条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class AddressCondition : AddressConditionPrim
-    {
-
-		#region Sub condition
-		[DataMember] public AddressTypeConditionPrim AddressTypeCondition { get; set; }
-		[DataMember] public StaffConditionPrim StaffCondition { get; set; }
-		#endregion
-
-        public override Expression<Func<Address, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			// TODO
-			// TODO
-			#endregion
-
-            return predicate;
-        }
-    }
 	#endregion
 	#endregion
 	#region 住所種別
@@ -12776,13 +12580,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region 住所種別条件
 	/// <summary>
 	/// 住所種別条件
 	/// </summary>
 	[DataContract]
-	public partial class AddressTypeConditionPrim : ConditionBase<AddressType>
+	public partial class AddressTypeCondition : ConditionBase<AddressType>
 	{
 		#region properties
 		#region uid
@@ -13033,29 +12836,6 @@ namespace peppa.Domain
 		}
 		#endregion
 	}
-	#endregion
-
-	#region 住所種別条件(サブ条件付)
-	/// <summary>
-	/// 住所種別条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class AddressTypeCondition : AddressTypeConditionPrim
-    {
-
-		#region Sub condition
-		#endregion
-
-        public override Expression<Func<AddressType, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			#endregion
-
-            return predicate;
-        }
-    }
 	#endregion
 	#endregion
 	#region 連絡先
@@ -13692,13 +13472,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region 連絡先条件
 	/// <summary>
 	/// 連絡先条件
 	/// </summary>
 	[DataContract]
-	public partial class ContactConditionPrim : ConditionBase<Contact>
+	public partial class ContactCondition : ConditionBase<Contact>
 	{
 		#region properties
 		#region uid
@@ -14012,33 +13791,6 @@ namespace peppa.Domain
 		}
 		#endregion
 	}
-	#endregion
-
-	#region 連絡先条件(サブ条件付)
-	/// <summary>
-	/// 連絡先条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class ContactCondition : ContactConditionPrim
-    {
-
-		#region Sub condition
-		[DataMember] public ContactTypeConditionPrim ContactTypeCondition { get; set; }
-		[DataMember] public StaffConditionPrim StaffCondition { get; set; }
-		#endregion
-
-        public override Expression<Func<Contact, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			// TODO
-			// TODO
-			#endregion
-
-            return predicate;
-        }
-    }
 	#endregion
 	#endregion
 	#region 連絡先種別
@@ -14546,13 +14298,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region 連絡先種別条件
 	/// <summary>
 	/// 連絡先種別条件
 	/// </summary>
 	[DataContract]
-	public partial class ContactTypeConditionPrim : ConditionBase<ContactType>
+	public partial class ContactTypeCondition : ConditionBase<ContactType>
 	{
 		#region properties
 		#region uid
@@ -14803,29 +14554,6 @@ namespace peppa.Domain
 		}
 		#endregion
 	}
-	#endregion
-
-	#region 連絡先種別条件(サブ条件付)
-	/// <summary>
-	/// 連絡先種別条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class ContactTypeCondition : ContactTypeConditionPrim
-    {
-
-		#region Sub condition
-		#endregion
-
-        public override Expression<Func<ContactType, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			#endregion
-
-            return predicate;
-        }
-    }
 	#endregion
 	#endregion
 	#region エラーログ
@@ -15374,13 +15102,12 @@ namespace peppa.Domain
 		#endregion
 
 	}
-
 	#region エラーログ条件
 	/// <summary>
 	/// エラーログ条件
 	/// </summary>
 	[DataContract]
-	public partial class ErrorLogConditionPrim : ConditionBase<ErrorLog>
+	public partial class ErrorLogCondition : ConditionBase<ErrorLog>
 	{
 		#region properties
 		#region uid
@@ -15654,29 +15381,6 @@ namespace peppa.Domain
 		}
 		#endregion
 	}
-	#endregion
-
-	#region エラーログ条件(サブ条件付)
-	/// <summary>
-	/// エラーログ条件(サブ条件付)
-	/// </summary>
-	[DataContract]
-	public partial class ErrorLogCondition : ErrorLogConditionPrim
-    {
-
-		#region Sub condition
-		#endregion
-
-        public override Expression<Func<ErrorLog, bool>> CreatePredicate()
-        {
-            var predicate = base.CreatePredicate();
-
-			#region Sub condition
-			#endregion
-
-            return predicate;
-        }
-    }
 	#endregion
 	#endregion
 
