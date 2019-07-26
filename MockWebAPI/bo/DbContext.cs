@@ -9600,7 +9600,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 英字氏名
 		/// </summary>
-		[Column(DbType="varchar(4)", DataType=DataType.VarChar, Length=4), DataMember, NotNull]
+		[Column(DbType="varchar(30)", DataType=DataType.VarChar, Length=30), DataMember, NotNull]
 		public  string  name_eng
 		{
 			get { return _name_eng; }

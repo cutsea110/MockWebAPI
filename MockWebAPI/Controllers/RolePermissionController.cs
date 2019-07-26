@@ -90,7 +90,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Create([FromBody]RolePermission o)
+		public decimal Create([FromBody]RolePermission o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -98,7 +98,7 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				int uid = (int)db.InsertWithIdentity<RolePermission>(o);
+				decimal uid = (decimal)db.InsertWithIdentity<RolePermission>(o);
 				return uid;
 			}
 		}
@@ -125,8 +125,8 @@ namespace MockWebAPI.Controllers
 		/// <summary>
 		/// ロール権限の一括作成
 		/// </summary>
-		/// <param name="o"></param>
-		/// <returns>uid</returns>
+		/// <param name="os"></param>
+		/// <returns>BulkCopyRowsCopied</returns>
 		[HttpPost, Route("massive-new")]
 		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<RolePermission> os)
 		{
@@ -138,6 +138,25 @@ namespace MockWebAPI.Controllers
 			{
 				var ret = db.BulkCopy<RolePermission>(os);
 				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ロール権限のマージ
+		/// </summary>
+		/// <param name="os"></param>
+		/// <returns>件数</returns>
+		[HttpPost, Route("merge")]
+		public int Merge([FromBody]IEnumerable<RolePermission> os)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Merge<RolePermission>(os);
+				return count;
 			}
 		}
 

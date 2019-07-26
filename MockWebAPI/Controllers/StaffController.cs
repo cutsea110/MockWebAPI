@@ -102,7 +102,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Create([FromBody]Staff o)
+		public decimal Create([FromBody]Staff o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -110,7 +110,7 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				int uid = (int)db.InsertWithIdentity<Staff>(o);
+				decimal uid = (decimal)db.InsertWithIdentity<Staff>(o);
 				return uid;
 			}
 		}
@@ -137,8 +137,8 @@ namespace MockWebAPI.Controllers
 		/// <summary>
 		/// 職員の一括作成
 		/// </summary>
-		/// <param name="o"></param>
-		/// <returns>uid</returns>
+		/// <param name="os"></param>
+		/// <returns>BulkCopyRowsCopied</returns>
 		[HttpPost, Route("massive-new")]
 		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<Staff> os)
 		{
@@ -150,6 +150,25 @@ namespace MockWebAPI.Controllers
 			{
 				var ret = db.BulkCopy<Staff>(os);
 				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 職員のマージ
+		/// </summary>
+		/// <param name="os"></param>
+		/// <returns>件数</returns>
+		[HttpPost, Route("merge")]
+		public int Merge([FromBody]IEnumerable<Staff> os)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Merge<Staff>(os);
+				return count;
 			}
 		}
 
