@@ -17,19 +17,19 @@ using peppa.Domain;
 namespace MockWebAPI.Controllers
 {
 	/// <summary>
-	/// 連絡先のWebAPI
+	/// アカウントのWebAPI
 	/// </summary>
-	[RoutePrefix("api/contact")]
-	public partial class ContactController : ApiController
+	[RoutePrefix("api/account")]
+	public partial class AccountController : ApiController
 	{
 
 		/// <summary>
-		/// 連絡先の件数
+		/// アカウントの件数
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>ヒットした件数</returns>
 		[HttpGet, Route("count")]
-		public int Count([FromUri]ContactCondition c)
+		public int Count([FromUri]AccountCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -38,21 +38,21 @@ namespace MockWebAPI.Controllers
 			using (var db = new peppaDB())
 			{
 				var count =
-					c == null ? db.Contact.Count() :
-					db.Contact.Count(predicate: c.CreatePredicate());
+					c == null ? db.Account.Count() :
+					db.Account.Count(predicate: c.CreatePredicate());
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先の検索
+		/// アカウントの検索
 		/// </summary>
-		/// <param name="with_ContactType">ContactTypeをLoadWithするか</param>
 		/// <param name="with_Staff">StaffをLoadWithするか</param>
+		/// <param name="with_AccountRoleList">AccountRoleListをLoadWithするか</param>
 		/// <param name="c"></param>
 		/// <returns></returns>
 		[HttpGet, Route("search")]
-		public IEnumerable<Contact> Search([FromUri]bool with_ContactType, [FromUri]bool with_Staff, [FromUri]ContactCondition c)
+		public IEnumerable<Account> Search([FromUri]bool with_Staff, [FromUri]bool with_AccountRoleList, [FromUri]AccountCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -60,13 +60,13 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var q = db.Contact;
+				var q = db.Account;
 
 				#region LoadWith
-				if (with_ContactType)
-					q = q.LoadWith(_ => _.ContactType);
 				if (with_Staff)
 					q = q.LoadWith(_ => _.Staff);
+				if (with_AccountRoleList)
+					q = q.LoadWith(_ => _.AccountRoleList);
 				#endregion
 
 				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
@@ -75,14 +75,12 @@ namespace MockWebAPI.Controllers
 		}
 
 		/// <summary>
-		/// 連絡先の取得
+		/// アカウントの取得
 		/// </summary>
-		/// <param name="userType">利用者種別(user_type)</param>
-		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
-		/// <param name="seq">連番(seq)</param>
+		/// <param name="accountId">アカウントID(account_id)</param>
 		/// <returns></returns>
-		[HttpGet, Route("get/{userType}/{genericUserNo}/{seq}")]
-		public Contact Get(int userType, string genericUserNo, int seq)
+		[HttpGet, Route("get/{accountId}")]
+		public Account Get(int accountId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -90,18 +88,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.Contact.Find(userType, genericUserNo, seq);
+				var o = db.Account.Find(accountId);
 				return o;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先の作成
+		/// アカウントの作成
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public decimal Create([FromBody]Contact o)
+		public int Create([FromBody]Account o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -109,18 +107,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				decimal uid = (decimal)db.InsertWithIdentity<Contact>(o);
+				int uid = db.InsertWithInt32Identity<Account>(o);
 				return uid;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先の更新(必要時作成)
+		/// アカウントの更新(必要時作成)
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("upsert")]
-		public int Upsert([FromBody]Contact o)
+		public int Upsert([FromBody]Account o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -128,18 +126,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				int count = db.InsertOrReplace<Contact>(o);
+				int count = db.InsertOrReplace<Account>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先の一括作成
+		/// アカウントの一括作成
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>BulkCopyRowsCopied</returns>
 		[HttpPost, Route("massive-new")]
-		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<Contact> os)
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<Account> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -147,18 +145,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var ret = db.BulkCopy<Contact>(os);
+				var ret = db.BulkCopy<Account>(os);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先のマージ
+		/// アカウントのマージ
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("merge")]
-		public int Merge([FromBody]IEnumerable<Contact> os)
+		public int Merge([FromBody]IEnumerable<Account> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -166,21 +164,19 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Merge<Contact>(os);
+				var count = db.Merge<Account>(os);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先の更新
+		/// アカウントの更新
 		/// </summary>
-		/// <param name="userType">利用者種別(user_type)</param>
-		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
-		/// <param name="seq">連番(seq)</param>
+		/// <param name="accountId">アカウントID(account_id)</param>
 		/// <param name="o"></param>
 		/// <returns>更新件数</returns>
-		[HttpPut, Route("modify/{userType}/{genericUserNo}/{seq}")]
-		public int Modify(int userType, string genericUserNo, int seq, [FromBody]Contact o)
+		[HttpPut, Route("modify/{accountId}")]
+		public int Modify(int accountId, [FromBody]Account o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -188,20 +184,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Update<Contact>(o);
+				var count = db.Update<Account>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先の削除(物理)
+		/// アカウントの削除(論理)
 		/// </summary>
-		/// <param name="userType">利用者種別(user_type)</param>
-		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
-		/// <param name="seq">連番(seq)</param>
+		/// <param name="accountId">アカウントID(account_id)</param>
 		/// <returns>件数</returns>
-		[HttpDelete, Route("remove/{userType}/{genericUserNo}/{seq}")]
-		public int Remove(int userType, string genericUserNo, int seq)
+		[HttpDelete, Route("remove/{accountId}")]
+		public int Remove(int accountId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -209,20 +203,64 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Contact
-					.Where(_ => _.user_type == userType && _.generic_user_no == genericUserNo && _.seq == seq)
+				var count = db.Account
+					.Where(_ => _.account_id == accountId)
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// アカウントの削除(論理)
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("remove")]
+		public int Remove([FromUri]AccountCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Account
+					.Where(c.CreatePredicate())
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// アカウントの物理削除
+		/// </summary>
+		/// <param name="accountId">アカウントID(account_id)</param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove/{accountId}")]
+		public int PhysicallyRemove(int accountId)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Account
+					.Where(_ => _.account_id == accountId)
 					.Delete();
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先の削除(物理)
+		/// アカウントの物理削除
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>件数</returns>
-		[HttpDelete, Route("remove")]
-		public int Remove([FromUri]ContactCondition c)
+		[HttpDelete, Route("physically-remove")]
+		public int PhysicallyRemove([FromUri]AccountCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -230,12 +268,11 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Contact
+				var count = db.Account
 					.Where(c.CreatePredicate())
 					.Delete();
 				return count;
 			}
 		}
-
 	}
 }

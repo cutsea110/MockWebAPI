@@ -17,19 +17,19 @@ using peppa.Domain;
 namespace MockWebAPI.Controllers
 {
 	/// <summary>
-	/// エラーログのWebAPI
+	/// 住所種別のWebAPI
 	/// </summary>
-	[RoutePrefix("api/errorlog")]
-	public partial class ErrorLogController : ApiController
+	[RoutePrefix("api/addresstype")]
+	public partial class AddressTypeController : ApiController
 	{
 
 		/// <summary>
-		/// エラーログの件数
+		/// 住所種別の件数
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>ヒットした件数</returns>
 		[HttpGet, Route("count")]
-		public int Count([FromUri]ErrorLogCondition c)
+		public int Count([FromUri]AddressTypeCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -38,19 +38,19 @@ namespace MockWebAPI.Controllers
 			using (var db = new peppaDB())
 			{
 				var count =
-					c == null ? db.ErrorLog.Count() :
-					db.ErrorLog.Count(predicate: c.CreatePredicate());
+					c == null ? db.AddressType.Count() :
+					db.AddressType.Count(predicate: c.CreatePredicate());
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// エラーログの検索
+		/// 住所種別の検索
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns></returns>
 		[HttpGet, Route("search")]
-		public IEnumerable<ErrorLog> Search([FromUri]ErrorLogCondition c)
+		public IEnumerable<AddressType> Search([FromUri]AddressTypeCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -58,19 +58,19 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var q = db.ErrorLog;
+				var q = db.AddressType;
 				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
 
 		/// <summary>
-		/// エラーログの取得
+		/// 住所種別の取得
 		/// </summary>
-		/// <param name="uid">ユニークID(uid)</param>
+		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
 		/// <returns></returns>
-		[HttpGet, Route("get/{uid}")]
-		public ErrorLog Get(int uid)
+		[HttpGet, Route("get/{addressTypeId}")]
+		public AddressType Get(int addressTypeId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -78,18 +78,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.ErrorLog.Find(uid);
+				var o = db.AddressType.Find(addressTypeId);
 				return o;
 			}
 		}
 
 		/// <summary>
-		/// エラーログの作成
+		/// 住所種別の作成
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public decimal Create([FromBody]ErrorLog o)
+		public int Create([FromBody]AddressType o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -97,18 +97,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				decimal uid = (decimal)db.InsertWithIdentity<ErrorLog>(o);
+				int uid = db.InsertWithInt32Identity<AddressType>(o);
 				return uid;
 			}
 		}
 
 		/// <summary>
-		/// エラーログの更新(必要時作成)
+		/// 住所種別の更新(必要時作成)
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("upsert")]
-		public int Upsert([FromBody]ErrorLog o)
+		public int Upsert([FromBody]AddressType o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -116,18 +116,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				int count = db.InsertOrReplace<ErrorLog>(o);
+				int count = db.InsertOrReplace<AddressType>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// エラーログの一括作成
+		/// 住所種別の一括作成
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>BulkCopyRowsCopied</returns>
 		[HttpPost, Route("massive-new")]
-		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<ErrorLog> os)
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<AddressType> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -135,18 +135,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var ret = db.BulkCopy<ErrorLog>(os);
+				var ret = db.BulkCopy<AddressType>(os);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// エラーログのマージ
+		/// 住所種別のマージ
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("merge")]
-		public int Merge([FromBody]IEnumerable<ErrorLog> os)
+		public int Merge([FromBody]IEnumerable<AddressType> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -154,19 +154,19 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Merge<ErrorLog>(os);
+				var count = db.Merge<AddressType>(os);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// エラーログの更新
+		/// 住所種別の更新
 		/// </summary>
-		/// <param name="uid">ユニークID(uid)</param>
+		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
 		/// <param name="o"></param>
 		/// <returns>更新件数</returns>
-		[HttpPut, Route("modify/{uid}")]
-		public int Modify(int uid, [FromBody]ErrorLog o)
+		[HttpPut, Route("modify/{addressTypeId}")]
+		public int Modify(int addressTypeId, [FromBody]AddressType o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -174,18 +174,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Update<ErrorLog>(o);
+				var count = db.Update<AddressType>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// エラーログの削除(論理)
+		/// 住所種別の削除(論理)
 		/// </summary>
-		/// <param name="uid">ユニークID(uid)</param>
+		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
 		/// <returns>件数</returns>
-		[HttpDelete, Route("remove/{uid}")]
-		public int Remove(int uid)
+		[HttpDelete, Route("remove/{addressTypeId}")]
+		public int Remove(int addressTypeId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -193,8 +193,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.ErrorLog
-					.Where(_ => _.uid == uid)
+				var count = db.AddressType
+					.Where(_ => _.address_type_id == addressTypeId)
 					.Set(_ => _.removed_at, DateTime.Now)
 					.Update();
 				return count;
@@ -202,12 +202,12 @@ namespace MockWebAPI.Controllers
 		}
 
 		/// <summary>
-		/// エラーログの削除(論理)
+		/// 住所種別の削除(論理)
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>件数</returns>
 		[HttpDelete, Route("remove")]
-		public int Remove([FromUri]ErrorLogCondition c)
+		public int Remove([FromUri]AddressTypeCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -215,7 +215,7 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.ErrorLog
+				var count = db.AddressType
 					.Where(c.CreatePredicate())
 					.Set(_ => _.removed_at, DateTime.Now)
 					.Update();
@@ -224,12 +224,12 @@ namespace MockWebAPI.Controllers
 		}
 
 		/// <summary>
-		/// エラーログの物理削除
+		/// 住所種別の物理削除
 		/// </summary>
-		/// <param name="uid">ユニークID(uid)</param>
+		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
 		/// <returns>件数</returns>
-		[HttpDelete, Route("physically-remove/{uid}")]
-		public int PhysicallyRemove(int uid)
+		[HttpDelete, Route("physically-remove/{addressTypeId}")]
+		public int PhysicallyRemove(int addressTypeId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -237,20 +237,20 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.ErrorLog
-					.Where(_ => _.uid == uid)
+				var count = db.AddressType
+					.Where(_ => _.address_type_id == addressTypeId)
 					.Delete();
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// エラーログの物理削除
+		/// 住所種別の物理削除
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>件数</returns>
 		[HttpDelete, Route("physically-remove")]
-		public int PhysicallyRemove([FromUri]ErrorLogCondition c)
+		public int PhysicallyRemove([FromUri]AddressTypeCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -258,7 +258,7 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.ErrorLog
+				var count = db.AddressType
 					.Where(c.CreatePredicate())
 					.Delete();
 				return count;

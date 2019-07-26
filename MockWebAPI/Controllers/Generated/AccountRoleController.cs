@@ -17,19 +17,19 @@ using peppa.Domain;
 namespace MockWebAPI.Controllers
 {
 	/// <summary>
-	/// ロールマスタのWebAPI
+	/// アカウントロールのWebAPI
 	/// </summary>
-	[RoutePrefix("api/role")]
-	public partial class RoleController : ApiController
+	[RoutePrefix("api/accountrole")]
+	public partial class AccountRoleController : ApiController
 	{
 
 		/// <summary>
-		/// ロールマスタの件数
+		/// アカウントロールの件数
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>ヒットした件数</returns>
 		[HttpGet, Route("count")]
-		public int Count([FromUri]RoleCondition c)
+		public int Count([FromUri]AccountRoleCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -38,20 +38,20 @@ namespace MockWebAPI.Controllers
 			using (var db = new peppaDB())
 			{
 				var count =
-					c == null ? db.Role.Count() :
-					db.Role.Count(predicate: c.CreatePredicate());
+					c == null ? db.AccountRole.Count() :
+					db.AccountRole.Count(predicate: c.CreatePredicate());
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// ロールマスタの検索
+		/// アカウントロールの検索
 		/// </summary>
-		/// <param name="with_RolePermissionList">RolePermissionListをLoadWithするか</param>
+		/// <param name="with_Role">RoleをLoadWithするか</param>
 		/// <param name="c"></param>
 		/// <returns></returns>
 		[HttpGet, Route("search")]
-		public IEnumerable<Role> Search([FromUri]bool with_RolePermissionList, [FromUri]RoleCondition c)
+		public IEnumerable<AccountRole> Search([FromUri]bool with_Role, [FromUri]AccountRoleCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -59,11 +59,11 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var q = db.Role;
+				var q = db.AccountRole;
 
 				#region LoadWith
-				if (with_RolePermissionList)
-					q = q.LoadWith(_ => _.RolePermissionList);
+				if (with_Role)
+					q = q.LoadWith(_ => _.Role);
 				#endregion
 
 				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
@@ -72,12 +72,13 @@ namespace MockWebAPI.Controllers
 		}
 
 		/// <summary>
-		/// ロールマスタの取得
+		/// アカウントロールの取得
 		/// </summary>
+		/// <param name="accountId">アカウントID(account_id)</param>
 		/// <param name="roleId">ロールID(role_id)</param>
 		/// <returns></returns>
-		[HttpGet, Route("get/{roleId}")]
-		public Role Get(string roleId)
+		[HttpGet, Route("get/{accountId}/{roleId}")]
+		public AccountRole Get(int accountId, string roleId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -85,18 +86,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.Role.Find(roleId);
+				var o = db.AccountRole.Find(accountId, roleId);
 				return o;
 			}
 		}
 
 		/// <summary>
-		/// ロールマスタの作成
+		/// アカウントロールの作成
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public decimal Create([FromBody]Role o)
+		public int Create([FromBody]AccountRole o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -104,18 +105,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				decimal uid = (decimal)db.InsertWithIdentity<Role>(o);
+				int uid = db.InsertWithInt32Identity<AccountRole>(o);
 				return uid;
 			}
 		}
 
 		/// <summary>
-		/// ロールマスタの更新(必要時作成)
+		/// アカウントロールの更新(必要時作成)
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("upsert")]
-		public int Upsert([FromBody]Role o)
+		public int Upsert([FromBody]AccountRole o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -123,18 +124,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				int count = db.InsertOrReplace<Role>(o);
+				int count = db.InsertOrReplace<AccountRole>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// ロールマスタの一括作成
+		/// アカウントロールの一括作成
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>BulkCopyRowsCopied</returns>
 		[HttpPost, Route("massive-new")]
-		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<Role> os)
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<AccountRole> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -142,18 +143,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var ret = db.BulkCopy<Role>(os);
+				var ret = db.BulkCopy<AccountRole>(os);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// ロールマスタのマージ
+		/// アカウントロールのマージ
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("merge")]
-		public int Merge([FromBody]IEnumerable<Role> os)
+		public int Merge([FromBody]IEnumerable<AccountRole> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -161,19 +162,20 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Merge<Role>(os);
+				var count = db.Merge<AccountRole>(os);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// ロールマスタの更新
+		/// アカウントロールの更新
 		/// </summary>
+		/// <param name="accountId">アカウントID(account_id)</param>
 		/// <param name="roleId">ロールID(role_id)</param>
 		/// <param name="o"></param>
 		/// <returns>更新件数</returns>
-		[HttpPut, Route("modify/{roleId}")]
-		public int Modify(string roleId, [FromBody]Role o)
+		[HttpPut, Route("modify/{accountId}/{roleId}")]
+		public int Modify(int accountId, string roleId, [FromBody]AccountRole o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -181,18 +183,19 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Update<Role>(o);
+				var count = db.Update<AccountRole>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// ロールマスタの削除(論理)
+		/// アカウントロールの削除(物理)
 		/// </summary>
+		/// <param name="accountId">アカウントID(account_id)</param>
 		/// <param name="roleId">ロールID(role_id)</param>
 		/// <returns>件数</returns>
-		[HttpDelete, Route("remove/{roleId}")]
-		public int Remove(string roleId)
+		[HttpDelete, Route("remove/{accountId}/{roleId}")]
+		public int Remove(int accountId, string roleId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -200,21 +203,20 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Role
-					.Where(_ => _.role_id == roleId)
-					.Set(_ => _.removed_at, DateTime.Now)
-					.Update();
+				var count = db.AccountRole
+					.Where(_ => _.account_id == accountId && _.role_id == roleId)
+					.Delete();
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// ロールマスタの削除(論理)
+		/// アカウントロールの削除(物理)
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>件数</returns>
 		[HttpDelete, Route("remove")]
-		public int Remove([FromUri]RoleCondition c)
+		public int Remove([FromUri]AccountRoleCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -222,54 +224,12 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Role
-					.Where(c.CreatePredicate())
-					.Set(_ => _.removed_at, DateTime.Now)
-					.Update();
-				return count;
-			}
-		}
-
-		/// <summary>
-		/// ロールマスタの物理削除
-		/// </summary>
-		/// <param name="roleId">ロールID(role_id)</param>
-		/// <returns>件数</returns>
-		[HttpDelete, Route("physically-remove/{roleId}")]
-		public int PhysicallyRemove(string roleId)
-		{
-#if DEBUG
-			DataConnection.TurnTraceSwitchOn();
-			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
-#endif
-			using (var db = new peppaDB())
-			{
-				var count = db.Role
-					.Where(_ => _.role_id == roleId)
-					.Delete();
-				return count;
-			}
-		}
-
-		/// <summary>
-		/// ロールマスタの物理削除
-		/// </summary>
-		/// <param name="c"></param>
-		/// <returns>件数</returns>
-		[HttpDelete, Route("physically-remove")]
-		public int PhysicallyRemove([FromUri]RoleCondition c)
-		{
-#if DEBUG
-			DataConnection.TurnTraceSwitchOn();
-			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
-#endif
-			using (var db = new peppaDB())
-			{
-				var count = db.Role
+				var count = db.AccountRole
 					.Where(c.CreatePredicate())
 					.Delete();
 				return count;
 			}
 		}
+
 	}
 }

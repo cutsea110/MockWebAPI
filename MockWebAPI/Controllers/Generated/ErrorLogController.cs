@@ -17,19 +17,19 @@ using peppa.Domain;
 namespace MockWebAPI.Controllers
 {
 	/// <summary>
-	/// ロール権限のWebAPI
+	/// エラーログのWebAPI
 	/// </summary>
-	[RoutePrefix("api/rolepermission")]
-	public partial class RolePermissionController : ApiController
+	[RoutePrefix("api/errorlog")]
+	public partial class ErrorLogController : ApiController
 	{
 
 		/// <summary>
-		/// ロール権限の件数
+		/// エラーログの件数
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>ヒットした件数</returns>
 		[HttpGet, Route("count")]
-		public int Count([FromUri]RolePermissionCondition c)
+		public int Count([FromUri]ErrorLogCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -38,19 +38,19 @@ namespace MockWebAPI.Controllers
 			using (var db = new peppaDB())
 			{
 				var count =
-					c == null ? db.RolePermission.Count() :
-					db.RolePermission.Count(predicate: c.CreatePredicate());
+					c == null ? db.ErrorLog.Count() :
+					db.ErrorLog.Count(predicate: c.CreatePredicate());
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// ロール権限の検索
+		/// エラーログの検索
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns></returns>
 		[HttpGet, Route("search")]
-		public IEnumerable<RolePermission> Search([FromUri]RolePermissionCondition c)
+		public IEnumerable<ErrorLog> Search([FromUri]ErrorLogCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -58,20 +58,19 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var q = db.RolePermission;
+				var q = db.ErrorLog;
 				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
 
 		/// <summary>
-		/// ロール権限の取得
+		/// エラーログの取得
 		/// </summary>
-		/// <param name="roleId">ロールID(role_id)</param>
-		/// <param name="permissionId">権限ID(permission_id)</param>
+		/// <param name="uid">ユニークID(uid)</param>
 		/// <returns></returns>
-		[HttpGet, Route("get/{roleId}/{permissionId}")]
-		public RolePermission Get(string roleId, string permissionId)
+		[HttpGet, Route("get/{uid}")]
+		public ErrorLog Get(int uid)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -79,18 +78,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.RolePermission.Find(roleId, permissionId);
+				var o = db.ErrorLog.Find(uid);
 				return o;
 			}
 		}
 
 		/// <summary>
-		/// ロール権限の作成
+		/// エラーログの作成
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public decimal Create([FromBody]RolePermission o)
+		public int Create([FromBody]ErrorLog o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -98,18 +97,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				decimal uid = (decimal)db.InsertWithIdentity<RolePermission>(o);
+				int uid = db.InsertWithInt32Identity<ErrorLog>(o);
 				return uid;
 			}
 		}
 
 		/// <summary>
-		/// ロール権限の更新(必要時作成)
+		/// エラーログの更新(必要時作成)
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("upsert")]
-		public int Upsert([FromBody]RolePermission o)
+		public int Upsert([FromBody]ErrorLog o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -117,18 +116,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				int count = db.InsertOrReplace<RolePermission>(o);
+				int count = db.InsertOrReplace<ErrorLog>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// ロール権限の一括作成
+		/// エラーログの一括作成
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>BulkCopyRowsCopied</returns>
 		[HttpPost, Route("massive-new")]
-		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<RolePermission> os)
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<ErrorLog> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -136,18 +135,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var ret = db.BulkCopy<RolePermission>(os);
+				var ret = db.BulkCopy<ErrorLog>(os);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// ロール権限のマージ
+		/// エラーログのマージ
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("merge")]
-		public int Merge([FromBody]IEnumerable<RolePermission> os)
+		public int Merge([FromBody]IEnumerable<ErrorLog> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -155,20 +154,19 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Merge<RolePermission>(os);
+				var count = db.Merge<ErrorLog>(os);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// ロール権限の更新
+		/// エラーログの更新
 		/// </summary>
-		/// <param name="roleId">ロールID(role_id)</param>
-		/// <param name="permissionId">権限ID(permission_id)</param>
+		/// <param name="uid">ユニークID(uid)</param>
 		/// <param name="o"></param>
 		/// <returns>更新件数</returns>
-		[HttpPut, Route("modify/{roleId}/{permissionId}")]
-		public int Modify(string roleId, string permissionId, [FromBody]RolePermission o)
+		[HttpPut, Route("modify/{uid}")]
+		public int Modify(int uid, [FromBody]ErrorLog o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -176,19 +174,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Update<RolePermission>(o);
+				var count = db.Update<ErrorLog>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// ロール権限の削除(物理)
+		/// エラーログの削除(論理)
 		/// </summary>
-		/// <param name="roleId">ロールID(role_id)</param>
-		/// <param name="permissionId">権限ID(permission_id)</param>
+		/// <param name="uid">ユニークID(uid)</param>
 		/// <returns>件数</returns>
-		[HttpDelete, Route("remove/{roleId}/{permissionId}")]
-		public int Remove(string roleId, string permissionId)
+		[HttpDelete, Route("remove/{uid}")]
+		public int Remove(int uid)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -196,20 +193,64 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.RolePermission
-					.Where(_ => _.role_id == roleId && _.permission_id == permissionId)
+				var count = db.ErrorLog
+					.Where(_ => _.uid == uid)
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// エラーログの削除(論理)
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("remove")]
+		public int Remove([FromUri]ErrorLogCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.ErrorLog
+					.Where(c.CreatePredicate())
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// エラーログの物理削除
+		/// </summary>
+		/// <param name="uid">ユニークID(uid)</param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove/{uid}")]
+		public int PhysicallyRemove(int uid)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.ErrorLog
+					.Where(_ => _.uid == uid)
 					.Delete();
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// ロール権限の削除(物理)
+		/// エラーログの物理削除
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>件数</returns>
-		[HttpDelete, Route("remove")]
-		public int Remove([FromUri]RolePermissionCondition c)
+		[HttpDelete, Route("physically-remove")]
+		public int PhysicallyRemove([FromUri]ErrorLogCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -217,12 +258,11 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.RolePermission
+				var count = db.ErrorLog
 					.Where(c.CreatePredicate())
 					.Delete();
 				return count;
 			}
 		}
-
 	}
 }

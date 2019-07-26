@@ -17,19 +17,19 @@ using peppa.Domain;
 namespace MockWebAPI.Controllers
 {
 	/// <summary>
-	/// 連絡先種別のWebAPI
+	/// ロールマスタのWebAPI
 	/// </summary>
-	[RoutePrefix("api/contacttype")]
-	public partial class ContactTypeController : ApiController
+	[RoutePrefix("api/role")]
+	public partial class RoleController : ApiController
 	{
 
 		/// <summary>
-		/// 連絡先種別の件数
+		/// ロールマスタの件数
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>ヒットした件数</returns>
 		[HttpGet, Route("count")]
-		public int Count([FromUri]ContactTypeCondition c)
+		public int Count([FromUri]RoleCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -38,19 +38,20 @@ namespace MockWebAPI.Controllers
 			using (var db = new peppaDB())
 			{
 				var count =
-					c == null ? db.ContactType.Count() :
-					db.ContactType.Count(predicate: c.CreatePredicate());
+					c == null ? db.Role.Count() :
+					db.Role.Count(predicate: c.CreatePredicate());
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の検索
+		/// ロールマスタの検索
 		/// </summary>
+		/// <param name="with_RolePermissionList">RolePermissionListをLoadWithするか</param>
 		/// <param name="c"></param>
 		/// <returns></returns>
 		[HttpGet, Route("search")]
-		public IEnumerable<ContactType> Search([FromUri]ContactTypeCondition c)
+		public IEnumerable<Role> Search([FromUri]bool with_RolePermissionList, [FromUri]RoleCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -58,19 +59,25 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var q = db.ContactType;
+				var q = db.Role;
+
+				#region LoadWith
+				if (with_RolePermissionList)
+					q = q.LoadWith(_ => _.RolePermissionList);
+				#endregion
+
 				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の取得
+		/// ロールマスタの取得
 		/// </summary>
-		/// <param name="contactTypeId">連絡先種別ID(contact_type_id)</param>
+		/// <param name="roleId">ロールID(role_id)</param>
 		/// <returns></returns>
-		[HttpGet, Route("get/{contactTypeId}")]
-		public ContactType Get(int contactTypeId)
+		[HttpGet, Route("get/{roleId}")]
+		public Role Get(string roleId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -78,18 +85,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.ContactType.Find(contactTypeId);
+				var o = db.Role.Find(roleId);
 				return o;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の作成
+		/// ロールマスタの作成
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public decimal Create([FromBody]ContactType o)
+		public int Create([FromBody]Role o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -97,18 +104,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				decimal uid = (decimal)db.InsertWithIdentity<ContactType>(o);
+				int uid = db.InsertWithInt32Identity<Role>(o);
 				return uid;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の更新(必要時作成)
+		/// ロールマスタの更新(必要時作成)
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("upsert")]
-		public int Upsert([FromBody]ContactType o)
+		public int Upsert([FromBody]Role o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -116,18 +123,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				int count = db.InsertOrReplace<ContactType>(o);
+				int count = db.InsertOrReplace<Role>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の一括作成
+		/// ロールマスタの一括作成
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>BulkCopyRowsCopied</returns>
 		[HttpPost, Route("massive-new")]
-		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<ContactType> os)
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<Role> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -135,18 +142,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var ret = db.BulkCopy<ContactType>(os);
+				var ret = db.BulkCopy<Role>(os);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別のマージ
+		/// ロールマスタのマージ
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("merge")]
-		public int Merge([FromBody]IEnumerable<ContactType> os)
+		public int Merge([FromBody]IEnumerable<Role> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -154,19 +161,19 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Merge<ContactType>(os);
+				var count = db.Merge<Role>(os);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の更新
+		/// ロールマスタの更新
 		/// </summary>
-		/// <param name="contactTypeId">連絡先種別ID(contact_type_id)</param>
+		/// <param name="roleId">ロールID(role_id)</param>
 		/// <param name="o"></param>
 		/// <returns>更新件数</returns>
-		[HttpPut, Route("modify/{contactTypeId}")]
-		public int Modify(int contactTypeId, [FromBody]ContactType o)
+		[HttpPut, Route("modify/{roleId}")]
+		public int Modify(string roleId, [FromBody]Role o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -174,18 +181,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Update<ContactType>(o);
+				var count = db.Update<Role>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の削除(論理)
+		/// ロールマスタの削除(論理)
 		/// </summary>
-		/// <param name="contactTypeId">連絡先種別ID(contact_type_id)</param>
+		/// <param name="roleId">ロールID(role_id)</param>
 		/// <returns>件数</returns>
-		[HttpDelete, Route("remove/{contactTypeId}")]
-		public int Remove(int contactTypeId)
+		[HttpDelete, Route("remove/{roleId}")]
+		public int Remove(string roleId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -193,8 +200,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.ContactType
-					.Where(_ => _.contact_type_id == contactTypeId)
+				var count = db.Role
+					.Where(_ => _.role_id == roleId)
 					.Set(_ => _.removed_at, DateTime.Now)
 					.Update();
 				return count;
@@ -202,12 +209,12 @@ namespace MockWebAPI.Controllers
 		}
 
 		/// <summary>
-		/// 連絡先種別の削除(論理)
+		/// ロールマスタの削除(論理)
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>件数</returns>
 		[HttpDelete, Route("remove")]
-		public int Remove([FromUri]ContactTypeCondition c)
+		public int Remove([FromUri]RoleCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -215,7 +222,7 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.ContactType
+				var count = db.Role
 					.Where(c.CreatePredicate())
 					.Set(_ => _.removed_at, DateTime.Now)
 					.Update();
@@ -224,12 +231,12 @@ namespace MockWebAPI.Controllers
 		}
 
 		/// <summary>
-		/// 連絡先種別の物理削除
+		/// ロールマスタの物理削除
 		/// </summary>
-		/// <param name="contactTypeId">連絡先種別ID(contact_type_id)</param>
+		/// <param name="roleId">ロールID(role_id)</param>
 		/// <returns>件数</returns>
-		[HttpDelete, Route("physically-remove/{contactTypeId}")]
-		public int PhysicallyRemove(int contactTypeId)
+		[HttpDelete, Route("physically-remove/{roleId}")]
+		public int PhysicallyRemove(string roleId)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -237,20 +244,20 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.ContactType
-					.Where(_ => _.contact_type_id == contactTypeId)
+				var count = db.Role
+					.Where(_ => _.role_id == roleId)
 					.Delete();
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の物理削除
+		/// ロールマスタの物理削除
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>件数</returns>
 		[HttpDelete, Route("physically-remove")]
-		public int PhysicallyRemove([FromUri]ContactTypeCondition c)
+		public int PhysicallyRemove([FromUri]RoleCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -258,7 +265,7 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.ContactType
+				var count = db.Role
 					.Where(c.CreatePredicate())
 					.Delete();
 				return count;
