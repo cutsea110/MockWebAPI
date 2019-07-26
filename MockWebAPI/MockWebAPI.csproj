@@ -101,6 +101,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="bo\DbContext.cs" />
+    <Compile Include="bo\Entities\Role.cs" />
     <Compile Include="Controllers\Generated\AccountController.cs" />
     <Compile Include="Controllers\Generated\AccountRoleController.cs" />
     <Compile Include="Controllers\Generated\AddressController.cs" />

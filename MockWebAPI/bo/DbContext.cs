@@ -35,7 +35,7 @@ namespace peppa.Domain
 	/// <summary>
 	/// 条件指定基本クラス
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="TEntity"></typeparam>
 	[Serializable]
 	public abstract class ConditionBase<TEntity> where TEntity : class
 	{
@@ -4442,7 +4442,15 @@ namespace peppa.Domain
 	/// テスト条件
 	/// </summary>
 	[DataContract]
-	public partial class TestCondition : ConditionBase<Test>
+	public partial class TestCondition : TestConditionBase
+	{
+	}
+
+	/// <summary>
+	/// テスト条件ベース
+	/// </summary>
+	[DataContract]
+	public class TestConditionBase : ConditionBase<Test>
 	{
 		#region properties
 		#region uid
@@ -6223,7 +6231,15 @@ namespace peppa.Domain
 	/// ロールマスタ条件
 	/// </summary>
 	[DataContract]
-	public partial class RoleCondition : ConditionBase<Role>
+	public partial class RoleCondition : RoleConditionBase
+	{
+	}
+
+	/// <summary>
+	/// ロールマスタ条件ベース
+	/// </summary>
+	[DataContract]
+	public class RoleConditionBase : ConditionBase<Role>
 	{
 		#region properties
 		#region uid
@@ -7109,7 +7125,15 @@ namespace peppa.Domain
 	/// ロール権限条件
 	/// </summary>
 	[DataContract]
-	public partial class RolePermissionCondition : ConditionBase<RolePermission>
+	public partial class RolePermissionCondition : RolePermissionConditionBase
+	{
+	}
+
+	/// <summary>
+	/// ロール権限条件ベース
+	/// </summary>
+	[DataContract]
+	public class RolePermissionConditionBase : ConditionBase<RolePermission>
 	{
 		#region properties
 		#region uid
@@ -8190,7 +8214,15 @@ namespace peppa.Domain
 	/// アカウント条件
 	/// </summary>
 	[DataContract]
-	public partial class AccountCondition : ConditionBase<Account>
+	public partial class AccountCondition : AccountConditionBase
+	{
+	}
+
+	/// <summary>
+	/// アカウント条件ベース
+	/// </summary>
+	[DataContract]
+	public class AccountConditionBase : ConditionBase<Account>
 	{
 		#region properties
 		#region uid
@@ -9140,7 +9172,15 @@ namespace peppa.Domain
 	/// アカウントロール条件
 	/// </summary>
 	[DataContract]
-	public partial class AccountRoleCondition : ConditionBase<AccountRole>
+	public partial class AccountRoleCondition : AccountRoleConditionBase
+	{
+	}
+
+	/// <summary>
+	/// アカウントロール条件ベース
+	/// </summary>
+	[DataContract]
+	public class AccountRoleConditionBase : ConditionBase<AccountRole>
 	{
 		#region properties
 		#region uid
@@ -10198,7 +10238,15 @@ namespace peppa.Domain
 	/// 職員条件
 	/// </summary>
 	[DataContract]
-	public partial class StaffCondition : ConditionBase<Staff>
+	public partial class StaffCondition : StaffConditionBase
+	{
+	}
+
+	/// <summary>
+	/// 職員条件ベース
+	/// </summary>
+	[DataContract]
+	public class StaffConditionBase : ConditionBase<Staff>
 	{
 		#region properties
 		#region uid
@@ -11594,7 +11642,15 @@ namespace peppa.Domain
 	/// 住所条件
 	/// </summary>
 	[DataContract]
-	public partial class AddressCondition : ConditionBase<Address>
+	public partial class AddressCondition : AddressConditionBase
+	{
+	}
+
+	/// <summary>
+	/// 住所条件ベース
+	/// </summary>
+	[DataContract]
+	public class AddressConditionBase : ConditionBase<Address>
 	{
 		#region properties
 		#region uid
@@ -12585,7 +12641,15 @@ namespace peppa.Domain
 	/// 住所種別条件
 	/// </summary>
 	[DataContract]
-	public partial class AddressTypeCondition : ConditionBase<AddressType>
+	public partial class AddressTypeCondition : AddressTypeConditionBase
+	{
+	}
+
+	/// <summary>
+	/// 住所種別条件ベース
+	/// </summary>
+	[DataContract]
+	public class AddressTypeConditionBase : ConditionBase<AddressType>
 	{
 		#region properties
 		#region uid
@@ -13477,7 +13541,15 @@ namespace peppa.Domain
 	/// 連絡先条件
 	/// </summary>
 	[DataContract]
-	public partial class ContactCondition : ConditionBase<Contact>
+	public partial class ContactCondition : ContactConditionBase
+	{
+	}
+
+	/// <summary>
+	/// 連絡先条件ベース
+	/// </summary>
+	[DataContract]
+	public class ContactConditionBase : ConditionBase<Contact>
 	{
 		#region properties
 		#region uid
@@ -14303,7 +14375,15 @@ namespace peppa.Domain
 	/// 連絡先種別条件
 	/// </summary>
 	[DataContract]
-	public partial class ContactTypeCondition : ConditionBase<ContactType>
+	public partial class ContactTypeCondition : ContactTypeConditionBase
+	{
+	}
+
+	/// <summary>
+	/// 連絡先種別条件ベース
+	/// </summary>
+	[DataContract]
+	public class ContactTypeConditionBase : ConditionBase<ContactType>
 	{
 		#region properties
 		#region uid
@@ -15107,7 +15187,15 @@ namespace peppa.Domain
 	/// エラーログ条件
 	/// </summary>
 	[DataContract]
-	public partial class ErrorLogCondition : ConditionBase<ErrorLog>
+	public partial class ErrorLogCondition : ErrorLogConditionBase
+	{
+	}
+
+	/// <summary>
+	/// エラーログ条件ベース
+	/// </summary>
+	[DataContract]
+	public class ErrorLogConditionBase : ConditionBase<ErrorLog>
 	{
 		#region properties
 		#region uid
