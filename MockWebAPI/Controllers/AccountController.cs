@@ -22,13 +22,14 @@ namespace MockWebAPI.Controllers
 	[RoutePrefix("api/account")]
 	public partial class AccountController : ApiController
 	{
+
 		/// <summary>
-		/// アカウントの検索
+		/// アカウントの件数
 		/// </summary>
 		/// <param name="c"></param>
-		/// <returns></returns>
-		[HttpGet, Route("search")]
-		public IEnumerable<Account> Search([FromUri]AccountCondition c)
+		/// <returns>ヒットした件数</returns>
+		[HttpGet, Route("count")]
+		public int Count([FromUri]AccountCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -36,9 +37,39 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var list =
-					c == null ? db.Account.ToList() :
-					db.Account.Where(c.CreatePredicate()).ToList();
+				var count =
+					c == null ? db.Account.Count() :
+					db.Account.Count(predicate: c.CreatePredicate());
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// アカウントの検索
+		/// </summary>
+		/// <param name="with_Staff">StaffをLoadWithするか</param>
+		/// <param name="with_AccountRoleList">AccountRoleListをLoadWithするか</param>
+		/// <param name="c"></param>
+		/// <returns></returns>
+		[HttpGet, Route("search")]
+		public IEnumerable<Account> Search([FromUri]bool with_Staff, [FromUri]bool with_AccountRoleList, [FromUri]AccountCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var q = db.Account;
+
+				#region LoadWith
+				if (with_Staff)
+					q = q.LoadWith(_ => _.Staff);
+				if (with_AccountRoleList)
+					q = q.LoadWith(_ => _.AccountRoleList);
+				#endregion
+
+				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
@@ -68,7 +99,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Post([FromBody]Account o)
+		public int Create([FromBody]Account o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -78,6 +109,44 @@ namespace MockWebAPI.Controllers
 			{
 				int uid = (int)db.InsertWithIdentity<Account>(o);
 				return uid;
+			}
+		}
+
+		/// <summary>
+		/// アカウントの更新(必要時作成)
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>件数</returns>
+		[HttpPost, Route("upsert")]
+		public int Upsert([FromBody]Account o)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				int count = db.InsertOrReplace<Account>(o);
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// アカウントの一括作成
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>uid</returns>
+		[HttpPost, Route("massive-new")]
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<Account> os)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var ret = db.BulkCopy<Account>(os);
+				return ret;
 			}
 		}
 
@@ -105,6 +174,7 @@ namespace MockWebAPI.Controllers
 		/// アカウントの削除(論理)
 		/// </summary>
 		/// <param name="accountId">アカウントID(account_id)</param>
+		/// <returns>件数</returns>
 		[HttpDelete, Route("remove/{accountId}")]
 		public int Remove(int accountId)
 		{
@@ -114,9 +184,74 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.Account.Find(accountId);
-				o.removed_at = DateTime.Now;
-				var count = db.Update<Account>(o);
+				var count = db.Account
+					.Where(_ => _.account_id == accountId)
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// アカウントの削除(論理)
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("remove")]
+		public int Remove([FromUri]AccountCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Account
+					.Where(c.CreatePredicate())
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// アカウントの物理削除
+		/// </summary>
+		/// <param name="accountId">アカウントID(account_id)</param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove/{accountId}")]
+		public int PhysicallyRemove(int accountId)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Account
+					.Where(_ => _.account_id == accountId)
+					.Delete();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// アカウントの物理削除
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove")]
+		public int PhysicallyRemove([FromUri]AccountCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Account
+					.Where(c.CreatePredicate())
+					.Delete();
 				return count;
 			}
 		}

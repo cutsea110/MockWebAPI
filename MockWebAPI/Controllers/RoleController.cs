@@ -22,13 +22,14 @@ namespace MockWebAPI.Controllers
 	[RoutePrefix("api/role")]
 	public partial class RoleController : ApiController
 	{
+
 		/// <summary>
-		/// ロールマスタの検索
+		/// ロールマスタの件数
 		/// </summary>
 		/// <param name="c"></param>
-		/// <returns></returns>
-		[HttpGet, Route("search")]
-		public IEnumerable<Role> Search([FromUri]RoleCondition c)
+		/// <returns>ヒットした件数</returns>
+		[HttpGet, Route("count")]
+		public int Count([FromUri]RoleCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -36,9 +37,36 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var list =
-					c == null ? db.Role.ToList() :
-					db.Role.Where(c.CreatePredicate()).ToList();
+				var count =
+					c == null ? db.Role.Count() :
+					db.Role.Count(predicate: c.CreatePredicate());
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// ロールマスタの検索
+		/// </summary>
+		/// <param name="with_RolePermissionList">RolePermissionListをLoadWithするか</param>
+		/// <param name="c"></param>
+		/// <returns></returns>
+		[HttpGet, Route("search")]
+		public IEnumerable<Role> Search([FromUri]bool with_RolePermissionList, [FromUri]RoleCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var q = db.Role;
+
+				#region LoadWith
+				if (with_RolePermissionList)
+					q = q.LoadWith(_ => _.RolePermissionList);
+				#endregion
+
+				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
@@ -68,7 +96,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Post([FromBody]Role o)
+		public int Create([FromBody]Role o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -78,6 +106,44 @@ namespace MockWebAPI.Controllers
 			{
 				int uid = (int)db.InsertWithIdentity<Role>(o);
 				return uid;
+			}
+		}
+
+		/// <summary>
+		/// ロールマスタの更新(必要時作成)
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>件数</returns>
+		[HttpPost, Route("upsert")]
+		public int Upsert([FromBody]Role o)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				int count = db.InsertOrReplace<Role>(o);
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// ロールマスタの一括作成
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>uid</returns>
+		[HttpPost, Route("massive-new")]
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<Role> os)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var ret = db.BulkCopy<Role>(os);
+				return ret;
 			}
 		}
 
@@ -105,6 +171,7 @@ namespace MockWebAPI.Controllers
 		/// ロールマスタの削除(論理)
 		/// </summary>
 		/// <param name="roleId">ロールID(role_id)</param>
+		/// <returns>件数</returns>
 		[HttpDelete, Route("remove/{roleId}")]
 		public int Remove(string roleId)
 		{
@@ -114,9 +181,74 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.Role.Find(roleId);
-				o.removed_at = DateTime.Now;
-				var count = db.Update<Role>(o);
+				var count = db.Role
+					.Where(_ => _.role_id == roleId)
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// ロールマスタの削除(論理)
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("remove")]
+		public int Remove([FromUri]RoleCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Role
+					.Where(c.CreatePredicate())
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// ロールマスタの物理削除
+		/// </summary>
+		/// <param name="roleId">ロールID(role_id)</param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove/{roleId}")]
+		public int PhysicallyRemove(string roleId)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Role
+					.Where(_ => _.role_id == roleId)
+					.Delete();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// ロールマスタの物理削除
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove")]
+		public int PhysicallyRemove([FromUri]RoleCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Role
+					.Where(c.CreatePredicate())
+					.Delete();
 				return count;
 			}
 		}

@@ -22,6 +22,28 @@ namespace MockWebAPI.Controllers
 	[RoutePrefix("api/contacttype")]
 	public partial class ContactTypeController : ApiController
 	{
+
+		/// <summary>
+		/// 連絡先種別の件数
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>ヒットした件数</returns>
+		[HttpGet, Route("count")]
+		public int Count([FromUri]ContactTypeCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count =
+					c == null ? db.ContactType.Count() :
+					db.ContactType.Count(predicate: c.CreatePredicate());
+				return count;
+			}
+		}
+
 		/// <summary>
 		/// 連絡先種別の検索
 		/// </summary>
@@ -36,9 +58,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var list =
-					c == null ? db.ContactType.ToList() :
-					db.ContactType.Where(c.CreatePredicate()).ToList();
+				var q = db.ContactType;
+				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
@@ -68,7 +89,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Post([FromBody]ContactType o)
+		public int Create([FromBody]ContactType o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -78,6 +99,44 @@ namespace MockWebAPI.Controllers
 			{
 				int uid = (int)db.InsertWithIdentity<ContactType>(o);
 				return uid;
+			}
+		}
+
+		/// <summary>
+		/// 連絡先種別の更新(必要時作成)
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>件数</returns>
+		[HttpPost, Route("upsert")]
+		public int Upsert([FromBody]ContactType o)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				int count = db.InsertOrReplace<ContactType>(o);
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// 連絡先種別の一括作成
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>uid</returns>
+		[HttpPost, Route("massive-new")]
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<ContactType> os)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var ret = db.BulkCopy<ContactType>(os);
+				return ret;
 			}
 		}
 
@@ -105,6 +164,7 @@ namespace MockWebAPI.Controllers
 		/// 連絡先種別の削除(論理)
 		/// </summary>
 		/// <param name="contactTypeId">連絡先種別ID(contact_type_id)</param>
+		/// <returns>件数</returns>
 		[HttpDelete, Route("remove/{contactTypeId}")]
 		public int Remove(int contactTypeId)
 		{
@@ -114,9 +174,74 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.ContactType.Find(contactTypeId);
-				o.removed_at = DateTime.Now;
-				var count = db.Update<ContactType>(o);
+				var count = db.ContactType
+					.Where(_ => _.contact_type_id == contactTypeId)
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// 連絡先種別の削除(論理)
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("remove")]
+		public int Remove([FromUri]ContactTypeCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.ContactType
+					.Where(c.CreatePredicate())
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// 連絡先種別の物理削除
+		/// </summary>
+		/// <param name="contactTypeId">連絡先種別ID(contact_type_id)</param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove/{contactTypeId}")]
+		public int PhysicallyRemove(int contactTypeId)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.ContactType
+					.Where(_ => _.contact_type_id == contactTypeId)
+					.Delete();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// 連絡先種別の物理削除
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove")]
+		public int PhysicallyRemove([FromUri]ContactTypeCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.ContactType
+					.Where(c.CreatePredicate())
+					.Delete();
 				return count;
 			}
 		}

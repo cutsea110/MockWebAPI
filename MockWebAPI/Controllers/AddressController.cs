@@ -22,13 +22,14 @@ namespace MockWebAPI.Controllers
 	[RoutePrefix("api/address")]
 	public partial class AddressController : ApiController
 	{
+
 		/// <summary>
-		/// 住所の検索
+		/// 住所の件数
 		/// </summary>
 		/// <param name="c"></param>
-		/// <returns></returns>
-		[HttpGet, Route("search")]
-		public IEnumerable<Address> Search([FromUri]AddressCondition c)
+		/// <returns>ヒットした件数</returns>
+		[HttpGet, Route("count")]
+		public int Count([FromUri]AddressCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -36,9 +37,39 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var list =
-					c == null ? db.Address.ToList() :
-					db.Address.Where(c.CreatePredicate()).ToList();
+				var count =
+					c == null ? db.Address.Count() :
+					db.Address.Count(predicate: c.CreatePredicate());
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// 住所の検索
+		/// </summary>
+		/// <param name="with_AddressType">AddressTypeをLoadWithするか</param>
+		/// <param name="with_Staff">StaffをLoadWithするか</param>
+		/// <param name="c"></param>
+		/// <returns></returns>
+		[HttpGet, Route("search")]
+		public IEnumerable<Address> Search([FromUri]bool with_AddressType, [FromUri]bool with_Staff, [FromUri]AddressCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var q = db.Address;
+
+				#region LoadWith
+				if (with_AddressType)
+					q = q.LoadWith(_ => _.AddressType);
+				if (with_Staff)
+					q = q.LoadWith(_ => _.Staff);
+				#endregion
+
+				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
@@ -70,7 +101,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Post([FromBody]Address o)
+		public int Create([FromBody]Address o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -80,6 +111,44 @@ namespace MockWebAPI.Controllers
 			{
 				int uid = (int)db.InsertWithIdentity<Address>(o);
 				return uid;
+			}
+		}
+
+		/// <summary>
+		/// 住所の更新(必要時作成)
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>件数</returns>
+		[HttpPost, Route("upsert")]
+		public int Upsert([FromBody]Address o)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				int count = db.InsertOrReplace<Address>(o);
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// 住所の一括作成
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>uid</returns>
+		[HttpPost, Route("massive-new")]
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<Address> os)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var ret = db.BulkCopy<Address>(os);
+				return ret;
 			}
 		}
 
@@ -111,6 +180,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="userType">利用者種別(user_type)</param>
 		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
 		/// <param name="seq">連番(seq)</param>
+		/// <returns>件数</returns>
 		[HttpDelete, Route("remove/{userType}/{genericUserNo}/{seq}")]
 		public int Remove(int userType, string genericUserNo, int seq)
 		{
@@ -120,10 +190,33 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.Address.Find(userType, genericUserNo, seq);
-				var count = db.Delete<Address>(o);
+				var count = db.Address
+					.Where(_ => _.user_type == userType && _.generic_user_no == genericUserNo && _.seq == seq)
+					.Delete();
 				return count;
 			}
 		}
+
+		/// <summary>
+		/// 住所の削除(物理)
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("remove")]
+		public int Remove([FromUri]AddressCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Address
+					.Where(c.CreatePredicate())
+					.Delete();
+				return count;
+			}
+		}
+
 	}
 }

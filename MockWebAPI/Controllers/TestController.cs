@@ -22,6 +22,28 @@ namespace MockWebAPI.Controllers
 	[RoutePrefix("api/test")]
 	public partial class TestController : ApiController
 	{
+
+		/// <summary>
+		/// テストの件数
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>ヒットした件数</returns>
+		[HttpGet, Route("count")]
+		public int Count([FromUri]TestCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count =
+					c == null ? db.Test.Count() :
+					db.Test.Count(predicate: c.CreatePredicate());
+				return count;
+			}
+		}
+
 		/// <summary>
 		/// テストの検索
 		/// </summary>
@@ -36,9 +58,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var list =
-					c == null ? db.Test.ToList() :
-					db.Test.Where(c.CreatePredicate()).ToList();
+				var q = db.Test;
+				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
@@ -68,7 +89,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Post([FromBody]Test o)
+		public int Create([FromBody]Test o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -78,6 +99,44 @@ namespace MockWebAPI.Controllers
 			{
 				int uid = (int)db.InsertWithIdentity<Test>(o);
 				return uid;
+			}
+		}
+
+		/// <summary>
+		/// テストの更新(必要時作成)
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>件数</returns>
+		[HttpPost, Route("upsert")]
+		public int Upsert([FromBody]Test o)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				int count = db.InsertOrReplace<Test>(o);
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// テストの一括作成
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>uid</returns>
+		[HttpPost, Route("massive-new")]
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<Test> os)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var ret = db.BulkCopy<Test>(os);
+				return ret;
 			}
 		}
 
@@ -105,6 +164,7 @@ namespace MockWebAPI.Controllers
 		/// テストの削除(物理)
 		/// </summary>
 		/// <param name="uid">ユニークID(uid)</param>
+		/// <returns>件数</returns>
 		[HttpDelete, Route("remove/{uid}")]
 		public int Remove(int uid)
 		{
@@ -114,10 +174,33 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.Test.Find(uid);
-				var count = db.Delete<Test>(o);
+				var count = db.Test
+					.Where(_ => _.uid == uid)
+					.Delete();
 				return count;
 			}
 		}
+
+		/// <summary>
+		/// テストの削除(物理)
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("remove")]
+		public int Remove([FromUri]TestCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.Test
+					.Where(c.CreatePredicate())
+					.Delete();
+				return count;
+			}
+		}
+
 	}
 }

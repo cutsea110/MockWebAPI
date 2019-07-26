@@ -22,6 +22,28 @@ namespace MockWebAPI.Controllers
 	[RoutePrefix("api/addresstype")]
 	public partial class AddressTypeController : ApiController
 	{
+
+		/// <summary>
+		/// 住所種別の件数
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>ヒットした件数</returns>
+		[HttpGet, Route("count")]
+		public int Count([FromUri]AddressTypeCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count =
+					c == null ? db.AddressType.Count() :
+					db.AddressType.Count(predicate: c.CreatePredicate());
+				return count;
+			}
+		}
+
 		/// <summary>
 		/// 住所種別の検索
 		/// </summary>
@@ -36,9 +58,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var list =
-					c == null ? db.AddressType.ToList() :
-					db.AddressType.Where(c.CreatePredicate()).ToList();
+				var q = db.AddressType;
+				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
@@ -68,7 +89,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Post([FromBody]AddressType o)
+		public int Create([FromBody]AddressType o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -78,6 +99,44 @@ namespace MockWebAPI.Controllers
 			{
 				int uid = (int)db.InsertWithIdentity<AddressType>(o);
 				return uid;
+			}
+		}
+
+		/// <summary>
+		/// 住所種別の更新(必要時作成)
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>件数</returns>
+		[HttpPost, Route("upsert")]
+		public int Upsert([FromBody]AddressType o)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				int count = db.InsertOrReplace<AddressType>(o);
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// 住所種別の一括作成
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>uid</returns>
+		[HttpPost, Route("massive-new")]
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<AddressType> os)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var ret = db.BulkCopy<AddressType>(os);
+				return ret;
 			}
 		}
 
@@ -105,6 +164,7 @@ namespace MockWebAPI.Controllers
 		/// 住所種別の削除(論理)
 		/// </summary>
 		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
+		/// <returns>件数</returns>
 		[HttpDelete, Route("remove/{addressTypeId}")]
 		public int Remove(int addressTypeId)
 		{
@@ -114,9 +174,74 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.AddressType.Find(addressTypeId);
-				o.removed_at = DateTime.Now;
-				var count = db.Update<AddressType>(o);
+				var count = db.AddressType
+					.Where(_ => _.address_type_id == addressTypeId)
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// 住所種別の削除(論理)
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("remove")]
+		public int Remove([FromUri]AddressTypeCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.AddressType
+					.Where(c.CreatePredicate())
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// 住所種別の物理削除
+		/// </summary>
+		/// <param name="addressTypeId">住所種別ID(address_type_id)</param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove/{addressTypeId}")]
+		public int PhysicallyRemove(int addressTypeId)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.AddressType
+					.Where(_ => _.address_type_id == addressTypeId)
+					.Delete();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// 住所種別の物理削除
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove")]
+		public int PhysicallyRemove([FromUri]AddressTypeCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.AddressType
+					.Where(c.CreatePredicate())
+					.Delete();
 				return count;
 			}
 		}

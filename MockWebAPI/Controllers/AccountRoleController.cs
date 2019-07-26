@@ -22,13 +22,14 @@ namespace MockWebAPI.Controllers
 	[RoutePrefix("api/accountrole")]
 	public partial class AccountRoleController : ApiController
 	{
+
 		/// <summary>
-		/// アカウントロールの検索
+		/// アカウントロールの件数
 		/// </summary>
 		/// <param name="c"></param>
-		/// <returns></returns>
-		[HttpGet, Route("search")]
-		public IEnumerable<AccountRole> Search([FromUri]AccountRoleCondition c)
+		/// <returns>ヒットした件数</returns>
+		[HttpGet, Route("count")]
+		public int Count([FromUri]AccountRoleCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -36,9 +37,36 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var list =
-					c == null ? db.AccountRole.ToList() :
-					db.AccountRole.Where(c.CreatePredicate()).ToList();
+				var count =
+					c == null ? db.AccountRole.Count() :
+					db.AccountRole.Count(predicate: c.CreatePredicate());
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// アカウントロールの検索
+		/// </summary>
+		/// <param name="with_Role">RoleをLoadWithするか</param>
+		/// <param name="c"></param>
+		/// <returns></returns>
+		[HttpGet, Route("search")]
+		public IEnumerable<AccountRole> Search([FromUri]bool with_Role, [FromUri]AccountRoleCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var q = db.AccountRole;
+
+				#region LoadWith
+				if (with_Role)
+					q = q.LoadWith(_ => _.Role);
+				#endregion
+
+				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
@@ -69,7 +97,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Post([FromBody]AccountRole o)
+		public int Create([FromBody]AccountRole o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -79,6 +107,44 @@ namespace MockWebAPI.Controllers
 			{
 				int uid = (int)db.InsertWithIdentity<AccountRole>(o);
 				return uid;
+			}
+		}
+
+		/// <summary>
+		/// アカウントロールの更新(必要時作成)
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>件数</returns>
+		[HttpPost, Route("upsert")]
+		public int Upsert([FromBody]AccountRole o)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				int count = db.InsertOrReplace<AccountRole>(o);
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// アカウントロールの一括作成
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>uid</returns>
+		[HttpPost, Route("massive-new")]
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<AccountRole> os)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var ret = db.BulkCopy<AccountRole>(os);
+				return ret;
 			}
 		}
 
@@ -108,6 +174,7 @@ namespace MockWebAPI.Controllers
 		/// </summary>
 		/// <param name="accountId">アカウントID(account_id)</param>
 		/// <param name="roleId">ロールID(role_id)</param>
+		/// <returns>件数</returns>
 		[HttpDelete, Route("remove/{accountId}/{roleId}")]
 		public int Remove(int accountId, string roleId)
 		{
@@ -117,10 +184,33 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.AccountRole.Find(accountId, roleId);
-				var count = db.Delete<AccountRole>(o);
+				var count = db.AccountRole
+					.Where(_ => _.account_id == accountId && _.role_id == roleId)
+					.Delete();
 				return count;
 			}
 		}
+
+		/// <summary>
+		/// アカウントロールの削除(物理)
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("remove")]
+		public int Remove([FromUri]AccountRoleCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.AccountRole
+					.Where(c.CreatePredicate())
+					.Delete();
+				return count;
+			}
+		}
+
 	}
 }

@@ -22,6 +22,28 @@ namespace MockWebAPI.Controllers
 	[RoutePrefix("api/errorlog")]
 	public partial class ErrorLogController : ApiController
 	{
+
+		/// <summary>
+		/// エラーログの件数
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>ヒットした件数</returns>
+		[HttpGet, Route("count")]
+		public int Count([FromUri]ErrorLogCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count =
+					c == null ? db.ErrorLog.Count() :
+					db.ErrorLog.Count(predicate: c.CreatePredicate());
+				return count;
+			}
+		}
+
 		/// <summary>
 		/// エラーログの検索
 		/// </summary>
@@ -36,9 +58,8 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var list =
-					c == null ? db.ErrorLog.ToList() :
-					db.ErrorLog.Where(c.CreatePredicate()).ToList();
+				var q = db.ErrorLog;
+				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
@@ -68,7 +89,7 @@ namespace MockWebAPI.Controllers
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Post([FromBody]ErrorLog o)
+		public int Create([FromBody]ErrorLog o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -78,6 +99,44 @@ namespace MockWebAPI.Controllers
 			{
 				int uid = (int)db.InsertWithIdentity<ErrorLog>(o);
 				return uid;
+			}
+		}
+
+		/// <summary>
+		/// エラーログの更新(必要時作成)
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>件数</returns>
+		[HttpPost, Route("upsert")]
+		public int Upsert([FromBody]ErrorLog o)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				int count = db.InsertOrReplace<ErrorLog>(o);
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// エラーログの一括作成
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns>uid</returns>
+		[HttpPost, Route("massive-new")]
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<ErrorLog> os)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var ret = db.BulkCopy<ErrorLog>(os);
+				return ret;
 			}
 		}
 
@@ -105,6 +164,7 @@ namespace MockWebAPI.Controllers
 		/// エラーログの削除(論理)
 		/// </summary>
 		/// <param name="uid">ユニークID(uid)</param>
+		/// <returns>件数</returns>
 		[HttpDelete, Route("remove/{uid}")]
 		public int Remove(int uid)
 		{
@@ -114,9 +174,74 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var o = db.ErrorLog.Find(uid);
-				o.removed_at = DateTime.Now;
-				var count = db.Update<ErrorLog>(o);
+				var count = db.ErrorLog
+					.Where(_ => _.uid == uid)
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// エラーログの削除(論理)
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("remove")]
+		public int Remove([FromUri]ErrorLogCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.ErrorLog
+					.Where(c.CreatePredicate())
+					.Set(_ => _.removed_at, DateTime.Now)
+					.Update();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// エラーログの物理削除
+		/// </summary>
+		/// <param name="uid">ユニークID(uid)</param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove/{uid}")]
+		public int PhysicallyRemove(int uid)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.ErrorLog
+					.Where(_ => _.uid == uid)
+					.Delete();
+				return count;
+			}
+		}
+
+		/// <summary>
+		/// エラーログの物理削除
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns>件数</returns>
+		[HttpDelete, Route("physically-remove")]
+		public int PhysicallyRemove([FromUri]ErrorLogCondition c)
+		{
+#if DEBUG
+			DataConnection.TurnTraceSwitchOn();
+			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
+#endif
+			using (var db = new peppaDB())
+			{
+				var count = db.ErrorLog
+					.Where(c.CreatePredicate())
+					.Delete();
 				return count;
 			}
 		}
