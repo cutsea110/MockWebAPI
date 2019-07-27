@@ -210,7 +210,7 @@ namespace MockWebAPI.Controllers
 			{
 				var count = db.Role
 					.Where(_ => _.role_id == roleId)
-					.Set(_ => _.removed_at, DateTime.Now)
+					.Set(_ => _.removed_at, Sql.CurrentTimestampUtc)
 					.Update();
 				return count;
 			}
@@ -232,7 +232,7 @@ namespace MockWebAPI.Controllers
 			{
 				var count = db.Role
 					.Where(c.CreatePredicate())
-					.Set(_ => _.removed_at, DateTime.Now)
+					.Set(_ => _.removed_at, Sql.CurrentTimestampUtc)
 					.Update();
 				return count;
 			}

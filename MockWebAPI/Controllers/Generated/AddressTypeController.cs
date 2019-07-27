@@ -196,7 +196,7 @@ namespace MockWebAPI.Controllers
 			{
 				var count = db.AddressType
 					.Where(_ => _.address_type_id == addressTypeId)
-					.Set(_ => _.removed_at, DateTime.Now)
+					.Set(_ => _.removed_at, Sql.CurrentTimestampUtc)
 					.Update();
 				return count;
 			}
@@ -218,7 +218,7 @@ namespace MockWebAPI.Controllers
 			{
 				var count = db.AddressType
 					.Where(c.CreatePredicate())
-					.Set(_ => _.removed_at, DateTime.Now)
+					.Set(_ => _.removed_at, Sql.CurrentTimestampUtc)
 					.Update();
 				return count;
 			}

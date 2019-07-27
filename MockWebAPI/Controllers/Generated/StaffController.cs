@@ -48,12 +48,13 @@ namespace MockWebAPI.Controllers
 		/// 職員の検索
 		/// </summary>
 		/// <param name="with_AccountList">AccountListをLoadWithするか</param>
+		/// <param name="with_NameList">NameListをLoadWithするか</param>
 		/// <param name="with_AddressList">AddressListをLoadWithするか</param>
 		/// <param name="with_ContactList">ContactListをLoadWithするか</param>
 		/// <param name="c"></param>
 		/// <returns></returns>
 		[HttpGet, Route("search")]
-		public IEnumerable<Staff> Search([FromUri]bool with_AccountList, [FromUri]bool with_AddressList, [FromUri]bool with_ContactList, [FromUri]StaffCondition c)
+		public IEnumerable<Staff> Search([FromUri]bool with_AccountList, [FromUri]bool with_NameList, [FromUri]bool with_AddressList, [FromUri]bool with_ContactList, [FromUri]StaffCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -66,6 +67,8 @@ namespace MockWebAPI.Controllers
 				#region LoadWith
 				if (with_AccountList)
 					q = q.LoadWith(_ => _.AccountList);
+				if (with_NameList)
+					q = q.LoadWith(_ => _.NameList);
 				if (with_AddressList)
 					q = q.LoadWith(_ => _.AddressList);
 				if (with_ContactList)
@@ -81,12 +84,13 @@ namespace MockWebAPI.Controllers
 		/// 職員の取得
 		/// </summary>
 		/// <param name="with_AccountList">AccountListをLoadWithするか</param>
+		/// <param name="with_NameList">NameListをLoadWithするか</param>
 		/// <param name="with_AddressList">AddressListをLoadWithするか</param>
 		/// <param name="with_ContactList">ContactListをLoadWithするか</param>
 		/// <param name="staffNo">職員番号(staff_no)</param>
 		/// <returns></returns>
 		[HttpGet, Route("get/{staffNo}")]
-		public Staff Get([FromUri]bool with_AccountList, [FromUri]bool with_AddressList, [FromUri]bool with_ContactList, string staffNo)
+		public Staff Get([FromUri]bool with_AccountList, [FromUri]bool with_NameList, [FromUri]bool with_AddressList, [FromUri]bool with_ContactList, string staffNo)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -99,6 +103,8 @@ namespace MockWebAPI.Controllers
 				#region LoadWith
 				if (with_AccountList)
 					q = q.LoadWith(_ => _.AccountList);
+				if (with_NameList)
+					q = q.LoadWith(_ => _.NameList);
 				if (with_AddressList)
 					q = q.LoadWith(_ => _.AddressList);
 				if (with_ContactList)
@@ -222,7 +228,7 @@ namespace MockWebAPI.Controllers
 			{
 				var count = db.Staff
 					.Where(_ => _.staff_no == staffNo)
-					.Set(_ => _.removed_at, DateTime.Now)
+					.Set(_ => _.removed_at, Sql.CurrentTimestampUtc)
 					.Update();
 				return count;
 			}
@@ -244,7 +250,7 @@ namespace MockWebAPI.Controllers
 			{
 				var count = db.Staff
 					.Where(c.CreatePredicate())
-					.Set(_ => _.removed_at, DateTime.Now)
+					.Set(_ => _.removed_at, Sql.CurrentTimestampUtc)
 					.Update();
 				return count;
 			}

@@ -216,7 +216,7 @@ namespace MockWebAPI.Controllers
 			{
 				var count = db.Account
 					.Where(_ => _.account_id == accountId)
-					.Set(_ => _.removed_at, DateTime.Now)
+					.Set(_ => _.removed_at, Sql.CurrentTimestampUtc)
 					.Update();
 				return count;
 			}
@@ -238,7 +238,7 @@ namespace MockWebAPI.Controllers
 			{
 				var count = db.Account
 					.Where(c.CreatePredicate())
-					.Set(_ => _.removed_at, DateTime.Now)
+					.Set(_ => _.removed_at, Sql.CurrentTimestampUtc)
 					.Update();
 				return count;
 			}

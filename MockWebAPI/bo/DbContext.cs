@@ -76,6 +76,14 @@ namespace peppa.Domain
 		/// </summary>
 		public ITable<Staff> Staff => this.GetTable<Staff>();
 		/// <summary>
+		/// 人名
+		/// </summary>
+		public ITable<PersonName> PersonName => this.GetTable<PersonName>();
+		/// <summary>
+		/// 人名種別
+		/// </summary>
+		public ITable<PersonNameType> PersonNameType => this.GetTable<PersonNameType>();
+		/// <summary>
 		/// 住所
 		/// </summary>
 		public ITable<Address> Address => this.GetTable<Address>();
@@ -2018,7 +2026,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// ユニークID
 		/// </summary>
-		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey, Identity]
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 1), Identity]
 		public  int  uid
 		{
 			get { return _uid; }
@@ -5693,7 +5701,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// ロールID
 		/// </summary>
-		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey(Order = 1)]
 		public  string  role_id
 		{
 			get { return _role_id; }
@@ -6569,7 +6577,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// ロールID
 		/// </summary>
-		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey(Order = 1)]
 		public  string  role_id
 		{
 			get { return _role_id; }
@@ -6609,7 +6617,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 権限ID
 		/// </summary>
-		[Column(DbType="varchar(40)", DataType=DataType.VarChar, Length=40), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="varchar(40)", DataType=DataType.VarChar, Length=40), DataMember, NotNull, PrimaryKey(Order = 2)]
 		public  string  permission_id
 		{
 			get { return _permission_id; }
@@ -7416,7 +7424,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// アカウントID
 		/// </summary>
-		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 1)]
 		public  int  account_id
 		{
 			get { return _account_id; }
@@ -8745,7 +8753,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// アカウントID
 		/// </summary>
-		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 1)]
 		public  int  account_id
 		{
 			get { return _account_id; }
@@ -8785,7 +8793,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// ロールID
 		/// </summary>
-		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey(Order = 2)]
 		public  string  role_id
 		{
 			get { return _role_id; }
@@ -9468,7 +9476,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 職員番号
 		/// </summary>
-		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey(Order = 1)]
 		public  string  staff_no
 		{
 			get { return _staff_no; }
@@ -9497,206 +9505,6 @@ namespace peppa.Domain
 		private void Onstaff_noChanged()
 		{
 			OnPropertyChanged(_staff_noChangedEventArgs);
-		}
-
-		#endregion
-
-		#endregion
-		#region name : string
-
-		private string _name;
-		/// <summary>
-		/// 氏名
-		/// </summary>
-		[Column(DbType="nvarchar(20)", DataType=DataType.NVarChar, Length=20), DataMember, NotNull]
-		public  string  name
-		{
-			get { return _name; }
-			set
-			{
-				if (_name != value)
-				{
-					BeforenameChanged(value);
-					_name = value;
-					AfternameChanged();
-
-					OnnameChanged();
-				}
-			}
-		}
-
-		#region INotifyPropertyChanged support
-
-		partial void BeforenameChanged(string newValue);
-		partial void AfternameChanged();
-
-		public const string NameOfname = "name";
-
-		private static readonly PropertyChangedEventArgs _nameChangedEventArgs = new PropertyChangedEventArgs(NameOfname);
-
-		private void OnnameChanged()
-		{
-			OnPropertyChanged(_nameChangedEventArgs);
-		}
-
-		#endregion
-
-		#endregion
-		#region kana : string
-
-		private string _kana;
-		/// <summary>
-		/// かな氏名
-		/// </summary>
-		[Column(DbType="nvarchar(20)", DataType=DataType.NVarChar, Length=20), DataMember, NotNull]
-		public  string  kana
-		{
-			get { return _kana; }
-			set
-			{
-				if (_kana != value)
-				{
-					BeforekanaChanged(value);
-					_kana = value;
-					AfterkanaChanged();
-
-					OnkanaChanged();
-				}
-			}
-		}
-
-		#region INotifyPropertyChanged support
-
-		partial void BeforekanaChanged(string newValue);
-		partial void AfterkanaChanged();
-
-		public const string NameOfkana = "kana";
-
-		private static readonly PropertyChangedEventArgs _kanaChangedEventArgs = new PropertyChangedEventArgs(NameOfkana);
-
-		private void OnkanaChanged()
-		{
-			OnPropertyChanged(_kanaChangedEventArgs);
-		}
-
-		#endregion
-
-		#endregion
-		#region name_abbrev : string
-
-		private string _name_abbrev;
-		/// <summary>
-		/// 略称
-		/// </summary>
-		[Column(DbType="nvarchar(4)", DataType=DataType.NVarChar, Length=4), DataMember, NotNull]
-		public  string  name_abbrev
-		{
-			get { return _name_abbrev; }
-			set
-			{
-				if (_name_abbrev != value)
-				{
-					Beforename_abbrevChanged(value);
-					_name_abbrev = value;
-					Aftername_abbrevChanged();
-
-					Onname_abbrevChanged();
-				}
-			}
-		}
-
-		#region INotifyPropertyChanged support
-
-		partial void Beforename_abbrevChanged(string newValue);
-		partial void Aftername_abbrevChanged();
-
-		public const string NameOfname_abbrev = "name_abbrev";
-
-		private static readonly PropertyChangedEventArgs _name_abbrevChangedEventArgs = new PropertyChangedEventArgs(NameOfname_abbrev);
-
-		private void Onname_abbrevChanged()
-		{
-			OnPropertyChanged(_name_abbrevChangedEventArgs);
-		}
-
-		#endregion
-
-		#endregion
-		#region name_eng : string
-
-		private string _name_eng;
-		/// <summary>
-		/// 英字氏名
-		/// </summary>
-		[Column(DbType="varchar(30)", DataType=DataType.VarChar, Length=30), DataMember, NotNull]
-		public  string  name_eng
-		{
-			get { return _name_eng; }
-			set
-			{
-				if (_name_eng != value)
-				{
-					Beforename_engChanged(value);
-					_name_eng = value;
-					Aftername_engChanged();
-
-					Onname_engChanged();
-				}
-			}
-		}
-
-		#region INotifyPropertyChanged support
-
-		partial void Beforename_engChanged(string newValue);
-		partial void Aftername_engChanged();
-
-		public const string NameOfname_eng = "name_eng";
-
-		private static readonly PropertyChangedEventArgs _name_engChangedEventArgs = new PropertyChangedEventArgs(NameOfname_eng);
-
-		private void Onname_engChanged()
-		{
-			OnPropertyChanged(_name_engChangedEventArgs);
-		}
-
-		#endregion
-
-		#endregion
-		#region name_eng_abbrev : string
-
-		private string _name_eng_abbrev;
-		/// <summary>
-		/// 英字略称
-		/// </summary>
-		[Column(DbType="varchar(4)", DataType=DataType.VarChar, Length=4), DataMember, NotNull]
-		public  string  name_eng_abbrev
-		{
-			get { return _name_eng_abbrev; }
-			set
-			{
-				if (_name_eng_abbrev != value)
-				{
-					Beforename_eng_abbrevChanged(value);
-					_name_eng_abbrev = value;
-					Aftername_eng_abbrevChanged();
-
-					Onname_eng_abbrevChanged();
-				}
-			}
-		}
-
-		#region INotifyPropertyChanged support
-
-		partial void Beforename_eng_abbrevChanged(string newValue);
-		partial void Aftername_eng_abbrevChanged();
-
-		public const string NameOfname_eng_abbrev = "name_eng_abbrev";
-
-		private static readonly PropertyChangedEventArgs _name_eng_abbrevChangedEventArgs = new PropertyChangedEventArgs(NameOfname_eng_abbrev);
-
-		private void Onname_eng_abbrevChanged()
-		{
-			OnPropertyChanged(_name_eng_abbrevChangedEventArgs);
 		}
 
 		#endregion
@@ -10050,11 +9858,6 @@ namespace peppa.Domain
 			uid = default(int);
 			user_type = 1;
 			staff_no = "";
-			name = "";
-			kana = "";
-			name_abbrev = "";
-			name_eng = "";
-			name_eng_abbrev = "";
 			gender = null;
 			birth_date = null;
 			created_at = DateTime.UtcNow;
@@ -10105,6 +9908,46 @@ namespace peppa.Domain
 		private void OnAccountListChanged()
 		{
 			OnPropertyChanged(_AccountListChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region IEnumerable<PersonName> : user_type,staff_no to PersonName : user_type,generic_user_no (FK_Staff_Name)
+
+		private IEnumerable<PersonName> _NameList;
+		/// <summary>
+		/// FK_Staff_Name_BackReference
+		/// </summary>
+		[Association(ThisKey="user_type,staff_no", OtherKey="user_type,generic_user_no", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true), DataMember]
+		public  IEnumerable<PersonName>  NameList
+		{
+			get { return _NameList; }
+			set
+			{
+				if (_NameList != value)
+				{
+					BeforeNameListChanged(value);
+					_NameList = value;
+					AfterNameListChanged();
+
+					OnNameListChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void BeforeNameListChanged(IEnumerable<PersonName> newValue);
+		partial void AfterNameListChanged ();
+
+		public const string NameOfNameList = "NameList";
+
+		private static readonly PropertyChangedEventArgs _NameListChangedEventArgs = new PropertyChangedEventArgs(NameOfNameList);
+
+		private void OnNameListChanged()
+		{
+			OnPropertyChanged(_NameListChangedEventArgs);
 		}
 
 		#endregion
@@ -10316,66 +10159,6 @@ namespace peppa.Domain
 		[DataMember] public (string low, string high)? staff_no_between { get; set; }
 		[DataMember] public string staff_no_like { get; set; }
 		#endregion
-		#region name
-		[DataMember] public string name_eq { get; set; }
-		[DataMember] public string name_ne { get; set; }
-		[DataMember] public string name_lt { get; set; }
-		[DataMember] public string name_gt { get; set; }
-		[DataMember] public string name_le { get; set; }
-		[DataMember] public string name_ge { get; set; }
-		[DataMember] public IEnumerable<string> name_in { get; set; }
-		[DataMember] public IEnumerable<string> name_ni { get; set; }
-		[DataMember] public (string low, string high)? name_between { get; set; }
-		[DataMember] public string name_like { get; set; }
-		#endregion
-		#region kana
-		[DataMember] public string kana_eq { get; set; }
-		[DataMember] public string kana_ne { get; set; }
-		[DataMember] public string kana_lt { get; set; }
-		[DataMember] public string kana_gt { get; set; }
-		[DataMember] public string kana_le { get; set; }
-		[DataMember] public string kana_ge { get; set; }
-		[DataMember] public IEnumerable<string> kana_in { get; set; }
-		[DataMember] public IEnumerable<string> kana_ni { get; set; }
-		[DataMember] public (string low, string high)? kana_between { get; set; }
-		[DataMember] public string kana_like { get; set; }
-		#endregion
-		#region name_abbrev
-		[DataMember] public string name_abbrev_eq { get; set; }
-		[DataMember] public string name_abbrev_ne { get; set; }
-		[DataMember] public string name_abbrev_lt { get; set; }
-		[DataMember] public string name_abbrev_gt { get; set; }
-		[DataMember] public string name_abbrev_le { get; set; }
-		[DataMember] public string name_abbrev_ge { get; set; }
-		[DataMember] public IEnumerable<string> name_abbrev_in { get; set; }
-		[DataMember] public IEnumerable<string> name_abbrev_ni { get; set; }
-		[DataMember] public (string low, string high)? name_abbrev_between { get; set; }
-		[DataMember] public string name_abbrev_like { get; set; }
-		#endregion
-		#region name_eng
-		[DataMember] public string name_eng_eq { get; set; }
-		[DataMember] public string name_eng_ne { get; set; }
-		[DataMember] public string name_eng_lt { get; set; }
-		[DataMember] public string name_eng_gt { get; set; }
-		[DataMember] public string name_eng_le { get; set; }
-		[DataMember] public string name_eng_ge { get; set; }
-		[DataMember] public IEnumerable<string> name_eng_in { get; set; }
-		[DataMember] public IEnumerable<string> name_eng_ni { get; set; }
-		[DataMember] public (string low, string high)? name_eng_between { get; set; }
-		[DataMember] public string name_eng_like { get; set; }
-		#endregion
-		#region name_eng_abbrev
-		[DataMember] public string name_eng_abbrev_eq { get; set; }
-		[DataMember] public string name_eng_abbrev_ne { get; set; }
-		[DataMember] public string name_eng_abbrev_lt { get; set; }
-		[DataMember] public string name_eng_abbrev_gt { get; set; }
-		[DataMember] public string name_eng_abbrev_le { get; set; }
-		[DataMember] public string name_eng_abbrev_ge { get; set; }
-		[DataMember] public IEnumerable<string> name_eng_abbrev_in { get; set; }
-		[DataMember] public IEnumerable<string> name_eng_abbrev_ni { get; set; }
-		[DataMember] public (string low, string high)? name_eng_abbrev_between { get; set; }
-		[DataMember] public string name_eng_abbrev_like { get; set; }
-		#endregion
 		#region gender (Gender)
 		private int? _gender_eq;
 		[DataMember] public Gender? Gender_eq
@@ -10561,6 +10344,1144 @@ namespace peppa.Domain
             if (staff_no_in != null) predicate = predicate.And(_ => staff_no_in.Contains(_.staff_no));
             if (staff_no_ni != null) predicate = predicate.And(_ => !staff_no_ni.Contains(_.staff_no));
 			#endregion
+			#region gender
+			if (_gender_eq != null) predicate = predicate.And(_ => _.gender == _gender_eq);
+			if (_gender_ne != null) predicate = predicate.And(_ => _.gender != _gender_ne);
+			if (_gender_lt != null) predicate = predicate.And(_ => _.gender < _gender_lt);
+			if (_gender_gt != null) predicate = predicate.And(_ => _.gender > _gender_gt);
+			if (_gender_le != null) predicate = predicate.And(_ => _.gender <= _gender_le);
+			if (_gender_ge != null) predicate = predicate.And(_ => _.gender >= _gender_ge);
+            if (_gender_in != null) predicate = predicate.And(_ => _gender_in.Contains(_.gender.Value));
+            if (_gender_ni != null) predicate = predicate.And(_ => !_gender_ni.Contains(_.gender.Value));
+			if (_gender_isnull) predicate = predicate.And(_ => _.gender == null);
+			if (_gender_isnotnull) predicate = predicate.And(_ => _.gender != null);
+			#endregion
+			#region birth_date
+			if (birth_date_eq != null) predicate = predicate.And(_ => _.birth_date == birth_date_eq);
+			if (birth_date_ne != null) predicate = predicate.And(_ => _.birth_date != birth_date_ne);
+			if (birth_date_lt != null) predicate = predicate.And(_ => _.birth_date < birth_date_lt);
+			if (birth_date_gt != null) predicate = predicate.And(_ => _.birth_date > birth_date_gt);
+			if (birth_date_le != null) predicate = predicate.And(_ => _.birth_date <= birth_date_le);
+			if (birth_date_ge != null) predicate = predicate.And(_ => _.birth_date >= birth_date_ge);
+            if (birth_date_in != null) predicate = predicate.And(_ => birth_date_in.Contains(_.birth_date.Value));
+            if (birth_date_ni != null) predicate = predicate.And(_ => !birth_date_ni.Contains(_.birth_date.Value));
+			if (birth_date_isnull) predicate = predicate.And(_ => _.birth_date == null);
+			if (birth_date_isnotnull) predicate = predicate.And(_ => _.birth_date != null);
+			#endregion
+			#region created_at
+			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
+			if (created_at_ne != null) predicate = predicate.And(_ => _.created_at != created_at_ne);
+			if (created_at_lt != null) predicate = predicate.And(_ => _.created_at < created_at_lt);
+			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
+			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
+			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
+			#endregion
+			#region created_by
+			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
+			if (created_by_ne != null) predicate = predicate.And(_ => _.created_by != created_by_ne);
+			if (created_by_lt != null) predicate = predicate.And(_ => _.created_by < created_by_lt);
+			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
+			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
+			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
+			#endregion
+			#region modified_at
+			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
+			if (modified_at_ne != null) predicate = predicate.And(_ => _.modified_at != modified_at_ne);
+			if (modified_at_lt != null) predicate = predicate.And(_ => _.modified_at < modified_at_lt);
+			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
+			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
+			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
+			#endregion
+			#region modified_by
+			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
+			if (modified_by_ne != null) predicate = predicate.And(_ => _.modified_by != modified_by_ne);
+			if (modified_by_lt != null) predicate = predicate.And(_ => _.modified_by < modified_by_lt);
+			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
+			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
+			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
+			#endregion
+			#region removed_at
+			if (removed_at_eq != null) predicate = predicate.And(_ => _.removed_at == removed_at_eq);
+			if (removed_at_ne != null) predicate = predicate.And(_ => _.removed_at != removed_at_ne);
+			if (removed_at_lt != null) predicate = predicate.And(_ => _.removed_at < removed_at_lt);
+			if (removed_at_gt != null) predicate = predicate.And(_ => _.removed_at > removed_at_gt);
+			if (removed_at_le != null) predicate = predicate.And(_ => _.removed_at <= removed_at_le);
+			if (removed_at_ge != null) predicate = predicate.And(_ => _.removed_at >= removed_at_ge);
+            if (removed_at_in != null) predicate = predicate.And(_ => removed_at_in.Contains(_.removed_at.Value));
+            if (removed_at_ni != null) predicate = predicate.And(_ => !removed_at_ni.Contains(_.removed_at.Value));
+			if (removed_at_isnull) predicate = predicate.And(_ => _.removed_at == null);
+			if (removed_at_isnotnull) predicate = predicate.And(_ => _.removed_at != null);
+			#endregion
+			#region row_version
+			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
+			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
+			#endregion
+
+			return predicate;
+		}
+		#endregion
+	}
+	#endregion
+	#endregion
+	#region 人名
+	/// <summary>
+	/// 人名
+	/// </summary>
+	[Table(Schema="HumanResource", Name="PersonName"), DataContract]
+	public partial class PersonName : TableBase<PersonName>, INotifyPropertyChanged
+	{
+		#region uid : int
+
+		private int _uid;
+		/// <summary>
+		/// ユニークID
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, Identity]
+		public  int  uid
+		{
+			get { return _uid; }
+			set
+			{
+				if (_uid != value)
+				{
+					BeforeuidChanged(value);
+					_uid = value;
+					AfteruidChanged();
+
+					OnuidChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void BeforeuidChanged(int newValue);
+		partial void AfteruidChanged();
+
+		public const string NameOfuid = "uid";
+
+		private static readonly PropertyChangedEventArgs _uidChangedEventArgs = new PropertyChangedEventArgs(NameOfuid);
+
+		private void OnuidChanged()
+		{
+			OnPropertyChanged(_uidChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region user_type : int
+
+		private int _user_type;
+		/// <summary>
+		/// 利用者種別
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 1)]
+		public  int  user_type
+		{
+			get { return _user_type; }
+			set
+			{
+				if (_user_type != value)
+				{
+					Beforeuser_typeChanged(value);
+					_user_type = value;
+					Afteruser_typeChanged();
+
+					Onuser_typeChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforeuser_typeChanged(int newValue);
+		partial void Afteruser_typeChanged();
+
+		public const string NameOfuser_type = "user_type";
+
+		private static readonly PropertyChangedEventArgs _user_typeChangedEventArgs = new PropertyChangedEventArgs(NameOfuser_type);
+
+		private void Onuser_typeChanged()
+		{
+			OnPropertyChanged(_user_typeChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region generic_user_no : string
+
+		private string _generic_user_no;
+		/// <summary>
+		/// 利用者番号
+		/// </summary>
+		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey(Order = 2)]
+		public  string  generic_user_no
+		{
+			get { return _generic_user_no; }
+			set
+			{
+				if (_generic_user_no != value)
+				{
+					Beforegeneric_user_noChanged(value);
+					_generic_user_no = value;
+					Aftergeneric_user_noChanged();
+
+					Ongeneric_user_noChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforegeneric_user_noChanged(string newValue);
+		partial void Aftergeneric_user_noChanged();
+
+		public const string NameOfgeneric_user_no = "generic_user_no";
+
+		private static readonly PropertyChangedEventArgs _generic_user_noChangedEventArgs = new PropertyChangedEventArgs(NameOfgeneric_user_no);
+
+		private void Ongeneric_user_noChanged()
+		{
+			OnPropertyChanged(_generic_user_noChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region seq : int
+
+		private int _seq;
+		/// <summary>
+		/// 連番
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 3)]
+		public  int  seq
+		{
+			get { return _seq; }
+			set
+			{
+				if (_seq != value)
+				{
+					BeforeseqChanged(value);
+					_seq = value;
+					AfterseqChanged();
+
+					OnseqChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void BeforeseqChanged(int newValue);
+		partial void AfterseqChanged();
+
+		public const string NameOfseq = "seq";
+
+		private static readonly PropertyChangedEventArgs _seqChangedEventArgs = new PropertyChangedEventArgs(NameOfseq);
+
+		private void OnseqChanged()
+		{
+			OnPropertyChanged(_seqChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region person_name_type_id : int
+
+		private int _person_name_type_id;
+		/// <summary>
+		/// 人名種別
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull]
+		public  int  person_name_type_id
+		{
+			get { return _person_name_type_id; }
+			set
+			{
+				if (_person_name_type_id != value)
+				{
+					Beforeperson_name_type_idChanged(value);
+					_person_name_type_id = value;
+					Afterperson_name_type_idChanged();
+
+					Onperson_name_type_idChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforeperson_name_type_idChanged(int newValue);
+		partial void Afterperson_name_type_idChanged();
+
+		public const string NameOfperson_name_type_id = "person_name_type_id";
+
+		private static readonly PropertyChangedEventArgs _person_name_type_idChangedEventArgs = new PropertyChangedEventArgs(NameOfperson_name_type_id);
+
+		private void Onperson_name_type_idChanged()
+		{
+			OnPropertyChanged(_person_name_type_idChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region name : string
+
+		private string _name;
+		/// <summary>
+		/// 氏名
+		/// </summary>
+		[Column(DbType="nvarchar(20)", DataType=DataType.NVarChar, Length=20), DataMember, NotNull]
+		public  string  name
+		{
+			get { return _name; }
+			set
+			{
+				if (_name != value)
+				{
+					BeforenameChanged(value);
+					_name = value;
+					AfternameChanged();
+
+					OnnameChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void BeforenameChanged(string newValue);
+		partial void AfternameChanged();
+
+		public const string NameOfname = "name";
+
+		private static readonly PropertyChangedEventArgs _nameChangedEventArgs = new PropertyChangedEventArgs(NameOfname);
+
+		private void OnnameChanged()
+		{
+			OnPropertyChanged(_nameChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region kana : string
+
+		private string _kana;
+		/// <summary>
+		/// かな氏名
+		/// </summary>
+		[Column(DbType="nvarchar(20)", DataType=DataType.NVarChar, Length=20), DataMember, NotNull]
+		public  string  kana
+		{
+			get { return _kana; }
+			set
+			{
+				if (_kana != value)
+				{
+					BeforekanaChanged(value);
+					_kana = value;
+					AfterkanaChanged();
+
+					OnkanaChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void BeforekanaChanged(string newValue);
+		partial void AfterkanaChanged();
+
+		public const string NameOfkana = "kana";
+
+		private static readonly PropertyChangedEventArgs _kanaChangedEventArgs = new PropertyChangedEventArgs(NameOfkana);
+
+		private void OnkanaChanged()
+		{
+			OnPropertyChanged(_kanaChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region name_abbrev : string
+
+		private string _name_abbrev;
+		/// <summary>
+		/// 略称
+		/// </summary>
+		[Column(DbType="nvarchar(4)", DataType=DataType.NVarChar, Length=4), DataMember, NotNull]
+		public  string  name_abbrev
+		{
+			get { return _name_abbrev; }
+			set
+			{
+				if (_name_abbrev != value)
+				{
+					Beforename_abbrevChanged(value);
+					_name_abbrev = value;
+					Aftername_abbrevChanged();
+
+					Onname_abbrevChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforename_abbrevChanged(string newValue);
+		partial void Aftername_abbrevChanged();
+
+		public const string NameOfname_abbrev = "name_abbrev";
+
+		private static readonly PropertyChangedEventArgs _name_abbrevChangedEventArgs = new PropertyChangedEventArgs(NameOfname_abbrev);
+
+		private void Onname_abbrevChanged()
+		{
+			OnPropertyChanged(_name_abbrevChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region name_eng : string
+
+		private string _name_eng;
+		/// <summary>
+		/// 英字氏名
+		/// </summary>
+		[Column(DbType="varchar(30)", DataType=DataType.VarChar, Length=30), DataMember, NotNull]
+		public  string  name_eng
+		{
+			get { return _name_eng; }
+			set
+			{
+				if (_name_eng != value)
+				{
+					Beforename_engChanged(value);
+					_name_eng = value;
+					Aftername_engChanged();
+
+					Onname_engChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforename_engChanged(string newValue);
+		partial void Aftername_engChanged();
+
+		public const string NameOfname_eng = "name_eng";
+
+		private static readonly PropertyChangedEventArgs _name_engChangedEventArgs = new PropertyChangedEventArgs(NameOfname_eng);
+
+		private void Onname_engChanged()
+		{
+			OnPropertyChanged(_name_engChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region name_eng_abbrev : string
+
+		private string _name_eng_abbrev;
+		/// <summary>
+		/// 英字略称
+		/// </summary>
+		[Column(DbType="varchar(4)", DataType=DataType.VarChar, Length=4), DataMember, NotNull]
+		public  string  name_eng_abbrev
+		{
+			get { return _name_eng_abbrev; }
+			set
+			{
+				if (_name_eng_abbrev != value)
+				{
+					Beforename_eng_abbrevChanged(value);
+					_name_eng_abbrev = value;
+					Aftername_eng_abbrevChanged();
+
+					Onname_eng_abbrevChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforename_eng_abbrevChanged(string newValue);
+		partial void Aftername_eng_abbrevChanged();
+
+		public const string NameOfname_eng_abbrev = "name_eng_abbrev";
+
+		private static readonly PropertyChangedEventArgs _name_eng_abbrevChangedEventArgs = new PropertyChangedEventArgs(NameOfname_eng_abbrev);
+
+		private void Onname_eng_abbrevChanged()
+		{
+			OnPropertyChanged(_name_eng_abbrevChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region created_at : DateTime
+
+		private DateTime _created_at;
+		/// <summary>
+		/// 作成日時
+		/// </summary>
+		[Column(DbType="datetime2(7)", DataType=DataType.DateTime2, Precision=7), DataMember, NotNull]
+		public  DateTime  created_at
+		{
+			get { return _created_at; }
+			set
+			{
+				if (_created_at != value)
+				{
+					Beforecreated_atChanged(value);
+					_created_at = value;
+					Aftercreated_atChanged();
+
+					Oncreated_atChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforecreated_atChanged(DateTime newValue);
+		partial void Aftercreated_atChanged();
+
+		public const string NameOfcreated_at = "created_at";
+
+		private static readonly PropertyChangedEventArgs _created_atChangedEventArgs = new PropertyChangedEventArgs(NameOfcreated_at);
+
+		private void Oncreated_atChanged()
+		{
+			OnPropertyChanged(_created_atChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region created_by : int?
+
+		private int? _created_by;
+		/// <summary>
+		/// 作成者
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, Nullable]
+		public  int?  created_by
+		{
+			get { return _created_by; }
+			set
+			{
+				if (_created_by != value)
+				{
+					Beforecreated_byChanged(value);
+					_created_by = value;
+					Aftercreated_byChanged();
+
+					Oncreated_byChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforecreated_byChanged(int? newValue);
+		partial void Aftercreated_byChanged();
+
+		public const string NameOfcreated_by = "created_by";
+
+		private static readonly PropertyChangedEventArgs _created_byChangedEventArgs = new PropertyChangedEventArgs(NameOfcreated_by);
+
+		private void Oncreated_byChanged()
+		{
+			OnPropertyChanged(_created_byChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region modified_at : DateTime
+
+		private DateTime _modified_at;
+		/// <summary>
+		/// 更新日時
+		/// </summary>
+		[Column(DbType="datetime2(7)", DataType=DataType.DateTime2, Precision=7), DataMember, NotNull]
+		public  DateTime  modified_at
+		{
+			get { return _modified_at; }
+			set
+			{
+				if (_modified_at != value)
+				{
+					Beforemodified_atChanged(value);
+					_modified_at = value;
+					Aftermodified_atChanged();
+
+					Onmodified_atChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforemodified_atChanged(DateTime newValue);
+		partial void Aftermodified_atChanged();
+
+		public const string NameOfmodified_at = "modified_at";
+
+		private static readonly PropertyChangedEventArgs _modified_atChangedEventArgs = new PropertyChangedEventArgs(NameOfmodified_at);
+
+		private void Onmodified_atChanged()
+		{
+			OnPropertyChanged(_modified_atChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region modified_by : int?
+
+		private int? _modified_by;
+		/// <summary>
+		/// 更新者
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, Nullable]
+		public  int?  modified_by
+		{
+			get { return _modified_by; }
+			set
+			{
+				if (_modified_by != value)
+				{
+					Beforemodified_byChanged(value);
+					_modified_by = value;
+					Aftermodified_byChanged();
+
+					Onmodified_byChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforemodified_byChanged(int? newValue);
+		partial void Aftermodified_byChanged();
+
+		public const string NameOfmodified_by = "modified_by";
+
+		private static readonly PropertyChangedEventArgs _modified_byChangedEventArgs = new PropertyChangedEventArgs(NameOfmodified_by);
+
+		private void Onmodified_byChanged()
+		{
+			OnPropertyChanged(_modified_byChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region row_version : byte[]
+
+		private byte[] _row_version;
+		/// <summary>
+		/// 版
+		/// </summary>
+		[Column(DbType="timestamp", DataType=DataType.Timestamp, SkipOnInsert=true, SkipOnUpdate=true), DataMember, Nullable]
+		public  byte[]  row_version
+		{
+			get { return _row_version; }
+			set
+			{
+				if (_row_version != value)
+				{
+					Beforerow_versionChanged(value);
+					_row_version = value;
+					Afterrow_versionChanged();
+
+					Onrow_versionChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforerow_versionChanged(byte[] newValue);
+		partial void Afterrow_versionChanged();
+
+		public const string NameOfrow_version = "row_version";
+
+		private static readonly PropertyChangedEventArgs _row_versionChangedEventArgs = new PropertyChangedEventArgs(NameOfrow_version);
+
+		private void Onrow_versionChanged()
+		{
+			OnPropertyChanged(_row_versionChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+
+		#region enum用アクセスラッパー
+		/// <summary>
+		/// user_typeのenumラッパー
+		/// </summary>
+		public UserType UserType
+		{
+			get => (UserType)user_type;
+			set => user_type = value.Val();
+		}
+		#endregion
+
+		#region Constructor
+
+		public PersonName()
+		{
+			#region フィールド初期化
+			uid = default(int);
+			user_type = 99;
+			generic_user_no = null;
+			seq = 0;
+			person_name_type_id = 0;
+			name = "";
+			kana = "";
+			name_abbrev = "";
+			name_eng = "";
+			name_eng_abbrev = "";
+			created_at = DateTime.UtcNow;
+			created_by = null;
+			modified_at = DateTime.UtcNow;
+			modified_by = null;
+			row_version = default(byte[]);
+			#endregion
+		}
+
+		#endregion
+
+		#region Association
+
+		#region PersonNameType : person_name_type_id (FK_PersonName_PersonNameType)
+
+		private PersonNameType _PersonNameType;
+		/// <summary>
+		/// FK_PersonName_PersonNameType
+		/// </summary>
+		[Association(ThisKey="person_name_type_id", OtherKey="person_name_type_id", CanBeNull=true, Relationship=Relationship.ManyToOne, KeyName="FK_PersonName_PersonNameType", BackReferenceName="PersonName"), DataMember]
+		public  PersonNameType  PersonNameType
+		{
+			get { return _PersonNameType; }
+			set
+			{
+				if (_PersonNameType != value)
+				{
+					BeforePersonNameTypeChanged(value);
+					_PersonNameType = value;
+					AfterPersonNameTypeChanged();
+
+					OnPersonNameTypeChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void BeforePersonNameTypeChanged(PersonNameType newValue);
+		partial void AfterPersonNameTypeChanged ();
+
+		public const string NameOfPersonNameType = "PersonNameType";
+
+		private static readonly PropertyChangedEventArgs _PersonNameTypeChangedEventArgs = new PropertyChangedEventArgs(NameOfPersonNameType);
+
+		private void OnPersonNameTypeChanged()
+		{
+			OnPropertyChanged(_PersonNameTypeChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region Staff : user_type,generic_user_no (FK_PersonName_Staff)
+
+		private Staff _Staff;
+		/// <summary>
+		/// FK_PersonName_Staff
+		/// </summary>
+		[Association(ThisKey="user_type,generic_user_no", OtherKey="user_type,staff_no", CanBeNull=true, Relationship=Relationship.ManyToOne, KeyName="FK_PersonName_Staff", BackReferenceName="PersonName"), DataMember]
+		public  Staff  Staff
+		{
+			get { return _Staff; }
+			set
+			{
+				if (_Staff != value)
+				{
+					BeforeStaffChanged(value);
+					_Staff = value;
+					AfterStaffChanged();
+
+					OnStaffChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void BeforeStaffChanged(Staff newValue);
+		partial void AfterStaffChanged ();
+
+		public const string NameOfStaff = "Staff";
+
+		private static readonly PropertyChangedEventArgs _StaffChangedEventArgs = new PropertyChangedEventArgs(NameOfStaff);
+
+		private void OnStaffChanged()
+		{
+			OnPropertyChanged(_StaffChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+
+		#endregion
+
+		#region INotifyPropertyChanged support
+
+		[field : NonSerialized]
+		public virtual event PropertyChangedEventHandler PropertyChanged;
+
+		protected void OnPropertyChanged(string propertyName)
+		{
+			var propertyChanged = PropertyChanged;
+
+			if (propertyChanged != null)
+			{
+				propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		protected void OnPropertyChanged(PropertyChangedEventArgs arg)
+		{
+			var propertyChanged = PropertyChanged;
+
+			if (propertyChanged != null)
+			{
+				propertyChanged(this, arg);
+			}
+		}
+
+		#endregion
+
+	}
+	#region 人名条件
+	/// <summary>
+	/// 人名条件
+	/// </summary>
+	[DataContract]
+	public partial class PersonNameCondition : PersonNameConditionBase
+	{
+	}
+
+	/// <summary>
+	/// 人名条件ベース
+	/// </summary>
+	[DataContract]
+	public class PersonNameConditionBase : ConditionBase<PersonName>
+	{
+		#region properties
+		#region uid
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
+		#endregion
+		#region user_type (UserType)
+		private int? _user_type_eq;
+		[DataMember] public UserType? UserType_eq
+		{
+			get => _user_type_eq?.ToUserType();
+			set => _user_type_eq = value.HasValue ? value.Value.Val() : (int?)null;
+		}
+		private int? _user_type_ne;
+		[DataMember] public UserType? UserType_ne
+		{
+			get => _user_type_ne?.ToUserType();
+			set => _user_type_ne = value.HasValue ? value.Value.Val() : (int?)null;
+		}
+		private int? _user_type_lt;
+		[DataMember] public UserType? UserType_lt
+		{
+			get => _user_type_lt?.ToUserType();
+			set => _user_type_lt = value.HasValue ? value.Value.Val() : (int?)null;
+		}
+		private int? _user_type_gt;
+		[DataMember] public UserType? UserType_gt
+		{
+			get => _user_type_gt?.ToUserType();
+			set => _user_type_gt = value.HasValue ? value.Value.Val() : (int?)null;
+		}
+		private int? _user_type_le;
+		[DataMember] public UserType? UserType_le
+		{
+			get => _user_type_le?.ToUserType();
+			set => _user_type_le = value.HasValue ? value.Value.Val() : (int?)null;
+		}
+		private int? _user_type_ge;
+		[DataMember] public UserType? UserType_ge
+		{
+			get => _user_type_ge?.ToUserType();
+			set => _user_type_ge = value.HasValue ? value.Value.Val() : (int?)null;
+		}
+		private IEnumerable<int> _user_type_in;
+		[DataMember] public IEnumerable<UserType> UserType_in
+		{
+			get => _user_type_in?.Select(_ => _.ToUserType().Value) ?? Enumerable.Empty<UserType>();
+			set => _user_type_in = value.Select(_ => _.Val());
+		}
+		private IEnumerable<int> _user_type_ni;
+		[DataMember] public IEnumerable<UserType> UserType_ni
+		{
+			get => _user_type_ni?.Select(_ => _.ToUserType().Value) ?? Enumerable.Empty<UserType>();
+			set => _user_type_ni = value.Select(_ => _.Val());
+		}
+		private (int low, int high)? _user_type_between;
+		[DataMember] public (UserType low, UserType high)? UserType_between
+		{
+			get => _user_type_between.HasValue ? (_user_type_between.Value.low.ToUserType().Value, _user_type_between.Value.high.ToUserType().Value) : ((UserType, UserType)?)null;
+			set => _user_type_between = value.HasValue ? (value.Value.low.Val(), value.Value.high.Val()) : ((int, int)?)null;
+		}
+		#endregion
+		#region generic_user_no
+		[DataMember] public string generic_user_no_eq { get; set; }
+		[DataMember] public string generic_user_no_ne { get; set; }
+		[DataMember] public string generic_user_no_lt { get; set; }
+		[DataMember] public string generic_user_no_gt { get; set; }
+		[DataMember] public string generic_user_no_le { get; set; }
+		[DataMember] public string generic_user_no_ge { get; set; }
+		[DataMember] public IEnumerable<string> generic_user_no_in { get; set; }
+		[DataMember] public IEnumerable<string> generic_user_no_ni { get; set; }
+		[DataMember] public (string low, string high)? generic_user_no_between { get; set; }
+		[DataMember] public string generic_user_no_like { get; set; }
+		#endregion
+		#region seq
+		[DataMember] public int? seq_eq { get; set; }
+		[DataMember] public int? seq_ne { get; set; }
+		[DataMember] public int? seq_lt { get; set; }
+		[DataMember] public int? seq_gt { get; set; }
+		[DataMember] public int? seq_le { get; set; }
+		[DataMember] public int? seq_ge { get; set; }
+		[DataMember] public IEnumerable<int> seq_in { get; set; }
+		[DataMember] public IEnumerable<int> seq_ni { get; set; }
+		[DataMember] public (int? low, int? high)? seq_between { get; set; }
+		#endregion
+		#region person_name_type_id
+		[DataMember] public int? person_name_type_id_eq { get; set; }
+		[DataMember] public int? person_name_type_id_ne { get; set; }
+		[DataMember] public int? person_name_type_id_lt { get; set; }
+		[DataMember] public int? person_name_type_id_gt { get; set; }
+		[DataMember] public int? person_name_type_id_le { get; set; }
+		[DataMember] public int? person_name_type_id_ge { get; set; }
+		[DataMember] public IEnumerable<int> person_name_type_id_in { get; set; }
+		[DataMember] public IEnumerable<int> person_name_type_id_ni { get; set; }
+		[DataMember] public (int? low, int? high)? person_name_type_id_between { get; set; }
+		#endregion
+		#region name
+		[DataMember] public string name_eq { get; set; }
+		[DataMember] public string name_ne { get; set; }
+		[DataMember] public string name_lt { get; set; }
+		[DataMember] public string name_gt { get; set; }
+		[DataMember] public string name_le { get; set; }
+		[DataMember] public string name_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_in { get; set; }
+		[DataMember] public IEnumerable<string> name_ni { get; set; }
+		[DataMember] public (string low, string high)? name_between { get; set; }
+		[DataMember] public string name_like { get; set; }
+		#endregion
+		#region kana
+		[DataMember] public string kana_eq { get; set; }
+		[DataMember] public string kana_ne { get; set; }
+		[DataMember] public string kana_lt { get; set; }
+		[DataMember] public string kana_gt { get; set; }
+		[DataMember] public string kana_le { get; set; }
+		[DataMember] public string kana_ge { get; set; }
+		[DataMember] public IEnumerable<string> kana_in { get; set; }
+		[DataMember] public IEnumerable<string> kana_ni { get; set; }
+		[DataMember] public (string low, string high)? kana_between { get; set; }
+		[DataMember] public string kana_like { get; set; }
+		#endregion
+		#region name_abbrev
+		[DataMember] public string name_abbrev_eq { get; set; }
+		[DataMember] public string name_abbrev_ne { get; set; }
+		[DataMember] public string name_abbrev_lt { get; set; }
+		[DataMember] public string name_abbrev_gt { get; set; }
+		[DataMember] public string name_abbrev_le { get; set; }
+		[DataMember] public string name_abbrev_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_abbrev_in { get; set; }
+		[DataMember] public IEnumerable<string> name_abbrev_ni { get; set; }
+		[DataMember] public (string low, string high)? name_abbrev_between { get; set; }
+		[DataMember] public string name_abbrev_like { get; set; }
+		#endregion
+		#region name_eng
+		[DataMember] public string name_eng_eq { get; set; }
+		[DataMember] public string name_eng_ne { get; set; }
+		[DataMember] public string name_eng_lt { get; set; }
+		[DataMember] public string name_eng_gt { get; set; }
+		[DataMember] public string name_eng_le { get; set; }
+		[DataMember] public string name_eng_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_eng_in { get; set; }
+		[DataMember] public IEnumerable<string> name_eng_ni { get; set; }
+		[DataMember] public (string low, string high)? name_eng_between { get; set; }
+		[DataMember] public string name_eng_like { get; set; }
+		#endregion
+		#region name_eng_abbrev
+		[DataMember] public string name_eng_abbrev_eq { get; set; }
+		[DataMember] public string name_eng_abbrev_ne { get; set; }
+		[DataMember] public string name_eng_abbrev_lt { get; set; }
+		[DataMember] public string name_eng_abbrev_gt { get; set; }
+		[DataMember] public string name_eng_abbrev_le { get; set; }
+		[DataMember] public string name_eng_abbrev_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_eng_abbrev_in { get; set; }
+		[DataMember] public IEnumerable<string> name_eng_abbrev_ni { get; set; }
+		[DataMember] public (string low, string high)? name_eng_abbrev_between { get; set; }
+		[DataMember] public string name_eng_abbrev_like { get; set; }
+		#endregion
+		#region created_at
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		#endregion
+		#region created_by
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
+		#endregion
+		#region modified_at
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		#endregion
+		#region modified_by
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
+		#endregion
+		#region row_version
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
+		#endregion
+		#endregion
+
+		#region override
+		override public Expression<Func<PersonName, bool>> CreatePredicate()
+		{
+			var predicate = base.CreatePredicate();
+
+			#region uid
+			if (uid_eq != null) predicate = predicate.And(_ => _.uid == uid_eq);
+			if (uid_ne != null) predicate = predicate.And(_ => _.uid != uid_ne);
+			if (uid_lt != null) predicate = predicate.And(_ => _.uid < uid_lt);
+			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
+			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
+			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
+			#endregion
+			#region user_type
+			if (_user_type_eq != null) predicate = predicate.And(_ => _.user_type == _user_type_eq);
+			if (_user_type_ne != null) predicate = predicate.And(_ => _.user_type != _user_type_ne);
+			if (_user_type_lt != null) predicate = predicate.And(_ => _.user_type < _user_type_lt);
+			if (_user_type_gt != null) predicate = predicate.And(_ => _.user_type > _user_type_gt);
+			if (_user_type_le != null) predicate = predicate.And(_ => _.user_type <= _user_type_le);
+			if (_user_type_ge != null) predicate = predicate.And(_ => _.user_type >= _user_type_ge);
+            if (_user_type_in != null) predicate = predicate.And(_ => _user_type_in.Contains(_.user_type));
+            if (_user_type_ni != null) predicate = predicate.And(_ => !_user_type_ni.Contains(_.user_type));
+			#endregion
+			#region generic_user_no
+			if (generic_user_no_eq != null) predicate = predicate.And(_ => _.generic_user_no == generic_user_no_eq);
+			if (generic_user_no_ne != null) predicate = predicate.And(_ => _.generic_user_no != generic_user_no_ne);
+			if (generic_user_no_lt != null) predicate = predicate.And(_ => generic_user_no_lt.CompareTo(_.generic_user_no) > 0);
+			if (generic_user_no_gt != null) predicate = predicate.And(_ => generic_user_no_gt.CompareTo(_.generic_user_no) < 0);
+			if (generic_user_no_le != null) predicate = predicate.And(_ => generic_user_no_le.CompareTo(_.generic_user_no) >= 0);
+			if (generic_user_no_ge != null) predicate = predicate.And(_ => generic_user_no_ge.CompareTo(_.generic_user_no) <= 0);
+            if (generic_user_no_in != null) predicate = predicate.And(_ => generic_user_no_in.Contains(_.generic_user_no));
+            if (generic_user_no_ni != null) predicate = predicate.And(_ => !generic_user_no_ni.Contains(_.generic_user_no));
+			#endregion
+			#region seq
+			if (seq_eq != null) predicate = predicate.And(_ => _.seq == seq_eq);
+			if (seq_ne != null) predicate = predicate.And(_ => _.seq != seq_ne);
+			if (seq_lt != null) predicate = predicate.And(_ => _.seq < seq_lt);
+			if (seq_gt != null) predicate = predicate.And(_ => _.seq > seq_gt);
+			if (seq_le != null) predicate = predicate.And(_ => _.seq <= seq_le);
+			if (seq_ge != null) predicate = predicate.And(_ => _.seq >= seq_ge);
+            if (seq_in != null) predicate = predicate.And(_ => seq_in.Contains(_.seq));
+            if (seq_ni != null) predicate = predicate.And(_ => !seq_ni.Contains(_.seq));
+			#endregion
+			#region person_name_type_id
+			if (person_name_type_id_eq != null) predicate = predicate.And(_ => _.person_name_type_id == person_name_type_id_eq);
+			if (person_name_type_id_ne != null) predicate = predicate.And(_ => _.person_name_type_id != person_name_type_id_ne);
+			if (person_name_type_id_lt != null) predicate = predicate.And(_ => _.person_name_type_id < person_name_type_id_lt);
+			if (person_name_type_id_gt != null) predicate = predicate.And(_ => _.person_name_type_id > person_name_type_id_gt);
+			if (person_name_type_id_le != null) predicate = predicate.And(_ => _.person_name_type_id <= person_name_type_id_le);
+			if (person_name_type_id_ge != null) predicate = predicate.And(_ => _.person_name_type_id >= person_name_type_id_ge);
+            if (person_name_type_id_in != null) predicate = predicate.And(_ => person_name_type_id_in.Contains(_.person_name_type_id));
+            if (person_name_type_id_ni != null) predicate = predicate.And(_ => !person_name_type_id_ni.Contains(_.person_name_type_id));
+			#endregion
 			#region name
 			if (name_eq != null) predicate = predicate.And(_ => _.name == name_eq);
 			if (name_ne != null) predicate = predicate.And(_ => _.name != name_ne);
@@ -10611,29 +11532,764 @@ namespace peppa.Domain
             if (name_eng_abbrev_in != null) predicate = predicate.And(_ => name_eng_abbrev_in.Contains(_.name_eng_abbrev));
             if (name_eng_abbrev_ni != null) predicate = predicate.And(_ => !name_eng_abbrev_ni.Contains(_.name_eng_abbrev));
 			#endregion
-			#region gender
-			if (_gender_eq != null) predicate = predicate.And(_ => _.gender == _gender_eq);
-			if (_gender_ne != null) predicate = predicate.And(_ => _.gender != _gender_ne);
-			if (_gender_lt != null) predicate = predicate.And(_ => _.gender < _gender_lt);
-			if (_gender_gt != null) predicate = predicate.And(_ => _.gender > _gender_gt);
-			if (_gender_le != null) predicate = predicate.And(_ => _.gender <= _gender_le);
-			if (_gender_ge != null) predicate = predicate.And(_ => _.gender >= _gender_ge);
-            if (_gender_in != null) predicate = predicate.And(_ => _gender_in.Contains(_.gender.Value));
-            if (_gender_ni != null) predicate = predicate.And(_ => !_gender_ni.Contains(_.gender.Value));
-			if (_gender_isnull) predicate = predicate.And(_ => _.gender == null);
-			if (_gender_isnotnull) predicate = predicate.And(_ => _.gender != null);
+			#region created_at
+			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
+			if (created_at_ne != null) predicate = predicate.And(_ => _.created_at != created_at_ne);
+			if (created_at_lt != null) predicate = predicate.And(_ => _.created_at < created_at_lt);
+			if (created_at_gt != null) predicate = predicate.And(_ => _.created_at > created_at_gt);
+			if (created_at_le != null) predicate = predicate.And(_ => _.created_at <= created_at_le);
+			if (created_at_ge != null) predicate = predicate.And(_ => _.created_at >= created_at_ge);
+            if (created_at_in != null) predicate = predicate.And(_ => created_at_in.Contains(_.created_at));
+            if (created_at_ni != null) predicate = predicate.And(_ => !created_at_ni.Contains(_.created_at));
 			#endregion
-			#region birth_date
-			if (birth_date_eq != null) predicate = predicate.And(_ => _.birth_date == birth_date_eq);
-			if (birth_date_ne != null) predicate = predicate.And(_ => _.birth_date != birth_date_ne);
-			if (birth_date_lt != null) predicate = predicate.And(_ => _.birth_date < birth_date_lt);
-			if (birth_date_gt != null) predicate = predicate.And(_ => _.birth_date > birth_date_gt);
-			if (birth_date_le != null) predicate = predicate.And(_ => _.birth_date <= birth_date_le);
-			if (birth_date_ge != null) predicate = predicate.And(_ => _.birth_date >= birth_date_ge);
-            if (birth_date_in != null) predicate = predicate.And(_ => birth_date_in.Contains(_.birth_date.Value));
-            if (birth_date_ni != null) predicate = predicate.And(_ => !birth_date_ni.Contains(_.birth_date.Value));
-			if (birth_date_isnull) predicate = predicate.And(_ => _.birth_date == null);
-			if (birth_date_isnotnull) predicate = predicate.And(_ => _.birth_date != null);
+			#region created_by
+			if (created_by_eq != null) predicate = predicate.And(_ => _.created_by == created_by_eq);
+			if (created_by_ne != null) predicate = predicate.And(_ => _.created_by != created_by_ne);
+			if (created_by_lt != null) predicate = predicate.And(_ => _.created_by < created_by_lt);
+			if (created_by_gt != null) predicate = predicate.And(_ => _.created_by > created_by_gt);
+			if (created_by_le != null) predicate = predicate.And(_ => _.created_by <= created_by_le);
+			if (created_by_ge != null) predicate = predicate.And(_ => _.created_by >= created_by_ge);
+            if (created_by_in != null) predicate = predicate.And(_ => created_by_in.Contains(_.created_by.Value));
+            if (created_by_ni != null) predicate = predicate.And(_ => !created_by_ni.Contains(_.created_by.Value));
+			if (created_by_isnull) predicate = predicate.And(_ => _.created_by == null);
+			if (created_by_isnotnull) predicate = predicate.And(_ => _.created_by != null);
+			#endregion
+			#region modified_at
+			if (modified_at_eq != null) predicate = predicate.And(_ => _.modified_at == modified_at_eq);
+			if (modified_at_ne != null) predicate = predicate.And(_ => _.modified_at != modified_at_ne);
+			if (modified_at_lt != null) predicate = predicate.And(_ => _.modified_at < modified_at_lt);
+			if (modified_at_gt != null) predicate = predicate.And(_ => _.modified_at > modified_at_gt);
+			if (modified_at_le != null) predicate = predicate.And(_ => _.modified_at <= modified_at_le);
+			if (modified_at_ge != null) predicate = predicate.And(_ => _.modified_at >= modified_at_ge);
+            if (modified_at_in != null) predicate = predicate.And(_ => modified_at_in.Contains(_.modified_at));
+            if (modified_at_ni != null) predicate = predicate.And(_ => !modified_at_ni.Contains(_.modified_at));
+			#endregion
+			#region modified_by
+			if (modified_by_eq != null) predicate = predicate.And(_ => _.modified_by == modified_by_eq);
+			if (modified_by_ne != null) predicate = predicate.And(_ => _.modified_by != modified_by_ne);
+			if (modified_by_lt != null) predicate = predicate.And(_ => _.modified_by < modified_by_lt);
+			if (modified_by_gt != null) predicate = predicate.And(_ => _.modified_by > modified_by_gt);
+			if (modified_by_le != null) predicate = predicate.And(_ => _.modified_by <= modified_by_le);
+			if (modified_by_ge != null) predicate = predicate.And(_ => _.modified_by >= modified_by_ge);
+            if (modified_by_in != null) predicate = predicate.And(_ => modified_by_in.Contains(_.modified_by.Value));
+            if (modified_by_ni != null) predicate = predicate.And(_ => !modified_by_ni.Contains(_.modified_by.Value));
+			if (modified_by_isnull) predicate = predicate.And(_ => _.modified_by == null);
+			if (modified_by_isnotnull) predicate = predicate.And(_ => _.modified_by != null);
+			#endregion
+			#region row_version
+			if (row_version_eq != null) predicate = predicate.And(_ => _.row_version == row_version_eq);
+			if (row_version_ne != null) predicate = predicate.And(_ => _.row_version != row_version_ne);
+			if (row_version_isnull) predicate = predicate.And(_ => _.row_version == null);
+			if (row_version_isnotnull) predicate = predicate.And(_ => _.row_version != null);
+			#endregion
+
+			return predicate;
+		}
+		#endregion
+	}
+	#endregion
+	#endregion
+	#region 人名種別
+	/// <summary>
+	/// 人名種別
+	/// </summary>
+	[Table(Schema="Common", Name="PersonNameType"), DataContract]
+	public partial class PersonNameType : TableBase<PersonNameType>, INotifyPropertyChanged
+	{
+		#region uid : int
+
+		private int _uid;
+		/// <summary>
+		/// ユニークID
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, Identity]
+		public  int  uid
+		{
+			get { return _uid; }
+			set
+			{
+				if (_uid != value)
+				{
+					BeforeuidChanged(value);
+					_uid = value;
+					AfteruidChanged();
+
+					OnuidChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void BeforeuidChanged(int newValue);
+		partial void AfteruidChanged();
+
+		public const string NameOfuid = "uid";
+
+		private static readonly PropertyChangedEventArgs _uidChangedEventArgs = new PropertyChangedEventArgs(NameOfuid);
+
+		private void OnuidChanged()
+		{
+			OnPropertyChanged(_uidChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region person_name_type_id : int
+
+		private int _person_name_type_id;
+		/// <summary>
+		/// 人名種別ID
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 1)]
+		public  int  person_name_type_id
+		{
+			get { return _person_name_type_id; }
+			set
+			{
+				if (_person_name_type_id != value)
+				{
+					Beforeperson_name_type_idChanged(value);
+					_person_name_type_id = value;
+					Afterperson_name_type_idChanged();
+
+					Onperson_name_type_idChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforeperson_name_type_idChanged(int newValue);
+		partial void Afterperson_name_type_idChanged();
+
+		public const string NameOfperson_name_type_id = "person_name_type_id";
+
+		private static readonly PropertyChangedEventArgs _person_name_type_idChangedEventArgs = new PropertyChangedEventArgs(NameOfperson_name_type_id);
+
+		private void Onperson_name_type_idChanged()
+		{
+			OnPropertyChanged(_person_name_type_idChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region name : string
+
+		private string _name;
+		/// <summary>
+		/// 名称
+		/// </summary>
+		[Column(DbType="nvarchar(10)", DataType=DataType.NVarChar, Length=10), DataMember, NotNull]
+		public  string  name
+		{
+			get { return _name; }
+			set
+			{
+				if (_name != value)
+				{
+					BeforenameChanged(value);
+					_name = value;
+					AfternameChanged();
+
+					OnnameChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void BeforenameChanged(string newValue);
+		partial void AfternameChanged();
+
+		public const string NameOfname = "name";
+
+		private static readonly PropertyChangedEventArgs _nameChangedEventArgs = new PropertyChangedEventArgs(NameOfname);
+
+		private void OnnameChanged()
+		{
+			OnPropertyChanged(_nameChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region description : string
+
+		private string _description;
+		/// <summary>
+		/// 説明
+		/// </summary>
+		[Column(DbType="nvarchar(64)", DataType=DataType.NVarChar, Length=64), DataMember, NotNull]
+		public  string  description
+		{
+			get { return _description; }
+			set
+			{
+				if (_description != value)
+				{
+					BeforedescriptionChanged(value);
+					_description = value;
+					AfterdescriptionChanged();
+
+					OndescriptionChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void BeforedescriptionChanged(string newValue);
+		partial void AfterdescriptionChanged();
+
+		public const string NameOfdescription = "description";
+
+		private static readonly PropertyChangedEventArgs _descriptionChangedEventArgs = new PropertyChangedEventArgs(NameOfdescription);
+
+		private void OndescriptionChanged()
+		{
+			OnPropertyChanged(_descriptionChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region display_order : int
+
+		private int _display_order;
+		/// <summary>
+		/// 表示順
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull]
+		public  int  display_order
+		{
+			get { return _display_order; }
+			set
+			{
+				if (_display_order != value)
+				{
+					Beforedisplay_orderChanged(value);
+					_display_order = value;
+					Afterdisplay_orderChanged();
+
+					Ondisplay_orderChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforedisplay_orderChanged(int newValue);
+		partial void Afterdisplay_orderChanged();
+
+		public const string NameOfdisplay_order = "display_order";
+
+		private static readonly PropertyChangedEventArgs _display_orderChangedEventArgs = new PropertyChangedEventArgs(NameOfdisplay_order);
+
+		private void Ondisplay_orderChanged()
+		{
+			OnPropertyChanged(_display_orderChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region created_at : DateTime
+
+		private DateTime _created_at;
+		/// <summary>
+		/// 作成日時
+		/// </summary>
+		[Column(DbType="datetime2(7)", DataType=DataType.DateTime2, Precision=7), DataMember, NotNull]
+		public  DateTime  created_at
+		{
+			get { return _created_at; }
+			set
+			{
+				if (_created_at != value)
+				{
+					Beforecreated_atChanged(value);
+					_created_at = value;
+					Aftercreated_atChanged();
+
+					Oncreated_atChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforecreated_atChanged(DateTime newValue);
+		partial void Aftercreated_atChanged();
+
+		public const string NameOfcreated_at = "created_at";
+
+		private static readonly PropertyChangedEventArgs _created_atChangedEventArgs = new PropertyChangedEventArgs(NameOfcreated_at);
+
+		private void Oncreated_atChanged()
+		{
+			OnPropertyChanged(_created_atChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region created_by : int?
+
+		private int? _created_by;
+		/// <summary>
+		/// 作成者
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, Nullable]
+		public  int?  created_by
+		{
+			get { return _created_by; }
+			set
+			{
+				if (_created_by != value)
+				{
+					Beforecreated_byChanged(value);
+					_created_by = value;
+					Aftercreated_byChanged();
+
+					Oncreated_byChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforecreated_byChanged(int? newValue);
+		partial void Aftercreated_byChanged();
+
+		public const string NameOfcreated_by = "created_by";
+
+		private static readonly PropertyChangedEventArgs _created_byChangedEventArgs = new PropertyChangedEventArgs(NameOfcreated_by);
+
+		private void Oncreated_byChanged()
+		{
+			OnPropertyChanged(_created_byChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region modified_at : DateTime
+
+		private DateTime _modified_at;
+		/// <summary>
+		/// 更新日時
+		/// </summary>
+		[Column(DbType="datetime2(7)", DataType=DataType.DateTime2, Precision=7), DataMember, NotNull]
+		public  DateTime  modified_at
+		{
+			get { return _modified_at; }
+			set
+			{
+				if (_modified_at != value)
+				{
+					Beforemodified_atChanged(value);
+					_modified_at = value;
+					Aftermodified_atChanged();
+
+					Onmodified_atChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforemodified_atChanged(DateTime newValue);
+		partial void Aftermodified_atChanged();
+
+		public const string NameOfmodified_at = "modified_at";
+
+		private static readonly PropertyChangedEventArgs _modified_atChangedEventArgs = new PropertyChangedEventArgs(NameOfmodified_at);
+
+		private void Onmodified_atChanged()
+		{
+			OnPropertyChanged(_modified_atChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region modified_by : int?
+
+		private int? _modified_by;
+		/// <summary>
+		/// 更新者
+		/// </summary>
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, Nullable]
+		public  int?  modified_by
+		{
+			get { return _modified_by; }
+			set
+			{
+				if (_modified_by != value)
+				{
+					Beforemodified_byChanged(value);
+					_modified_by = value;
+					Aftermodified_byChanged();
+
+					Onmodified_byChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforemodified_byChanged(int? newValue);
+		partial void Aftermodified_byChanged();
+
+		public const string NameOfmodified_by = "modified_by";
+
+		private static readonly PropertyChangedEventArgs _modified_byChangedEventArgs = new PropertyChangedEventArgs(NameOfmodified_by);
+
+		private void Onmodified_byChanged()
+		{
+			OnPropertyChanged(_modified_byChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region removed_at : DateTime?
+
+		private DateTime? _removed_at;
+		/// <summary>
+		/// 削除日時
+		/// </summary>
+		[Column(DbType="datetime2(7)", DataType=DataType.DateTime2, Precision=7), DataMember, Nullable]
+		public  DateTime?  removed_at
+		{
+			get { return _removed_at; }
+			set
+			{
+				if (_removed_at != value)
+				{
+					Beforeremoved_atChanged(value);
+					_removed_at = value;
+					Afterremoved_atChanged();
+
+					Onremoved_atChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforeremoved_atChanged(DateTime? newValue);
+		partial void Afterremoved_atChanged();
+
+		public const string NameOfremoved_at = "removed_at";
+
+		private static readonly PropertyChangedEventArgs _removed_atChangedEventArgs = new PropertyChangedEventArgs(NameOfremoved_at);
+
+		private void Onremoved_atChanged()
+		{
+			OnPropertyChanged(_removed_atChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+		#region row_version : byte[]
+
+		private byte[] _row_version;
+		/// <summary>
+		/// 版
+		/// </summary>
+		[Column(DbType="timestamp", DataType=DataType.Timestamp, SkipOnInsert=true, SkipOnUpdate=true), DataMember, Nullable]
+		public  byte[]  row_version
+		{
+			get { return _row_version; }
+			set
+			{
+				if (_row_version != value)
+				{
+					Beforerow_versionChanged(value);
+					_row_version = value;
+					Afterrow_versionChanged();
+
+					Onrow_versionChanged();
+				}
+			}
+		}
+
+		#region INotifyPropertyChanged support
+
+		partial void Beforerow_versionChanged(byte[] newValue);
+		partial void Afterrow_versionChanged();
+
+		public const string NameOfrow_version = "row_version";
+
+		private static readonly PropertyChangedEventArgs _row_versionChangedEventArgs = new PropertyChangedEventArgs(NameOfrow_version);
+
+		private void Onrow_versionChanged()
+		{
+			OnPropertyChanged(_row_versionChangedEventArgs);
+		}
+
+		#endregion
+
+		#endregion
+
+		#region enum用アクセスラッパー
+		#endregion
+
+		#region Constructor
+
+		public PersonNameType()
+		{
+			#region フィールド初期化
+			uid = default(int);
+			person_name_type_id = 0;
+			name = "";
+			description = "";
+			display_order = 0;
+			created_at = DateTime.UtcNow;
+			created_by = null;
+			modified_at = DateTime.UtcNow;
+			modified_by = null;
+			removed_at = null;
+			row_version = default(byte[]);
+			#endregion
+		}
+
+		#endregion
+
+		#region Association
+
+
+		#endregion
+
+		#region INotifyPropertyChanged support
+
+		[field : NonSerialized]
+		public virtual event PropertyChangedEventHandler PropertyChanged;
+
+		protected void OnPropertyChanged(string propertyName)
+		{
+			var propertyChanged = PropertyChanged;
+
+			if (propertyChanged != null)
+			{
+				propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		protected void OnPropertyChanged(PropertyChangedEventArgs arg)
+		{
+			var propertyChanged = PropertyChanged;
+
+			if (propertyChanged != null)
+			{
+				propertyChanged(this, arg);
+			}
+		}
+
+		#endregion
+
+	}
+	#region 人名種別条件
+	/// <summary>
+	/// 人名種別条件
+	/// </summary>
+	[DataContract]
+	public partial class PersonNameTypeCondition : PersonNameTypeConditionBase
+	{
+	}
+
+	/// <summary>
+	/// 人名種別条件ベース
+	/// </summary>
+	[DataContract]
+	public class PersonNameTypeConditionBase : ConditionBase<PersonNameType>
+	{
+		#region properties
+		#region uid
+		[DataMember] public int? uid_eq { get; set; }
+		[DataMember] public int? uid_ne { get; set; }
+		[DataMember] public int? uid_lt { get; set; }
+		[DataMember] public int? uid_gt { get; set; }
+		[DataMember] public int? uid_le { get; set; }
+		[DataMember] public int? uid_ge { get; set; }
+		[DataMember] public IEnumerable<int> uid_in { get; set; }
+		[DataMember] public IEnumerable<int> uid_ni { get; set; }
+		[DataMember] public (int? low, int? high)? uid_between { get; set; }
+		#endregion
+		#region person_name_type_id
+		[DataMember] public int? person_name_type_id_eq { get; set; }
+		[DataMember] public int? person_name_type_id_ne { get; set; }
+		[DataMember] public int? person_name_type_id_lt { get; set; }
+		[DataMember] public int? person_name_type_id_gt { get; set; }
+		[DataMember] public int? person_name_type_id_le { get; set; }
+		[DataMember] public int? person_name_type_id_ge { get; set; }
+		[DataMember] public IEnumerable<int> person_name_type_id_in { get; set; }
+		[DataMember] public IEnumerable<int> person_name_type_id_ni { get; set; }
+		[DataMember] public (int? low, int? high)? person_name_type_id_between { get; set; }
+		#endregion
+		#region name
+		[DataMember] public string name_eq { get; set; }
+		[DataMember] public string name_ne { get; set; }
+		[DataMember] public string name_lt { get; set; }
+		[DataMember] public string name_gt { get; set; }
+		[DataMember] public string name_le { get; set; }
+		[DataMember] public string name_ge { get; set; }
+		[DataMember] public IEnumerable<string> name_in { get; set; }
+		[DataMember] public IEnumerable<string> name_ni { get; set; }
+		[DataMember] public (string low, string high)? name_between { get; set; }
+		[DataMember] public string name_like { get; set; }
+		#endregion
+		#region description
+		[DataMember] public string description_eq { get; set; }
+		[DataMember] public string description_ne { get; set; }
+		[DataMember] public string description_lt { get; set; }
+		[DataMember] public string description_gt { get; set; }
+		[DataMember] public string description_le { get; set; }
+		[DataMember] public string description_ge { get; set; }
+		[DataMember] public IEnumerable<string> description_in { get; set; }
+		[DataMember] public IEnumerable<string> description_ni { get; set; }
+		[DataMember] public (string low, string high)? description_between { get; set; }
+		[DataMember] public string description_like { get; set; }
+		#endregion
+		#region display_order
+		[DataMember] public int? display_order_eq { get; set; }
+		[DataMember] public int? display_order_ne { get; set; }
+		[DataMember] public int? display_order_lt { get; set; }
+		[DataMember] public int? display_order_gt { get; set; }
+		[DataMember] public int? display_order_le { get; set; }
+		[DataMember] public int? display_order_ge { get; set; }
+		[DataMember] public IEnumerable<int> display_order_in { get; set; }
+		[DataMember] public IEnumerable<int> display_order_ni { get; set; }
+		[DataMember] public (int? low, int? high)? display_order_between { get; set; }
+		#endregion
+		#region created_at
+		[DataMember] public DateTime? created_at_eq { get; set; }
+		[DataMember] public DateTime? created_at_ne { get; set; }
+		[DataMember] public DateTime? created_at_lt { get; set; }
+		[DataMember] public DateTime? created_at_gt { get; set; }
+		[DataMember] public DateTime? created_at_le { get; set; }
+		[DataMember] public DateTime? created_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> created_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? created_at_between { get; set; }
+		#endregion
+		#region created_by
+		[DataMember] public int? created_by_eq { get; set; }
+		[DataMember] public int? created_by_ne { get; set; }
+		[DataMember] public int? created_by_lt { get; set; }
+		[DataMember] public int? created_by_gt { get; set; }
+		[DataMember] public int? created_by_le { get; set; }
+		[DataMember] public int? created_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> created_by_in { get; set; }
+		[DataMember] public IEnumerable<int> created_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? created_by_between { get; set; }
+		[DataMember] public bool created_by_isnull { get; set; } =  false ;
+		[DataMember] public bool created_by_isnotnull { get; set; } = false;
+		#endregion
+		#region modified_at
+		[DataMember] public DateTime? modified_at_eq { get; set; }
+		[DataMember] public DateTime? modified_at_ne { get; set; }
+		[DataMember] public DateTime? modified_at_lt { get; set; }
+		[DataMember] public DateTime? modified_at_gt { get; set; }
+		[DataMember] public DateTime? modified_at_le { get; set; }
+		[DataMember] public DateTime? modified_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> modified_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? modified_at_between { get; set; }
+		#endregion
+		#region modified_by
+		[DataMember] public int? modified_by_eq { get; set; }
+		[DataMember] public int? modified_by_ne { get; set; }
+		[DataMember] public int? modified_by_lt { get; set; }
+		[DataMember] public int? modified_by_gt { get; set; }
+		[DataMember] public int? modified_by_le { get; set; }
+		[DataMember] public int? modified_by_ge { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_in { get; set; }
+		[DataMember] public IEnumerable<int> modified_by_ni { get; set; }
+		[DataMember] public (int? low, int? high)? modified_by_between { get; set; }
+		[DataMember] public bool modified_by_isnull { get; set; } =  false ;
+		[DataMember] public bool modified_by_isnotnull { get; set; } = false;
+		#endregion
+		#region removed_at
+		[DataMember] public DateTime? removed_at_eq { get; set; }
+		[DataMember] public DateTime? removed_at_ne { get; set; }
+		[DataMember] public DateTime? removed_at_lt { get; set; }
+		[DataMember] public DateTime? removed_at_gt { get; set; }
+		[DataMember] public DateTime? removed_at_le { get; set; }
+		[DataMember] public DateTime? removed_at_ge { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_in { get; set; }
+		[DataMember] public IEnumerable<DateTime> removed_at_ni { get; set; }
+		[DataMember] public (DateTime? low, DateTime? high)? removed_at_between { get; set; }
+		[DataMember] public bool removed_at_isnull { get; set; } =  true ;
+		[DataMember] public bool removed_at_isnotnull { get; set; } = false;
+		#endregion
+		#region row_version
+		[DataMember] public byte[] row_version_eq { get; set; }
+		[DataMember] public byte[] row_version_ne { get; set; }
+		[DataMember] public bool row_version_isnull { get; set; } =  false ;
+		[DataMember] public bool row_version_isnotnull { get; set; } = false;
+		#endregion
+		#endregion
+
+		#region override
+		override public Expression<Func<PersonNameType, bool>> CreatePredicate()
+		{
+			var predicate = base.CreatePredicate();
+
+			#region uid
+			if (uid_eq != null) predicate = predicate.And(_ => _.uid == uid_eq);
+			if (uid_ne != null) predicate = predicate.And(_ => _.uid != uid_ne);
+			if (uid_lt != null) predicate = predicate.And(_ => _.uid < uid_lt);
+			if (uid_gt != null) predicate = predicate.And(_ => _.uid > uid_gt);
+			if (uid_le != null) predicate = predicate.And(_ => _.uid <= uid_le);
+			if (uid_ge != null) predicate = predicate.And(_ => _.uid >= uid_ge);
+            if (uid_in != null) predicate = predicate.And(_ => uid_in.Contains(_.uid));
+            if (uid_ni != null) predicate = predicate.And(_ => !uid_ni.Contains(_.uid));
+			#endregion
+			#region person_name_type_id
+			if (person_name_type_id_eq != null) predicate = predicate.And(_ => _.person_name_type_id == person_name_type_id_eq);
+			if (person_name_type_id_ne != null) predicate = predicate.And(_ => _.person_name_type_id != person_name_type_id_ne);
+			if (person_name_type_id_lt != null) predicate = predicate.And(_ => _.person_name_type_id < person_name_type_id_lt);
+			if (person_name_type_id_gt != null) predicate = predicate.And(_ => _.person_name_type_id > person_name_type_id_gt);
+			if (person_name_type_id_le != null) predicate = predicate.And(_ => _.person_name_type_id <= person_name_type_id_le);
+			if (person_name_type_id_ge != null) predicate = predicate.And(_ => _.person_name_type_id >= person_name_type_id_ge);
+            if (person_name_type_id_in != null) predicate = predicate.And(_ => person_name_type_id_in.Contains(_.person_name_type_id));
+            if (person_name_type_id_ni != null) predicate = predicate.And(_ => !person_name_type_id_ni.Contains(_.person_name_type_id));
+			#endregion
+			#region name
+			if (name_eq != null) predicate = predicate.And(_ => _.name == name_eq);
+			if (name_ne != null) predicate = predicate.And(_ => _.name != name_ne);
+			if (name_lt != null) predicate = predicate.And(_ => name_lt.CompareTo(_.name) > 0);
+			if (name_gt != null) predicate = predicate.And(_ => name_gt.CompareTo(_.name) < 0);
+			if (name_le != null) predicate = predicate.And(_ => name_le.CompareTo(_.name) >= 0);
+			if (name_ge != null) predicate = predicate.And(_ => name_ge.CompareTo(_.name) <= 0);
+            if (name_in != null) predicate = predicate.And(_ => name_in.Contains(_.name));
+            if (name_ni != null) predicate = predicate.And(_ => !name_ni.Contains(_.name));
+			#endregion
+			#region description
+			if (description_eq != null) predicate = predicate.And(_ => _.description == description_eq);
+			if (description_ne != null) predicate = predicate.And(_ => _.description != description_ne);
+			if (description_lt != null) predicate = predicate.And(_ => description_lt.CompareTo(_.description) > 0);
+			if (description_gt != null) predicate = predicate.And(_ => description_gt.CompareTo(_.description) < 0);
+			if (description_le != null) predicate = predicate.And(_ => description_le.CompareTo(_.description) >= 0);
+			if (description_ge != null) predicate = predicate.And(_ => description_ge.CompareTo(_.description) <= 0);
+            if (description_in != null) predicate = predicate.And(_ => description_in.Contains(_.description));
+            if (description_ni != null) predicate = predicate.And(_ => !description_ni.Contains(_.description));
+			#endregion
+			#region display_order
+			if (display_order_eq != null) predicate = predicate.And(_ => _.display_order == display_order_eq);
+			if (display_order_ne != null) predicate = predicate.And(_ => _.display_order != display_order_ne);
+			if (display_order_lt != null) predicate = predicate.And(_ => _.display_order < display_order_lt);
+			if (display_order_gt != null) predicate = predicate.And(_ => _.display_order > display_order_gt);
+			if (display_order_le != null) predicate = predicate.And(_ => _.display_order <= display_order_le);
+			if (display_order_ge != null) predicate = predicate.And(_ => _.display_order >= display_order_ge);
+            if (display_order_in != null) predicate = predicate.And(_ => display_order_in.Contains(_.display_order));
+            if (display_order_ni != null) predicate = predicate.And(_ => !display_order_ni.Contains(_.display_order));
 			#endregion
 			#region created_at
 			if (created_at_eq != null) predicate = predicate.And(_ => _.created_at == created_at_eq);
@@ -10757,7 +12413,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 利用者種別
 		/// </summary>
-		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 1)]
 		public  int  user_type
 		{
 			get { return _user_type; }
@@ -10797,7 +12453,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 利用者番号
 		/// </summary>
-		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey(Order = 2)]
 		public  string  generic_user_no
 		{
 			get { return _generic_user_no; }
@@ -10837,7 +12493,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 連番
 		/// </summary>
-		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 3)]
 		public  int  seq
 		{
 			get { return _seq; }
@@ -12172,7 +13828,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 住所種別ID
 		/// </summary>
-		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 1)]
 		public  int  address_type_id
 		{
 			get { return _address_type_id; }
@@ -12943,7 +14599,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 利用者種別
 		/// </summary>
-		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 1)]
 		public  int  user_type
 		{
 			get { return _user_type; }
@@ -12983,7 +14639,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 利用者番号
 		/// </summary>
-		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="varchar(16)", DataType=DataType.VarChar, Length=16), DataMember, NotNull, PrimaryKey(Order = 2)]
 		public  string  generic_user_no
 		{
 			get { return _generic_user_no; }
@@ -13023,7 +14679,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 連番
 		/// </summary>
-		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 3)]
 		public  int  seq
 		{
 			get { return _seq; }
@@ -13906,7 +15562,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// 連絡先種別ID
 		/// </summary>
-		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey]
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 1)]
 		public  int  contact_type_id
 		{
 			get { return _contact_type_id; }
@@ -14637,7 +16293,7 @@ namespace peppa.Domain
 		/// <summary>
 		/// ユニークID
 		/// </summary>
-		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey, Identity]
+		[Column(DbType="int", DataType=DataType.Int32), DataMember, NotNull, PrimaryKey(Order = 1), Identity]
 		public  int  uid
 		{
 			get { return _uid; }
@@ -15525,6 +17181,28 @@ namespace peppa.Domain
 		public static Staff Find(this ITable<Staff> table, string p_staff_no)
 		{
 			return table.SingleOrDefault(_ => _.staff_no == p_staff_no);
+		}
+		/// <summary>
+		/// 主キーを指定してPersonNameデータ取得
+		/// </summary>
+		/// <param name="table"></param>
+		/// <param name="p_user_type">利用者種別(user_type)</param>
+		/// <param name="p_generic_user_no">利用者番号(generic_user_no)</param>
+		/// <param name="p_seq">連番(seq)</param>
+		/// <returns></returns>
+		public static PersonName Find(this ITable<PersonName> table, int p_user_type, string p_generic_user_no, int p_seq)
+		{
+			return table.SingleOrDefault(_ => _.user_type == p_user_type && _.generic_user_no == p_generic_user_no && _.seq == p_seq);
+		}
+		/// <summary>
+		/// 主キーを指定してPersonNameTypeデータ取得
+		/// </summary>
+		/// <param name="table"></param>
+		/// <param name="p_person_name_type_id">人名種別ID(person_name_type_id)</param>
+		/// <returns></returns>
+		public static PersonNameType Find(this ITable<PersonNameType> table, int p_person_name_type_id)
+		{
+			return table.SingleOrDefault(_ => _.person_name_type_id == p_person_name_type_id);
 		}
 		/// <summary>
 		/// 主キーを指定してAddressデータ取得

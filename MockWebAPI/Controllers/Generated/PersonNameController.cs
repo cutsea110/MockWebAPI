@@ -17,19 +17,19 @@ using peppa.Domain;
 namespace MockWebAPI.Controllers
 {
 	/// <summary>
-	/// 連絡先種別のWebAPI
+	/// 人名のWebAPI
 	/// </summary>
-	[RoutePrefix("api/contacttype")]
-	public partial class ContactTypeController : ApiController
+	[RoutePrefix("api/personname")]
+	public partial class PersonNameController : ApiController
 	{
 
 		/// <summary>
-		/// 連絡先種別の件数
+		/// 人名の件数
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>ヒットした件数</returns>
 		[HttpGet, Route("count")]
-		public int Count([FromUri]ContactTypeCondition c)
+		public int Count([FromUri]PersonNameCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -38,19 +38,21 @@ namespace MockWebAPI.Controllers
 			using (var db = new peppaDB())
 			{
 				var count =
-					c == null ? db.ContactType.Count() :
-					db.ContactType.Count(predicate: c.CreatePredicate());
+					c == null ? db.PersonName.Count() :
+					db.PersonName.Count(predicate: c.CreatePredicate());
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の検索
+		/// 人名の検索
 		/// </summary>
+		/// <param name="with_PersonNameType">PersonNameTypeをLoadWithするか</param>
+		/// <param name="with_Staff">StaffをLoadWithするか</param>
 		/// <param name="c"></param>
 		/// <returns></returns>
 		[HttpGet, Route("search")]
-		public IEnumerable<ContactType> Search([FromUri]ContactTypeCondition c)
+		public IEnumerable<PersonName> Search([FromUri]bool with_PersonNameType, [FromUri]bool with_Staff, [FromUri]PersonNameCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -58,19 +60,31 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var q = db.ContactType;
+				var q = db.PersonName;
+
+				#region LoadWith
+				if (with_PersonNameType)
+					q = q.LoadWith(_ => _.PersonNameType);
+				if (with_Staff)
+					q = q.LoadWith(_ => _.Staff);
+				#endregion
+
 				var list = (c == null ? q : q.Where(c.CreatePredicate())).ToList();
 				return list;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の取得
+		/// 人名の取得
 		/// </summary>
-		/// <param name="contactTypeId">連絡先種別ID(contact_type_id)</param>
+		/// <param name="with_PersonNameType">PersonNameTypeをLoadWithするか</param>
+		/// <param name="with_Staff">StaffをLoadWithするか</param>
+		/// <param name="userType">利用者種別(user_type)</param>
+		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
+		/// <param name="seq">連番(seq)</param>
 		/// <returns></returns>
-		[HttpGet, Route("get/{contactTypeId}")]
-		public ContactType Get(int contactTypeId)
+		[HttpGet, Route("get/{userType}/{genericUserNo}/{seq}")]
+		public PersonName Get([FromUri]bool with_PersonNameType, [FromUri]bool with_Staff, int userType, string genericUserNo, int seq)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -78,19 +92,27 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var q = db.ContactType;
-				var o = q.Find(contactTypeId);
+				var q = db.PersonName;
+
+				#region LoadWith
+				if (with_PersonNameType)
+					q = q.LoadWith(_ => _.PersonNameType);
+				if (with_Staff)
+					q = q.LoadWith(_ => _.Staff);
+				#endregion
+
+				var o = q.Find(userType, genericUserNo, seq);
 				return o;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の作成
+		/// 人名の作成
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>uid</returns>
 		[HttpPost, Route("create")]
-		public int Create([FromBody]ContactType o)
+		public int Create([FromBody]PersonName o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -98,18 +120,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				int uid = db.InsertWithInt32Identity<ContactType>(o);
+				int uid = db.InsertWithInt32Identity<PersonName>(o);
 				return uid;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の更新(必要時作成)
+		/// 人名の更新(必要時作成)
 		/// </summary>
 		/// <param name="o"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("upsert")]
-		public int Upsert([FromBody]ContactType o)
+		public int Upsert([FromBody]PersonName o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -117,18 +139,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				int count = db.InsertOrReplace<ContactType>(o);
+				int count = db.InsertOrReplace<PersonName>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の一括作成
+		/// 人名の一括作成
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>BulkCopyRowsCopied</returns>
 		[HttpPost, Route("massive-new")]
-		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<ContactType> os)
+		public BulkCopyRowsCopied MassiveCreate([FromBody]IEnumerable<PersonName> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -136,18 +158,18 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var ret = db.BulkCopy<ContactType>(os);
+				var ret = db.BulkCopy<PersonName>(os);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別のマージ
+		/// 人名のマージ
 		/// </summary>
 		/// <param name="os"></param>
 		/// <returns>件数</returns>
 		[HttpPost, Route("merge")]
-		public int Merge([FromBody]IEnumerable<ContactType> os)
+		public int Merge([FromBody]IEnumerable<PersonName> os)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -155,19 +177,21 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Merge<ContactType>(os);
+				var count = db.Merge<PersonName>(os);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の更新
+		/// 人名の更新
 		/// </summary>
-		/// <param name="contactTypeId">連絡先種別ID(contact_type_id)</param>
+		/// <param name="userType">利用者種別(user_type)</param>
+		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
+		/// <param name="seq">連番(seq)</param>
 		/// <param name="o"></param>
 		/// <returns>更新件数</returns>
-		[HttpPut, Route("modify/{contactTypeId}")]
-		public int Modify(int contactTypeId, [FromBody]ContactType o)
+		[HttpPut, Route("modify/{userType}/{genericUserNo}/{seq}")]
+		public int Modify(int userType, string genericUserNo, int seq, [FromBody]PersonName o)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -175,18 +199,20 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.Update<ContactType>(o);
+				var count = db.Update<PersonName>(o);
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の削除(論理)
+		/// 人名の削除(物理)
 		/// </summary>
-		/// <param name="contactTypeId">連絡先種別ID(contact_type_id)</param>
+		/// <param name="userType">利用者種別(user_type)</param>
+		/// <param name="genericUserNo">利用者番号(generic_user_no)</param>
+		/// <param name="seq">連番(seq)</param>
 		/// <returns>件数</returns>
-		[HttpDelete, Route("remove/{contactTypeId}")]
-		public int Remove(int contactTypeId)
+		[HttpDelete, Route("remove/{userType}/{genericUserNo}/{seq}")]
+		public int Remove(int userType, string genericUserNo, int seq)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -194,21 +220,20 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.ContactType
-					.Where(_ => _.contact_type_id == contactTypeId)
-					.Set(_ => _.removed_at, Sql.CurrentTimestampUtc)
-					.Update();
+				var count = db.PersonName
+					.Where(_ => _.user_type == userType && _.generic_user_no == genericUserNo && _.seq == seq)
+					.Delete();
 				return count;
 			}
 		}
 
 		/// <summary>
-		/// 連絡先種別の削除(論理)
+		/// 人名の削除(物理)
 		/// </summary>
 		/// <param name="c"></param>
 		/// <returns>件数</returns>
 		[HttpDelete, Route("remove")]
-		public int Remove([FromUri]ContactTypeCondition c)
+		public int Remove([FromUri]PersonNameCondition c)
 		{
 #if DEBUG
 			DataConnection.TurnTraceSwitchOn();
@@ -216,54 +241,12 @@ namespace MockWebAPI.Controllers
 #endif
 			using (var db = new peppaDB())
 			{
-				var count = db.ContactType
-					.Where(c.CreatePredicate())
-					.Set(_ => _.removed_at, Sql.CurrentTimestampUtc)
-					.Update();
-				return count;
-			}
-		}
-
-		/// <summary>
-		/// 連絡先種別の物理削除
-		/// </summary>
-		/// <param name="contactTypeId">連絡先種別ID(contact_type_id)</param>
-		/// <returns>件数</returns>
-		[HttpDelete, Route("physically-remove/{contactTypeId}")]
-		public int PhysicallyRemove(int contactTypeId)
-		{
-#if DEBUG
-			DataConnection.TurnTraceSwitchOn();
-			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
-#endif
-			using (var db = new peppaDB())
-			{
-				var count = db.ContactType
-					.Where(_ => _.contact_type_id == contactTypeId)
-					.Delete();
-				return count;
-			}
-		}
-
-		/// <summary>
-		/// 連絡先種別の物理削除
-		/// </summary>
-		/// <param name="c"></param>
-		/// <returns>件数</returns>
-		[HttpDelete, Route("physically-remove")]
-		public int PhysicallyRemove([FromUri]ContactTypeCondition c)
-		{
-#if DEBUG
-			DataConnection.TurnTraceSwitchOn();
-			DataConnection.WriteTraceLine = (msg, context) => Debug.WriteLine(msg, context);
-#endif
-			using (var db = new peppaDB())
-			{
-				var count = db.ContactType
+				var count = db.PersonName
 					.Where(c.CreatePredicate())
 					.Delete();
 				return count;
 			}
 		}
+
 	}
 }
